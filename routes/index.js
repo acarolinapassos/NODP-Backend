@@ -12,6 +12,10 @@ router.post('/login', function(req, res, next) {
 
 router.get('/sair', function(req, res, next) {
   res.send('Creu')
-})
+});
+
+router.get('/perfil', function(req, res, next) {
+  res.send('Creu')
+});
 
 module.exports = router;
