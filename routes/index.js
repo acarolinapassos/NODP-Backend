@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.send(`Deu certo...`);
 });
 
+router.post('/login', function(req, res, next) {
+  res.send('Creu')
+})
+
 module.exports = router;
