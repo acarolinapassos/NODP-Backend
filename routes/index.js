@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   res.send('Creu')
+});
+
+router.get('/sair', function(req, res, next) {
+  res.send('Creu')
 })
 
 module.exports = router;
