@@ -1,5 +1,5 @@
 //https://sequelize.org/v5/manual/data-types.html
-const Mensagens = (sequelize, Datatypes) => {
+const Mensagem = (sequelize, Datatypes) => {
 
     let mensagens = sequelize.define(
   
@@ -45,4 +45,4 @@ const Mensagens = (sequelize, Datatypes) => {
     return mensagens;
   };
   
-  module.exports = Mensagens;
+  module.exports = Mensagem;
