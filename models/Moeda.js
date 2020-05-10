@@ -9,7 +9,7 @@ const Moeda = (sequelize, Datatypes) => {
         type: Datatypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false,
+        allowNull: true,
       },
       usuario_id: {
         type: Datatypes.INTEGER,
@@ -33,7 +33,7 @@ const Moeda = (sequelize, Datatypes) => {
         type: Datatypes.DATE,
         primaryKey: false,
         autoIncrement: false,
-        allowNull: false,
+        allowNull: true,
       },
     },
     {

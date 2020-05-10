@@ -6,7 +6,16 @@ Moeda.findAll().then(
     console.log(result.map(u => u.toJSON()));
     sequelize.close();
   }
-  );
+);
+
+let user = { usuario_id: 1, remetente_id: 2, qtd_moedas: 3 };
+Moeda.create(user).then(
+  result => {
+    console.log(result);
+  }
+);
+
+
   
 /*
 async function listar() {
