@@ -18,20 +18,20 @@ const Postagem = (sequelize, DataTypes) => {
                 type: DataTypes.DATE,
                 primaryKey: false,
                 autoIncrement: false,
-                allowNull: false
+                allowNull: true
             },
             quantidade_medalhas: {
                 type: DataTypes.INTEGER,
                 primaryKey: false,
                 autoIncrement: false,
-                allowNull: false
+                allowNull: true
 
             },
             quantidade_apoios: {
                 type: DataTypes.INTEGER,
                 primaryKey: false,
                 autoIncrement: false,
-                allowNull: false
+                allowNull: true
 
             },
             categoria_id: {
@@ -66,11 +66,11 @@ const Postagem = (sequelize, DataTypes) => {
                 type: DataTypes.BOOLEAN,
                 primaryKey: false,
                 autoIncrement: false,
-                allowNull: false
+                allowNull: true
 
             }
         }, {
-            tableName: 'Postagem',
+            tableName: 'postagens',
             timestamps: false
         }
 
