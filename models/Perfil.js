@@ -1,6 +1,6 @@
 //https://sequelize.org/v5/manual/data-types.html
 const Perfil = (sequelize, Datatypes) => {
-    let perfis = sequelize.define(
+    let perfil = sequelize.define(
         'Perfil',
         {
             id: {
@@ -37,10 +37,10 @@ const Perfil = (sequelize, Datatypes) => {
         }
     );
 
-    perfis.associate = (models) => {
-        perfis.belongsTo(models.Usuario, {foreignKey:'usuario_id', as: 'usuario'});
+    perfil.associate = (models) => {
+        perfil.belongsTo(models.Usuario, {foreignKey:'usuario_id', as: 'usuario'});
     }
 
-    return perfis;
+    return perfil;
 };
 module.exports = Perfil;
