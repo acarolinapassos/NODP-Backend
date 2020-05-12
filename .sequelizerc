@@ -1,0 +1,6 @@
+const path = require("path");
+
+module.exports = {
+  config: path.resolve("config", "DB.js"),
+  models: path.resolve("models");
+}

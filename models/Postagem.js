@@ -1,17 +1,17 @@
 const Postagem = (sequelize, DataTypes) => {
     let postagem = sequelize.define(
         'Postagem', {
-            id: {
-                type: DataTypes.INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-                allowNull: false
-            },
-            usuario_id: {
-                type: DataTypes.INTEGER,
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+            allowNull: false
+        },
+        usuario_id: {
+            type: DataTypes.INTEGER,
+            primaryKey: false,
+            autoIncrement: false,
+            allowNull: false
 
             },
             data_hora: {
@@ -33,33 +33,33 @@ const Postagem = (sequelize, DataTypes) => {
                 autoIncrement: false,
                 allowNull: true
 
-            },
-            categoria_id: {
-                type: DataTypes.INTEGER,
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
+        },
+        categoria_id: {
+            type: DataTypes.INTEGER,
+            primaryKey: false,
+            autoIncrement: false,
+            allowNull: false
 
-            },
-            titulo: {
-                type: DataTypes.STRING(30),
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
+        },
+        titulo: {
+            type: DataTypes.STRING(30),
+            primaryKey: false,
+            autoIncrement: false,
+            allowNull: false
 
-            },
-            descricao: {
-                type: DataTypes.STRING(250),
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
+        },
+        descricao: {
+            type: DataTypes.STRING(250),
+            primaryKey: false,
+            autoIncrement: false,
+            allowNull: false
 
-            },
-            imagem: {
-                type: DataTypes.STRING(200),
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
+        },
+        imagem: {
+            type: DataTypes.STRING(200),
+            primaryKey: false,
+            autoIncrement: false,
+            allowNull: false
 
             },
             urgente: {
@@ -73,10 +73,9 @@ const Postagem = (sequelize, DataTypes) => {
             tableName: 'postagens',
             timestamps: false
         }
+    
 
-
-
-    )
+    );
     return postagem;
 };
 
