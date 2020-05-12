@@ -1,5 +1,5 @@
 //https://sequelize.org/v5/manual/data-types.html
-const Usuario = (sequelize, DataTypes) => {
+const Usuario = (sequelize, Datatypes) => {
     let usuarios = sequelize.define(
         'Usuario',
         {
