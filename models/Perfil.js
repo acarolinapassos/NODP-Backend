@@ -1,5 +1,5 @@
 //https://sequelize.org/v5/manual/data-types.html
-const Perfil = (sequelize, DataTypes) => {
+const Perfil = (sequelize, Datatypes) => {
     let perfis = sequelize.define(
         'Perfil',
         {

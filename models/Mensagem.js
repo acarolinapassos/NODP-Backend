@@ -42,7 +42,11 @@ const Mensagem = (sequelize, Datatypes) => {
     }
     );
     
+    // mensagem.associate = (models) => {
+    //   mensagem.hasMany()
+    // }
     return mensagem;
+
   };
   
   module.exports = Mensagem;
