@@ -45,7 +45,13 @@ const AulasMinistradas = ( sequelize, Datatypes ) => {
                 primaryKey: false,
                 autoIncrement: false,
                 allowNull: false,
-            }
+            },
+            data_hora: {
+                type: Datatypes.DATE,
+                primaryKey: false,
+                autoIncrement: false,
+                allowNull: false,
+            },
         },
         {
             tableName: 'aulas_ministradas',
