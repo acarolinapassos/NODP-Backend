@@ -53,7 +53,7 @@ async function realizarTransacao() {
 //Buscar uma transação pelo ID
 async function buscar() {
   try {
-    let id = Math.round(Math.random() * (12 - 1) + 1);
+    let id = Math.round(Math.random() * (30 - 1) + 1);
     let resultado = await Moeda.findByPk(id);
     //console.log('---------');
     //console.log(`Buscando pelo ID: ${id}`);
@@ -73,7 +73,7 @@ async function excluir() {
     try {
       //Identificar transação
       //Conectar com sequelize
-      let resultado = await Moeda.sequelize.query(`DELETE FROM usuarios WHERE id = ${idUltimaTransacao}`);
+      let resultado = await Moeda.sequelize.query(`DELETE FROM moedas WHERE id = ${idUltimaTransacao}`);
       //Executar função
       //Verificar se deu erro 
       resultadoTestes.excluir = `Ok ${resultado[0].serverStatus}`;
