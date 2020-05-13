@@ -12,11 +12,11 @@ const {
 
 
 let postagem = {
-    usuario_id : 4,
-    categoria_id : Math.round(Math.random() * (4 - 1) + 1),
-    titulo : `Estou aprendendo Javascript`,
-    descricao : `Javascript é uma linguagem de programação...`,
-    imagem : `img${Math.round(Math.random() * (50 - 1) + 1)}.png`
+    usuario_id: 4,
+    categoria_id: Math.round(Math.random() * (4 - 1) + 1),
+    titulo: `Estou aprendendo Javascript`,
+    descricao: `Javascript é uma linguagem de programação...`,
+    imagem: `img${Math.round(Math.random() * (50 - 1) + 1)}.png`
 }
 // criando a função publicar
 
@@ -29,6 +29,30 @@ async function publicar() {
         console.log(error);
     }
     sequelize.close();
-}
+};
 
 publicar();
+
+
+// listar 
+
+async function listar() {
+    try {
+        let resultado = await Postagem.findAll();
+        for (lista of resultado) {
+            console.log(`listando publicação`);
+            console.log(`----------------
+        ${lista.categoria_id} 
+        ${lista.titulo}
+        ${lista.descricao} 
+        ${lista.imagem}      
+        ${lista.urgente}  `)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+    sequelize.close();
+};
+
+listar();
+
