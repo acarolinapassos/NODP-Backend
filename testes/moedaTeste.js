@@ -86,8 +86,10 @@ async function excluir() {
   }
   exibirResultados();
 }
-//Imprimir resultado 
 
+
+//-----------------------------------------------------------------------
+//Imprimir resultados dos testes
 const exibirResultados = () => {
 
   console.log('_____________________________________');
@@ -100,10 +102,8 @@ const exibirResultados = () => {
   sequelize.close();
 };
 
-
-
 //-----------------------------------------------------------------------
-//TESTES A SEREM EXECUTADO 
+//Iniciar bateria de testes em ordem: SALVAR -> LISTAR -> BUSCAR -> EXCLUIR 
 realizarTransacao();
 
 
