@@ -61,4 +61,4 @@ const AulasMinistradas = ( sequelize, Datatypes ) => {
     return aulasMinistradas;
 };
 
-module.exports = AulasMinistradas
+module.exports = AulasMinistradas;

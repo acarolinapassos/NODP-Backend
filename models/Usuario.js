@@ -21,8 +21,8 @@ const Usuario = (sequelize, Datatypes) => {
     );
 
     usuario.associate = (models) => {
-        usuario.belongsTo(models.Perfil, {foreignKey:'usuario_id', as: 'perfil'});
-    }
+        usuario.belongsTo(models.Perfil, { foreignKey: 'usuario_id', as: 'perfil' });
+    };
 
     return usuario;
 };
