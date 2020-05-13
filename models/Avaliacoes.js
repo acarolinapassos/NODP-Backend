@@ -35,7 +35,7 @@ const Avaliacoes = (sequelize, Datatypes) => {
         }
     );
 
-    return avaliacoes
+    return avaliacoes;
 }
 
-module.exports = Avaliacoes
+module.exports = Avaliacoes;

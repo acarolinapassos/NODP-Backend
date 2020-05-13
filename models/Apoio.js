@@ -28,7 +28,7 @@ const Apoio = (sequelize, Datatype) => {
         }
     );
 
-    return apoio
-}
+    return apoio;
+};
 
 module.exports = Apoio;
