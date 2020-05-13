@@ -11,68 +11,68 @@ module.exports = {
 
     return queryInterface.createTable('postagens', {
       id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
       usuario_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: false,
         autoIncrement: false,
         allowNull: false
 
       },
       data_hora: {
-        type: DataTypes.DATE,
+        type: Sequelize.DATE,
         primaryKey: false,
         autoIncrement: false,
         allowNull: true
       },
       quantidade_medalhas: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: false,
         autoIncrement: false,
         allowNull: true
 
       },
       quantidade_apoios: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: false,
         autoIncrement: false,
         allowNull: true
 
       },
       categoria_id: {
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
         primaryKey: false,
         autoIncrement: false,
         allowNull: false
 
       },
       titulo: {
-        type: DataTypes.STRING(30),
+        type: Sequelize.STRING(30),
         primaryKey: false,
         autoIncrement: false,
         allowNull: false
 
       },
       descricao: {
-        type: DataTypes.STRING(250),
+        type: Sequelize.STRING(250),
         primaryKey: false,
         autoIncrement: false,
         allowNull: false
 
       },
       imagem: {
-        type: DataTypes.STRING(200),
+        type: Sequelize.STRING(200),
         primaryKey: false,
         autoIncrement: false,
         allowNull: false
 
       },
       urgente: {
-        type: DataTypes.BOOLEAN,
+        type: Sequelize.BOOLEAN,
         primaryKey: false,
         autoIncrement: false,
         allowNull: true
