@@ -1,4 +1,12 @@
 const { sequelize, Moeda } = require('../models');
+let idUltimaTransacao;
+
+let resultadoTestes = {
+  listar: 'Não testado',
+  realizarTransacao: 'Não testado',
+  buscar: 'Não testado',
+  excluir: 'Não testado'
+};
 
 //-----------------------------------------------------------------------
 //Listar transações 
@@ -6,15 +14,17 @@ async function listar() {
   try {
     let lista = await Moeda.findAll();
     for (let moeda of lista) {
-      console.log(`DE: User ${moeda.remetente_id} -> PARA: User ${moeda.usuario_id}`);
-      console.log(`${moeda.qtd_moedas} Moedas`);
-      console.log(`Em: ${moeda.data_hora}`);
-      console.log('---------');
+      //console.log('---------');
+      //console.log(`DE: User ${moeda.remetente_id} -> PARA: User ${moeda.usuario_id}`);
+      //console.log(`${moeda.qtd_moedas} Moedas`);
+      //console.log(`Em: ${moeda.data_hora}`);
     }
+    resultadoTestes.listar = `Ok ${lista.length}`;
   } catch (error) {
-    
+    resultadoTestes.listar = 'Erro: ' + error.message;
+    console.log(error);
   }
-  sequelize.close();
+  buscar();
 }
 
 //-----------------------------------------------------------------------
@@ -27,13 +37,16 @@ async function realizarTransacao() {
     (user1 == user2) ? user1 = user1 + 1 : '';
     let user = { usuario_id: user1, remetente_id: user2, qtd_moedas: qtd };
     let resultado = await Moeda.create(user); 
-    console.log('---------');
-    console.log('Foi realizado uma nova operação com sucesso!');
-    console.log(resultado.dataValues);
+    //console.log('---------');
+    //console.log('Foi realizado uma nova operação com sucesso!');
+    idUltimaTransacao = resultado.dataValues.id;
+    //console.log(resultado.dataValues);
+    resultadoTestes.realizarTransacao = `Ok id ${idUltimaTransacao}`; 
   } catch (error) {
+    resultadoTestes.realizarTransacao = 'Erro: ' + error.message;
     console.log(error);
   } 
-  sequelize.close();
+  listar();
 }
 
 //-----------------------------------------------------------------------
@@ -42,17 +55,55 @@ async function buscar() {
   try {
     let id = Math.round(Math.random() * (12 - 1) + 1);
     let resultado = await Moeda.findByPk(id);
-    console.log('---------');
-    console.log(`Buscando pelo ID: ${id}`);
-    console.log(resultado.dataValues);
+    //console.log('---------');
+    //console.log(`Buscando pelo ID: ${id}`);
+    //console.log(resultado.dataValues);
+    resultadoTestes.buscar = `Ok - id ${resultado.dataValues.id}`; 
   } catch (error) {
+    resultadoTestes.buscar = 'Erro ' + error.message; 
     console.log(error);
   }
+  excluir();
 }
+
+//-----------------------------------------------------------------------
+//Excluir transação 
+async function excluir() {
+  if (!isNaN(idUltimaTransacao)) {
+    try {
+      //Identificar transação
+      //Conectar com sequelize
+      let resultado = await Moeda.sequelize.query(`DELETE FROM usuarios WHERE id = ${idUltimaTransacao}`);
+      //Executar função
+      //Verificar se deu erro 
+      resultadoTestes.excluir = `Ok ${resultado[0].serverStatus}`;
+    } catch (error) {
+      resultadoTestes.excluir = 'Erro ' + error.message; 
+      console.log(error);
+    }
+  } else {
+    resultadoTestes.excluir = 'Não foi identificado a ultima operação';
+  }
+  exibirResultados();
+}
+//Imprimir resultado 
+
+const exibirResultados = () => {
+
+  console.log('_____________________________________');
+  console.log('------RESULTADO DOS TESTES------');
+  console.log('_____________________________________');
+  for (let res in resultadoTestes) {
+    console.log(res + ' : ' + resultadoTestes[res]);
+  }
+  console.log('-------------------------------------');
+  sequelize.close();
+};
+
+
 
 //-----------------------------------------------------------------------
 //TESTES A SEREM EXECUTADO 
 realizarTransacao();
-listar();
-buscar();
+
 
