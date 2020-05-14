@@ -37,7 +37,7 @@ module.exports = {
         type: Sequelize.DATE,
         primaryKey: false,
         autoIncrement: false,
-        allowNull: true,
+        allowNull: false,
       },
     });
   },
