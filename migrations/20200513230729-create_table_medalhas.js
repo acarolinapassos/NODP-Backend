@@ -13,7 +13,7 @@ module.exports = {
         },
         id_post: Sequelize.INTEGER,
         remetente_id: Sequelize.INTEGER,
-        data_hora: Sequelize.DATETIME
+        data_hora: Sequelize.DATE
       });
   },
 
