@@ -1,8 +1,7 @@
-const Medalhas = ( sequelize, Datatypes ) => {
+const Medalhas = (Sequelize, Datatypes) => {
 
-    let medalhas = sequelize.define(
-        'Medalhas',
-        {
+    let medalhas = Sequelize.define(
+        'Medalhas', {
             id: {
                 type: Datatypes.INTEGER,
                 primaryKey: true,
@@ -10,6 +9,12 @@ const Medalhas = ( sequelize, Datatypes ) => {
                 allowNull: false
             },
             id_post: {
+                type: Datatypes.INTEGER,
+                primaryKey: false,
+                autoIncrement: false,
+                allowNull: false
+            },
+            postagem_id: {
                 type: Datatypes.INTEGER,
                 primaryKey: false,
                 autoIncrement: false,
@@ -27,6 +32,7 @@ const Medalhas = ( sequelize, Datatypes ) => {
                 autoIncrement: false,
                 allowNull: true,
             }
+            
         },
         {
             tableName: 'medalhas',
