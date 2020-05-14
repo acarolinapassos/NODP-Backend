@@ -12,6 +12,18 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    return queryInterface.bulkInsert('canal_ensino', [
+      {
+      descricao: 'Online'
+      },
+      {
+        descricao: 'Presencial'
+      },
+      {
+        descricao: 'Online/Presencial'
+      }
+
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -21,6 +33,7 @@ module.exports = {
 
       Example:
       return queryInterface.bulkDelete('People', null, {});
-    */
+      */
+    return queryInterface.bulkDelete('canal_ensino', null, {});
   }
 };
