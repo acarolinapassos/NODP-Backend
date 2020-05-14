@@ -11,7 +11,7 @@ module.exports = {
           allowNull: false,
           autoIncrement: true
         },
-        id_post: Sequelize.INTEGER,
+        postagens_id: Sequelize.INTEGER,
         remetente_id: Sequelize.INTEGER,
         data_hora: Sequelize.DATE
       });
