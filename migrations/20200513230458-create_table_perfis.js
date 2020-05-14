@@ -32,12 +32,11 @@ module.exports = {
       horas_estudo: Sequelize.INTEGER,
       qtd_moedas: Sequelize.INTEGER,
       qtd_medalhas: Sequelize.INTEGER
-    }
-  });
-},
+    });
+  },
 
-down: (queryInterface, Sequelize) => {
- return queryInterface.dropTable('perfis');
+  down: (queryInterface, Sequelize) => {
+  return queryInterface.dropTable('perfis');
 
-}
+  }
 };

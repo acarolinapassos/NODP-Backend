@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.createTable(
-        'usuario',
+        'usuarios',
       { 
         id: {
           type: Sequelize.INTEGER,
@@ -27,6 +27,7 @@ module.exports = {
           type: Sequelize.BOOLEAN,
           allowNull: false
     }
+    
     });
   },
 
