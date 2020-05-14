@@ -2,22 +2,42 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+    return queryInterface.createTable(
+      'perfis',
+    { 
+      id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      usuario_id: {
+          type: Sequelize.INTEGER,
+          primaryKey: true,
+          allowNull: false
+      },
+      nome: Sequelize.STRING(80),
+      cidade_id: Sequelize.INTEGER,
+      curso_id: Sequelize.INTEGER,
+      bio: Sequelize.STRING(250),
+      celular: Sequelize.STRING(20),
+      metodo_ensino_id: Sequelize.INTEGER,
+      quantidade_moedas: Sequelize.INTEGER,
+      metodo_aprendizado_id: Sequelize.INTEGER,
+      instituicao_ensino_id: Sequelize.INTEGER,
+      capa: Sequelize.STRING(250),
+      avatar: Sequelize.STRING(250),
+      turma: Sequelize.INTEGER,
+      horas_ensino: Sequelize.INTEGER,
+      horas_estudo: Sequelize.INTEGER,
+      qtd_moedas: Sequelize.INTEGER,
+      qtd_medalhas: Sequelize.INTEGER
+    }
+  });
+},
 
-      Example:
-      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
-    */
-  },
+down: (queryInterface, Sequelize) => {
+ return queryInterface.dropTable('perfis');
 
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.dropTable('users');
-    */
-  }
+}
 };
