@@ -7,8 +7,34 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
+     
     */
+    return queryInterface.createTable('avaliacoes', {
+      id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false,
+      },
+      aula_id: {
+        type: Sequelize.INTEGER,
+        primaryKey: false,
+        autoIncrement: false,
+        allowNull: false
+      },
+      tipo_avaliacao: {
+        type: Sequelize.INTEGER,
+        primaryKey: false,
+        autoIncrement: false,
+        allowNull: false
+      },
+      nota: {
+        type: Sequelize.INTEGER,
+        primaryKey: false,
+        autoIncrement: false,
+        allowNull: false
+      }
+    });
   },
 
   down: (queryInterface, Sequelize) => {
@@ -17,7 +43,8 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.dropTable('users');
+      
     */
+   return queryInterface.dropTable('avaliacoes');
   }
 };
