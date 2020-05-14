@@ -15,7 +15,7 @@ module.exports = {
       usuario_id: Sequelize.INTEGER,
       remetente_id: Sequelize.INTEGER,
       lida: Sequelize.BOOLEAN,
-      data_hora: Sequelize.DATETIME
+      data_hora: Sequelize.DATE
     });
   },
 
