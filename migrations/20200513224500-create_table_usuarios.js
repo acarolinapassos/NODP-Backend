@@ -2,22 +2,37 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
-    */
+      return queryInterface.createTable(
+        'usuarios',
+      { 
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          autoIncrement: true
+        },
+        email: {
+          type:Sequelize.STRING(80),
+          allowNull: false
+      },
+        senha: {
+          type: Sequelize.STRING(250),
+          allowNull: false
+      },
+        admin: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false
+      },
+        ativo: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false
+    }
+    
+    });
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
+   return queryInterface.dropTable('usuarios');
 
-      Example:
-      return queryInterface.dropTable('users');
-    */
   }
 };
