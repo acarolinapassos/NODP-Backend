@@ -11,7 +11,22 @@ module.exports = {
         name: 'John Doe',
         isBetaMember: false
       }], {});
-    */
+      */
+    return queryInterface.bulkInsert('categorias_postagens', [
+      {
+        descricao: '#ensinando'
+      },
+      {
+        descricao: '#aprendendo'
+      },
+      {
+        descricao: '#quero aprender'
+      },
+      {
+        descricao: '#quero ensinar'
+      }
+
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -21,6 +36,7 @@ module.exports = {
 
       Example:
       return queryInterface.bulkDelete('People', null, {});
-    */
+      */
+    return queryInterface.bulkDelete('categorias_postagens', null, {});
   }
 };

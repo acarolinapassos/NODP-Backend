@@ -12,16 +12,22 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('tipos_avaliacoes', [
+    return queryInterface.bulkInsert('tipos_notificacoes', [
       {
-        descricao: 'Professor',
+        descricao: 'enviou mensagem',
       },
       {
-        descricao: 'Aluno',
+        descricao: 'deu medalha na sua postagem',
       },
       {
-        descricao: 'Aula',
-      }
+        descricao: 'deu moeda na sua postagem',
+      },
+      {
+        descricao: 'apoiou você',
+      },
+      {
+        descricao: 'comentou em sua postagem',
+      },
     ], {});
   },
 
@@ -33,6 +39,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
       */
-    return queryInterface.bulkDelete('tipos_avaliacoes', null, {});
+    return queryInterface.bulkDelete('tipos_notificacoes', null, {});
   }
 };
