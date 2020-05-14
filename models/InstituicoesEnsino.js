@@ -10,7 +10,7 @@ const InstituicoesEnsino = ( sequelize, Datatypes ) => {
                 allowNull: false
             },
             descricao: {
-                type: Datatypes.STRING(50),
+                type: Datatypes.STRING(250),
                 primaryKey: false,
                 autoIncrement: false,
                 allowNull: false
@@ -33,7 +33,7 @@ const InstituicoesEnsino = ( sequelize, Datatypes ) => {
             timestamps: false
         }
     );
-    return instituicoesEnsino
+    return instituicoesEnsino;
 }
 
-module.exports = InstituicoesEnsino
+module.exports = InstituicoesEnsino;
