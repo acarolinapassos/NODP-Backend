@@ -3,17 +3,18 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     /*
-    Add altering commands here.
-    Return a promise to correctly handle asynchronicity.
-    
-    Example:
+      Add altering commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      
     */
-    return queryInterface.createTable('moedas', {
+    return queryInterface.createTable('mensagens', {
       id: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         primaryKey: true,
-        autoIncrement: true
+        autoIncrement: true,
+        allowNull: false,
       },
       usuario_id: {
         type: Sequelize.INTEGER,
@@ -21,14 +22,14 @@ module.exports = {
         autoIncrement: false,
         allowNull: false,
       },
-      remetente_id: {
+      destinatario_id: {
         type: Sequelize.INTEGER,
         primaryKey: false,
         autoIncrement: false,
         allowNull: false,
       },
-      qtd_moedas: {
-        type: Sequelize.INTEGER,
+      mensagem: {
+        type: Sequelize.STRING,
         primaryKey: false,
         autoIncrement: false,
         allowNull: false,
@@ -41,14 +42,15 @@ module.exports = {
       },
     });
   },
-  
+
   down: (queryInterface, Sequelize) => {
     /*
-    Add reverting commands here.
-    Return a promise to correctly handle asynchronicity.
-    
-    Example:
+      Add reverting commands here.
+      Return a promise to correctly handle asynchronicity.
+
+      Example:
+      
     */
-    return queryInterface.dropTable('moedas');
+   return queryInterface.dropTable('mensagens');
   }
 };
