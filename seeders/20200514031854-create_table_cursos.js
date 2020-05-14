@@ -12,6 +12,26 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    return queryInterface.bulkInsert('cursos', [
+      {
+      descricao: 'Economia',
+      },
+      {
+        descricao: 'Direito',
+      },
+      {
+        descricao: 'Psicologia',
+      },
+      {
+        descricao: 'Medicina',
+      },
+      {
+        descricao: 'Análise e Desenvolvimento de Sistemas',
+      },
+      {
+        descricao: 'Administração',
+      }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -20,7 +40,7 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+      */
+    return queryInterface.bulkDelete('cursos', null, {});
   }
 };

@@ -11,7 +11,7 @@ module.exports = {
             allowNull: false,
             autoIncrement: true
           },
-          descricao: Sequelize.STRING(50),
+          descricao: Sequelize.STRING(250),
           estado_id: Sequelize.INTEGER,
           sigla: Sequelize.STRING(20)
         });
