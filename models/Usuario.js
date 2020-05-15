@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('anuncios', {
+  return sequelize.define('Usuario', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -9,23 +9,30 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null",
       autoIncrement: true
     },
-    'descricao': {
-      type: DataTypes.STRING(45),
+    'email': {
+      type: DataTypes.STRING(80),
       allowNull: false,
       comment: "null"
     },
-    'imagem': {
+    'senha': {
       type: DataTypes.STRING(250),
       allowNull: false,
-      defaultValue: 'default.png',
       comment: "null"
     },
-    'valido_ate': {
-      type: DataTypes.DATEONLY,
+    'admin': {
+      type: DataTypes.INTEGER(1),
       allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'ativo': {
+      type: DataTypes.INTEGER(1),
+      allowNull: false,
+      defaultValue: '1',
       comment: "null"
     }
   }, {
-    tableName: 'anuncios'
+      tableName: 'usuarios',
+      timestamps: false
   });
 };

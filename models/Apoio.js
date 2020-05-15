@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('instituicoes_ensino', {
+  return sequelize.define('Apoio', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -9,27 +9,26 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null",
       autoIncrement: true
     },
-    'descricao': {
-      type: DataTypes.STRING(250),
-      allowNull: false,
-      comment: "null"
-    },
-    'estado_id': {
+    'apoiado_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
       references: {
-        model: 'estados',
-        key: 'cod_estados'
+        model: 'Usuario',
+        key: 'id'
       }
     },
-    'sigla': {
-      type: DataTypes.STRING(20),
+    'apoiador_id': {
+      type: DataTypes.INTEGER(11),
       allowNull: false,
-      defaultValue: 'NI',
-      comment: "null"
+      comment: "null",
+      references: {
+        model: 'Usuario',
+        key: 'id'
+      }
     }
   }, {
-    tableName: 'instituicoes_ensino'
+      tableName: 'apoios',
+      timestamps: false
   });
 };

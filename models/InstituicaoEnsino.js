@@ -1,34 +1,36 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('cidades', {
-    'cod_cidades': {
+  return sequelize.define('InstituicaoEnsino', {
+    'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       comment: "null",
       autoIncrement: true
     },
-    'nome': {
-      type: DataTypes.STRING(72),
+    'descricao': {
+      type: DataTypes.STRING(250),
       allowNull: false,
       comment: "null"
     },
-    'cep': {
-      type: DataTypes.STRING(8),
-      allowNull: false,
-      comment: "null"
-    },
-    'estado': {
+    'estado_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
       references: {
-        model: 'estados',
+        model: 'Estado',
         key: 'cod_estados'
       }
+    },
+    'sigla': {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      defaultValue: '-',
+      comment: "null"
     }
   }, {
-    tableName: 'cidades'
+      tableName: 'instituicoes_ensino',
+      timestamps: false
   });
 };
