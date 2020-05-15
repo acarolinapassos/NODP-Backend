@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('CanalEnsino', {
+  return sequelize.define('Interesse', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -10,13 +10,12 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true
     },
     'descricao': {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(50),
       allowNull: false,
-      comment: "null",
-      unique: true
+      comment: "null"
     }
   }, {
-      tableName: 'canal_ensino',
+      tableName: 'interesses',
       timestamps: false
   });
 };

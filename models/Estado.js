@@ -1,22 +1,26 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('CanalEnsino', {
-    'id': {
+  return sequelize.define('Estado', {
+    'cod_estados': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       comment: "null",
       autoIncrement: true
     },
-    'descricao': {
-      type: DataTypes.STRING(45),
+    'sigla': {
+      type: DataTypes.STRING(2),
       allowNull: false,
-      comment: "null",
-      unique: true
+      comment: "null"
+    },
+    'nome': {
+      type: DataTypes.STRING(72),
+      allowNull: false,
+      comment: "null"
     }
   }, {
-      tableName: 'canal_ensino',
+      tableName: 'estados',
       timestamps: false
   });
 };

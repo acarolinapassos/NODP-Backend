@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Moeda', {
+  return sequelize.define('Medalha', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -9,12 +9,12 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null",
       autoIncrement: true
     },
-    'usuario_id': {
+    'id_post': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
       references: {
-        model: 'Usuario',
+        model: 'Postagem',
         key: 'id'
       }
     },
@@ -27,11 +27,6 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    'qtd_moedas': {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      comment: "null"
-    },
     'data_hora': {
       type: DataTypes.DATE,
       allowNull: false,
@@ -39,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-      tableName: 'moedas',
+      tableName: 'medalhas',
       timestamps: false
   });
 };
