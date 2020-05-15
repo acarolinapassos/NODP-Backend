@@ -21,7 +21,7 @@ const Interesses = ( sequelize, Datatypes ) => {
             timestamps: false
         }
     );
-    return interesses
+    return interesses;
 }
 
-module.exports = Interesses
+module.exports = Interesses;

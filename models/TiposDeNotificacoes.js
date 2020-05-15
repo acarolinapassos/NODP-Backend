@@ -21,7 +21,7 @@ const TiposDeNotificacoes = ( sequelize, Datatypes ) => {
             timestamps: false  
         }
     );
-    return tiposDeNotificacoes
+    return tiposDeNotificacoes;
 }
 
-module.exports = TiposDeNotificacoes
+module.exports = TiposDeNotificacoes;

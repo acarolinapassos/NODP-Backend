@@ -73,8 +73,6 @@ const Postagem = (sequelize, DataTypes) => {
             tableName: 'postagens',
             timestamps: false
         }
-
-
     );
     return postagem;
 };
