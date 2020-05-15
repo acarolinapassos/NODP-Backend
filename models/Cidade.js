@@ -1,38 +1,35 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('comentarios', {
-    'id': {
+  return sequelize.define('Cidade', {
+    'cod_cidades': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       comment: "null",
       autoIncrement: true
     },
-    'texto': {
-      type: DataTypes.STRING(250),
+    'nome': {
+      type: DataTypes.STRING(72),
       allowNull: false,
       comment: "null"
     },
-    'usuario_id': {
-      type: DataTypes.INTEGER(11),
+    'cep': {
+      type: DataTypes.STRING(8),
       allowNull: false,
-      comment: "null",
-      references: {
-        model: 'usuarios',
-        key: 'id'
-      }
+      comment: "null"
     },
-    'post_id': {
+    'estado': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
       references: {
-        model: 'postagens',
-        key: 'id'
+        model: 'estados',
+        key: 'cod_estados'
       }
     }
   }, {
-    tableName: 'comentarios'
+      tableName: 'cidades',
+      timestamps: false
   });
 };

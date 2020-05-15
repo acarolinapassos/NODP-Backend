@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('categorias_postagens', {
+  return sequelize.define('CategoriaPostagem', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -15,6 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-    tableName: 'categorias_postagens'
+      tableName: 'categorias_postagens',
+      timestamps: false
   });
 };
