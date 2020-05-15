@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('avaliacoes', {
+  return sequelize.define('mensagens', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -9,31 +9,36 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null",
       autoIncrement: true
     },
-    'aula_id': {
+    'usuario_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
       references: {
-        model: 'aulas_ministradas',
+        model: 'usuarios',
         key: 'id'
       }
     },
-    'tipo_avaliacao': {
+    'destinatario_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
       references: {
-        model: 'tipos_avaliacoes',
+        model: 'usuarios',
         key: 'id'
       }
     },
-    'nota': {
-      type: DataTypes.INTEGER(11),
+    'mensagem': {
+      type: DataTypes.TEXT,
       allowNull: false,
-      defaultValue: '5',
+      comment: "null"
+    },
+    'data_hora': {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
       comment: "null"
     }
   }, {
-    tableName: 'avaliacoes'
+    tableName: 'mensagens'
   });
 };
