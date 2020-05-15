@@ -2,25 +2,6 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-    usuario_id int(11) PK
-    nome varchar(80)
-    cidade_id int(11)
-    curso_id int(11)
-    bio varchar(250)
-    celular varchar(20)
-    metodo_ensino_id int(11)
-    quantidade_moedas int(11)
-    metodo_aprendizado_id int(11)
-    instituicao_ensino_id int(11)
-    capa varchar(250)
-    avatar varchar(250)
-    turma int(11)
-    horas_ensino int(11)
-    horas_estudo int(11)
-    qtd_moedas int(11)
-    qtd_medalhas int(11)
-    */
     return queryInterface.bulkInsert('perfis', [
       {
         nome: 'André Oliveira',
@@ -188,12 +169,6 @@ module.exports = {
   },
   
   down: (queryInterface, Sequelize) => {
-    /*
-    Add reverting commands here.
-    Return a promise to correctly handle asynchronicity.
-    
-    Example:
-    */
     return queryInterface.bulkDelete('perfis', null, {});
   }
 };

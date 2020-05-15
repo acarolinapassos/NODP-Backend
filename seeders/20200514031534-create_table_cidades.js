@@ -2,16 +2,6 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-    Add altering commands here.
-    Return a promise to correctly handle asynchronicity.
-    
-    Example:
-    return queryInterface.bulkInsert('People', [{
-      name: 'John Doe',
-      isBetaMember: false
-    }], {});
-    */
     return queryInterface.bulkInsert('cidades', [
       { estado: 1, cod_cidades: 1, nome: 'ACRELÂNDIA', cep:  '69945000' },
       { estado: 1, cod_cidades: 2, nome: 'ASSIS BRASIL', cep:  '69935000' },
@@ -10040,13 +10030,6 @@ module.exports = {
   },
   
   down: (queryInterface, Sequelize) => {
-    /*
-    Add reverting commands here.
-    Return a promise to correctly handle asynchronicity.
-    
-    Example:
-    return queryInterface.bulkDelete('People', null, {});
-    */
     return queryInterface.bulkDelete('cidades', null, {});
   }
 };
