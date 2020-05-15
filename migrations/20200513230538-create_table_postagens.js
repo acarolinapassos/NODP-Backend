@@ -27,7 +27,8 @@ module.exports = {
         type: Sequelize.DATE,
         primaryKey: false,
         autoIncrement: false,
-        allowNull: true
+        allowNull: true,
+        defaultValue: Sequelize.NOW
       },
       quantidade_medalhas: {
         type: Sequelize.INTEGER,

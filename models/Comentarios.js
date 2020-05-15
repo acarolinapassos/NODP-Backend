@@ -33,7 +33,7 @@ const Comentarios = ( sequelize, Datatypes ) => {
             timestamps: false
         }
     );
-    return comentarios
+    return comentarios;
 }
 
-module.exports = Comentarios
+module.exports = Comentarios;

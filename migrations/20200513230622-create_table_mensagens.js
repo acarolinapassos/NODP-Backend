@@ -39,6 +39,7 @@ module.exports = {
         primaryKey: false,
         autoIncrement: false,
         allowNull: false,
+        defaultValue: Sequelize.NOW
       },
     });
   },

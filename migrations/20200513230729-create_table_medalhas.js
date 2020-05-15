@@ -11,9 +11,12 @@ module.exports = {
           allowNull: false,
           autoIncrement: true
         },
+        data_hora: {
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW
+        },
         postagens_id: Sequelize.INTEGER,
-        remetente_id: Sequelize.INTEGER,
-        data_hora: Sequelize.DATE
+        remetente_id: Sequelize.INTEGER
       });
   },
 
