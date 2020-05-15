@@ -11,7 +11,12 @@ module.exports = {
             allowNull: false,
             autoIncrement: true
          },
-         descricao: Sequelize.STRING(45)
+         descricao: {
+           type: Sequelize.STRING(45),
+           allowNull: false,
+            comment: "null",
+            unique: true
+         }
         });
   },
 
