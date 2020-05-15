@@ -5,30 +5,30 @@ module.exports = {
     return queryInterface.createTable(
       'usuarios',
       { 
-        'id': {
+        id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
           primaryKey: true,
           comment: "null",
           autoIncrement: true
         },
-        'email': {
+        email: {
           type: Sequelize.STRING(80),
           allowNull: false,
           comment: "null"
         },
-        'senha': {
+        senha: {
           type: Sequelize.STRING(250),
           allowNull: false,
           comment: "null"
         },
-        'admin': {
+        admin: {
           type: Sequelize.INTEGER(1),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
-        'ativo': {
+        ativo: {
           type: Sequelize.INTEGER(1),
           allowNull: false,
           defaultValue: '1',
