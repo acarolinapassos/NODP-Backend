@@ -1,18 +1,18 @@
 //https://sequelize.org/v5/manual/data-types.html
-const Usuario = (sequelize, Datatypes) => {
-    let usuario = sequelize.define(
+const Usuario = (Sequelize, DataTypes) => {
+    let usuario = Sequelize.define(
         'Usuario',
         {
             id: {
-                type: Datatypes.INTEGER,
+                type: DataTypes.INTEGER,
                 primaryKey: true,
                 allowNull: false,
                 autoIncrement: true
             },
-            email: Datatypes.STRING(80),
-            senha: Datatypes.STRING(250),
-            admin: Datatypes.BOOLEAN,
-            ativo: Datatypes.BOOLEAN
+            email: DataTypes.STRING(80),
+            senha: DataTypes.STRING(250),
+            admin: DataTypes.BOOLEAN,
+            ativo: DataTypes.BOOLEAN
         },
         {
             tableName: 'usuarios',
