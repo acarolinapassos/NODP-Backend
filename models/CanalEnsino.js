@@ -1,4 +1,4 @@
-const CanalEnsino = ( sequelize, Datatypes ) => {
+const CanalEnsino = (sequelize, Datatypes) => {
 
     let canalEnsino = sequelize.define(
         'CanalEnsino',
@@ -21,7 +21,7 @@ const CanalEnsino = ( sequelize, Datatypes ) => {
             timestamps: false
         }
     );
-    return canalEnsino
-}
+    return canalEnsino;
+};
 
-module.exports = CanalEnsino
+module.exports = CanalEnsino;

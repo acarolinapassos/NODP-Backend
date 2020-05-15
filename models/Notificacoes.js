@@ -51,7 +51,7 @@
             timestamps: false
         }
     );
-    return notificacoes
+     return notificacoes;
 }
 
-module.exports = Notificacoes
+module.exports = Notificacoes;
