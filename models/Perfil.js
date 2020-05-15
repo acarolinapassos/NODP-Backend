@@ -1,46 +1,137 @@
-//https://sequelize.org/v5/manual/data-types.html
-const Perfil = (sequelize, Datatypes) => {
-    let perfil = sequelize.define(
-        'Perfil',
-        {
-            id: {
-                type: Datatypes.INTEGER,
-                primaryKey: true,
-                allowNull: false,
-                autoIncrement: true
-            },
-            usuario_id: {
-                type: Datatypes.INTEGER,
-                primaryKey: true,
-                allowNull: false
-            },
-            nome: Datatypes.STRING(80),
-            cidade_id: Datatypes.INTEGER,
-            curso_id: Datatypes.INTEGER,
-            bio: Datatypes.STRING(250),
-            celular: Datatypes.STRING(20),
-            metodo_ensino_id: Datatypes.INTEGER,
-            quantidade_moedas: Datatypes.INTEGER,
-            metodo_aprendizado_id: Datatypes.INTEGER,
-            instituicao_ensino_id: Datatypes.INTEGER,
-            capa: Datatypes.STRING(250),
-            avatar: Datatypes.STRING(250),
-            turma: Datatypes.INTEGER,
-            horas_ensino: Datatypes.INTEGER,
-            horas_estudo: Datatypes.INTEGER,
-            qtd_moedas: Datatypes.INTEGER,
-            qtd_medalhas: Datatypes.INTEGER
-        },
-        {
-            tableName: 'perfis',
-            timestamps: false
-        }
-    );
+/* jshint indent: 2 */
 
-    perfil.associate = (models) => {
-        perfil.belongsTo(models.Usuario, { foreignKey: 'usuario_id', as: 'usuario' });
-    };
-
-    return perfil;
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('Perfil', {
+    'id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      primaryKey: true,
+      comment: "null",
+      autoIncrement: true
+    },
+    'usuario_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      primaryKey: true,
+      comment: "null",
+      references: {
+        model: 'Usuario',
+        key: 'id'
+      }
+    },
+    'nome': {
+      type: DataTypes.STRING(80),
+      allowNull: false,
+      defaultValue: 'Anônimo',
+      comment: "null"
+    },
+    'cidade_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '1',
+      comment: "null",
+      references: {
+        model: 'Cidade',
+        key: 'cod_cidades'
+      }
+    },
+    'curso_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null"
+    },
+    'bio': {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+      defaultValue: 'Ao infinito e além',
+      comment: "null"
+    },
+    'celular': {
+      type: DataTypes.STRING(20),
+      allowNull: false,
+      defaultValue: '(00) 99999-9999',
+      comment: "null"
+    },
+    'metodo_ensino_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '1',
+      comment: "null",
+      references: {
+        model: 'CanalEnsino',
+        key: 'id'
+      }
+    },
+    'quantidade_moedas': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'metodo_aprendizado_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '1',
+      comment: "null",
+      references: {
+        model: 'CanalEnsino',
+        key: 'id'
+      }
+    },
+    'instituicao_ensino_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '1',
+      comment: "null",
+      references: {
+        model: 'InstituicaoEnsino',
+        key: 'id'
+      }
+    },
+    'capa': {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+      defaultValue: 'default.png',
+      comment: "null"
+    },
+    'avatar': {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+      defaultValue: 'default.png',
+      comment: "null"
+    },
+    'turma': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '9999',
+      comment: "null"
+    },
+    'horas_ensino': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'horas_estudo': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'qtd_moedas': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'qtd_medalhas': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    }
+  }, {
+      tableName: 'perfis',
+      timestamps: false
+  });
 };
-module.exports = Perfil;

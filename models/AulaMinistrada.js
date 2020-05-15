@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Moeda', {
+  return sequelize.define('AulaMinistrada', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    'remetente_id': {
+    'aluno_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
@@ -27,7 +27,22 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    'qtd_moedas': {
+    'titulo_aula': {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+      comment: "null"
+    },
+    'descricao': {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+      comment: "null"
+    },
+    'qnt_moedas': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null"
+    },
+    'duracao_minutos': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null"
@@ -39,7 +54,7 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-      tableName: 'moedas',
+      tableName: 'aulas_ministradas',
       timestamps: false
   });
 };

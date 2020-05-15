@@ -1,47 +1,45 @@
-//https://sequelize.org/v5/manual/data-types.html
-const Mensagem = (sequelize, Datatypes) => {
-  
-  let mensagem = sequelize.define(
-    
-    'Mensagem', {
-      id: {
-        type: Datatypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-      },
-      usuario_id: {
-        type: Datatypes.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false,
-      },
-      destinatario_id: {
-        type: Datatypes.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false,
-      },
-      mensagem: {
-        type: Datatypes.STRING,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false,
-      },
-      data_hora: {
-        type: Datatypes.DATE,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: true,
-      },
+/* jshint indent: 2 */
+
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('Mensagem', {
+    'id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      primaryKey: true,
+      comment: "null",
+      autoIncrement: true
     },
-    {
+    'usuario_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null",
+      references: {
+        model: 'Usuario',
+        key: 'id'
+      }
+    },
+    'destinatario_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null",
+      references: {
+        model: 'Usuario',
+        key: 'id'
+      }
+    },
+    'mensagem': {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      comment: "null"
+    },
+    'data_hora': {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      comment: "null"
+    }
+  }, {
       tableName: 'mensagens',
       timestamps: false
-    }
-    );
-    return mensagem;
-    
-  };
-  
-  module.exports = Mensagem;
+  });
+};

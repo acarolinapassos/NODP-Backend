@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Moeda', {
+  return sequelize.define('Avaliacao', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -9,37 +9,32 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null",
       autoIncrement: true
     },
-    'usuario_id': {
+    'aula_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
       references: {
-        model: 'Usuario',
+        model: 'AulaMinistrada',
         key: 'id'
       }
     },
-    'remetente_id': {
+    'tipo_avaliacao': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
       references: {
-        model: 'Usuario',
+        model: 'TipoAvaliacao',
         key: 'id'
       }
     },
-    'qtd_moedas': {
+    'nota': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      comment: "null"
-    },
-    'data_hora': {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      defaultValue: '5',
       comment: "null"
     }
   }, {
-      tableName: 'moedas',
+      tableName: 'avaliacoes',
       timestamps: false
   });
 };

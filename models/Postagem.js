@@ -1,80 +1,75 @@
-const Postagem = (sequelize, DataTypes) => {
-    let postagem = sequelize.define(
-        'Postagem', {
-            id: {
-                type: DataTypes.INTEGER,
-                primaryKey: true,
-                autoIncrement: true,
-                allowNull: false
-            },
-            usuario_id: {
-                type: DataTypes.INTEGER,
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
+/* jshint indent: 2 */
 
-            },
-            data_hora: {
-                type: DataTypes.DATE,
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: true
-            },
-            quantidade_medalhas: {
-                type: DataTypes.INTEGER,
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: true
-
-            },
-            quantidade_apoios: {
-                type: DataTypes.INTEGER,
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: true
-
-            },
-            categoria_id: {
-                type: DataTypes.INTEGER,
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
-
-            },
-            titulo: {
-                type: DataTypes.STRING(30),
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
-
-            },
-            descricao: {
-                type: DataTypes.STRING(250),
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
-
-            },
-            imagem: {
-                type: DataTypes.STRING(200),
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: false
-
-            },
-            urgente: {
-                type: DataTypes.BOOLEAN,
-                primaryKey: false,
-                autoIncrement: false,
-                allowNull: true
-
-            }
-        }, {
-            tableName: 'postagens',
-            timestamps: false
-        }
-    );
-    return postagem;
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define('Postagem', {
+    'id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      primaryKey: true,
+      comment: "null",
+      autoIncrement: true
+    },
+    'usuario_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null",
+      references: {
+        model: 'Usuario',
+        key: 'id'
+      }
+    },
+    'data_hora': {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      comment: "null"
+    },
+    'quantidade_medalhas': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'quantidade_apoios': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'categoria_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null",
+      references: {
+        model: 'CategoriaPostagem',
+        key: 'id'
+      }
+    },
+    'titulo': {
+      type: DataTypes.STRING(30),
+      allowNull: false,
+      defaultValue: 'NI',
+      comment: "null"
+    },
+    'descricao': {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+      comment: "null"
+    },
+    'imagem': {
+      type: DataTypes.STRING(200),
+      allowNull: false,
+      defaultValue: 'default.png',
+      comment: "null"
+    },
+    'urgente': {
+      type: DataTypes.INTEGER(1),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    }
+  }, {
+      tableName: 'postagens',
+      timestamps: false
+  });
 };
-
-module.exports = Postagem;
