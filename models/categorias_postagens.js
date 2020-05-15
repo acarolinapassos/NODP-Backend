@@ -1,10 +1,11 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('interesses', {
+  return sequelize.define('categorias_postagens', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
+      primaryKey: true,
       primaryKey: true,
       comment: "null",
       autoIncrement: true
@@ -15,6 +16,6 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-    tableName: 'interesses'
+    tableName: 'categorias_postagens'
   });
 };

@@ -1,25 +1,15 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('medalhas', {
+  return sequelize.define('aulas_ministradas', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
-      primaryKey: true,
       comment: "null",
       autoIncrement: true
     },
-    'id_post': {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      comment: "null",
-      references: {
-        model: 'postagens',
-        key: 'id'
-      }
-    },
-    'remetente_id': {
+    'usuario_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       comment: "null",
@@ -28,6 +18,35 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
+    'aluno_id': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null",
+      references: {
+        model: 'usuarios',
+        key: 'id'
+      }
+    },
+    'titulo_aula': {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+      comment: "null"
+    },
+    'descricao': {
+      type: DataTypes.STRING(250),
+      allowNull: false,
+      comment: "null"
+    },
+    'qnt_moedas': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null"
+    },
+    'duracao_minutos': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      comment: "null"
+    },
     'data_hora': {
       type: DataTypes.DATE,
       allowNull: false,
@@ -35,6 +54,6 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-    tableName: 'medalhas'
+    tableName: 'aulas_ministradas'
   });
 };
