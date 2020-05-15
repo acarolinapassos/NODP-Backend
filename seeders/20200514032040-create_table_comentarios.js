@@ -2,12 +2,6 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      texto: Sequelize.STRING(250),
-      usuario_id: Sequelize.INTEGER,
-      post_id: Sequelize.INTEGER
-    */  
-
       return queryInterface.bulkInsert(
         'comentarios',
         [

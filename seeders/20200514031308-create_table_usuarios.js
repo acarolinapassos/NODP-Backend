@@ -3,16 +3,6 @@ const bk = require('bcrypt');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-    Add altering commands here.
-    Return a promise to correctly handle asynchronicity.
-    
-    Example:
-    return queryInterface.bulkInsert('People', [{
-      name: 'John Doe',
-      isBetaMember: false
-    }], {});
-    */
     return queryInterface.bulkInsert('usuarios', [
       {
         email: 'andre@nodp.com',
@@ -82,23 +72,3 @@ module.exports = {
     return queryInterface.bulkDelete('usuarios', null, {});
   }
 };
-
-/*
-email: {
-  type:Sequelize.STRING(80),
-  allowNull: false
-},
-senha: {
-  type: Sequelize.STRING(250),
-  allowNull: false
-},
-admin: {
-  type: Sequelize.BOOLEAN,
-  allowNull: false
-},
-ativo: {
-  type: Sequelize.BOOLEAN,
-  allowNull: false
-}
-
-*/
