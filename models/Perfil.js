@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('perfis', {
+  return sequelize.define('Perfil', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       comment: "null",
       references: {
-        model: 'usuarios',
+        model: 'Usuario',
         key: 'id'
       }
     },
@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '1',
       comment: "null",
       references: {
-        model: 'cidades',
+        model: 'Cidade',
         key: 'cod_cidades'
       }
     },
@@ -58,7 +58,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '1',
       comment: "null",
       references: {
-        model: 'canal_ensino',
+        model: 'CanalEnsino',
         key: 'id'
       }
     },
@@ -74,7 +74,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '1',
       comment: "null",
       references: {
-        model: 'canal_ensino',
+        model: 'CanalEnsino',
         key: 'id'
       }
     },
@@ -84,7 +84,7 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '1',
       comment: "null",
       references: {
-        model: 'instituicoes_ensino',
+        model: 'InstituicaoEnsino',
         key: 'id'
       }
     },
@@ -131,6 +131,7 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-    tableName: 'perfis'
+      tableName: 'perfis',
+      timestamps: false
   });
 };
