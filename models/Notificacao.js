@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('notificacoes', {
+  return sequelize.define('Notificacao', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       comment: "null",
       references: {
-        model: 'tipos_notificacoes',
+        model: 'TipoNotificacao',
         key: 'id'
       }
     },
@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       comment: "null",
       references: {
-        model: 'usuarios',
+        model: 'Usuario',
         key: 'id'
       }
     },
@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       comment: "null",
       references: {
-        model: 'usuarios',
+        model: 'Usuario',
         key: 'id'
       }
     },
@@ -54,6 +54,7 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-    tableName: 'notificacoes'
+      tableName: 'notificacoes',
+      timestamps: false
   });
 };

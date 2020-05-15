@@ -1,14 +1,14 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('usuarios_tem_interesses_aprendizado', {
+  return sequelize.define('UsuarioTemInteresseAprendizado', {
     'usuario_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       comment: "null",
       references: {
-        model: 'usuarios',
+        model: 'Usuario',
         key: 'id'
       }
     },
@@ -18,11 +18,12 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       comment: "null",
       references: {
-        model: 'interesses',
+        model: 'Interesse',
         key: 'id'
       }
     }
   }, {
-    tableName: 'usuarios_tem_interesses_aprendizado'
+      tableName: 'usuarios_tem_interesses_aprendizado',
+      timestamps: false
   });
 };
