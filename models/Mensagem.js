@@ -3,8 +3,7 @@ const Mensagem = (sequelize, Datatypes) => {
   
   let mensagem = sequelize.define(
     
-    'Mensagem',
-    {
+    'Mensagem', {
       id: {
         type: Datatypes.INTEGER,
         primaryKey: true,
@@ -41,12 +40,8 @@ const Mensagem = (sequelize, Datatypes) => {
       timestamps: false
     }
     );
-    
-    // mensagem.associate = (models) => {
-    //   mensagem.hasMany()
-    // }
     return mensagem;
-
+    
   };
   
   module.exports = Mensagem;

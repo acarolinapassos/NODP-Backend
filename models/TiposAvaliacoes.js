@@ -21,7 +21,7 @@ const TiposAvaliacoes = ( sequelize, Datatypes ) => {
             timestamps: false
         }
     );
-    return tiposAvaliacoes
+    return tiposAvaliacoes;
 }
 
-module.exports = TiposAvaliacoes
+module.exports = TiposAvaliacoes;

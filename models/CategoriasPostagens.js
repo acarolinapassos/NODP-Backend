@@ -1,9 +1,9 @@
-const CategorisPostagens = ( sequelize, Datatypes ) => {
+const CategorisPostagens = (sequelize, Datatypes) => {
 
     let categoriasPostagens = sequelize.define(
         'CategoriasPostagens',
         {
-            id:{
+            id: {
                 type: Datatypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
@@ -21,6 +21,7 @@ const CategorisPostagens = ( sequelize, Datatypes ) => {
             timestamps: false
         }
     );
-}
+    return categoriasPostagens;
+};
 
-modules.exports = CategorisPostagens
+modules.exports = CategorisPostagens;
