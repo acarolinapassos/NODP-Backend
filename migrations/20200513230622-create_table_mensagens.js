@@ -11,36 +11,41 @@ module.exports = {
     */
     return queryInterface.createTable('mensagens', {
       id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+        type: Sequelize.INTEGER(11),
         allowNull: false,
+        primaryKey: true,
+        comment: "null",
+        autoIncrement: true
       },
       usuario_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
+        type: Sequelize.INTEGER(11),
         allowNull: false,
+        comment: "null",
+        references: {
+          model: 'Usuario',
+          key: 'id'
+        }
       },
       destinatario_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
+        type: Sequelize.INTEGER(11),
         allowNull: false,
+        comment: "null",
+        references: {
+          model: 'Usuario',
+          key: 'id'
+        }
       },
       mensagem: {
-        type: Sequelize.STRING,
-        primaryKey: false,
-        autoIncrement: false,
+        type: Sequelize.TEXT,
         allowNull: false,
+        comment: "null"
       },
       data_hora: {
         type: Sequelize.DATE,
-        primaryKey: false,
-        autoIncrement: false,
         allowNull: false,
-        defaultValue: Sequelize.NOW
-      },
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        comment: "null"
+      }
     });
   },
 
