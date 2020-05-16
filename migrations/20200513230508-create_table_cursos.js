@@ -16,16 +16,8 @@ module.exports = {
             type: Sequelize.STRING(50),
             allowNull: false,
             comment: "null"
-          },
-          perfis_usuario_id: {
-            type: Sequelize.INTEGER(11),
-            allowNull: false,
-            comment: "null",
-            references: {
-              model: 'perfis',
-              key: 'usuario_id'
-            }
-          }});
+          }
+        });
   },
 
   down: (queryInterface, Sequelize) => {

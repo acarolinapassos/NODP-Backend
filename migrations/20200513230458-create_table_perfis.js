@@ -13,7 +13,6 @@ module.exports = {
         },
         usuario_id: {
           type: Sequelize.INTEGER(11),
-          primaryKey: true,
           allowNull: false,
           comment: "null",
           references: {
@@ -33,7 +32,7 @@ module.exports = {
           defaultValue: '1',
           comment: "null",
           references: {
-            model: 'usuarios',
+            model: 'cidades',
             key: 'cod_cidades'
           }
         },
