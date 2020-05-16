@@ -11,73 +11,70 @@ module.exports = {
     */
     return queryInterface.createTable('postagens', {
       id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
         primaryKey: true,
-        autoIncrement: true,
-        allowNull: false
+        comment: "null",
+        autoIncrement: true
       },
       usuario_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
-
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'Usuario',
+          key: 'id'
+        }
       },
       data_hora: {
         type: Sequelize.DATE,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: true,
-        defaultValue: Sequelize.NOW
+        allowNull: false,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        comment: "null"
       },
       quantidade_medalhas: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: true
-
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        defaultValue: '0',
+        comment: "null"
       },
       quantidade_apoios: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: true
-
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        defaultValue: '0',
+        comment: "null"
       },
       categoria_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
-
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'CategoriaPostagem',
+          key: 'id'
+        }
       },
       titulo: {
         type: Sequelize.STRING(30),
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
-
+        allowNull: false,
+        defaultValue: 'NI',
+        comment: "null"
       },
       descricao: {
         type: Sequelize.STRING(250),
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
-
+        allowNull: false,
+        comment: "null"
       },
       imagem: {
         type: Sequelize.STRING(200),
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
-
+        allowNull: false,
+        defaultValue: 'default.png',
+        comment: "null"
       },
       urgente: {
-        type: Sequelize.BOOLEAN,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: true
-
+        type: Sequelize.INTEGER(1),
+        allowNull: false,
+        defaultValue: '0',
+        comment: "null"
       }
     });
   },
