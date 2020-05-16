@@ -12,7 +12,6 @@ module.exports = function(sequelize, DataTypes) {
     'usuario_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true,
       comment: "null",
       references: {
         model: 'Usuario',
@@ -43,13 +42,13 @@ module.exports = function(sequelize, DataTypes) {
     'bio': {
       type: DataTypes.STRING(250),
       allowNull: false,
-      defaultValue: 'Ao infinito e além',
+      defaultValue: '...',
       comment: "null"
     },
     'celular': {
       type: DataTypes.STRING(20),
       allowNull: false,
-      defaultValue: '(00) 99999-9999',
+      defaultValue: 'xx-xxxx-xxxx',
       comment: "null"
     },
     'metodo_ensino_id': {

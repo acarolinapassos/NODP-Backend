@@ -13,15 +13,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(50),
       allowNull: false,
       comment: "null"
-    },
-    'perfis_usuario_id': {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      comment: "null",
-      references: {
-        model: 'Perfil',
-        key: 'usuario_id'
-      }
     }
   }, {
       tableName: 'cursos',
