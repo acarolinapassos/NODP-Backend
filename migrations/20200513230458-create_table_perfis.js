@@ -3,40 +3,141 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable(
-      'perfis',
-    { 
-      id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      usuario_id: {
+      'perfis', {
+        id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          primaryKey: true,
+          comment: "null",
+          autoIncrement: true
+        },
+        usuario_id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
-          allowNull: false
-      },
-      nome: Sequelize.STRING(80),
-      cidade_id: Sequelize.INTEGER,
-      curso_id: Sequelize.INTEGER,
-      bio: Sequelize.STRING(250),
-      celular: Sequelize.STRING(20),
-      metodo_ensino_id: Sequelize.INTEGER,
-      quantidade_moedas: Sequelize.INTEGER,
-      metodo_aprendizado_id: Sequelize.INTEGER,
-      instituicao_ensino_id: Sequelize.INTEGER,
-      capa: Sequelize.STRING(250),
-      avatar: Sequelize.STRING(250),
-      turma: Sequelize.INTEGER,
-      horas_ensino: Sequelize.INTEGER,
-      horas_estudo: Sequelize.INTEGER,
-      qtd_moedas: Sequelize.INTEGER,
-      qtd_medalhas: Sequelize.INTEGER
-    });
+          allowNull: false,
+          comment: "null",
+          references: {
+            model: 'Usuario',
+            key: 'id'
+          }
+        },
+        nome: {
+          type: Sequelize.STRING(80),
+          allowNull: false,
+          defaultValue: 'Anônimo',
+          comment: "null"
+        },
+        cidade_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '1',
+          comment: "null",
+          references: {
+            model: 'Cidade',
+            key: 'cod_cidades'
+          }
+        },
+        curso_id: {
+          type: Sequelize.INTEGER,
+          type: DataTypes.INTEGER(11),
+          allowNull: false,
+          comment: "null"
+        },
+        bio: {
+          type: Sequelize.STRING(250),
+          allowNull: false,
+          defaultValue: 'Ao infinito e além',
+          comment: "null"
+        },
+        celular: {
+          type: Sequelize.STRING(20),
+          allowNull: false,
+          defaultValue: '(00) 99999-9999',
+          comment: "null"
+        },
+        metodo_ensino_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '1',
+          comment: "null",
+          references: {
+            model: 'CanalEnsino',
+            key: 'id'
+          }
+        },
+        quantidade_moedas: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '0',
+          comment: "null"
+        },
+        metodo_aprendizado_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '1',
+          comment: "null",
+          references: {
+            model: 'CanalEnsino',
+            key: 'id'
+          }
+        },
+        instituicao_ensino_id: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '1',
+          comment: "null",
+          references: {
+            model: 'InstituicaoEnsino',
+            key: 'id'
+          }
+        },
+        capa: {
+          type: Sequelize.STRING(250),
+          allowNull: false,
+          defaultValue: 'default.png',
+          comment: "null"
+        },
+        avatar: {
+          tupe: Sequelize.STRING(250),
+          allowNull: false,
+          defaultValue: 'default.png',
+          comment: "null"
+        },
+        turma: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '9999',
+          comment: "null"
+        },
+        horas_ensino: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '0',
+          comment: "null"
+        },
+        horas_estudo: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '0',
+          comment: "null"
+        },
+        qtd_moedas: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '0',
+          comment: "null"
+        },
+        qtd_medalhas: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+          defaultValue: '0',
+          comment: "null"
+        }
+      });
   },
 
   down: (queryInterface, Sequelize) => {
-  return queryInterface.dropTable('perfis');
+    return queryInterface.dropTable('perfis');
 
   }
 };
