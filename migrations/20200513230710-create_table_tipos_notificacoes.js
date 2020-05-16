@@ -6,12 +6,17 @@ module.exports = {
       'tipos_notificacoes',
       {
         id: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
+          primaryKey: true,
+          comment: "null",
           autoIncrement: true
         },
-        descricao: Sequelize.STRING(250)
+        descricao: {
+          type: Sequelize.STRING(250),
+          allowNull: false,
+          comment: "null"
+        }
       });
   },
 

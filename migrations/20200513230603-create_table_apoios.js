@@ -11,22 +11,29 @@ module.exports = {
     */
     return queryInterface.createTable('apoios', {
       id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+        type: Sequelize.INTEGER(11),
         allowNull: false,
+        primaryKey: true,
+        comment: "null",
+        autoIncrement: true
       },
       apoiado_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'Usuario',
+          key: 'id'
+        }
       },
       apoiador_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'Usuario',
+          key: 'id'
+        }
       }
     });
   },

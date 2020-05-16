@@ -6,17 +6,36 @@ module.exports = {
       'medalhas',
       {
         id: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
+          primaryKey: true,
+          comment: "null",
           autoIncrement: true
+        },
+        id_post: {
+          type: Sequelize.INTEGER(11),
+          allowNull: false,
+          comment: "null",
+          references: {
+            model: 'Postagem',
+            key: 'id'
+          }
+        },
+        remetente_id: {
+          type: Sequelize.INTEGER(11),
+          allowNull: false,
+          comment: "null",
+          references: {
+            model: 'Usuario',
+            key: 'id'
+          }
         },
         data_hora: {
           type: Sequelize.DATE,
-          defaultValue: Sequelize.NOW
-        },
-        postagens_id: Sequelize.INTEGER,
-        remetente_id: Sequelize.INTEGER
+          allowNull: false,
+          defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+          comment: "null"
+        }
       });
   },
 

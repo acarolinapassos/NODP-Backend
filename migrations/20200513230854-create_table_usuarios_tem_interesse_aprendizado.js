@@ -5,17 +5,24 @@ module.exports = {
    return queryInterface.createTable('usuarios_tem_interesse_aprendizado', { 
     
     usuario_id: {
-      type: Sequelize.INTEGER,
-      primaryKey: false,
-      autoIncrement: false,
+      type: Sequelize.INTEGER(11),
       allowNull: false,
+      primaryKey: true,
+      comment: "null",
+      references: {
+        model: 'Usuario',
+        key: 'id'
+      }
     },
-
-    interesse_id:{
-      type: Sequelize.STRING(250),
-      primaryKey: false,
-      autoIncrement: false,
+    interesse_id: {
+      type: Sequelize.INTEGER(11),
       allowNull: false,
+      primaryKey: true,
+      comment: "null",
+      references: {
+        model: 'Interesse',
+        key: 'id'
+      }
     }
 
     

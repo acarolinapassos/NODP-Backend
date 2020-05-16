@@ -11,28 +11,35 @@ module.exports = {
     */
     return queryInterface.createTable('avaliacoes', {
       id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
+        type: Sequelize.INTEGER(11),
         allowNull: false,
+        primaryKey: true,
+        comment: "null",
+        autoIncrement: true
       },
       aula_id: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'AulaMinistrada',
+          key: 'id'
+        }
       },
       tipo_avaliacao: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'TipoAvaliacao',
+          key: 'id'
+        }
       },
       nota: {
-        type: Sequelize.INTEGER,
-        primaryKey: false,
-        autoIncrement: false,
-        allowNull: false
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        defaultValue: '5',
+        comment: "null"
       }
     });
   },
