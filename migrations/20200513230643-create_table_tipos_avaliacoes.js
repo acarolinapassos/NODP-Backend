@@ -6,12 +6,17 @@ module.exports = {
       'tipos_avaliacoes',
       {
         id: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
+          primaryKey: true,
+          comment: "null",
           autoIncrement: true
         },
-        descricao: Sequelize.STRING(50)
+        descricao: {
+          type: Sequelize.STRING(50),
+          allowNull: false,
+          comment: "null"
+        }
       });
   },
 
