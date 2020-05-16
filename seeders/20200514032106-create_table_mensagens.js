@@ -1,4 +1,4 @@
-const monent = require('moment');
+const moment = require('moment');
 'use strict';
 
 module.exports = {
