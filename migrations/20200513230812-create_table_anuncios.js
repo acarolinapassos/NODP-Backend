@@ -23,7 +23,7 @@ module.exports = {
         comment: "null"
       },
       valido_ate: {
-        type: Sequelize.DATEONLY,
+        type: Sequelize.DATE,
         allowNull: false,
         comment: "null"
       }
