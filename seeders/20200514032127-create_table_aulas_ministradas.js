@@ -4,7 +4,8 @@ const moment = require('moment');
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('aulas_ministradas', [
-      { 
+      {
+        id:1,
         usuario_id:1,
         aluno_id:2,
         titulo_aula:'Javascript',
@@ -14,6 +15,7 @@ module.exports = {
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
+        id: 2,
         usuario_id:1,
         aluno_id:3,
         titulo_aula:'Javascript',
@@ -23,6 +25,7 @@ module.exports = {
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
+        id: 3,
         usuario_id:2,
         aluno_id:1,
         titulo_aula:'PHP',
@@ -32,6 +35,7 @@ module.exports = {
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
+        id: 4,
         usuario_id:3,
         aluno_id:2,
         titulo_aula:'Culinária',
@@ -41,6 +45,7 @@ module.exports = {
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
+        id: 5,
         usuario_id: 4,
         aluno_id: 2,
         titulo_aula: 'Javascript',
@@ -50,6 +55,7 @@ module.exports = {
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
+        id: 6,
         usuario_id: 5,
         aluno_id: 2,
         titulo_aula: 'Javascript',
