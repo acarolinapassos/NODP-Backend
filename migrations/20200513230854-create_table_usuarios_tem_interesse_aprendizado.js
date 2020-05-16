@@ -10,7 +10,7 @@ module.exports = {
       primaryKey: true,
       comment: "null",
       references: {
-        model: 'Usuario',
+        model: 'usuarios',
         key: 'id'
       }
     },
@@ -20,7 +20,7 @@ module.exports = {
       primaryKey: true,
       comment: "null",
       references: {
-        model: 'Interesse',
+        model: 'interesses',
         key: 'id'
       }
     }

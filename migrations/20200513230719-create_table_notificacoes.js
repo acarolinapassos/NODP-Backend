@@ -21,7 +21,7 @@ module.exports = {
         allowNull: false,
         comment: "null",
         references: {
-          model: 'TipoNotificacao',
+          model: 'tipos_notificacoes',
           key: 'id'
         }
       },
@@ -30,7 +30,7 @@ module.exports = {
         allowNull: false,
         comment: "null",
         references: {
-          model: 'Usuario',
+          model: 'usuarios',
           key: 'id'
         }
       },
@@ -39,7 +39,7 @@ module.exports = {
         allowNull: false,
         comment: "null",
         references: {
-          model: 'Usuario',
+          model: 'usuarios',
           key: 'id'
         }
       },
@@ -52,7 +52,7 @@ module.exports = {
       data_hora: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         comment: "null"
       }
     });
