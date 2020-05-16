@@ -96,7 +96,7 @@ module.exports = {
           comment: "null"
         },
         avatar: {
-          tupe: Sequelize.STRING(250),
+          type: Sequelize.STRING(250),
           allowNull: false,
           defaultValue: 'default.png',
           comment: "null"
