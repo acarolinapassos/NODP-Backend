@@ -4,6 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('perfis', [
       {
+        usuario_id:1,
         nome: 'André Oliveira',
         cidade_id: 1,
         curso_id:1,
@@ -22,6 +23,7 @@ module.exports = {
         qtd_medalhas:25
       },
       {
+        usuario_id: 2,
         nome: 'Alessandro',
         cidade_id: 50,
         curso_id: 1,
@@ -40,6 +42,7 @@ module.exports = {
         qtd_medalhas: 35
       },
       {
+        usuario_id: 3,
         nome: 'Ana Carolina',
         cidade_id: 5,
         curso_id: 1,
@@ -58,6 +61,7 @@ module.exports = {
         qtd_medalhas: 25
       },
       {
+        usuario_id: 4,
         nome: 'Erica',
         cidade_id: 9,
         curso_id: 3,
@@ -76,6 +80,7 @@ module.exports = {
         qtd_medalhas: 250
       },
       {
+        usuario_id: 5,
         nome: 'Michel',
         cidade_id: 50,
         curso_id: 1,
@@ -94,6 +99,7 @@ module.exports = {
         qtd_medalhas: 25
       },
       {
+        usuario_id: 6,
         nome: 'Kate',
         cidade_id: 170,
         curso_id: 1,
@@ -112,6 +118,7 @@ module.exports = {
         qtd_medalhas: 25
       },
       {
+        usuario_id: 7,
         nome: 'Mark',
         cidade_id: 270,
         curso_id: 1,
@@ -130,6 +137,7 @@ module.exports = {
         qtd_medalhas: 25
       },
       {
+        usuario_id: 8,
         nome: 'Sérgio',
         cidade_id: 380,
         curso_id: 3,
@@ -148,6 +156,7 @@ module.exports = {
         qtd_medalhas: 25
       },
       {
+        usuario_id: 9,
         nome: 'Anônimo',
         cidade_id: 380,
         curso_id: 3,
