@@ -11,35 +11,40 @@ module.exports = {
     */
    return queryInterface.createTable('moedas', { 
     id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.INTEGER(11),
+      allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
-      allowNull: true,
+      comment: "null",
+      autoIncrement: true
     },
     usuario_id: {
-      type: Sequelize.INTEGER,
-      primaryKey: false,
-      autoIncrement: false,
+      type: Sequelize.INTEGER(11),
       allowNull: false,
+      comment: "null",
+      references: {
+        model: 'Usuario',
+        key: 'id'
+      }
     },
     remetente_id: {
-      type: Sequelize.INTEGER,
-      primaryKey: false,
-      autoIncrement: false,
+      type: Sequelize.INTEGER(11),
       allowNull: false,
+      comment: "null",
+      references: {
+        model: 'Usuario',
+        key: 'id'
+      }
     },
     qtd_moedas: {
-      type: Sequelize.INTEGER,
-      primaryKey: false,
-      autoIncrement: false,
+      type: Sequelize.INTEGER(11),
       allowNull: false,
+      comment: "null"
     },
     data_hora: {
       type: Sequelize.DATE,
-      primaryKey: false,
-      autoIncrement: false,
-      allowNull: true,
-      defaultValue: Sequelize.NOW
+      allowNull: false,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+      comment: "null"
     }
      });
   },
