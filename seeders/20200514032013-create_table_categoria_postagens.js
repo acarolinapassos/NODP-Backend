@@ -3,16 +3,20 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('categorias_postagens', [
-      {
+      { 
+        id:1,
         descricao: '#ensinando'
       },
-      {
+      { 
+        id:2,
         descricao: '#aprendendo'
       },
-      {
+      { 
+        id:3,
         descricao: '#quero aprender'
       },
-      {
+      { 
+        id:4,
         descricao: '#quero ensinar'
       }
 
