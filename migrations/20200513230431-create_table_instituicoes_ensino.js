@@ -21,7 +21,7 @@ module.exports = {
           allowNull: false,
           comment: "null",
           references: {
-            model: 'Estado',
+            model: 'estados',
             key: 'cod_estados'
           }
         },

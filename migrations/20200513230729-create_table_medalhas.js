@@ -17,7 +17,7 @@ module.exports = {
           allowNull: false,
           comment: "null",
           references: {
-            model: 'Postagem',
+            model: 'postagens',
             key: 'id'
           }
         },
@@ -26,14 +26,14 @@ module.exports = {
           allowNull: false,
           comment: "null",
           references: {
-            model: 'Usuario',
+            model: 'usuarios',
             key: 'id'
           }
         },
         data_hora: {
           type: Sequelize.DATE,
           allowNull: false,
-          defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
           comment: "null"
         }
       });

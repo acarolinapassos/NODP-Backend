@@ -17,7 +17,7 @@ module.exports = {
           allowNull: false,
           comment: "null",
           references: {
-            model: 'Usuario',
+            model: 'usuarios',
             key: 'id'
           }
         },
@@ -33,7 +33,7 @@ module.exports = {
           defaultValue: '1',
           comment: "null",
           references: {
-            model: 'Cidade',
+            model: 'usuarios',
             key: 'cod_cidades'
           }
         },
@@ -45,13 +45,13 @@ module.exports = {
         bio: {
           type: Sequelize.STRING(250),
           allowNull: false,
-          defaultValue: 'Ao infinito e além',
+          defaultValue: '...',
           comment: "null"
         },
         celular: {
           type: Sequelize.STRING(20),
           allowNull: false,
-          defaultValue: '(00) 99999-9999',
+          defaultValue: 'xx-xxxx-xxxx',
           comment: "null"
         },
         metodo_ensino_id: {
@@ -60,7 +60,7 @@ module.exports = {
           defaultValue: '1',
           comment: "null",
           references: {
-            model: 'CanalEnsino',
+            model: 'canal_ensino',
             key: 'id'
           }
         },
@@ -76,7 +76,7 @@ module.exports = {
           defaultValue: '1',
           comment: "null",
           references: {
-            model: 'CanalEnsino',
+            model: 'canal_ensino',
             key: 'id'
           }
         },
@@ -86,7 +86,7 @@ module.exports = {
           defaultValue: '1',
           comment: "null",
           references: {
-            model: 'InstituicaoEnsino',
+            model: 'instituicoes_ensino',
             key: 'id'
           }
         },
