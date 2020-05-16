@@ -4,6 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable(
       'perfis', {
+
         id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
@@ -11,6 +12,7 @@ module.exports = {
           comment: "null",
           autoIncrement: true
         },
+
         usuario_id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
@@ -20,12 +22,14 @@ module.exports = {
             key: 'id'
           }
         },
+
         nome: {
           type: Sequelize.STRING(80),
           allowNull: false,
           defaultValue: 'Anônimo',
           comment: "null"
         },
+
         cidade_id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
@@ -36,23 +40,27 @@ module.exports = {
             key: 'cod_cidades'
           }
         },
+
         curso_id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
           comment: "null"
         },
+
         bio: {
-          type: Sequelize.STRING(250),
+          type: Sequelize.STRING(200),
           allowNull: false,
-          defaultValue: '...',
+          defaultValue: '',
           comment: "null"
         },
+
         celular: {
           type: Sequelize.STRING(20),
           allowNull: false,
           defaultValue: 'xx-xxxx-xxxx',
           comment: "null"
         },
+
         metodo_ensino_id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
@@ -63,12 +71,14 @@ module.exports = {
             key: 'id'
           }
         },
+
         quantidade_moedas: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
+
         metodo_aprendizado_id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
@@ -79,6 +89,7 @@ module.exports = {
             key: 'id'
           }
         },
+
         instituicao_ensino_id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
@@ -89,48 +100,56 @@ module.exports = {
             key: 'id'
           }
         },
+
         capa: {
           type: Sequelize.STRING(250),
           allowNull: false,
           defaultValue: 'default.png',
           comment: "null"
         },
+
         avatar: {
           tupe: Sequelize.STRING(250),
           allowNull: false,
           defaultValue: 'default.png',
           comment: "null"
         },
+        
         turma: {
-          type: Sequelize.INTEGER(11),
+          type: Sequelize.STRING(10),
           allowNull: false,
-          defaultValue: '9999',
+          defaultValue: '',
           comment: "null"
         },
+
         horas_ensino: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
+
         horas_estudo: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
+
         qtd_moedas: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
+
         qtd_medalhas: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         }
+        
       });
   },
 
