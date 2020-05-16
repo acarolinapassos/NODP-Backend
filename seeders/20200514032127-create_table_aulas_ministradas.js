@@ -1,3 +1,4 @@
+const moment = require('moment');
 'use strict';
 
 module.exports = {
@@ -9,7 +10,8 @@ module.exports = {
         titulo_aula:'Javascript',
         descricao:'Aula prática de Javascript',
         qnt_moedas:2,
-        duracao_minutos:30
+        duracao_minutos:30,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id:1,
@@ -17,7 +19,8 @@ module.exports = {
         titulo_aula:'Javascript',
         descricao:'Aula prática de Javascript',
         qnt_moedas:2,
-        duracao_minutos:30
+        duracao_minutos:30,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id:2,
@@ -25,7 +28,8 @@ module.exports = {
         titulo_aula:'PHP',
         descricao:'Aula objetiva de PHP',
         qnt_moedas:2,
-        duracao_minutos:30
+        duracao_minutos:30,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id:3,
@@ -33,7 +37,8 @@ module.exports = {
         titulo_aula:'Culinária',
         descricao:'Lorem ipsum na área quando falta palavras',
         qnt_moedas:2,
-        duracao_minutos:30
+        duracao_minutos:30,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 4,
@@ -41,7 +46,8 @@ module.exports = {
         titulo_aula: 'Javascript',
         descricao: 'Aula prática de Javascript',
         qnt_moedas: 2,
-        duracao_minutos: 30
+        duracao_minutos: 30,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 5,
@@ -49,7 +55,8 @@ module.exports = {
         titulo_aula: 'Javascript',
         descricao: 'Aula prática de Javascript',
         qnt_moedas: 2,
-        duracao_minutos: 30
+        duracao_minutos: 30,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       }
     ], {});
   },
