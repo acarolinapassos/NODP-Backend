@@ -1,3 +1,4 @@
+
 'use strict';
 
 module.exports = {
@@ -6,15 +7,36 @@ module.exports = {
       'comentarios',
       {
         id: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
+          primaryKey: true,
+          comment: "null",
           autoIncrement: true
         },
-        texto: Sequelize.STRING(250),
-        usuario_id: Sequelize.INTEGER,
-        post_id: Sequelize.INTEGER
-       });
+        texto: {
+          type:Sequelize.STRING(250),
+          allowNull: false,
+          comment: "null"
+        },
+        usuario_id: {
+          type: Sequelize.INTEGER(11),
+          allowNull: false,
+          comment: "null",
+          references: {
+            model: 'Usuario',
+            key: 'id'
+          }
+        },
+        post_id: {
+          type: Sequelize.INTEGER(11),
+          allowNull: false,
+          comment: "null",
+          references: {
+            model: 'Postagem',
+            key: 'id'
+          }
+        }
+      });
   },
 
   down: (queryInterface, Sequelize) => {
