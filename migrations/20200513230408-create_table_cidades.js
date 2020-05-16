@@ -6,15 +6,32 @@ module.exports = {
         'cidades',
         {
           cod_cidades: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
+            type: Sequelize.INTEGER(11),
             allowNull: false,
+            primaryKey: true,
+            comment: "null",
             autoIncrement: true
           },
-          nome: Sequelize.STRING(72),
-          cep: Sequelize.STRING(8),
-          estado: Sequelize.INTEGER
-         });
+          nome: {
+            type: Sequelize.STRING(72),
+            allowNull: false,
+            comment: "null"
+          },
+          cep: {
+            type: Sequelize.STRING(8),
+            allowNull: false,
+            comment: "null"
+          },
+          estado: {
+            type: Sequelize.INTEGER(11),
+            allowNull: false,
+            comment: "null",
+            references: {
+              model: 'estados',
+              key: 'cod_estados'
+            }
+          }
+        });
   },
 
   down: (queryInterface, Sequelize) => {
