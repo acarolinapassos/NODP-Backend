@@ -5,20 +5,56 @@ module.exports = {
     return queryInterface.createTable('notificacoes',
     {
       id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
+        type: Sequelize.INTEGER(11),
         allowNull: false,
+        primaryKey: true,
+        comment: "null",
         autoIncrement: true
       },
-      data_hora: {
-        type:Sequelize.DATE,
-        defaultValue: Sequelize.NOW
+      descricao: {
+        type: Sequelize.STRING(250),
+        allowNull: false,
+        comment: "null"
       },
-      descricao: Sequelize.STRING(250),
-      tipo_notificacao_id: Sequelize.INTEGER,
-      usuario_id: Sequelize.INTEGER,
-      remetente_id: Sequelize.INTEGER,
-      lida: Sequelize.BOOLEAN
+      tipo_notificacao_id: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'TipoNotificacao',
+          key: 'id'
+        }
+      },
+      usuario_id: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'Usuario',
+          key: 'id'
+        }
+      },
+      remetente_id: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'Usuario',
+          key: 'id'
+        }
+      },
+      lida: {
+        type: Sequelize.INTEGER(1),
+        allowNull: false,
+        defaultValue: '0',
+        comment: "null"
+      },
+      data_hora: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+        comment: "null"
+      }
     });
   },
   
