@@ -6,14 +6,26 @@ module.exports = {
         'cursos',
         {
           id: {
-            type: Sequelize.INTEGER,
-            primaryKey: true,
+            type: Sequelize.INTEGER(11),
             allowNull: false,
+            primaryKey: true,
+            comment: "null",
             autoIncrement: true
           },
-          descricao: Sequelize.STRING(50),
-          perfis_usuario_id: Sequelize.INTEGER
-   });
+          descricao: {
+            type: Sequelize.STRING(50),
+            allowNull: false,
+            comment: "null"
+          },
+          perfis_usuario_id: {
+            type: Sequelize.INTEGER(11),
+            allowNull: false,
+            comment: "null",
+            references: {
+              model: 'Perfil',
+              key: 'usuario_id'
+            }
+          }});
   },
 
   down: (queryInterface, Sequelize) => {
