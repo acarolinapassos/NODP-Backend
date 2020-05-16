@@ -1,10 +1,10 @@
 const { sequelize, Usuario } = require('../models');
-const bcrypt = require('bcrypt');
+const bk = require('bcrypt');
 let idUltimaTransacao;
 
 let resultadoTestes = {
   listar: 'Não testado',
-  realizarTransacao: 'Não testado',
+  salvar: 'Não testado',
   buscar: 'Não testado',
   excluir: 'Não testado'
 };
@@ -14,12 +14,6 @@ let resultadoTestes = {
 async function listar() {
   try {
     let lista = await Usuario.findAll();
-    for (let usuarios of lista) {
-      //console.log('---------');
-      //console.log(`DE: User ${moeda.remetente_id} -> PARA: User ${moeda.usuario_id}`);
-      //console.log(`${moeda.qtd_moedas} Moedas`);
-      //console.log(`Em: ${moeda.data_hora}`);
-    }
     resultadoTestes.listar = `Ok ${lista.length}`;
   } catch (error) {
     resultadoTestes.listar = 'Erro: ' + error.message;
@@ -30,19 +24,20 @@ async function listar() {
 
 //-----------------------------------------------------------------------
 //Realizar uma transação
-async function realizarTransacao() {
+async function salvar() {
   try {
-    let qtd = Math.round(Math.random() * (10 - 1) + 1);
-    let user1 = Math.round(Math.random() * (4 - 1) + 1);
-    let user2 = Math.round(Math.random() * (4 - 1) + 1);
-    (user1 == user2) ? user1 = user1 + 1 : '';
-    let user = { usuario_id: user1, remetente_id: user2, qtd_moedas: qtd };
-    let resultado = await Moeda.create(user);
-    //console.log('---------');
-    //console.log('Foi realizado uma nova operação com sucesso!');
+
+      let aleatorio = Math.round(Math.random() * (1000 - 1) + 1);
+      user = {
+        email: `mail${aleatorio}@nodp.com`,
+        senha: bk.hashSync(`nodpCoders${aleatorio}`, 10),
+        admin: 0,
+        ativo: 1,
+    };
+    
+    let resultado = await Usuario.create(user);
     idUltimaTransacao = resultado.dataValues.id;
-    //console.log(resultado.dataValues);
-    resultadoTestes.realizarTransacao = `Ok id ${idUltimaTransacao}`;
+    resultadoTestes.salvar = `Ok id ${idUltimaTransacao}`;
   } catch (error) {
     resultadoTestes.realizarTransacao = 'Erro: ' + error.message;
     console.log(error);
@@ -54,11 +49,8 @@ async function realizarTransacao() {
 //Buscar uma transação pelo ID
 async function buscar() {
   try {
-    let id = Math.round(Math.random() * (30 - 1) + 1);
-    let resultado = await Moeda.findByPk(id);
-    //console.log('---------');
-    //console.log(`Buscando pelo ID: ${id}`);
-    //console.log(resultado.dataValues);
+    let id = idUltimaTransacao;
+    let resultado = await Usuario.findByPk(id);
     resultadoTestes.buscar = `Ok - id ${resultado.dataValues.id}`;
   } catch (error) {
     resultadoTestes.buscar = 'Erro ' + error.message;
@@ -72,12 +64,12 @@ async function buscar() {
 async function excluir() {
   if (!isNaN(idUltimaTransacao)) {
     try {
-      //Identificar transação
-      //Conectar com sequelize
-      let resultado = await Moeda.sequelize.query(`DELETE FROM moedas WHERE id = ${idUltimaTransacao}`);
-      //Executar função
-      //Verificar se deu erro 
-      resultadoTestes.excluir = `Ok ${resultado[0].serverStatus}`;
+      let resultado = await Usuario.destroy({
+        where: {
+          id: idUltimaTransacao
+        }
+      });
+      resultadoTestes.excluir = `Ok ${resultado}`;
     } catch (error) {
       resultadoTestes.excluir = 'Erro ' + error.message;
       console.log(error);
@@ -105,6 +97,6 @@ const exibirResultados = () => {
 
 //-----------------------------------------------------------------------
 //Iniciar bateria de testes em ordem: SALVAR -> LISTAR -> BUSCAR -> EXCLUIR 
-realizarTransacao();
+salvar();
 
 
