@@ -7,15 +7,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-<<<<<<< HEAD
-  res.send('Deu certo!')
-=======
-  res.send('Creu')
+  res.send('Deu certo!');
 });
 
-router.get('/sair', function(req, res, next) {
-  res.send('Creu')
->>>>>>> b5b4e7394b81bfa17c2b6d5eb51e12c20e1e9121
-})
+router.get('/sair', function (req, res, next) {
+  res.send('Creu');
+
+});
+
+
+router.get('/perfil', function(req, res, next) {
+  res.send('Creu');
+});
 
 module.exports = router;
