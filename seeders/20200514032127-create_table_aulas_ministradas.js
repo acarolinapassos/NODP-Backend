@@ -4,7 +4,7 @@ const moment = require('moment');
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('aulas_ministradas', [
-      {
+      { 
         usuario_id:1,
         aluno_id:2,
         titulo_aula:'Javascript',
