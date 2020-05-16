@@ -5,6 +5,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('postagens', [
       {
+        id:1,
         usuario_id:1,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -15,7 +16,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:2,
         usuario_id: 1,
         quantidade_medalhas: 4,
         quantidade_apoios: 1,
@@ -26,7 +27,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:3,
         usuario_id: 1,
         quantidade_medalhas: 7,
         quantidade_apoios: 8,
@@ -37,7 +38,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:4,
         usuario_id: 1,
         quantidade_medalhas: 9,
         quantidade_apoios: 1,
@@ -48,7 +49,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:5,
         usuario_id:2,
         quantidade_medalhas:1, 
         quantidade_apoios:8,
@@ -59,7 +60,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:6,
         usuario_id: 2,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -70,7 +71,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:7,
         usuario_id: 2,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -81,7 +82,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:8,
         usuario_id: 3,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -92,7 +93,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:9,
         usuario_id: 3,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -103,7 +104,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:10,
         usuario_id: 3,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -114,7 +115,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:11,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -125,7 +126,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:12,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -136,7 +137,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:13,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -147,7 +148,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:14,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -158,7 +159,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:15,
         usuario_id: 5,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -169,7 +170,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:16,
         usuario_id: 6,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -180,7 +181,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:17,
         usuario_id: 6,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -191,7 +192,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:18,
         usuario_id: 7,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -202,7 +203,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:19,
         usuario_id:7,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -213,7 +214,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:20,
         usuario_id:1,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -223,7 +224,7 @@ module.exports = {
         imagem: 'default.png',
         urgente:0
       },
-      {
+      {id:21,
         usuario_id:2,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -234,7 +235,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:22,
         usuario_id: 2,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -245,7 +246,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:23,
         usuario_id:3,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -256,7 +257,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:24,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -267,7 +268,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:25,
         usuario_id:1,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -278,7 +279,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:26,
         usuario_id: 2,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -289,7 +290,7 @@ module.exports = {
         urgente: 0,
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
-      {
+      {id:27,
         usuario_id: 3,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
