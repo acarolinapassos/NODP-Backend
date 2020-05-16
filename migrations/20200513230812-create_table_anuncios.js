@@ -5,14 +5,28 @@ module.exports = {
     return queryInterface.createTable('anuncios',
     {
       id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
+        type: Sequelize.INTEGER(11),
         allowNull: false,
+        primaryKey: true,
+        comment: "null",
         autoIncrement: true
       },
-      descricao: Sequelize.STRING(45),
-      imagem: Sequelize.STRING(250),
-      valido_ate: Sequelize.DATE
+      descricao: {
+        type: Sequelize.STRING(45),
+        allowNull: false,
+        comment: "null"
+      },
+      imagem: {
+        type: Sequelize.STRING(250),
+        allowNull: false,
+        defaultValue: 'default.png',
+        comment: "null"
+      },
+      valido_ate: {
+        type: Sequelize.DATEONLY,
+        allowNull: false,
+        comment: "null"
+      }
     });
   },
 
