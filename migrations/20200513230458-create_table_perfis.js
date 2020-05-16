@@ -5,14 +5,14 @@ module.exports = {
     return queryInterface.createTable(
       'perfis', {
         id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           primaryKey: true,
           comment: "null",
           autoIncrement: true
         },
         usuario_id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           primaryKey: true,
           allowNull: false,
           comment: "null",
@@ -28,7 +28,7 @@ module.exports = {
           comment: "null"
         },
         cidade_id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '1',
           comment: "null",
@@ -38,8 +38,7 @@ module.exports = {
           }
         },
         curso_id: {
-          type: Sequelize.INTEGER,
-          type: DataTypes.INTEGER(11),
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           comment: "null"
         },
@@ -56,7 +55,7 @@ module.exports = {
           comment: "null"
         },
         metodo_ensino_id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '1',
           comment: "null",
@@ -66,13 +65,13 @@ module.exports = {
           }
         },
         quantidade_moedas: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
         metodo_aprendizado_id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '1',
           comment: "null",
@@ -82,7 +81,7 @@ module.exports = {
           }
         },
         instituicao_ensino_id: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '1',
           comment: "null",
@@ -104,31 +103,31 @@ module.exports = {
           comment: "null"
         },
         turma: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '9999',
           comment: "null"
         },
         horas_ensino: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
         horas_estudo: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
         qtd_moedas: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
         },
         qtd_medalhas: {
-          type: Sequelize.INTEGER,
+          type: Sequelize.INTEGER(11),
           allowNull: false,
           defaultValue: '0',
           comment: "null"
