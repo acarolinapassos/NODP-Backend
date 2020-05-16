@@ -1,3 +1,4 @@
+const moment = require('moment');
 'use strict';
 
 module.exports = {
@@ -11,7 +12,8 @@ module.exports = {
         titulo:'Javascript' ,
         descricao:'Feliz demais porq aprendi async await',
         imagem: 'default.png',
-        urgente:0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 1,
@@ -21,7 +23,8 @@ module.exports = {
         titulo: 'PHP',
         descricao: 'PHP é da hora mano',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 1,
@@ -31,7 +34,8 @@ module.exports = {
         titulo: 'NodeJS',
         descricao: 'Caraca mano, aprendi a fazer API com NODE',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 1,
@@ -41,7 +45,8 @@ module.exports = {
         titulo: 'Banho e Tosa',
         descricao: 'Aprendi a dar banho em gato',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id:2,
@@ -51,7 +56,8 @@ module.exports = {
         titulo:'Matématica' ,
         descricao:'Pessoal precisa aprender matemática',
         imagem: 'default.png',
-        urgente:0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 2,
@@ -61,7 +67,8 @@ module.exports = {
         titulo: 'Javascript',
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 2,
@@ -71,7 +78,8 @@ module.exports = {
         titulo: 'Trigonometria',
         descricao: 'Matemática dá um nó em minha cabeça',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 3,
@@ -81,7 +89,8 @@ module.exports = {
         titulo: 'Javascript',
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 3,
@@ -91,7 +100,8 @@ module.exports = {
         titulo: 'Economia',
         descricao: 'Quero aprender um pouco mais sobre economia ',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 3,
@@ -101,7 +111,8 @@ module.exports = {
         titulo: 'NodeJS',
         descricao: 'Legal mesmo é fazer api com javascript em nodeJS',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 4,
@@ -111,7 +122,8 @@ module.exports = {
         titulo: 'Javascript',
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 4,
@@ -121,7 +133,8 @@ module.exports = {
         titulo: 'PHP',
         descricao: 'Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros commodo tempor.',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 4,
@@ -131,7 +144,8 @@ module.exports = {
         titulo: 'Muss Ipsum',
         descricao: 'Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Per aumento de cachacis, eu reclamis.' ,
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 4,
@@ -141,7 +155,8 @@ module.exports = {
         titulo: 'Lorem',
         descricao: ' Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 5,
@@ -151,7 +166,8 @@ module.exports = {
         titulo: 'Lorem',
         descricao: 'Não pode faltar lorem nessas paradas de texto',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 6,
@@ -161,7 +177,8 @@ module.exports = {
         titulo: 'Javascript',
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 6,
@@ -171,7 +188,8 @@ module.exports = {
         titulo: 'Mussum',
         descricao: ' Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 7,
@@ -181,7 +199,8 @@ module.exports = {
         titulo: 'PHP',
         descricao: ' Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id:7,
@@ -191,7 +210,8 @@ module.exports = {
         titulo:'É Gol do Brasil' ,
         descricao:'Bora torcer porque estudar pra mim já deu por hoje',
         imagem: 'default.png',
-        urgente:0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id:1,
@@ -211,7 +231,8 @@ module.exports = {
         titulo:'Lorem Ipsum' ,
         descricao:'Não pode faltar lorem nessas paradas não mano',
         imagem: 'default.png',
-        urgente:0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 2,
@@ -221,7 +242,8 @@ module.exports = {
         titulo: 'Javascript',
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id:3,
@@ -231,7 +253,8 @@ module.exports = {
         titulo:'Psicologia' ,
         descricao:'Só sendo psicologo para entender cada mente louca',
         imagem: 'default.png',
-        urgente:0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 4,
@@ -241,7 +264,8 @@ module.exports = {
         titulo: 'Juliano',
         descricao: 'Juliano Cezar, se você quer saber quem foi me dá uma moeda',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id:1,
@@ -251,7 +275,8 @@ module.exports = {
         titulo:'Midnigth' ,
         descricao:'Caraca mano, já está tarde, deixa eu dormir que amanhã é cedo',
         imagem: 'default.png',
-        urgente:0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 2,
@@ -261,7 +286,8 @@ module.exports = {
         titulo: 'Javascript',
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       },
       {
         usuario_id: 3,
@@ -271,7 +297,8 @@ module.exports = {
         titulo: 'Javascript',
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
-        urgente: 0
+        urgente: 0,
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
       }
     ], {});
   },
