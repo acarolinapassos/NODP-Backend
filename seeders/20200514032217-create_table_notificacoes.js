@@ -55,7 +55,7 @@ module.exports = {
       },
       {id:7,
         descricao: 'curtiu',
-        tipo_notificacao_id: 4,
+        tipo_notificacao_id: 3,
         usuario_id: 5,
         remetente_id: 1,
         lida: 0,
