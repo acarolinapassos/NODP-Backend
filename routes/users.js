@@ -7,8 +7,8 @@ router.get('/', function(req, res, next) {
 });
 
 /* Rota para renderizar a pagina inicial do site */
-router.get('/home', (req, res, next) => {
-  res.render('home');
-});
+// router.get('/home', (req, res, next) => {
+//   res.render('home');
+// });
 
 module.exports = router;
