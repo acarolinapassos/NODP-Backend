@@ -5,7 +5,7 @@ const {
 
 
 module.exports = {
-
+//-------------------------------------------------------------------------
   //Listar
   listar: async (req, res) => {
     //let { user } = req.session;
@@ -16,6 +16,8 @@ module.exports = {
       console.log(error);
     }
   },
+
+  //-------------------------------------------------------------------------
   //Salvar
   salvar: async (req, res) => {
 
@@ -35,8 +37,8 @@ module.exports = {
     })
   },
 
+//-------------------------------------------------------------------------
   //Editar(trocar a senha)
-
   editar: async (req, res) => {
     let {
       email,
@@ -53,8 +55,21 @@ module.exports = {
       res.send("erro")
       console.log(error.message)
     }
-
   },
+  //-------------------------------------------------------------------------
+
+  excluir: async (req, res)=>{
+    let {id} = req.body;
+    try {
+      Usuario.update(
+        {ativo:'0'},
+        {where:{id}}
+        )
+      res.send("Usuário excluido com sucesso!");
+    } catch (error) {
+      res.send('Não foi possível excluir')
+    }
+  }
 }
 
 
