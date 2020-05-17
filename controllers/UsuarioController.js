@@ -13,6 +13,23 @@ module.exports = {
     } catch (error) {
       console.log(error);
     }
+  },
+  salvar:  async (req, res) => {
+
+    let { email, senha } = req.body
+
+    let objeto = {
+      email: email,
+      senha: bcrypt.hashSync(senha, 10)
+    }
+    const criar = await Usuario.create(objeto).then(resposta => {
+      res.send('Usuario cadastrado')
+    }).catch( error => {
+      res.send('Usuario nao cadastrado')
+    })
+
+    
+  
   }
 
 
