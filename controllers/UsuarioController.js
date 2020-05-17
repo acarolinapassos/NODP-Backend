@@ -14,6 +14,7 @@ module.exports = {
       console.log(error);
     }
   },
+  //Salvar
   salvar:  async (req, res) => {
 
     let { email, senha } = req.body
@@ -33,7 +34,7 @@ module.exports = {
   }
 
 
-  //Salvar
+  
   
   //Editar
   
