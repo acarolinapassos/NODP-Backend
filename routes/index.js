@@ -6,12 +6,10 @@ router.get('/', function (req, res, next) {
   res.render('entrar', { title: 'Login' });
 });
 
-
 /* GET index page. */
 router.get('/index', function (req, res, next) {
   res.render('index', { title: 'Login' });
 });
-
 
 /* GET cadastro page. */
 router.get('/cadastro', function (req, res, next) {
@@ -37,7 +35,6 @@ router.get('/perfil', function (req, res, next) {
 router.get('/pesquisas', function (req, res, next) {
   res.render('pesquisas', { title: 'Pesquisa' });
 });
-
 
 /* GET ranking alunos page. */
 router.get('/ranking-alunos', function (req, res, next) {
