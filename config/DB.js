@@ -7,3 +7,4 @@ module.exports = {
     host: 'mysql.alessandrodev.com',
     dialect: 'mysql'
 };
+
