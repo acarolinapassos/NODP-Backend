@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const {
-  Usuario
+  Usuario, Perfil, Cidade, CanalEnsino, InstituicaoEnsino
 } = require('./../models');
 
 
@@ -69,7 +69,50 @@ module.exports = {
     } catch (error) {
       res.send('Não foi possível excluir')
     }
+  },
+
+  // --------------------------------------------------------------------------
+
+  perfil: async (req, res) => {
+    let { perfil } = req.query
+    try{
+      const usuario = Perfil.findOne({
+        include: [
+          {
+            model: 'usuarios',
+            as: 'user',
+            required: true,
+          },
+          {
+            model: 'cidades',
+            as: 'cidade',
+            required: true
+          },
+          {
+            model: 'canal_ensino',
+            as: 'canalEnsino',
+            required: true
+          },
+          {
+            model: 'instituicoes_ensino',
+            as: 'instituicao',
+            required: true
+          }
+        ]
+      }, {where: {usuario_id:perfil}})
+
+      res.send(usuario)
+    }
+    catch (error) {
+      console.log(error)
+      res.send('Erro ao procurar perfil')
+      
+    }
   }
+
+
+
+
 }
 
 
