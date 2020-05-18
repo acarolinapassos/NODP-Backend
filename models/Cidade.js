@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       comment: "null",
       references: {
-        model: 'estados',
+        model: 'Estado',
         key: 'cod_estados'
       }
     }
