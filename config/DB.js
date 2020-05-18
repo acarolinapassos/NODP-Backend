@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+//Arquivo ignorado
 module.exports = {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
