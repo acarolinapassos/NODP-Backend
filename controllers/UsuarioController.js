@@ -15,7 +15,7 @@ module.exports = {
         include: [
           {
             model: Perfil,
-            as: 'usuario',
+            as: 'perfil',
             required: true,
           }
         ]
