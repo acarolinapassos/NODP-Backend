@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Usuario.associate = (models) => {
     Usuario.hasOne(models.Perfil, {
-      //Forenkey da tabela de usuario
+      //Forenkey da tabela de perfil
       as: 'perfil', foreignKey: 'usuario_id'
     });
   };
