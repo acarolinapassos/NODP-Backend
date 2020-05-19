@@ -39,7 +39,7 @@ module.exports = function(sequelize, DataTypes) {
 
   Usuario.associate = (models) => {
     Usuario.hasOne(models.Perfil, {
-      as: 'perfil', foreignKey: 'usuario_id'
+      as: 'perfil', foreignKey: 'id'
     });
   };
 

@@ -84,14 +84,14 @@ module.exports = {
           include: [
             {
               model: Usuario,
-              as: 'user',
+              as: 'usuario',
               required: true,
             },
             {
               model: Cidade,
               as: 'cidade',
               required: true
-            },
+            }/*,
             {
               model: CanalEnsino,
               as: 'canal',
@@ -101,7 +101,7 @@ module.exports = {
               model: InstituicaoEnsino,
               as: 'instituicao',
               required: true
-            }
+            }*/
           ]
         },
       
