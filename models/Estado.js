@@ -25,9 +25,11 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Estado.associate = (models) => {
-    Estado.hasOne(models.Cidade, {
+    Estado.hasMany(models.Cidade, {
        //Forenkey da tabela de estados
-      as: 'estado', foreignKey: 'cod_estados'
+      as: 'cidades', foreignKey: 'estado'
     });
   };
+
+  return Estado;
 };

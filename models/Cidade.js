@@ -35,15 +35,15 @@ module.exports = function(sequelize, DataTypes) {
   
   Cidade.associate = (models) => {
     Cidade.hasOne(models.Perfil, {
-      //Forenkey da tabela de perfil
+      //Forenkey da tabela de cidade
       as: 'cidade', foreignKey: 'cidade_id'
     });
     Cidade.belongsTo(models.Estado, {
        //Forenkey da tabela de cidade
-      as: 'estado', foreignKey: 'estado'
+      as: 'cidades', foreignKey: 'estado'
     });
   };
   
-  return Cidade;
+  return Cidade; 
   
 };

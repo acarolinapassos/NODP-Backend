@@ -6,7 +6,8 @@ const {
 
 module.exports = {
   //-------------------------------------------------------------------------
-  //Listar Usuarios e seu respectivo perfil
+  //Listar Usuarios e seu respectivo perfil : GET
+  //http://localhost:3000/teste/usuarios
   listar: async (req, res) => {
     //let { user } = req.session;
     try {
@@ -14,7 +15,7 @@ module.exports = {
         include: [
           {
             model: Perfil,
-            as: 'perfil',
+            as: 'usuario',
             required: true,
           }
         ]
