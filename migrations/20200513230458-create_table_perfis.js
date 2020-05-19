@@ -44,7 +44,11 @@ module.exports = {
         curso_id: {
           type: Sequelize.INTEGER(11),
           allowNull: false,
-          comment: "null"
+          comment: "null",
+          references: {
+            model: 'cursos',
+            key: 'id'
+          }
         },
 
         bio: {
