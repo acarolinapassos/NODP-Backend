@@ -31,4 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'apoios',
       timestamps: false
   });
+
+  
+
 };

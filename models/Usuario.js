@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Usuario', {
+  const Usuario = sequelize.define('Usuario', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -36,4 +36,15 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'usuarios',
       timestamps: false
   });
+
+  Usuario.associate = (models) => {
+    Usuario.hasOne(models.Perfil, {
+      //Forenkey da tabela de usuario
+      as: 'perfil', foreignKey: 'usuario_id'
+    });
+  };
+
+
+  return Usuario;
+  
 };

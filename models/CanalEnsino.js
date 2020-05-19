@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('CanalEnsino', {
+  let CanalEnsino = sequelize.define('CanalEnsino', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -19,4 +19,17 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'canal_ensino',
       timestamps: false
   });
+
+  CanalEnsino.associate = (models) => {
+    CanalEnsino.hasOne(models.Perfil, {
+      //ForeignKey da tabela canal de perfil
+      as: 'ensino', foreignKey: 'metodo_ensino_id'
+    });
+    CanalEnsino.hasOne(models.Perfil, {
+      //ForeignKey da tabela canal de perfil
+      as: 'aprendizado', foreignKey: 'metodo_aprendizado_id'
+    });
+  };
+
+  return CanalEnsino;
 };
