@@ -134,12 +134,12 @@ module.exports = function(sequelize, DataTypes) {
       timestamps: false
   });
 
-  Perfil.associate = (model) => {
-    Perfil.belognsTo('Usuario', {
-      as: 'usuario', foreignKey: 'id'
+  Perfil.associate = (models) => {
+    Perfil.belongsTo(models.Usuario, {
+      as: 'usuario', foreignKey: 'usuario_id'
     });
-    Perfil.hasOne('Cidade', {
-      as: 'cidade', foreignKey:'id'
+    Perfil.hasOne(models.Cidade, {
+      as: 'cidade', foreignKey:'cod_cidades'
     });
   };
 
