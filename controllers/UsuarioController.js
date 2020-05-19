@@ -49,7 +49,7 @@ module.exports = {
       const editar = await Usuario.update(
         { senha: senha },
         { where: { email: email } }
-      )
+      );
       res.send("Sua senha foi alterada com sucesso");
     } catch (error) {
       res.send("erro");
