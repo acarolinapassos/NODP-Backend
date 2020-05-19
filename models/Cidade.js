@@ -29,17 +29,21 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   }, {
-      tableName: 'cidades',
-      timestamps: false
+    tableName: 'cidades',
+    timestamps: false
   });
-
+  
   Cidade.associate = (models) => {
     Cidade.hasOne(models.Perfil, {
       //Forenkey da tabela de perfil
       as: 'cidade', foreignKey: 'cidade_id'
     });
+    Cidade.belongsTo(models.Estado, {
+       //Forenkey da tabela de cidade
+      as: 'estado', foreignKey: 'estado'
+    });
   };
-
+  
   return Cidade;
   
 };
