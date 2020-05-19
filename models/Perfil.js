@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Perfil', {
+  let Perfil = sequelize.define('Perfil', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -133,4 +133,16 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'perfis',
       timestamps: false
   });
+
+  Perfil.associate = (model) => {
+    Perfil.belognsTo('Usuario', {
+      as: 'usuario', foreignKey: 'id'
+    });
+    Perfil.hasOne('Cidade', {
+      as: 'cidade', foreignKey:'id'
+    });
+  };
+
+  return Perfil;
+
 };
