@@ -43,7 +43,7 @@ module.exports = {
       res.send('Usuario cadastrado');
     }).catch(error => {
       res.send('Usuario nao cadastrado');
-    })
+    });
   },
   
   //-------------------------------------------------------------------------
