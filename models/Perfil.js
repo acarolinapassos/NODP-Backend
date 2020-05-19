@@ -130,21 +130,33 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-      tableName: 'perfis',
-      timestamps: false
+    tableName: 'perfis',
+    timestamps: false
   });
-
+  
   Perfil.associate = (models) => {
     Perfil.belongsTo(models.Usuario, {
       //Forenkey da tabela de perfis
       as: 'usuario', foreignKey: 'usuario_id'
     });
-    Perfil.hasOne(models.Cidade, {
-      //Forenkey da tabela de cidades
-      as: 'cidade', foreignKey:'cod_cidades'
+    Perfil.belongsTo(models.Cidade, {
+      //Forenkey da tabela de perfis
+      as: 'cidade', foreignKey:'cidade_id'
+    });
+    Perfil.belongsTo(models.CanalEnsino, {
+      //Forenkey da tabela de perfis
+      as: 'ensino', foreignKey: 'metodo_ensino_id'
+    });
+    Perfil.belongsTo(models.CanalEnsino, {
+      //Forenkey da tabela de perfis
+      as: 'aprendizado', foreignKey: 'metodo_aprendizado_id'
+    });
+    Perfil.belongsTo(models.InstituicaoEnsino, {
+      //Forenkey da tabela de perfis
+      as: 'instituicao', foreignKey:'instituicao_ensino_id'
     });
   };
-
+  
   return Perfil;
-
+  
 };
