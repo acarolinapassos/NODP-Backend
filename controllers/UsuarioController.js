@@ -79,8 +79,8 @@ module.exports = {
 
     try {
       const usuario = await Perfil.findOne(
-        
-        {
+          {
+          where: { usuario_id: perfil },
           include: [
             {
               model: Usuario,
@@ -103,9 +103,7 @@ module.exports = {
               required: true
             }*/
           ]
-        },
-      
-        { where: { usuario_id: perfil } });
+        });
 
       res.send(usuario);
     }
