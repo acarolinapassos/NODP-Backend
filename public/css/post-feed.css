@@ -2,7 +2,6 @@
 
 .post-feed {
   background-color: var(--text-primary-color);
-  margin-top: 1vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
