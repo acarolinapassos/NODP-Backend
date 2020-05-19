@@ -1,0 +1,57 @@
+<section id="mensagens" class="container-fluid">
+  <div class="row mensagens-header">
+    <div class="col mensagem-titulo" onclick="location.href='/mensagens'">
+      <h1>mensagens </h1> <span class="seta"><i class="fas fa-chevron-right"></i></span>
+    </div>
+  </div>
+  <div class="mensagem" data-toggle="modal" data-target="#modalMensagem">
+    <div>
+      <img src="/img/aecio.jpg" class="rounded-circle" alt="Aecio">
+    </div>
+    <div class="info">
+      <h2>Aécio</h2>
+      <h3 class="texto">Posso marcar...</h3>
+    </div>
+    <div class="icone">
+      <i class="far fa-times-circle"></i>
+    </div>
+  </div>
+
+  <div class="mensagem" data-toggle="modal" data-target="#modalMensagem">
+    <div>
+      <img src="/img/luciana.jpg" class="rounded-circle" alt="Luciana">
+    </div>
+    <div class="info">
+      <h2>Maria</h2>
+      <h3 class="texto">Posso marcar...</h3>
+    </div>
+    <div class="icone">
+      <i class="far fa-times-circle"></i>
+    </div>
+  </div>
+
+
+  <div class="mensagem" data-toggle="modal" data-target="#modalMensagem">
+    <div>
+      <img src="/img/taliria.jpg" class="rounded-circle" alt="Talíria">
+    </div>
+    <div class="info">
+      <h2>Talíria</h2>
+      <h3 class="texto">Posso marcar...</h3>
+    </div>
+    <div class="icone">
+      <i class="far fa-times-circle"></i>
+    </div>
+  </div>
+
+
+  <div class="mensagens-footer">
+    <div>
+      <input type="button" value="Nova Mensagem" class=btn-2-d data-toggle="modal" data-target="#modalNovaMensagem">
+    </div>
+  </div>
+
+  <!-- Modal enviar mensagem-->
+  <%- include('../includes/modal-mensagem')-%>
+
+</section>
