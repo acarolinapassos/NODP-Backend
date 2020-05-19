@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('UsuarioTemInteresseAprendizado', {
+  let UsuarioTemInteresseAprendizado = sequelize.define('UsuarioTemInteresseAprendizado', {
     'usuario_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -23,7 +23,21 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   }, {
-      tableName: 'usuarios_tem_interesses_aprendizado',
+      tableName: 'usuarios_tem_interesse_aprendizado',
       timestamps: false
   });
+
+
+
+  UsuarioTemInteresseAprendizado.associate = (models) => {
+
+    UsuarioTemInteresseAprendizado.hasMany(models.Interesse, {
+      //Forenkey da tabela de UsuarioTemInteresseAprendizado
+      as: 'interesse', foreignKey: 'id'
+    });
+
+  };
+
+  return UsuarioTemInteresseAprendizado;
+
 };

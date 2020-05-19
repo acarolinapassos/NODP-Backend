@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Cidade', {
+  let Cidade = sequelize.define('Cidade', {
     'cod_cidades': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -24,12 +24,26 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       comment: "null",
       references: {
-        model: 'estados',
+        model: 'Estado',
         key: 'cod_estados'
       }
     }
   }, {
-      tableName: 'cidades',
-      timestamps: false
+    tableName: 'cidades',
+    timestamps: false
   });
+  
+  Cidade.associate = (models) => {
+    Cidade.hasOne(models.Perfil, {
+      //Forenkey da tabela de cidade
+      as: 'cidade', foreignKey: 'cidade_id'
+    });
+    Cidade.belongsTo(models.Estado, {
+       //Forenkey da tabela de cidade
+      as: 'cidades', foreignKey: 'estado'
+    });
+  };
+  
+  return Cidade; 
+  
 };
