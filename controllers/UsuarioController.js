@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const {
-  Usuario, Perfil, Cidade, CanalEnsino, InstituicaoEnsino
+  Usuario, Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso
 } = require('./../models');
 
 
@@ -119,6 +119,11 @@ module.exports = {
                   model: InstituicaoEnsino,
                   as: 'instituicao',
                   required: true
+                },
+                {
+                  model: Curso,
+                  as: 'curso',
+                  require:true
                 }
               ]
             });

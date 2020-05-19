@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   }, {
-      tableName: 'usuarios_tem_interesses_ensino',
+      tableName: 'usuarios_tem_interesse_ensino',
       timestamps: false
   });
 };

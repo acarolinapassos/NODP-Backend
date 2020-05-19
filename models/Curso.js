@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Curso', {
+  let Curso = sequelize.define('Curso', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -18,4 +18,15 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'cursos',
       timestamps: false
   });
+
+  Curso.associate = (models) => {
+    
+    Curso.hasOne(models.Perfil, {
+      //Forenkey da tabela de curso
+      as:'curso', foreignKey:'id'
+    });
+
+  };
+
+  return Curso;
 };
