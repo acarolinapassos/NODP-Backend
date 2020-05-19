@@ -1,0 +1,73 @@
+/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
+
+#cadastro .background {
+  background-image: url("/img/imagem-login.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#cadastro {
+  margin: 0;
+  padding: 0;
+  max-width: 98.5vw;
+}
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  height: 99vh;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-background-color);
+  
+}
+
+.login img{
+  margin:0;
+}
+
+.cadastro-div-termos {
+  margin-top: 2vh;
+}
+
+#cadastro form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3vw;
+  align-items: center;
+}
+
+.titulo {
+  margin-bottom: 3vh;
+  color: var(--dark-primary-color);
+  text-transform: uppercase;
+}
+
+#row-botoes{
+  width: 100%;
+  height: 10%;
+  margin-bottom: 5%;
+}
+
+a.esqueci-senha{
+  padding-top: 3vh;
+}
+
+@media screen and (max-width: 599px) {
+  #cadastro {
+    margin: 0;
+    padding: 0;
+    max-width: 95.5vw;
+  }
+  
+}
+
+@media screen and (min-width: 600px) and (max-width: 1199px) {
+  #cadastro .background{
+    background-position-y: center; 
+  }
+}
