@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Estado', {
+  let Estado = sequelize.define('Estado', {
     'cod_estados': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -23,4 +23,11 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'estados',
       timestamps: false
   });
+
+  Estado.associate = (models) => {
+    Estado.hasOne(models.Cidade, {
+       //Forenkey da tabela de estados
+      as: 'estado', foreignKey: 'cod_estados'
+    });
+  };
 };
