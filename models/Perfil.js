@@ -37,7 +37,11 @@ module.exports = function(sequelize, DataTypes) {
     'curso_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      comment: "null"
+      comment: "null",
+      references: {
+        model: 'Curso',
+        key: 'id'
+      }
     },
     'bio': {
       type: DataTypes.STRING(250),
@@ -154,6 +158,10 @@ module.exports = function(sequelize, DataTypes) {
     Perfil.belongsTo(models.InstituicaoEnsino, {
       //Forenkey da tabela de perfis
       as: 'instituicao', foreignKey:'instituicao_ensino_id'
+    });
+    Perfil.belongsTo(models.Curso, {
+       //Forenkey da tabela de perfis
+      as: 'curso', foreignKey:'curso_id'
     });
   };
   

@@ -5,7 +5,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('usuarios', [
       {
-        id:1,
+        id:9,
         email: 'andre@nodp.com',
         senha: bk.hashSync('nodpCoders10', 10),
         admin: 1,
@@ -33,7 +33,7 @@ module.exports = {
         ativo: 1,
       },
       {
-        id: 5,
+        id: 7,
         email: 'michel@nodp.com',
         senha: bk.hashSync('naoPodeFaltarMichel', 10),
         admin: 0,
@@ -47,7 +47,7 @@ module.exports = {
         ativo: 1,
       },
       {
-        id: 7,
+        id: 5,
         email: 'mark@facebook.com',
         senha: bk.hashSync('OfacebookFoiDifcilAssim?', 10),
         admin: 1,
@@ -61,7 +61,7 @@ module.exports = {
         ativo: 1,
       },
       {
-        id: 9,
+        id: 1,
         email: 'anonimo@mail.com',
         senha: bk.hashSync('entreiPraHackear', 10),
         admin: 0,

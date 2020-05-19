@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('perfis', [
       {
-        usuario_id:1,
+        usuario_id:9,
         nome: 'André Oliveira',
         cidade_id: 1,
         curso_id:1,
@@ -80,7 +80,7 @@ module.exports = {
         qtd_medalhas: 250
       },
       {
-        usuario_id: 5,
+        usuario_id: 7,
         nome: 'Michel',
         cidade_id: 50,
         curso_id: 1,
@@ -118,7 +118,7 @@ module.exports = {
         qtd_medalhas: 25
       },
       {
-        usuario_id: 7,
+        usuario_id: 5,
         nome: 'Mark',
         cidade_id: 270,
         curso_id: 1,
@@ -156,7 +156,7 @@ module.exports = {
         qtd_medalhas: 25
       },
       {
-        usuario_id: 9,
+        usuario_id: 1,
         nome: 'Anônimo',
         cidade_id: 380,
         curso_id: 3,
