@@ -136,9 +136,11 @@ module.exports = function(sequelize, DataTypes) {
 
   Perfil.associate = (models) => {
     Perfil.belongsTo(models.Usuario, {
+      //Forenkey da tabela de perfis
       as: 'usuario', foreignKey: 'usuario_id'
     });
     Perfil.hasOne(models.Cidade, {
+      //Forenkey da tabela de cidades
       as: 'cidade', foreignKey:'cod_cidades'
     });
   };
