@@ -19,11 +19,11 @@ module.exports = {
   atualizar: async (req, res)=>{
     
     let{
-      descricao
+      descricao, estado_id, sigla, id
     }=req.body;
     
     try {
-      let result = InstituicaoEnsino.update()
+      let result = InstituicaoEnsino.update({ descricao, estado_id, sigla }, {where:{id}});
     } catch (error) {
       console.log(error);
     }
