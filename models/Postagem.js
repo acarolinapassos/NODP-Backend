@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Postagem', {
+  let Postagem = sequelize.define('Postagem', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -72,4 +72,21 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'postagens',
       timestamps: false
   });
+
+  Postagem.associate = (models) => {
+
+    Postagem.belongsTo(models.Usuario, {
+      
+      as: 'usuario', foreignKey: 'usuario_id'
+    });
+    Postagem.hasMany(models.Comentario,  {
+     
+      as: 'comentario', foreignKey: 'id', through: 'Comentario' 
+    });
+    
+
+  };
+
+  return Postagem;
 };
+
