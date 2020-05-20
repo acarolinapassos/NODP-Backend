@@ -16,5 +16,17 @@ module.exports = {
     }
   },
   //-------------------------------------------------------------------------
+  atualizar: async (req, res)=>{
+    
+    let{
+      descricao
+    }=req.body;
+    
+    try {
+      let result = InstituicaoEnsino.update()
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
 };
