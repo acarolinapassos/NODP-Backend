@@ -2,19 +2,19 @@ const {Postagem,Comentario} = require('./../models');
 
 
 module.exports = {
+  //-------------------------------------------------------------------------
   //Listar postagem
   //http://localhost:3000/teste/postagens
-  
   listar: async (req, res, next) => {
     try {
       let postagens = await Postagem.findAll({
         include: [
-            {
-              model: Comentario,
-              as: 'comentario',
-              required: false,
-            }
-          ]
+          {
+            model: Comentario,
+            as: 'comentarios',
+            required: false,
+          }
+        ]
         // limit:10
       });
       res.send(postagens);
@@ -22,71 +22,74 @@ module.exports = {
       console.log(error);
     }
   },
-
+  
+  //-------------------------------------------------------------------------
   salvar: async (req, res) => {
-      try{
-    let {
+    try {
+      let {
         usuario_id,
         categoria_id,
         titulo,
         descricao,
         imagem
-    } = req.body
-    
-    const salvar = await Postagem.create({usuario_id,
+      } = req.body;
+      
+      const salvar = await Postagem.create({
+        usuario_id,
         categoria_id,
         titulo,
         descricao,
-        imagem});
+        imagem
+      });
       res.send('Post enviado');
-} catch(error) {
+    } catch (error) {
       console.log(error);
-
-      
-    };
+    }
   },
+  
+  //-------------------------------------------------------------------------
   editar: async (req, res) => {
-    try{
-  let  {
-    
-    id,
-    categoria_id,
-    titulo,
-    descricao,
-    imagem
+    try {
+      let {
+        
+        id,
+        categoria_id,
+        titulo,
+        descricao,
+        imagem
+        
+      } = req.body;
       
-  } = req.body
+      const editar = await Postagem.update({
+        categoria_id,
+        titulo,
+        descricao,
+        imagem
+      }, { where: { id: id } }
+      );
+      res.send('Post editado');
+    } catch (error) {
+      console.log(error);
+    }
+  },
   
-  const editar = await Postagem.update({categoria_id,
-    titulo,
-    descricao,
-    imagem}, {where:{id:id}}
-  );
-    res.send('Post editado');
-} catch(error) {
-    console.log(error);
-
+  //-------------------------------------------------------------------------
+  excluir: async (req, res) => {
+    try {
+      let {
+        id,
+      } = req.body;
+      
+      const editar = await Postagem.destroy({ where: { id } }
+        );
+        res.send('Post excluído');
+      } catch (error) {
+        console.log(error);
+        
+      }
+    },
     
   };
-},
-
-excluir: async (req, res) => {
-    try{
-  let  {
-    id,
-    } = req.body
   
-  const editar = await Postagem.destroy({where:{id}}
-  );
-    res.send('Post excluído');
-} catch(error) {
-    console.log(error);
-
-    
-  };
-},
-
   
-}
-
-
+  
