@@ -2,6 +2,7 @@ const { Interesse, UsuarioTemInteresseAprendizado, UsuarioTemInteresseEnsino } =
 
 
 module.exports = {
+    //-------------------------------------------------------------------------
   //Listar interesses de aprendizado e ensino > GET : query = ?perfil=1
   //http://localhost:3000/teste/interesses?perfil=1
   listarInteressesDeUmUsuario: async (req, res, next) => {
@@ -28,6 +29,31 @@ module.exports = {
         } catch (error) {
           console.log(error);
         }
+        
+      },
+      
+        //-------------------------------------------------------------------------
+      listar: async (req, res) => {
+        try {
+          let id = req.query.perfil;
+          let interesses = await interess.findAll(
+            {
+              limit: 10,
+              include: [
+                {
+                  model: Estado,
+                  as: 'cidades',
+                  require: true
+                }
+              ]
+            });
+
+          res.send(interesses);
+              
+        } catch (error) {
+          console.log(error);
+        }
+        
         
       }
       

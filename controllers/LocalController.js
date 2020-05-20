@@ -8,7 +8,8 @@ module.exports = {
   listarCidades: async (req, res, next) => {
     try {
       
-      let cidades = await Cidade.findAll({
+      let cidades = await Cidade.findAll(
+        {
         limit:10,
         include: [
           {

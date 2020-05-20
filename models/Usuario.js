@@ -42,6 +42,11 @@ module.exports = function(sequelize, DataTypes) {
       //Forenkey da tabela de perfil
       as: 'perfil', foreignKey: 'usuario_id'
     });
+
+    Usuario.hasMany(models.Interesse, {
+      as: 'interesse', foreignKey: 'id'
+    });
+
   };
 
 

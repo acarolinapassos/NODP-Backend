@@ -21,7 +21,9 @@ module.exports = function(sequelize, DataTypes) {
 
 
   Interesse.associate = (models) => {
-    
+    Interesse.belongsToMany(models.Usuario, {
+      as: 'interesse', through: 'usuarios_tem_interesse_aprendizado', foreignKey:'id'
+    });
   };
 
   return Interesse;
