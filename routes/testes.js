@@ -20,7 +20,7 @@ router.get('/postagens', PostagemController.listar);
 router.post('/postagens', PostagemController.salvar);
 router.put('/postagens', PostagemController.editar);
 router.delete('/postagens', PostagemController.excluir);
-router.post('/listar-mensagens', MensagemController.listarMensagens);
-router.post('/adicionar-mensagem', MensagemController.adicionarMensagem);
+router.get('/listar-mensagens', MensagemController.listarMensagens);
+router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
 
 module.exports = router;
