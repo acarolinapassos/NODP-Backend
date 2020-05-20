@@ -15,20 +15,15 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-      tableName: 'interesses',
-      timestamps: false
+    tableName: 'interesses',
+    timestamps: false
   });
-
-
+  
+  
   Interesse.associate = (models) => {
     
-    Interesse.hasMany(models.UsuarioTemInteresseAprendizado, {
-      as:'interesse',
-      foreignKey: 'interesse_id'
-    });
-
   };
-
+  
   return Interesse;
-
+  
 };

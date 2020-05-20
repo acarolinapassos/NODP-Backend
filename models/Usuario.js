@@ -42,6 +42,7 @@ module.exports = function(sequelize, DataTypes) {
       //Forenkey da tabela de perfil
       as: 'perfil', foreignKey: 'usuario_id'
     });
+
   };
 
 
