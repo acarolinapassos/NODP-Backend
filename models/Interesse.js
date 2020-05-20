@@ -22,9 +22,9 @@ module.exports = function(sequelize, DataTypes) {
 
   Interesse.associate = (models) => {
     
-    Interesse.belongsTo(models.UsuarioTemInteresseAprendizado, {
+    Interesse.hasMany(models.UsuarioTemInteresseAprendizado, {
       as:'interesse',
-      foreignKey: 'id'
+      foreignKey: 'interesse_id'
     });
 
   };
