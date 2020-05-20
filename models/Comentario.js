@@ -36,10 +36,14 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'comentarios',
       timestamps: false
   });
-  Comentario.associate = (models) =>{
-  Comentario.belongsToMany(models.Postagem,{
-    as: 'comentario' , foreignKey:'id'
-  })
-  }
+
+  Comentario.associate = (models) => {
+
+    Comentario.hasOne(models.Postagem, {
+      //Forenkey -> da tabela de Postagem
+      as: 'comentarios', foreignKey: 'id'
+    });
+  
+  };
   return Comentario;
 };
