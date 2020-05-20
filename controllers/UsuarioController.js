@@ -89,7 +89,6 @@ module.exports = {
       perfil: async (req, res) => {
         let { perfil } = req.query;
         
-        
         try {
           const usuario = await Perfil.findOne(
             {
