@@ -9,6 +9,7 @@ module.exports = {
     try {
       
       let cidades = await Cidade.findAll({
+        limit:10,
         include: [
           {
             model: Estado,
