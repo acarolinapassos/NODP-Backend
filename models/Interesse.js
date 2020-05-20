@@ -22,11 +22,6 @@ module.exports = function(sequelize, DataTypes) {
 
   Interesse.associate = (models) => {
     
-    Interesse.hasMany(models.UsuarioTemInteresseAprendizado, {
-      as:'interesse',
-      foreignKey: 'interesse_id'
-    });
-
   };
 
   return Interesse;
