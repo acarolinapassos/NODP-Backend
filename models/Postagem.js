@@ -79,8 +79,14 @@ module.exports = function(sequelize, DataTypes) {
       
       as: 'usuario', foreignKey: 'usuario_id'
     });
+    Postagem.hasMany(models.Comentario,  {
+     
+      as: 'comentario', foreignKey: 'id', through: 'Comentario' 
+    });
+    
 
   };
 
   return Postagem;
 };
+

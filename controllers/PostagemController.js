@@ -1,4 +1,4 @@
-const {Postagem} = require('./../models');
+const {Postagem,Comentario} = require('./../models');
 
 
 module.exports = {
@@ -8,6 +8,13 @@ module.exports = {
   listar: async (req, res, next) => {
     try {
       let postagens = await Postagem.findAll({
+        include: [
+            {
+              model: Comentario,
+              as: 'comentario',
+              required: false,
+            }
+          ]
         // limit:10
       });
       res.send(postagens);
