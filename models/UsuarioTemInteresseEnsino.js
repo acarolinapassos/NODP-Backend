@@ -28,7 +28,9 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   UsuarioTemInteresseEnsino.associate = (models) => {
-
+    UsuarioTemInteresseEnsino.belongsTo(models.Interesse, {
+      as: 'interesse_ensinar', foreignKey: 'interesse_id'
+    });
   };
 
   return UsuarioTemInteresseEnsino;

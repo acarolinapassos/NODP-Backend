@@ -43,10 +43,6 @@ module.exports = function(sequelize, DataTypes) {
       as: 'perfil', foreignKey: 'usuario_id'
     });
 
-    Usuario.hasMany(models.Interesse, {
-      as: 'interesse', foreignKey: 'id'
-    });
-
   };
 
 
