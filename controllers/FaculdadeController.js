@@ -2,6 +2,7 @@ const { InstituicaoEnsino } = require('./../models');
 
 
 module.exports = {
+  //-------------------------------------------------------------------------
   //Listar faculdades 
   //http://localhost:3000/teste/faculdades
   listar: async (req, res, next) => {
@@ -13,6 +14,7 @@ module.exports = {
     } catch (error) {
       console.log(error);
     }
-  }
+  },
+  //-------------------------------------------------------------------------
   
 };

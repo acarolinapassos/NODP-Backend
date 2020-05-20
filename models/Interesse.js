@@ -15,17 +15,15 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-      tableName: 'interesses',
-      timestamps: false
+    tableName: 'interesses',
+    timestamps: false
   });
-
-
+  
+  
   Interesse.associate = (models) => {
-    Interesse.belongsToMany(models.Usuario, {
-      as: 'interesse', through: 'usuarios_tem_interesse_aprendizado', foreignKey:'id'
-    });
+    
   };
-
+  
   return Interesse;
-
+  
 };

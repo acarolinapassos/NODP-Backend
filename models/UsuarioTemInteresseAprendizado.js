@@ -28,9 +28,10 @@ module.exports = function(sequelize, DataTypes) {
   });
 
 
-
   UsuarioTemInteresseAprendizado.associate = (models) => {
-
+    UsuarioTemInteresseAprendizado.belongsTo(models.Interesse, {
+      as: 'interesse_aprender', foreignKey: 'interesse_id'
+    });
   };
 
   return UsuarioTemInteresseAprendizado;
