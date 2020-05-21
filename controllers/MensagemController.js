@@ -41,14 +41,15 @@ module.exports = {
             let { usuario } = req.query;
 
             let resposta = await Mensagem.findAll({
-                
-                    
-                where: { destinatario_id: usuario },
-                include: [
+                where: {
+                    destinatario_id: usuario
+                },
+                include: [ 
                     {
                         model: Perfil,
                         as: 'perfil_msg',
                         required: true,
+                        attributes: ['id', 'nome', 'avatar'],
                     }
                 ]
             });
