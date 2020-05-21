@@ -12,8 +12,7 @@ const MensagemController = require('./../controllers/MensagemController');
 
 router.get('/usuarios', UsuarioController.listar);
 router.post('/salvar-usuario', UsuarioController.salvar);
-router.put('/usuario',UsuarioController.editar
-);
+router.put('/usuario',UsuarioController.editar);
 router.delete('/usuario', UsuarioController.excluir);
 router.get('/usuario', UsuarioController.perfil);
 router.get('/cidades', LocalController.listarCidades);
