@@ -1,5 +1,5 @@
 module.exports = {
-  auth: (req, res, next) => {
+  autenticar: (req, res, next) => {
     const LOGADO = req.session.USER != undefined;
     if (LOGADO) {
       next();
