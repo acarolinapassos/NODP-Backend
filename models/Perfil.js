@@ -7,12 +7,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       primaryKey: true,
       comment: "null",
-      autoIncrement: true
-    },
-    'usuario_id': {
-      type: DataTypes.INTEGER(11),
-      allowNull: false,
-      comment: "null",
       references: {
         model: 'Usuario',
         key: 'id'
@@ -141,7 +135,7 @@ module.exports = function(sequelize, DataTypes) {
   Perfil.associate = (models) => {
     Perfil.belongsTo(models.Usuario, {
       //Forenkey da tabela de perfis
-      as: 'usuario', foreignKey: 'usuario_id'
+      as: 'usuario', foreignKey: 'id'
     });
     Perfil.belongsTo(models.Cidade, {
       //Forenkey da tabela de perfis

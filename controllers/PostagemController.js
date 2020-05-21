@@ -1,4 +1,4 @@
-const {Postagem,Comentario} = require('./../models');
+const { Postagem, Comentario, Perfil} = require('./../models');
 
 
 module.exports = {
@@ -13,6 +13,11 @@ module.exports = {
             model: Comentario,
             as: 'comentarios',
             required: false,
+          },
+          {
+            model: Perfil,
+            as: 'perfil',
+            require:false
           }
         ]
         // limit:10
@@ -88,6 +93,31 @@ module.exports = {
         
       }
     },
+    //-------------------------------------------------------------------------
+    //Listar postagens 
+    listarPostagens: async (req, res) =>{
+      
+      try {
+        let postagens = await Postagem.sequelize.query(
+          `
+          SELECT * 
+          FROM ${Postagem.tableName} postagem
+          INNER JOIN ${Perfil.tableName} perfil ON perfil.usuario_id = postagem.usuario_id
+          LEFT JOIN ${Comentario.tableName} comentario ON comentario.post_id = postagem.id
+          LEFT JOIN ${Perfil.tableName} usuario ON usuario.id = comentario.usuario_id
+          GROUP BY postagem.id
+          
+          `
+
+        );
+
+        res.send(postagens);
+
+      } catch (error) {
+        
+      }
+
+    }
     
   };
   
