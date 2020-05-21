@@ -1,6 +1,7 @@
 const {Comentario} = require('./../models');
 
 // listar comentarios
+//http://localhost:3000/teste/comentarios
 module.exports={
 listar: async (req,res,next) =>{
     try {
@@ -13,6 +14,8 @@ listar: async (req,res,next) =>{
           }
     },
 
+    // salvar comentarios
+    //http://localhost:3000/teste/comentarios
     salvar:async (req,res) =>{
         try {
             let {
@@ -30,7 +33,8 @@ listar: async (req,res,next) =>{
             console.log(error)
         }
     },
-
+   // editar comentarios
+   //http://localhost:3000/teste/comentarios
     editar: async (req,res) =>{
         try {
             let {
@@ -48,7 +52,8 @@ listar: async (req,res,next) =>{
             console.log(error)
         }
     },
-
+   // excluir comentarios
+   //http://localhost:3000/teste/comentarios
     excluir: async (req,res) =>{
         try {
             

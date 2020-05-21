@@ -6,8 +6,9 @@ const InteresseController = require('./../controllers/InteresseController');
 const FaculdadesController = require('./../controllers/FaculdadeController');
 const PostagemController = require('./../controllers/PostagemController');
 const ComentarioController = require('./../controllers/ComentarioController');
+const NotificacaoController = require('./../controllers/NotificacaoController');
+const MensagemController = require('./../controllers/MensagemController');
 
-const MensagemController = require('./../controllers/MensagemController')
 
 router.get('/usuarios', UsuarioController.listar);
 router.post('/salvar-usuario', UsuarioController.salvar);
@@ -28,6 +29,9 @@ router.put('/comentarios', ComentarioController.editar);
 router.delete('/comentarios', ComentarioController.excluir);
 router.get('/listar-mensagens', MensagemController.listarMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
-router.get('/ultimas-mensagens', MensagemController.ultimasMensagens)
+router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
+router.get('/notificacoes', NotificacaoController.listar);
+router.post('/notificacoes', NotificacaoController.salvar);
+router.delete('/notificacoes', NotificacaoController.excluir)
 
 module.exports = router;
