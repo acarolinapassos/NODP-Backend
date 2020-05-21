@@ -5,12 +5,13 @@ const LocalController = require('./../controllers/LocalController');
 const InteresseController = require('./../controllers/InteresseController');
 const FaculdadesController = require('./../controllers/FaculdadeController');
 const PostagemController = require('./../controllers/PostagemController');
+const ComentarioController = require('./../controllers/ComentarioController');
+
 const MensagemController = require('./../controllers/MensagemController')
 
 router.get('/usuarios', UsuarioController.listar);
 router.post('/salvar-usuario', UsuarioController.salvar);
-router.put('/usuario',UsuarioController.editar
-);
+router.put('/usuario',UsuarioController.editar);
 router.delete('/usuario', UsuarioController.excluir);
 router.get('/usuario', UsuarioController.perfil);
 router.get('/cidades', LocalController.listarCidades);
@@ -20,6 +21,10 @@ router.get('/postagens', PostagemController.listar);
 router.post('/postagens', PostagemController.salvar);
 router.put('/postagens', PostagemController.editar);
 router.delete('/postagens', PostagemController.excluir);
+router.get('/comentarios', ComentarioController.listar);
+router.post('/comentarios', ComentarioController.salvar);
+router.put('/comentarios', ComentarioController.editar);
+router.delete('/comentarios', ComentarioController.excluir);
 router.get('/listar-mensagens', MensagemController.listarMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
 router.get('/ultimas-mensagens', MensagemController.ultimasMensagens)
