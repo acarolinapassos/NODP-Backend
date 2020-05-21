@@ -30,21 +30,23 @@ module.exports = {
   //Salvar novo usuario (email e senha) : POST > body = email, senha
   //http://localhost:3000/teste/salvar-usuario
   salvar: async (req, res) => {
-    
-    let {
-      email,
-      senha
-    } = req.body;
-    
-    let objeto = {
-      email: email,
-      senha: bcrypt.hashSync(senha, 10)
-    };
-    const criar = await Usuario.create(objeto).then(resposta => {
-      res.send('Usuario cadastrado');
-    }).catch(error => {
-      res.send('Usuario nao cadastrado');
-    });
+    try{
+      let {
+        email,
+        senha
+      } = req.body;
+
+      let objeto = {
+        email: email,
+        senha: bcrypt.hashSync(senha, 10)
+      };
+      const criar = await Usuario.create(objeto);
+
+      res.render('home', {title: 'Pagina inicial'});
+    }
+    catch(error){
+      console.log(error)
+    }
   },
   
   //-------------------------------------------------------------------------
