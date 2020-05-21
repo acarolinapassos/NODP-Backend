@@ -31,6 +31,7 @@ router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
 router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
 router.get('/notificacoes', NotificacaoController.listar);
 router.post('/notificacoes', NotificacaoController.salvar);
-router.delete('/notificacoes', NotificacaoController.excluir)
+router.delete('/notificacoes', NotificacaoController.excluir);
+router.put('/notificacoes', NotificacaoController.editar)
 
 module.exports = router;
