@@ -22,5 +22,6 @@ router.put('/postagens', PostagemController.editar);
 router.delete('/postagens', PostagemController.excluir);
 router.get('/listar-mensagens', MensagemController.listarMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
+router.get('/ultimas-mensagens', MensagemController.ultimasMensagens)
 
 module.exports = router;

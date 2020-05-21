@@ -1,4 +1,4 @@
-const { Mensagem } = require('../models')
+const { Mensagem, Perfil } = require('../models')
 
 module.exports = {
     //-------------------------------------------------------------------------
@@ -31,6 +31,28 @@ module.exports = {
         }
         catch (error) {
             console.log(error);
+        }
+    },
+    // -------------------------------------------------------------------------
+    // Listar ultimas conversas
+    //http://localhost:3000/teste/ultimas-mensages
+    ultimasMensagens: async(req, res, next) => {
+        try {
+            let { usuario } = req.query
+
+            let resposta = await Mensagem.findAll({where: {destinatario_id: usuario}}, {
+                include: [
+                    {
+                        model: Perfil,
+                        as: 'perfis',
+                        required: true,
+                    }
+                ]
+            })
+            res.send(resposta)
+        }
+        catch (error) {
+            res.send('deu error')
         }
     }
 };

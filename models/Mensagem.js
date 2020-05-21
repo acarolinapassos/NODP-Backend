@@ -1,7 +1,7 @@
-/* jshint indent: 2 */
+// /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Mensagem', {
+  let Mensagem = sequelize.define('Mensagem', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -42,4 +42,12 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'mensagens',
       timestamps: false
   });
+
+  Mensagem.associate = (models) => {
+    Mensagem.belongsTo(models.Perfil, {
+    foreignKey: 'id', as: 'perfis'
+    });
+  }
+
+  return Mensagem
 };
