@@ -33,21 +33,26 @@ module.exports = {
   //http://localhost:3000/teste/salvar-usuario
   salvar: async (req, res) => {
     try{
-      let {
-        email,
-        senha
-      } = req.body;
+      let { email, senha } = req.body;
 
       let objeto = {
         email: email,
         senha: bcrypt.hashSync(senha, 10)
       };
-      const criar = await Usuario.create(objeto);
+      const result = await Usuario.create(objeto);
+      //Definir a sessão com o valor do usuario salvo
+
+      req.session.USER = {
+        id: result.dataValues.id,
+        admin: result.dataValues.admin,
+        email: result.dataValues.email,
+        ativo: result.dataValues.ativo
+      };
 
       res.render('home', {title: 'Pagina inicial'});
     }
     catch(error){
-      console.log(error)
+      console.log(error);
     }
   },
   
