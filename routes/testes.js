@@ -8,7 +8,6 @@ const PostagemController = require('./../controllers/PostagemController');
 const ComentarioController = require('./../controllers/ComentarioController');
 const AulasController = require('./../controllers/AulasController')
 
-const MensagemController = require('./../controllers/MensagemController')
 
 router.get('/usuarios', UsuarioController.listar);
 router.post('/salvar-usuario', UsuarioController.salvar);
