@@ -29,6 +29,8 @@ module.exports = {
   },
   
   //-------------------------------------------------------------------------
+  //salvar postagem
+  //http://localhost:3000/teste/postagens
   salvar: async (req, res) => {
     try {
       let {
@@ -53,6 +55,8 @@ module.exports = {
   },
   
   //-------------------------------------------------------------------------
+  //editar postagem
+  //http://localhost:3000/teste/postagens
   editar: async (req, res) => {
     try {
       let {
@@ -79,6 +83,8 @@ module.exports = {
   },
   
   //-------------------------------------------------------------------------
+  //excluir postagem
+  //http://localhost:3000/teste/postagens
   excluir: async (req, res) => {
     try {
       let {

@@ -12,8 +12,10 @@ module.exports = {
     //let { user } = req.session;
     try {
       const users = await Usuario.findAll({
+        attributes: ['id', 'email'],
         include: [
           {
+            //attributes: ['nome', 'avatar'],
             model: Perfil,
             as: 'perfil',
             required: true,
@@ -94,7 +96,7 @@ module.exports = {
         try {
           const usuario = await Perfil.findOne(
             {
-              where: { usuario_id: perfil },
+              where: { id: perfil },
               include: [
                 {
                   model: Usuario,
