@@ -16,7 +16,7 @@ router.get('/usuario', UsuarioController.perfil);
 router.get('/cidades', LocalController.listarCidades);
 router.get('/interesses', InteresseController.listarInteressesDeUmUsuario);
 router.get('/faculdades', FaculdadesController.listar);
-router.get('/postagens', PostagemController.listar);
+router.get('/postagens', PostagemController.listarPostagens);
 router.post('/postagens', PostagemController.salvar);
 router.put('/postagens', PostagemController.editar);
 router.delete('/postagens', PostagemController.excluir);

@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false,
         comment: "null",
         references: {
-          model: 'usuarios',
+          model: 'perfis',
           key: 'id'
         }
       },
