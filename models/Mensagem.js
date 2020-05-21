@@ -45,9 +45,9 @@ module.exports = function(sequelize, DataTypes) {
 
   Mensagem.associate = (models) => {
     Mensagem.belongsTo(models.Perfil, {
-    foreignKey: 'id', as: 'perfis'
+      as: 'perfil_msg', foreignKey: 'usuario_id'
     });
-  }
+  };
 
-  return Mensagem
+  return Mensagem;
 };

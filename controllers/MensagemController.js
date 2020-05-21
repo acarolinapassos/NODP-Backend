@@ -38,21 +38,24 @@ module.exports = {
     //http://localhost:3000/teste/ultimas-mensages
     ultimasMensagens: async(req, res, next) => {
         try {
-            let { usuario } = req.query
+            let { usuario } = req.query;
 
-            let resposta = await Mensagem.findAll({where: {destinatario_id: usuario}}, {
+            let resposta = await Mensagem.findAll({
+                
+                    
+                where: { destinatario_id: usuario },
                 include: [
                     {
                         model: Perfil,
-                        as: 'perfis',
+                        as: 'perfil_msg',
                         required: true,
                     }
                 ]
-            })
-            res.send(resposta)
+            });
+            res.send(resposta);
         }
         catch (error) {
-            res.send('deu error')
+            res.send('deu error');
         }
     }
 };
