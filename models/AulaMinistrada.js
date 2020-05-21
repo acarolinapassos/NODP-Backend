@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('AulaMinistrada', {
+  let AulasMinistradas = sequelize.define('AulaMinistrada', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -57,4 +57,10 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'aulas_ministradas',
       timestamps: false
   });
+  AulasMinistradas.associate = (models) => {
+    AulasMinistradas.belongsTo(models.Perfil, {
+      as: 'perfil_aluno', foreignKey: 'usuario_id'
+    });
+  };
+  return AulasMinistradas
 };

@@ -6,6 +6,7 @@ const InteresseController = require('./../controllers/InteresseController');
 const FaculdadesController = require('./../controllers/FaculdadeController');
 const PostagemController = require('./../controllers/PostagemController');
 const ComentarioController = require('./../controllers/ComentarioController');
+const AulasController = require('./../controllers/AulasController')
 
 const MensagemController = require('./../controllers/MensagemController')
 
@@ -27,6 +28,7 @@ router.put('/comentarios', ComentarioController.editar);
 router.delete('/comentarios', ComentarioController.excluir);
 router.get('/listar-mensagens', MensagemController.listarMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
-router.get('/ultimas-mensagens', MensagemController.ultimasMensagens)
+router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
+router.get('/aulas', AulasController.listar)
 
 module.exports = router;
