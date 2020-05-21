@@ -75,13 +75,14 @@ module.exports = function(sequelize, DataTypes) {
 
   Postagem.associate = (models) => {
 
-    Postagem.belongsTo(models.Usuario, {
-      as: 'usuario', foreignKey: 'usuario_id'
-    });
-
     Postagem.hasMany(models.Comentario, {
       //Forenkey -> da tabela de comentario
       as: 'comentarios', foreignKey: 'post_id'
+    });
+
+    Postagem.belongsTo(models.Perfil, {
+      //Forenkey -> da tabela de Postagem
+      as: 'perfil', foreignKey: 'usuario_id'
     });
     
 

@@ -157,6 +157,10 @@ module.exports = function(sequelize, DataTypes) {
        //Forenkey da tabela de perfis
       as: 'curso', foreignKey:'curso_id'
     });
+    Perfil.belongsTo(models.Postagem, {
+      //Forenkey da tabela de perfis
+      as: 'perfil', foreignKey: 'id'
+    });
   };
   
   return Perfil;
