@@ -10,19 +10,11 @@ module.exports = {
           allowNull: false,
           primaryKey: true,
           comment: "null",
-          autoIncrement: true
-        },
-
-        usuario_id: {
-          type: Sequelize.INTEGER(11),
-          allowNull: false,
-          comment: "null",
           references: {
             model: 'usuarios',
             key: 'id'
           }
         },
-
         nome: {
           type: Sequelize.STRING(80),
           allowNull: false,
