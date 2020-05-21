@@ -134,8 +134,8 @@ module.exports = function(sequelize, DataTypes) {
   
   Perfil.associate = (models) => {
     Perfil.belongsTo(models.Mensagem, {
-      as: 'mensagem', foreignKey: 'id'
-    })
+      as: 'perfil_msg', foreignKey: 'id'
+    });
     Perfil.belongsTo(models.Usuario, {
       //Forenkey da tabela de perfis
       as: 'usuario', foreignKey: 'id'
