@@ -5,6 +5,8 @@ const LocalController = require('./../controllers/LocalController');
 const InteresseController = require('./../controllers/InteresseController');
 const FaculdadesController = require('./../controllers/FaculdadeController');
 const PostagemController = require('./../controllers/PostagemController');
+const ComentarioController = require('./../controllers/ComentarioController');
+
 
 router.get('/usuarios', UsuarioController.listar);
 router.post('/salvar-usuario', UsuarioController.salvar);
@@ -19,5 +21,9 @@ router.get('/postagens', PostagemController.listar);
 router.post('/postagens', PostagemController.salvar);
 router.put('/postagens', PostagemController.editar);
 router.delete('/postagens', PostagemController.excluir);
+router.get('/comentarios', ComentarioController.listar);
+router.post('/comentarios', ComentarioController.salvar);
+router.put('/comentarios', ComentarioController.editar);
+router.delete('/comentarios', ComentarioController.excluir);
 
 module.exports = router;
