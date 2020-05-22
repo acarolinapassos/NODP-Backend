@@ -155,7 +155,7 @@ module.exports = {
           }
         },
         //-------------------------------------------------------------------------
-        
+        //http://localhost:3000/login : POST > body = email, senha
         login: async (req, res, next) => {
           try {
             let { email, senha } = req.body;
