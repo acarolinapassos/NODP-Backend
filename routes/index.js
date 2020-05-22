@@ -18,8 +18,8 @@ router.get('/index', function (req, res, next) {
 router.post('/cadastro', UsuarioController.salvar);
 
 router.get('/cadastro', function (req, res, next) {
-  res.render('cadastro', {title: 'Cadastro'})
-})
+  res.render('cadastro', { title: 'Cadastro' });
+});
 
 /* GET home page. */
 router.get('/home', function (req, res, next) {
