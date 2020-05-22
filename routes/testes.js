@@ -6,18 +6,11 @@ const InteresseController = require('./../controllers/InteresseController');
 const FaculdadesController = require('./../controllers/FaculdadeController');
 const PostagemController = require('./../controllers/PostagemController');
 const ComentarioController = require('./../controllers/ComentarioController');
-<<<<<<< HEAD
 const NotificacaoController = require('./../controllers/NotificacaoController');
-=======
 const AulasController = require('./../controllers/AulasController');
->>>>>>> 924f95346a77a16cb16abab970f65f65e3a35b8c
 const MensagemController = require('./../controllers/MensagemController');
-const NotificacaoController = require('./../controllers/NotificacaoController');
 const MedalhaController = require('./../controllers/MedalhaController');
-<<<<<<< HEAD
-const AulasController = require('./../controllers/AulasController')
-=======
->>>>>>> 924f95346a77a16cb16abab970f65f65e3a35b8c
+
 
 
 router.get('/usuarios', UsuarioController.listar);
