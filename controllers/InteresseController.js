@@ -43,6 +43,18 @@ module.exports = {
         }
       },
       //-------------------------------------------------------------------------
+      salvar: async (req,res) =>{
+        try {
+          let {
+            descricao
+          } = req.body;
+
+          const salvar = await Interesse.create({descricao});
+          res.send('Interesse postado')
+        } catch (error) {
+          console.log(error)
+        }
+      }
 
       
     };

@@ -6,14 +6,11 @@ const InteresseController = require('./../controllers/InteresseController');
 const FaculdadesController = require('./../controllers/FaculdadeController');
 const PostagemController = require('./../controllers/PostagemController');
 const ComentarioController = require('./../controllers/ComentarioController');
-<<<<<<< HEAD
 const NotificacaoController = require('./../controllers/NotificacaoController');
 const MensagemController = require('./../controllers/MensagemController');
 const MedalhaController = require('./../controllers/MedalhaController');
-=======
 const AulasController = require('./../controllers/AulasController')
 
->>>>>>> c81a75f5018ca2bec5efe88704447c38b563a801
 
 router.get('/usuarios', UsuarioController.listar);
 router.post('/salvar-usuario', UsuarioController.salvar);
@@ -39,7 +36,8 @@ router.post('/notificacoes', NotificacaoController.salvar);
 router.delete('/notificacoes', NotificacaoController.excluir);
 router.put('/notificacoes', NotificacaoController.editar);
 router.get('/medalhas', MedalhaController.listar);
-router.post('/medalhas', MedalhaController.salvar)
-router.get('/aulas', AulasController.listar)
+router.post('/medalhas', MedalhaController.salvar);
+router.get('/aulas', AulasController.listar);
+router.post('/interesses', InteresseController.salvar);
 
 module.exports = router;
