@@ -8,6 +8,8 @@ const PostagemController = require('./../controllers/PostagemController');
 const ComentarioController = require('./../controllers/ComentarioController');
 const AulasController = require('./../controllers/AulasController');
 const MensagemController = require('./../controllers/MensagemController');
+const NotificacaoController = require('./../controllers/NotificacaoController');
+const MedalhaController = require('./../controllers/MedalhaController');
 
 
 router.get('/usuarios', UsuarioController.listar);
@@ -30,7 +32,13 @@ router.get('/listar-mensagens', MensagemController.listarMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
 router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
 router.get('/aulas', AulasController.listar);
-
+router.get('/notificacoes', NotificacaoController.listar);
+router.post('/notificacoes', NotificacaoController.salvar);
+router.delete('/notificacoes', NotificacaoController.excluir);
+router.put('/notificacoes', NotificacaoController.editar);
+router.get('/medalhas', MedalhaController.listar);
+router.post('/medalhas', MedalhaController.salvar);
+router.get('/aulas', AulasController.listar);
 
 router.get('/usuario-logado', function (req, res) {
   let user = req.session.USER;
