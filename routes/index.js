@@ -8,15 +8,18 @@ router.get('/', function (req, res, next) {
   res.render('entrar', { title: 'Login', errors: false });
 });
  
-
-router.post('/login', UsuarioController.login);
+// Realizar o login 
+router.post('/login', [
+  check('email', 'Email ou senha inválido').isEmail(),
+  check('senha', 'Email ou senha inválido').isLength({ min: 6 })
+], UsuarioController.login);
 
 /* GET index page. */
 router.get('/index', function(){
 res.render('index', { title: 'Login', errors: false });
 });
 
-/* GET cadastro page. */
+// Realizar o cadastro 
 router.post('/cadastro', [
   check('email', 'Informe um email válido').isEmail(),
   check('senha', 'Senha deve conter 6 caractéres').isLength({ min: 6 })

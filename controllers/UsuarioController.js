@@ -158,13 +158,18 @@ module.exports = {
         //http://localhost:3000/login : POST > body = email, senha
         login: async (req, res, next) => {
           try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+              res.render('entrar', { title: 'Entrar', errors: errors.array()});
+            }
+
             let { email, senha } = req.body;
             let usuarioPesquisado = await Usuario.findOne({
               where: {
                 email
               }
             });
-
+            
             //Verificar se a senha é válida
             let senhaIguais = bcrypt.compareSync(senha, usuarioPesquisado.senha);
             if (!senhaIguais) {
