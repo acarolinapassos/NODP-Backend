@@ -1,4 +1,6 @@
 const bcrypt = require('bcrypt');
+const { check, validationResult } = require('express-validator');
+const auth = require('./../middleware/auth');
 const {
   Usuario, Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso
 } = require('./../models');
@@ -31,25 +33,28 @@ module.exports = {
   //-------------------------------------------------------------------------
   //Salvar novo usuario (email e senha) : POST > body = email, senha
   //http://localhost:3000/teste/salvar-usuario
-  salvar: async (req, res) => {
+  salvar: async (req, res, next) => {
+    
+    const errors = validationResult(req);
+    
+    if (!errors.isEmpty()) {
+      console.log(errors.array());
+      res.render('entrar', { title: 'Cadastro', errors: errors.array() });
+    }
+    
     try{
       let { email, senha } = req.body;
-
-      let objeto = {
+      
+      let user = {
         email: email,
         senha: bcrypt.hashSync(senha, 10)
       };
-      const result = await Usuario.create(objeto);
+      const savedUser = await Usuario.create(user);
       //Definir a sessão com o valor do usuario salvo
-
-      req.session.USER = {
-        id: result.dataValues.id,
-        admin: result.dataValues.admin,
-        email: result.dataValues.email,
-        ativo: result.dataValues.ativo
-      };
-
-      res.render('home', {title: 'Pagina inicial'});
+      
+      //Salvar usuario na sessao e local e direciona para a pagina inicial
+      auth.salvarSessao(req, res, next, savedUser);
+      
     }
     catch(error){
       console.log(error);
@@ -146,6 +151,36 @@ module.exports = {
           }
         },
         //-------------------------------------------------------------------------
+        //http://localhost:3000/login : POST > body = email, senha
+        login: async (req, res, next) => {
+          try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+              res.render('entrar', { title: 'Entrar', errors: errors.array()});
+            }
+
+            let { email, senha } = req.body;
+            let usuarioPesquisado = await Usuario.findOne({
+              where: {
+                email
+              }
+            });
+            
+            //Verificar se a senha é válida
+            let senhaIguais = await bcrypt.compareSync(senha, usuarioPesquisado.senha);
+            if (!senhaIguais) {
+              res.render('entrar', { title: 'Entrar', errors: [{ param: 'email', msg: 'Email ou senha inválida' }] });
+            }
+
+            //Salvar usuario na sessao e local e direcionar para a pagina inicial
+            auth.salvarSessao(req, res, next, usuarioPesquisado);
+
+          } catch (error) {
+            console.log(error);
+            res.render('entrar', { title: 'Entrar', errors: [{ param: 'email', msg: 'Email ou senha inválida' }] });
+          }
+          
+        },
         
       };
       

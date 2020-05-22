@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cookieSession = require('cookie-session');
-
+require('dotenv').config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const testeRouter = require('./routes/testes');
@@ -24,8 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieSession({
   name: 'session',
-  keys: ['JK@#G654/34FF3$F&*0'],
-  maxAge: 60 * 60 * 24
+  keys: [process.env.COOKIE_KEY],
+  resave: false,
+  saveUninitialized: false,
+  maxAge: 60 * 60 * 24 * 1000
 }));
 
 app.use('/', indexRouter);
