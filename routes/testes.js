@@ -29,6 +29,12 @@ router.delete('/comentarios', ComentarioController.excluir);
 router.get('/listar-mensagens', MensagemController.listarMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
 router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
-router.get('/aulas', AulasController.listar)
+router.get('/aulas', AulasController.listar);
+
+
+router.get('/usuario-logado', function (req, res) {
+  let user = req.session.USER;
+  res.send(JSON.stringify(user));
+});
 
 module.exports = router;

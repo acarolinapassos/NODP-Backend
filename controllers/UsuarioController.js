@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { check, validationResult } = require('express-validator');
 const {
   Usuario, Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso
 } = require('./../models');
@@ -32,23 +33,31 @@ module.exports = {
   //Salvar novo usuario (email e senha) : POST > body = email, senha
   //http://localhost:3000/teste/salvar-usuario
   salvar: async (req, res) => {
+    
+    const errors = validationResult(req);
+    
+    if (!errors.isEmpty()) {
+      console.log(errors.array());
+      res.render('entrar', { title: 'Cadastro', errors: errors.array() });
+    }
+    
     try{
       let { email, senha } = req.body;
-
+      
       let objeto = {
         email: email,
         senha: bcrypt.hashSync(senha, 10)
       };
       const result = await Usuario.create(objeto);
       //Definir a sessão com o valor do usuario salvo
-
+      
       req.session.USER = {
         id: result.dataValues.id,
         admin: result.dataValues.admin,
         email: result.dataValues.email,
         ativo: result.dataValues.ativo
       };
-
+      
       res.render('home', {title: 'Pagina inicial'});
     }
     catch(error){
@@ -146,6 +155,37 @@ module.exports = {
           }
         },
         //-------------------------------------------------------------------------
+        
+        login: async (req, res, next) => {
+          try {
+            let { email, senha } = req.body;
+            let usuarioPesquisado = await Usuario.findOne({
+              where: {
+                email
+              }
+            });
+
+            //Verificar se a senha é válida
+            let senhaIguais = bcrypt.compareSync(senha, usuarioPesquisado.senha);
+            if (!senhaIguais) {
+              res.render('entrar', { title: 'Entrar', errors: [{ param: 'email', msg: 'Email ou senha inválida' }] });
+            }
+            
+            //Salvar usuário na sessão
+            req.session.USER = {
+              id: usuarioPesquisado.id,
+              admin: usuarioPesquisado.admin,
+              email: usuarioPesquisado.email,
+              ativo: usuarioPesquisado.ativo
+            };
+            
+            //Redirecionar para a pagina principal
+            res.redirect('home');
+          } catch (error) {
+            res.render('entrar', { title: 'Entrar', errors: [{ param: 'email', msg: 'Email ou senha inválida' }] });
+          }
+          
+        },
         
       };
       
