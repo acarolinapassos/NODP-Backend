@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const auth = require('./../middleware/auth');
 
 /* GET home page. */
 router.get('/home', function (req, res, next) {
@@ -49,6 +50,11 @@ router.get('/notificacoes', function (req, res, next) {
 /* GET mensagens page. */
 router.get('/mensagens', function (req, res, next) {
   res.render('mensagens', { title: 'Últimas Mensagens' });
+});
+
+/* SAIR do sistema */
+router.get('/sair', function (req, res, next) {
+  auth.sair(req, res, next);
 });
 
 module.exports = router;
