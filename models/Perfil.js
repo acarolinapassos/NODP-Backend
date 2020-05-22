@@ -133,6 +133,9 @@ module.exports = function(sequelize, DataTypes) {
   });
   
   Perfil.associate = (models) => {
+    Perfil.belongsTo(models.AulaMinistrada, {
+      as: 'perfil_aluno', foreignKey: 'id'
+    });
     Perfil.belongsTo(models.Mensagem, {
       as: 'perfil_msg', foreignKey: 'id'
     });
