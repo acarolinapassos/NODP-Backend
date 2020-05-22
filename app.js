@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieSession({
   name: 'session',
-  keys: ['JK@#G654/34FF3$F&*0'],
+  keys: ['3ODkwIiwibmFtZSI6IkpvaG4'],
   maxAge: 60 * 60 * 24
 }));
 

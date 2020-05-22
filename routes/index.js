@@ -7,6 +7,16 @@ const { check, validationResult } = require('express-validator');
 router.get('/', function (req, res, next) {
   res.render('entrar', { title: 'Login', errors: false });
 });
+
+/* GET index page. */
+router.get('/index', function (req, res, next) {
+  res.render('entrar', { title: 'Login', errors: false });
+});
+
+/* GET index page. */
+router.get('/login', function (req, res, next) {
+  res.render('entrar', { title: 'Login', errors: false });
+});
  
 // Realizar o login 
 router.post('/login', [
@@ -14,10 +24,6 @@ router.post('/login', [
   check('senha', 'Email ou senha inválido').isLength({ min: 6 })
 ], UsuarioController.login);
 
-/* GET index page. */
-router.get('/index', function(){
-res.render('index', { title: 'Login', errors: false });
-});
 
 // Realizar o cadastro 
 router.post('/cadastro', [
