@@ -1,24 +1,29 @@
 var express = require('express');
 var router = express.Router();
 const UsuarioController = require('../controllers/UsuarioController');
+const { check, validationResult } = require('express-validator');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('entrar', { title: 'Login' });
+  res.render('entrar', { title: 'Login', errors: false });
 });
+ 
 
+router.post('/login', UsuarioController.login);
 
 /* GET index page. */
-router.get('/index', function (req, res, next) {
-  res.render('index', { title: 'Login' });
+router.get('/index', function(){
+res.render('index', { title: 'Login', errors: false });
 });
 
-
 /* GET cadastro page. */
-router.post('/cadastro', UsuarioController.salvar);
+router.post('/cadastro', [
+  check('email', 'Informe um email válido').isEmail(),
+  check('senha', 'Senha deve conter 6 caractéres').isLength({ min: 6 })
+], UsuarioController.salvar);
 
 router.get('/cadastro', function (req, res, next) {
-  res.render('cadastro', { title: 'Cadastro' });
+  res.render('cadastro', { title: 'Cadastro', errors:false });
 });
 
 /* GET home page. */
@@ -33,7 +38,7 @@ router.get('/perfil-usuario/:id?', function (req, res, next) {
 
 /* GET perfil page. */
 router.get('/perfil', function (req, res, next) {
-  res.render('perfil', { title: 'Perfil' });
+  res.render('perfil', { title: 'Perfil'});
 });
 
 /* GET pesquisas page. */
