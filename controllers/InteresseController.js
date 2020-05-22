@@ -46,6 +46,7 @@ module.exports = {
       salvar: async (req,res) =>{
         try {
           let {
+            
             descricao
           } = req.body;
 
