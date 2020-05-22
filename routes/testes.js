@@ -8,7 +8,7 @@ const PostagemController = require('./../controllers/PostagemController');
 const ComentarioController = require('./../controllers/ComentarioController');
 const NotificacaoController = require('./../controllers/NotificacaoController');
 const MensagemController = require('./../controllers/MensagemController');
-
+const MedalhaController = require('./../controllers/MedalhaController');
 
 router.get('/usuarios', UsuarioController.listar);
 router.post('/salvar-usuario', UsuarioController.salvar);
@@ -32,6 +32,8 @@ router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
 router.get('/notificacoes', NotificacaoController.listar);
 router.post('/notificacoes', NotificacaoController.salvar);
 router.delete('/notificacoes', NotificacaoController.excluir);
-router.put('/notificacoes', NotificacaoController.editar)
+router.put('/notificacoes', NotificacaoController.editar);
+router.get('/medalhas', MedalhaController.listar);
+router.post('/medalhas', MedalhaController.salvar)
 
 module.exports = router;
