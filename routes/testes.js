@@ -33,6 +33,7 @@ router.get('/listar-mensagens', MensagemController.listarMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
 router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
 router.get('/aulas', AulasController.listar);
+router.post('/aulas', AulasController.adicionar);
 router.get('/notificacoes', NotificacaoController.listar);
 router.post('/notificacoes', NotificacaoController.salvar);
 router.delete('/notificacoes', NotificacaoController.excluir);
@@ -42,6 +43,7 @@ router.post('/medalhas', MedalhaController.salvar);
 router.get('/aulas', AulasController.listar);
 router.post('/interesses', InteresseController.salvar);
 router.post('/interesses', InteresseController.salvarInteresseEnsino);
+
 
 router.get('/usuario-logado', function (req, res) {
   let user = req.session.USER;
