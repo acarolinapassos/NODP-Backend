@@ -7,7 +7,7 @@ module.exports = {
   //http://localhost:3000/teste/interesses?perfil=1
   listarInteressesDeUmUsuario: async (req, res) => {
     try {
-      let id = req.query.perfil;
+      let id = req.session.USER.id;
       
       //Listar os interesses de aprendizado 
       let interesses_aprendizado = await UsuarioTemInteresseAprendizado.findAll(
@@ -47,11 +47,27 @@ module.exports = {
         try {
           let {
             
-            descricao
+            interesse_id
+            
           } = req.body;
 
-          const salvar = await Interesse.create({descricao});
+          const salvar = await UsuarioTemInteresseAprendizado.create({interesse_id,usuario_id:req.session.USER.id});
           res.send('Interesse postado')
+        } catch (error) {
+          console.log(error)
+        }
+      },
+
+      salvarInteresseEnsino: async (req,res) =>{
+        try {
+          let {
+            
+            interesse_id
+            
+          } = req.body;
+
+          const salvar = await UsuarioTemInteresseEnsino.create({interesse_id,usuario_id:req.session.USER.id});
+          res.send('Interesse de ensino postado')
         } catch (error) {
           console.log(error)
         }

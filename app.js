@@ -32,7 +32,7 @@ app.use(cookieSession({
 
 app.use('/', indexRouter);
 app.use('/teste', testeRouter);
-app.use('/users', auth.autenticar, usersRouter);
+app.use('/users', /*auth.autenticar,*/ usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

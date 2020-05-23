@@ -41,6 +41,7 @@ router.get('/medalhas', MedalhaController.listar);
 router.post('/medalhas', MedalhaController.salvar);
 router.get('/aulas', AulasController.listar);
 router.post('/interesses', InteresseController.salvar);
+router.post('/interesses', InteresseController.salvarInteresseEnsino);
 
 router.get('/usuario-logado', function (req, res) {
   let user = req.session.USER;
