@@ -4,6 +4,7 @@ const auth = require('./../middleware/auth');
 const multer = require('multer');
 const path = require('path');
 const PerfilController = require('./../controllers/PerfilController');
+const HomeController = require('./../controllers/HomeController');
 
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
@@ -34,9 +35,7 @@ var uploadProfileImg = multer({ storage: profileImg });
 
 
 /* GET home page. */
-router.get('/home', function (req, res, next) {
-  res.render('home', { title: 'Home' });
-});
+router.get('/home', HomeController.exibir);
 
 /* GET perfil usuario id page. */
 router.get('/perfil-usuario/:id?', function (req, res, next) {
