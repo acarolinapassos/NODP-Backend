@@ -20,7 +20,9 @@ module.exports = {
         horas_ensino:36,
         horas_estudo:24,
         qtd_moedas:10,
-        qtd_medalhas:25
+        qtd_medalhas: 25,
+        nota_aluno: 3.9,
+        nota_professor: 4.3
       },
       {
         id: 2,
@@ -39,7 +41,9 @@ module.exports = {
         horas_ensino: 28,
         horas_estudo: 21,
         qtd_moedas: 7,
-        qtd_medalhas: 35
+        qtd_medalhas: 35,
+        nota_aluno: 3.7,
+        nota_professor: 4.2
       },
       {
         id: 3,
@@ -58,7 +62,9 @@ module.exports = {
         horas_ensino: 36,
         horas_estudo: 24,
         qtd_moedas: 10,
-        qtd_medalhas: 25
+        qtd_medalhas: 25,
+        nota_aluno: 3.5,
+        nota_professor: 4.2
       },
       {
         id: 4,
@@ -77,7 +83,9 @@ module.exports = {
         horas_ensino: 76,
         horas_estudo: 14,
         qtd_moedas: 19,
-        qtd_medalhas: 250
+        qtd_medalhas: 250,
+        nota_aluno: 3.7,
+        nota_professor: 4.7
       },
       {
         id: 7,
@@ -96,7 +104,9 @@ module.exports = {
         horas_ensino: 36,
         horas_estudo: 24,
         qtd_moedas: 10,
-        qtd_medalhas: 25
+        qtd_medalhas: 25,
+        nota_aluno: 4.6,
+        nota_professor: 3.2
       },
       {
         id: 6,
@@ -115,7 +125,9 @@ module.exports = {
         horas_ensino: 36,
         horas_estudo: 24,
         qtd_moedas: 10,
-        qtd_medalhas: 25
+        qtd_medalhas: 25,
+        nota_aluno: 3.1,
+        nota_professor: 4.3
       },
       {
         id: 5,
@@ -134,7 +146,9 @@ module.exports = {
         horas_ensino: 36,
         horas_estudo: 24,
         qtd_moedas: 10,
-        qtd_medalhas: 25
+        qtd_medalhas: 25,
+        nota_aluno: 3.9,
+        nota_professor: 5.0
       },
       {
         id: 8,
@@ -153,7 +167,9 @@ module.exports = {
         horas_ensino: 36,
         horas_estudo: 24,
         qtd_moedas: 10,
-        qtd_medalhas: 25
+        qtd_medalhas: 25,
+        nota_aluno: 3.9,
+        nota_professor: 4.1
       },
       {
         id: 1,
@@ -172,7 +188,9 @@ module.exports = {
         horas_ensino: 36,
         horas_estudo: 24,
         qtd_moedas: 10,
-        qtd_medalhas: 25
+        qtd_medalhas: 25,
+        nota_aluno: 3.5,
+        nota_professor: 4.2
       },
     ], {});
   },
