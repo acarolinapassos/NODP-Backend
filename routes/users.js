@@ -1,7 +1,37 @@
 var express = require('express');
 var router = express.Router();
 const auth = require('./../middleware/auth');
+const multer = require('multer');
+const path = require('path');
 const PerfilController = require('./../controllers/PerfilController');
+
+//CARREGAR IMAGENS DE POST
+//--------------------------------------------
+var postImg = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join('public','img','posts-img'));
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+var uploadPostImg = multer({ storage: postImg });
+//---------------------------------------------
+//CARREGAR IMAGENS DE PERFIL --CAPA E AVATAR
+//--------------------------------------------
+var profileImg = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, path.join('public', 'img', 'profile-img'));
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname);
+  }
+});
+
+var uploadProfileImg = multer({ storage: profileImg });
+//---------------------------------------------
+
 
 /* GET home page. */
 router.get('/home', function (req, res, next) {
@@ -17,7 +47,7 @@ router.get('/perfil-usuario/:id?', function (req, res, next) {
 router.get('/perfil', PerfilController.exibir);
 
 //Salvar o perfil do usuário
-router.post('/perfil', PerfilController.salvar);
+router.post('/perfil', uploadProfileImg.any(), PerfilController.salvar);
 
 /* GET pesquisas page. */
 router.get('/pesquisas', function (req, res, next) {
@@ -57,6 +87,11 @@ router.get('/mensagens', function (req, res, next) {
 /* SAIR do sistema */
 router.get('/sair', function (req, res, next) {
   auth.sair(req, res, next);
+});
+
+//Postar aprender
+router.post('/postar-aprender', uploadPostImg.any(), function (req, res) {
+  console.log(req.body);
 });
 
 module.exports = router;
