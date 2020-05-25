@@ -1,23 +1,23 @@
 <section id="perfil" onclick="location.href='/users/perfil'">
-  <div class="capa-perfil">
-    <img src="/img/kate.jpg" alt="avatar" class="avatar">
+  <div class="capa-perfil" style="background-image: url(/img/profile-img/<%=perfil.capa%>);">
+    <img src="/img/profile-img/<%=perfil.avatar%> " alt="avatar" class="avatar">
   </div>
   <div class="info">
-    <h1 class="nome">Kate Backinsale</h1>
-    <h2 class="faculdade">Universidade Kansas</h2>
-    <p class="profissao">Atriz</p>
-    <p class="frase">Ser uma excelente atriz e cativar o meu público</p>
+    <h1 class="nome"><%=perfil.nome.slice(0,10)%>...</h1>
+    <h2 class="faculdade"><%=perfil.instituicao.descricao.slice(0,15)%>...</h2>
+    <p class="profissao"><%=perfil.curso.descricao.slice(0,10)%>...</p>
+    <p class="frase"><%=perfil.bio.slice(0,50)%>...</p>
   </div>
   <div class="perfil-atributos">
     <ul class="perfil-atributos-ul">
       <li class="perfil-atributos-ul-li">
         <span class="icone"><i class="fas fa-coins"></i></span>
-        <span class="valor">14</span>
+        <span class="valor"><%=perfil.qtd_moedas%></span>
         <p>Moedas</p>
       </li>
       <li class="perfil-atributos-ul-li">
         <span class="icone"><i class="fas fa-award"></i></span>
-        <span class="valor">21</span>
+        <span class="valor"><%=perfil.qtd_medalhas%></span>
         <p>Medalhas</p>
       </li>
       <li class="perfil-atributos-ul-li">
