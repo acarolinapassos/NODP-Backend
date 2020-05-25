@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -32,7 +32,7 @@ app.use(cookieSession({
 
 app.use('/', indexRouter);
 app.use('/teste', testeRouter);
-app.use('/users', /*auth.autenticar,*/ usersRouter);
+app.use('/users', auth.autenticar, usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

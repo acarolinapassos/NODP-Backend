@@ -10,6 +10,7 @@ const NotificacaoController = require('./../controllers/NotificacaoController');
 const AulasController = require('./../controllers/AulasController');
 const MensagemController = require('./../controllers/MensagemController');
 const MedalhaController = require('./../controllers/MedalhaController');
+const PerfilController = require('./../controllers/PerfilController');
 
 
 
@@ -17,7 +18,7 @@ router.get('/usuarios', UsuarioController.listar);
 router.post('/salvar-usuario', UsuarioController.salvar);
 router.put('/usuario',UsuarioController.editar);
 router.delete('/usuario', UsuarioController.excluir);
-router.get('/usuario', UsuarioController.perfil);
+router.get('/usuario', PerfilController.exibir);
 router.get('/cidades', LocalController.listarCidades);
 router.get('/interesses', InteresseController.listarInteressesDeUmUsuario);
 router.get('/faculdades', FaculdadesController.listar);

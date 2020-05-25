@@ -5,12 +5,12 @@ module.exports = {
   //-------------------------------------------------------------------------
   //Listar faculdades 
   //http://localhost:3000/teste/faculdades
-  listar: async (req, res, next) => {
+  listar: async () => {
     try {
       let faculdades = await InstituicaoEnsino.findAll({
-        limit: 10
+        limit: 100
       });
-      res.send(faculdades);
+      return faculdades;
     } catch (error) {
       console.log(error);
     }
