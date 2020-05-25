@@ -94,7 +94,7 @@ module.exports = function(sequelize, DataTypes) {
     'avatar': {
       type: DataTypes.STRING(250),
       allowNull: false,
-      defaultValue: 'default.png',
+      defaultValue: 'avatar.png',
       comment: "null"
     },
     'turma': {
