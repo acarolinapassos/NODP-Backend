@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const auth = require('./../middleware/auth');
+const PerfilController = require('./../controllers/PerfilController');
 
 /* GET home page. */
 router.get('/home', function (req, res, next) {
@@ -13,9 +14,10 @@ router.get('/perfil-usuario/:id?', function (req, res, next) {
 });
 
 /* GET perfil page. */
-router.get('/perfil', function (req, res, next) {
-  res.render('perfil', { title: 'Perfil' });
-});
+router.get('/perfil', PerfilController.exibir);
+
+//Salvar o perfil do usuário
+router.post('/perfil', PerfilController.salvar);
 
 /* GET pesquisas page. */
 router.get('/pesquisas', function (req, res, next) {
