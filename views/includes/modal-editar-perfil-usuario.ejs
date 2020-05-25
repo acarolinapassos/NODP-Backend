@@ -13,9 +13,9 @@ aria-hidden="true">
   <div class="modal-body">
         <!-- <section class="post-feed container">-->
           <header class="header" id="header">
-            <div class="imagem-background capa">
+            <div class="imagem-background capa" style="background-image: url(/img/profile-img/<%=perfil.capa%>);">
               <div class="header-avatar">
-                <img src="/img/kate.jpg" alt="avatar" class="avatar">
+                <img src="/img/profile-img/<%=perfil.avatar%>" alt="avatar" class="avatar">
               </div>
             </div>
           </header>
@@ -28,13 +28,14 @@ aria-hidden="true">
             <div class="user-info row">
               <div class="informacoes-do-usuario col-lg-4 col-sm-12">
                 <label for="nome" class="texto">Nome</label>
-                <input type="text" name="nome" id="nome" class="texto" class="texto" placeholder="Nome Sobrenome">
+                <input type="text" name="nome" id="nome" class="texto" class="texto" placeholder="Nome Sobrenome" value="<%=perfil.nome%>">
                 
                 <label for="faculdade" class="texto">Instituição de ensino</label>
                 <select name="instituicao_ensino_id" id="faculdade" class="texto"
                 placeholder="Nome da Faculdade">
                 <% for( let faculdade of faculdades) { %>
-                  <option value="<%=faculdade.id%>" class="texto"><%=faculdade.descricao%> </option>
+                  <option value="<%=faculdade.id%>" class="texto" <% if (perfil.instituicao.id == faculdade.id) { %> selected <% } %>
+                    ><%=faculdade.descricao%></option>
                 <% } %>
               </select>
               
@@ -42,7 +43,8 @@ aria-hidden="true">
               <input type="text" name="interesse-aprendizado" id="interesse-aprendizado" class="texto" placeholder="Matematica, Inglês...">
               
               <label for="cidade" class="texto">Cidade</label>
-              <input list="cidades" name="cidade_id" id="cidade" class="texto" placeholder="Sao Paulo">
+              <input list="cidades" name="cidade_id" id="cidade" class="texto" placeholder="Sao Paulo"
+                value="<<%=perfil.cidade.cod_cidades%> - <%=perfil.cidade.nome%>">
               <datalist id="cidades">
                 <option value="16 - Rio Branco">
                 <option value="109 - Maceió">
@@ -112,12 +114,13 @@ aria-hidden="true">
                     <label for="curso" class="texto">Curso</label>
                     <select name="curso_id" id="curso" class="texto" placeholder="Qual seu curso">
                       <% for( let curso of cursos) { %>
-                        <option value="<%=curso.id%>"><%=curso.descricao%></option>
+                        <option value="<%=curso.id%>"
+                          <% if (perfil.curso.id == curso.id) { %> selected <% } %> ><%=curso.descricao%></option>
                       <% } %>
                     </select>
                     
                     <label for="turma" class="texto">Turma</label>
-                    <input type="number" name="turma" id="turma" class="texto" placeholder="2020">
+                    <input type="number" name="turma" id="turma" class="texto" placeholder="2020" value="<%=perfil.turma%>">
                     
                     <label for="interesse-ensino" class="texto">Interesses de ensino</label>
                     <input type="text" name="interesse-ensino" id="interesse-ensino" class="texto"
@@ -129,31 +132,36 @@ aria-hidden="true">
                     
                     <label for="qtd-moedas-cobrado" class="texto">Qtd. de moedas cobrado/h</label>
                     <input type="text" name="quantidade_moedas" id="qtd-moedas-cobrado" class="texto"
-                    placeholder="2">
+                    placeholder="2" <%=perfil.quantidade_moedas%>>
                     
                     <label for="meio-aprendizado" class="texto">Aprender via</label>
                     <select name="metodo_ensino_id" id="meio-aprendizado" class="texto">
-                      <option value="1" class="texto">Online</option>
-                      <option value="2" class="texto">Presencial</option>
-                      <option value="3" class="texto">Presencial e Online</option>
+                      <option value="1" class="texto" <% if (perfil.metodo_aprendizado_id == 1) { %> selected <% } %>>Online</option>
+                      <option value="2" class="texto" <% if (perfil.metodo_aprendizado_id == 2) { %> selected <% } %>>
+                        Presencial</option>
+                      <option value="3" class="texto" <% if (perfil.metodo_aprendizado_id == 3) { %> selected <% } %>>
+                        Presencial e Online</option>
                     </select>
                     
                     <label for="meio-aprendizado" class="texto">Ensinar via</label>
                     <select name="metodo_aprendizado_id" id="meio-aprendizado" class="texto">
-                      <option value="1" class="texto">Online</option>
-                      <option value="2" class="texto">Presencial</option>
-                      <option value="3" class="texto">Presencial e Online</option>
+                      <option value="1" class="texto" <% if (perfil.instituicao_ensino_id == 1) { %> selected <% } %>>
+                        Online</option>
+                      <option value="2" class="texto" <% if (perfil.instituicao_ensino_id == 2) { %> selected <% } %>>
+                        Presencial</option>
+                      <option value="3" class="texto" <% if (perfil.instituicao_ensino_id == 3) { %> selected <% } %>>
+                        Presencial e Online</option>
                     </select>
                     
                     <label for="telefone" class="texto">Telefone de contato</label>
-                    <input type="tel" id="telefone" class="texto" placeholder="(00) 99999-9999" name="celular">
+                    <input type="tel" id="telefone" class="texto" placeholder="(00) 99999-9999" name="celular" value="<%=perfil.celular%> ">
                   </div>
                   
                   
                 </div>
                 <div>
                   <textarea name="bio" rows="2" placeholder="Seu objetivo aqui ..." class="texto bio"
-                  maxlength="250" style="width: 100%;"></textarea>
+                  maxlength="250" style="width: 100%;"><%=perfil.bio%></textarea>
                   <div class="quantidade-caracteres">
                     <p class="texto">250</p>
                   </div>
