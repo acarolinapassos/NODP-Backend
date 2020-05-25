@@ -2,7 +2,6 @@ let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Interesse } = requi
 module.exports = {
   
   salvar: async (req, res, next) => {
-    console.log(req.body);
     let perfil = {};
     let {
       cidade_id,
@@ -20,7 +19,7 @@ module.exports = {
       // qtd_moedas,
       // qtd_medalhas
     } = req.body;
-
+    
     perfil.cidade_id = parseInt(cidade_id);
     perfil.id = req.session.USER.id;
     perfil.nome = nome;
@@ -32,17 +31,17 @@ module.exports = {
     perfil.turma = turma;
     perfil.metodo_ensino_id = metodo_ensino_id;
     perfil.metodo_aprendizado_id = metodo_aprendizado_id;
-    /*
-    let {
-      capa, //ok
-      avatar, //ok
-    } = req.files[0];
-    */
-    //perfil.capa = capa;
-    //perfil.avatar = avatar;
+
+    for (let file of req.files) {
+      if (file.fieldname.toUpperCase() == 'CAPA') {
+        perfil.capa = file.filename;
+      } else if (file.fieldname.toUpperCase() == 'AVATAR') {
+        perfil.avatar = file.filename;
+      }
+    }
     console.log(perfil);
     let result = await Perfil.create(perfil);
-    res.send(result);
+    res.redirect('/users/perfil');
   },
   
   // --------------------------------------------------------------------------
@@ -87,7 +86,7 @@ module.exports = {
         let faculdades = await InstituicaoEnsino.findAll();
         let cursos = await Curso.findAll();
         let interesses = await Interesse.findAll();
-        
+      //res.send(perfil);
         res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses });
       }
       catch (error) {
