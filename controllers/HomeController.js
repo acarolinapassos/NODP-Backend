@@ -1,4 +1,4 @@
-let { Cidade, CanalEnsino, InstituicaoEnsino, Curso } = require('./../models');
+let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso } = require('./../models');
 
 module.exports = {
   exibir: async (req, res) => {
