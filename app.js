@@ -4,7 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cookieSession = require('cookie-session');
-
+require('dotenv').config();
+var bodyParser = require('body-parser')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const testeRouter = require('./routes/testes');
@@ -18,14 +19,18 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cookieSession({
   name: 'session',
-  keys: ['3ODkwIiwibmFtZSI6IkpvaG4'],
-  maxAge: 60 * 60 * 24
+  keys: [process.env.COOKIE_KEY],
+  resave: false,
+  saveUninitialized: false,
+  maxAge: 60 * 60 * 24 * 1000
 }));
 
 app.use('/', indexRouter);

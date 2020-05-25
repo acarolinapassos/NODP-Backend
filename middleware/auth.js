@@ -1,4 +1,5 @@
 module.exports = {
+  //-------------------------------------------------------------------------
   //Verificar se o usuário está logado
   autenticar: (req, res, next) => {
     const LOGADO = req.session.USER != undefined;
@@ -6,20 +7,22 @@ module.exports = {
       res.locals.USER = req.session.USER;
       next();
     } else {
-      res.redirect('/');
+      res.redirect('/login');
     }
   },
-
+  
+  //-------------------------------------------------------------------------
   //Fazer logoff no sistema
   sair: (req, res, next) => {
     req.session.USER = undefined;
     res.locals.USER = undefined;
     res.redirect('/login');
   },
-
+  
+  //-------------------------------------------------------------------------
   //Salvar a sessão do usuário
   salvarSessao: (req, res, next, user) => {
-    //Salvar usuário na sessão
+    //Salvar usuário na sessão e redirecionar para a página inicial 
     req.session.USER = {
       id: user.id,
       admin: user.admin,
@@ -27,6 +30,6 @@ module.exports = {
       ativo: user.ativo
     };
     res.locals.USER = req.session.USER;
-    res.redirect('/home');
+    res.redirect('/users/home');
   }
 };
