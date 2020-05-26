@@ -59,8 +59,8 @@ module.exports = {
         break;
         //Quero ensinar
         case '4':
-          post.preco_aula = req.body.preco_aula;
-          post.preco_aula = parseInt(req.body.duracao_aula);
+          post.preco_aula = parseInt(req.body.preco_aula);
+          post.duracao_aula = parseInt(req.body.duracao_aula);
         break;
         default:
         break;
