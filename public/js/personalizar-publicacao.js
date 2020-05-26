@@ -4,12 +4,13 @@ const URGENTE = document.querySelector('#btn-Urgente');
 const TITULO = document.querySelector('#modalMobile input[name=titulo');
 const QTD_MOEDAS = document.querySelector('#moeda');
 const QTD_TEMPO = document.querySelector('#time');
-
 const BTN_MAIS_TEMPO = document.querySelector('#btn-mais-tempo');
 const BTN_MENOS_TEMPO = document.querySelector('#btn-menos-tempo');
 const BTN_MAIS_MOEDA = document.querySelector('#btn-mais-moeda');
 const BTN_MENOS_MOEDA = document.querySelector('#btn-menos-moeda');
 const INPUT_URGENTE = document.getElementById('input-urgente-mobile');
+const BTN_URGENTE_APRENDER = document.getElementById('btn-Urgente-aprender');
+const INPUT_URGENTE_APRENDER = document.getElementById('input-urgente-aprender');
 
 
 
@@ -66,6 +67,7 @@ const DIMINUIR_MOEDA = () => {
   }
 };
 
+//Mobile
 const FLEGAR_URGENTE = () => {
   URGENTE.classList.toggle('urgente-selecionado');
   (INPUT_URGENTE.value == 1) ? INPUT_URGENTE.value = 0 : INPUT_URGENTE.value = 1;
@@ -79,4 +81,12 @@ BTN_MENOS_MOEDA.addEventListener('click', DIMINUIR_MOEDA);
 URGENTE.addEventListener('click', FLEGAR_URGENTE);
 
 
+//-------------------------------------------------------------------------------------------
+//Desktop - modal aprender
+const FLEGAR_URGENTE_APRENDER = () => {
+  BTN_URGENTE_APRENDER.classList.toggle('urgente-selecionado');
+  (INPUT_URGENTE_APRENDER.value == 1) ? INPUT_URGENTE_APRENDER.value = 0 : INPUT_URGENTE_APRENDER.value = 1;
+};
 
+//lISTERNERS
+BTN_URGENTE_APRENDER.addEventListener('click', FLEGAR_URGENTE_APRENDER);

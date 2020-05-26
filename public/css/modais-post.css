@@ -58,6 +58,11 @@
   color: var(--text-primary-color);
   cursor: pointer;
 }
+#modalAprender .informacoes-do-post .urgente-selecionado {
+  background-color: var(--accent-color);
+  color: var(--text-primary-color);
+  cursor: pointer;
+}
 
 #modalAprender .informacoes-do-post .btn-normal {
   border-bottom: 5px solid var(--secondary-text-color);

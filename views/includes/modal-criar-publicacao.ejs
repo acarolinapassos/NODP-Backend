@@ -5,7 +5,8 @@
     <div class="modal-content">
       <form method="POST" action="/users/postagem" enctype="multipart/form-data">
         
-        <input type="hidden" value="1" name="categoria_id">
+        <input type="hidden" name="categoria_id" value="3">
+        <input type="file" name="imagem" hidden id="input_upload_aprender">
         
         <div class="modal-header">
           <h5 class="modal-title" id="postModalLabel">Criar Publicação</h5>
@@ -26,14 +27,14 @@
             </header> 
             
             <article class="post-feed-article">
-              <div class="img-post">
+              <div class="img-post" id="img_upload_aprender">
                 <!-- <img src="/img/estudando.jpg" alt=""> -->
                 <i class="far fa-image"></i>
               </div>
               <div class="user-info"> 
                 <div class="informacoes-do-post">
                   <div>
-                    <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo">
+                    <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo" required>
                     <h2 class="subtitulo">#Quero aprender</h2>
                   </div>
                   <div>
@@ -41,7 +42,7 @@
                     <input type="button" value="urgente" class="btn-urgente" id="btn-Urgente-aprender">
                   </div>
                 </div>
-                <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post" maxlength="250"></textarea>
+                <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post" maxlength="250" required></textarea>
                 <div class="quantidade-caracteres">
                   <p class="texto">250</p>
                 </div>
@@ -64,7 +65,7 @@
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <form method="POST" action="/users/postagens">
+      <form method="POST" action="/users/postagem" enctype="multipart/form-data">
         <input type="hidden" value="2" name="categoria_id">
         <div class="modal-header">
           <h5 class="modal-title" id="postModalLabel">Criar Publicação</h5>
@@ -316,7 +317,7 @@
   <!--FIM DO MODAL MOBILE-->
   
   
-  <script src="/js/personalizar-publicacao-mobile.js"></script>
+  <script src="/js/personalizar-publicacao.js"></script>
   <script src="/js/upload-image-postagem.js"></script>
   
   
