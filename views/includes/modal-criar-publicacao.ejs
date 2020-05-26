@@ -65,8 +65,12 @@
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
+
       <form method="POST" action="/users/postagem" enctype="multipart/form-data">
+
         <input type="hidden" value="2" name="categoria_id">
+        <input type="file" name="imagem" id="input_upload_aprendendo" hidden>
+
         <div class="modal-header">
           <h5 class="modal-title" id="postModalLabel">Criar Publicação</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Descartar">
@@ -87,20 +91,20 @@
             
             <article class="post-feed-article">
               
-              <div class="img-post">
+              <div class="img-post" id="img_upload_aprendendo">
                 <!-- <img src="/img/estudando.jpg" alt=""> -->
                 <i class="far fa-image"></i>
               </div>
               <div class="user-info">
                 <div class="informacoes-do-post">
                   <div>
-                    <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo">
+                    <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo" required>
                     <h2 class="subtitulo">#Estou aprendendo</h2>
                   </div>
                   
                 </div>
                 <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post"
-                maxlength="250"></textarea>
+                maxlength="250" required></textarea>
                 <div class="quantidade-caracteres">
                   <p class="texto">250</p>
                 </div>
@@ -112,7 +116,9 @@
             <button type="button" class="btn btn-2-l" data-dismiss="modal">Descartar</button>
             <input type="submit" class="btn btn-2-d" value="Publicar">
           </div>
+
         </form>
+
       </div>
     </div>
   </div>
