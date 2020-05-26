@@ -36,6 +36,18 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: '0',
       comment: "null"
     },
+    'preco_aula': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'duracao_aula': {
+      type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
     'categoria_id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -69,25 +81,25 @@ module.exports = function(sequelize, DataTypes) {
       comment: "null"
     }
   }, {
-      tableName: 'postagens',
-      timestamps: false
+    tableName: 'postagens',
+    timestamps: false
   });
-
+  
   Postagem.associate = (models) => {
-
+    
     Postagem.hasMany(models.Comentario, {
       //Forenkey -> da tabela de comentario
       as: 'comentarios', foreignKey: 'post_id'
     });
-
+    
     Postagem.belongsTo(models.Perfil, {
       //Forenkey -> da tabela de Postagem
       as: 'perfil', foreignKey: 'usuario_id'
     });
     
-
+    
   };
-
+  
   return Postagem;
 };
 
