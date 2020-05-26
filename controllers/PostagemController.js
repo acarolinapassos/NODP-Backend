@@ -34,19 +34,19 @@ module.exports = {
   salvar: async (req, res) => {
     try {
       let {
-        usuario_id,
+        
         categoria_id,
         titulo,
         descricao,
-        imagem
+        
       } = req.body;
       
       const salvar = await Postagem.create({
-        usuario_id,
+        usuario_id:req.session.USER.id,
         categoria_id,
         titulo,
         descricao,
-        imagem
+        
       });
       res.send('Post enviado');
     } catch (error) {
