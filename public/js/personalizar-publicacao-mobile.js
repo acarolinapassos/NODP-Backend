@@ -11,29 +11,32 @@ const BTN_MAIS_MOEDA = document.querySelector('#btn-mais-moeda');
 const BTN_MENOS_MOEDA = document.querySelector('#btn-menos-moeda');
 const INPUT_URGENTE = document.getElementById('input-urgente-mobile');
 
+
+
+
 const AJUSTAR_LAYOUT_POSTAGEM_MOBILE = () => {
   let categoria = CATEGORIA.value;
   switch (categoria) {
     case '3':
-      URGENTE.classList.remove('display-none');
-      DETALHES_ENSINAR.classList.add('display-none');
-      TITULO.classList.remove('titulo-total');
-      break;
+    URGENTE.classList.remove('display-none');
+    DETALHES_ENSINAR.classList.add('display-none');
+    TITULO.classList.remove('titulo-total');
+    break;
     case '2':
-      URGENTE.classList.add('display-none');
-      DETALHES_ENSINAR.classList.add('display-none');
-      TITULO.classList.add('titulo-total');
-      break;
+    URGENTE.classList.add('display-none');
+    DETALHES_ENSINAR.classList.add('display-none');
+    TITULO.classList.add('titulo-total');
+    break;
     case '4':
-      URGENTE.classList.add('display-none');
-      DETALHES_ENSINAR.classList.remove('display-none');
-      TITULO.classList.add('titulo-total');
-      break;
+    URGENTE.classList.add('display-none');
+    DETALHES_ENSINAR.classList.remove('display-none');
+    TITULO.classList.add('titulo-total');
+    break;
     case '1':
-      URGENTE.classList.add('display-none');
-      DETALHES_ENSINAR.classList.add('display-none');
-      TITULO.classList.add('titulo-total');
-      break;
+    URGENTE.classList.add('display-none');
+    DETALHES_ENSINAR.classList.add('display-none');
+    TITULO.classList.add('titulo-total');
+    break;
   }
 };
 
@@ -74,3 +77,6 @@ BTN_MENOS_TEMPO.addEventListener('click', DIMINUIR_TEMPO);
 BTN_MAIS_MOEDA.addEventListener('click', AUMENTAR_MOEDA);
 BTN_MENOS_MOEDA.addEventListener('click', DIMINUIR_MOEDA);
 URGENTE.addEventListener('click', FLEGAR_URGENTE);
+
+
+

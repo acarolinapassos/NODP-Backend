@@ -3,8 +3,10 @@
 <div class="modal fade" id="modalAprender" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <form method="POST" action="/users/postagens">
+      <form method="POST" action="/users/postagem">
+
         <input type="hidden" value="1" name="categoria_id">
+
         <div class="modal-header">
           <h5 class="modal-title" id="postModalLabel">Criar Publicação</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Descartar">
@@ -15,12 +17,11 @@
           <!-- <section class="post-feed container">-->
             <header class="post-feed-header">
               <div class="post-feed-header-avatar">
-                <img src="/img/kate.jpg" alt="">
+                <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
               </div>
               <div>
-                <h1 class="user-name subtitulo">Kate Backinsale</h1>
-                <h2 class="user-estudo texto">Aprendendo economia</h2>
-                <span class="data-post texto">Dom. 19:30h</span>
+                <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
+                <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
               </div>
             </header> 
             
@@ -33,7 +34,7 @@
                 <div class="informacoes-do-post">
                   <div>
                     <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo-modal-aprender">
-                    <h2 class="subtitulo">#Quero-Aprender</h2>
+                    <h2 class="subtitulo">#Quero aprender</h2>
                   </div>
                   
                   <div class="btn-urgente texto"><i class="far fa-clock"></i> Pra ontem</div>
@@ -75,12 +76,11 @@
           <!-- <section class="post-feed container">-->
             <header class="post-feed-header">
               <div class="post-feed-header-avatar">
-                <img src="/img/kate.jpg" alt="">
+                 <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
               </div>
               <div>
-                <h1 class="user-name subtitulo">Kate Backinsale</h1>
-                <h2 class="user-estudo texto">Aprendendo economia</h2>
-                <span class="data-post texto">Dom. 19:30h</span>
+                <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
+                <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
               </div>
             </header>
             
@@ -133,12 +133,11 @@
         <!-- <section class="post-feed container">-->
           <header class="post-feed-header">
             <div class="post-feed-header-avatar">
-              <img src="/img/kate.jpg" alt="">
+              <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
             </div>
             <div>
-              <h1 class="user-name subtitulo">Kate Backinsale</h1>
-              <h2 class="user-estudo texto">Aprendendo economia</h2>
-              <span class="data-post texto">Dom. 19:30h</span>
+                <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
+                <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
             </div>
           </header>
           
@@ -191,12 +190,11 @@
         <!-- <section class="post-feed container">-->
           <header class="post-feed-header">
             <div class="post-feed-header-avatar">
-              <img src="/img/kate.jpg" alt="">
+               <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
             </div>
             <div>
-              <h1 class="user-name subtitulo">Kate Backinsale</h1>
-              <h2 class="user-estudo texto">Aprendendo economia</h2>
-              <span class="data-post texto">Dom. 19:30h</span>
+                <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
+                <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
             </div>
           </header>
           
@@ -250,12 +248,11 @@
           <!-- <section class="post-feed container">-->
             <header class="post-feed-header">
               <div class="post-feed-header-avatar">
-                <img src="/img/kate.jpg" alt="">
+                <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
               </div>
               <div>
-                <h1 class="user-name subtitulo">Kate Backinsale</h1>
-                <h2 class="user-estudo texto">Aprendendo economia</h2>
-                <span class="data-post texto">Dom. 19:30h</span>
+                <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
+                <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
               </div>
             </header>
             
@@ -321,4 +318,6 @@
   
   <script src="/js/personalizar-publicacao-mobile.js"></script>
   <script src="/js/upload-image-postagem.js"></script>
+
+ 
   
