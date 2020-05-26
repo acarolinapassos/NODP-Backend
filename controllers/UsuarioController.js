@@ -36,6 +36,7 @@ module.exports = {
   salvar: async (req, res, next) => {
     
     const errors = validationResult(req);
+    let perfil = {};
     
     if (!errors.isEmpty()) {
       console.log(errors.array());
@@ -49,8 +50,24 @@ module.exports = {
         email: email,
         senha: bcrypt.hashSync(senha, 10)
       };
+      
       const savedUser = await Usuario.create(user);
-      //Definir a sessão com o valor do usuario salvo
+
+      //Criar um perfil para o usuário 
+      perfil.cidade_id = 1;
+      perfil.id = savedUser.id;
+      perfil.nome = 'Anônimo';
+      perfil.curso_id = 1;
+      perfil.bio = 'Meu objetivo é...';
+      perfil.celular = '(xx) xxxx-xxxx';
+      perfil.quantidade_moedas = 1;
+      perfil.instituicao_ensino_id = 1;
+      perfil.turma = 2020;
+      perfil.metodo_ensino_id = 1;
+      perfil.metodo_aprendizado_id = 1;
+      perfil.qtd_moedas = 10;
+      
+      let result = await Perfil.create(perfil);
       
       //Salvar usuario na sessao e local e direciona para a pagina inicial
       auth.salvarSessao(req, res, next, savedUser);
@@ -97,59 +114,7 @@ module.exports = {
         }
       },
       
-      // --------------------------------------------------------------------------
-      //Visualizar um perfil com todos os atributos : GET > query ?perfil=5
-      //http://localhost:3000/teste/usuario?perfil=1
-      perfil: async (req, res) => {
-        let { perfil } = req.query;
-        
-        try {
-          const usuario = await Perfil.findOne(
-            {
-              where: { id: perfil },
-              include: [
-                {
-                  model: Usuario,
-                  as: 'usuario',
-                  required: true,
-                },
-                {
-                  model: Cidade,
-                  as: 'cidade',
-                  required: true
-                },
-                {
-                  model: CanalEnsino,
-                  as: 'ensino',
-                  required: true
-                },
-                {
-                  model: CanalEnsino,
-                  as: 'aprendizado',
-                  required: true
-                },
-                {
-                  model: InstituicaoEnsino,
-                  as: 'instituicao',
-                  required: true
-                },
-                {
-                  model: Curso,
-                  as: 'curso',
-                  require:true
-                }
-              ]
-            });
-            
-            res.send(usuario);
-          }
-          catch (error) {
-            console.log(error.message);
-            console.log(error.sql);
-            
-            res.send('Erro ao procurar perfil');
-          }
-        },
+
         //-------------------------------------------------------------------------
         //http://localhost:3000/login : POST > body = email, senha
         login: async (req, res, next) => {
@@ -170,6 +135,7 @@ module.exports = {
             let senhaIguais = await bcrypt.compareSync(senha, usuarioPesquisado.senha);
             if (!senhaIguais) {
               res.render('entrar', { title: 'Entrar', errors: [{ param: 'email', msg: 'Email ou senha inválida' }] });
+              return;
             }
 
             //Salvar usuario na sessao e local e direcionar para a pagina inicial
@@ -178,6 +144,7 @@ module.exports = {
           } catch (error) {
             console.log(error);
             res.render('entrar', { title: 'Entrar', errors: [{ param: 'email', msg: 'Email ou senha inválida' }] });
+            return;
           }
           
         },
