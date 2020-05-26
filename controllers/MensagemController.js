@@ -7,7 +7,18 @@ module.exports = {
     listarMensagens: async (req, res, next) => {
         try {
             let { destinatario, usuario } = req.query;
-            let resposta = await Mensagem.findAll({ where: { usuario_id: usuario, destinatario_id: destinatario } });
+            let resposta = await Mensagem.findAll({ where: {
+                usuario_id: usuario,
+                destinatario_id: destinatario
+            },
+            include: [
+                {
+                    model: Perfil,
+                    as: 'perfil_msg',
+                    required: true,
+                    attributes: ['id', 'nome', 'avatar'],
+                }]
+            });
             res.send(resposta);
         }
         catch (error) {
