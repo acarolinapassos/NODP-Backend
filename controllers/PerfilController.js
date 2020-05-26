@@ -39,8 +39,12 @@ module.exports = {
         perfil.avatar = file.filename;
       }
     }
-    console.log(perfil);
-    let result = await Perfil.create(perfil);
+
+    let result = await Perfil.update(perfil, {
+      where: {
+        id: req.session.USER.id
+      }
+    });
     res.redirect('/users/perfil');
   },
   

@@ -36,6 +36,7 @@ module.exports = {
   salvar: async (req, res, next) => {
     
     const errors = validationResult(req);
+    let perfil = {};
     
     if (!errors.isEmpty()) {
       console.log(errors.array());
@@ -49,8 +50,24 @@ module.exports = {
         email: email,
         senha: bcrypt.hashSync(senha, 10)
       };
+      
       const savedUser = await Usuario.create(user);
-      //Definir a sessão com o valor do usuario salvo
+
+      //Criar um perfil para o usuário 
+      perfil.cidade_id = 1;
+      perfil.id = savedUser.id;
+      perfil.nome = 'Anônimo';
+      perfil.curso_id = 1;
+      perfil.bio = 'Meu objetivo é...';
+      perfil.celular = '(xx) xxxx-xxxx';
+      perfil.quantidade_moedas = 1;
+      perfil.instituicao_ensino_id = 1;
+      perfil.turma = 2020;
+      perfil.metodo_ensino_id = 1;
+      perfil.metodo_aprendizado_id = 1;
+      perfil.qtd_moedas = 10;
+      
+      let result = await Perfil.create(perfil);
       
       //Salvar usuario na sessao e local e direciona para a pagina inicial
       auth.salvarSessao(req, res, next, savedUser);
