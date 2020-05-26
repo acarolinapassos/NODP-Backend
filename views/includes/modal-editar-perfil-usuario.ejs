@@ -4,124 +4,178 @@
 aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document">
   <div class="modal-content">
-    <div class="modal-header">
+  <form action="/users/perfil" method="POST" enctype="multipart/form-data">
+  <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-label="Descartar">
         <span aria-hidden="true">&times;</span>
       </button>
-    </div>
-    <div class="modal-body">
-      <!-- <section class="post-feed container">-->
-        <header class="header">
-          <div class="imagem-background">
-            <div class="header-avatar">
-              <img src="/img/kate.jpg" alt="avatar">
+  </div>
+  <div class="modal-body">
+        <!-- <section class="post-feed container">-->
+          <header class="header" id="header">
+            <div class="imagem-background capa" style="background-image: url(/img/profile-img/<%=perfil.capa%>);">
+              <div class="header-avatar">
+                <img src="/img/profile-img/<%=perfil.avatar%>" alt="avatar" class="avatar">
+              </div>
             </div>
-          </div>
-        </header>
-        
-        <article class="detalhes-dados">
+          </header>
+
+          <input type="file" hidden name="avatar" id="avatar" accept=".jpg, .png">
+          <input type="file" hidden name="capa" id="capa" accept=".jpg, .png">
           
-          <div class="user-info row">
-            <div class="informacoes-do-usuario col-lg-4 col-sm-12">
-              <label for="nome" class="texto">Nome</label>
-              <input type="text" name="nome" id="nome" class="texto" class="texto" placeholder="Nome Sobrenome">
-              
-              <label for="faculdade" class="texto">Instituição de ensino</label>
-              <input type="text" name="faculdade" id="faculdade" class="texto" placeholder="Nome da Faculdade">
+          <div class="detalhes-dados">
+            
+            <div class="user-info row">
+              <div class="informacoes-do-usuario col-lg-4 col-sm-12">
+                <label for="nome" class="texto">Nome</label>
+                <input type="text" name="nome" id="nome" class="texto" class="texto" placeholder="Nome Sobrenome"
+                  value="<%=perfil.nome%>" required>
+                
+                <label for="faculdade" class="texto">Instituição de ensino</label>
+                <select name="instituicao_ensino_id" id="faculdade" class="texto"
+                placeholder="Nome da Faculdade" required>
+                <% for( let faculdade of faculdades) { %>
+                  <option value="<%=faculdade.id%>" class="texto" <% if (perfil.instituicao.id == faculdade.id) { %> selected <% } %>
+                    ><%=faculdade.descricao%></option>
+                <% } %>
+              </select>
               
               <label for="interesse-aprendizado" class="texto">Interesses de aprendizado</label>
               <input type="text" name="interesse-aprendizado" id="interesse-aprendizado" class="texto" placeholder="Matematica, Inglês...">
               
               <label for="cidade" class="texto">Cidade</label>
-              <input type="text" name="cidade" id="cidade" class="texto" placeholder="Sao Paulo">
-              
-            </div>
-            
-            <div class="informacoes-do-usuario col-lg-4 col-sm-12">
-              
-              <label for="estado" class="texto">Estado</label>
-              <select name="estado" id="estado" class="texto">
-                <option value="AC" class="texto">AC</option>
-                <option value="AL" class="texto">AL</option>
-                <option value="AP" class="texto">AP</option>
-                <option value="AM" class="texto">AM</option>
-                <option value="BA" class="texto">BA</option>
-                <option value="CE" class="texto">CE</option>
-                <option value="DF" class="texto">DF</option>
-                <option value="ES" class="texto">ES</option>
-                <option value="GO" class="texto">GO</option>
-                <option value="MA" class="texto">MA</option>
-                <option value="MT" class="texto">MT</option>
-                <option value="MS" class="texto">MS</option>
-                <option value="MG" class="texto">MG</option>
-                <option value="PA" class="texto">PA</option>
-                <option value="PB" class="texto">PB</option>
-                <option value="PR" class="texto">PR</option>
-                <option value="PE" class="texto">PE</option>
-                <option value="PI" class="texto">PI</option>
-                <option value="RJ" class="texto">RJ</option>
-                <option value="RN" class="texto">RN</option>
-                <option value="RS" class="texto">RS</option>
-                <option value="RO" class="texto">RO</option>
-                <option value="RR" class="texto">RR</option>
-                <option value="SC" class="texto">SC</option>
-                <option value="SP" class="texto">SP</option>
-                <option value="SE" class="texto">SE</option>
-                <option value="TO" class="texto">TO</option>
-              </select>
-              
-              <label for="data-nacimento" class="texto">Curso</label>
-              <input type="text" name="curso" id="curso" class="texto" placeholder="Qual seu curso">
-              
-              <label for="qtd-moedas-cobrado" class="texto">Turma</label>
-              <input type="number" name="turma" id="turma" class="texto" placeholder="2020">
-              
-              <label for="interesse-ensino" class="texto">Interesses de ensino</label>
-              <input type="text" name="interesse-ensino" id="interesse-ensino" class="texto"
-              placeholder="Libras, Francês, Redação...">
-              
-            </div>
-            
-            <div class="informacoes-do-usuario col-lg-4 col-sm-12">
-              
-              <label for="qtd-moedas-cobrado" class="texto">Qtd. de moedas cobrado/h</label>
-              <input type="text" name="qtd-moedas-cobrado" id="qtd-moedas-cobrado" class="texto"
-              placeholder="2">
-              
-              <label for="meio-aprendizado" class="texto">Aprender via</label>
-              <select name="meio-aprendizado" id="meio-aprendizado" class="texto">
-                <option value="1" class="texto">Online</option>
-                <option value="2" class="texto">Presencial</option>
-                <option value="3" class="texto">Presencial e Online</option>
-              </select>
-              
-              <label for="meio-aprendizado" class="texto">Ensinar via</label>
-              <select name="meio-aprendizado" id="meio-aprendizado" class="texto">
-                <option value="1" class="texto">Online</option>
-                <option value="2" class="texto">Presencial</option>
-                <option value="3" class="texto">Presencial e Online</option>
-              </select>
-              
-              <label for="telefone" class="texto">Telefone de contato</label>
-              <input type="tel" name="telefone" id="telefone" class="texto" placeholder="(00) 99999-9999">
-            </div>
-            
-            
-          </div>
-          <div>
-            <textarea name="" rows="2" placeholder="Seu objetivo aqui ..." class="texto bio"
-            maxlength="250" style="width: 100%;"></textarea>
-            <div class="quantidade-caracteres">
-              <p class="texto">250</p>
-            </div>
-          </div>
-          
-        </article>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-2-l" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-2-d">Salvar</button>
-      </div>
-    </div>
+              <input list="cidades" name="cidade_id" id="cidade" class="texto" placeholder="Sao Paulo"
+                value="<%=perfil.cidade.cod_cidades%> - <%=perfil.cidade.nome%>" required>
+              <datalist id="cidades">
+                <option value="16 - Rio Branco">
+                <option value="109 - Maceió">
+                <option value="307 - Macapá">
+                <option value="243 - Manaus">
+                <option value="988 - Salvador">
+                <option value="297 - Fortaleza">
+                <option value="1778 - Brasília">
+                <option value="2048 - Vitória">
+                <option value="2174 - Goiânia">
+                <option value="6661 - São Luiz">
+                <option value="4347 - Cuiabá">
+                <option value="58 - Campo Grande">
+                <option value="2754 - Belo Horizonte">
+                <option value="42 - Belém">
+                <option value="4964 - João Pessoa">
+                <option value="6015 - Curitiba">
+                <option value="959 - Recife">
+                <option value="5721 - Teresina">
+                <option value="7043 - Rio de Janeiro">
+                <option value="7221 - Natal">
+                <option value="7994 - Porto Alegre">
+                <option value="7352 - Porto Velho">
+                <option value="7471 - Boa Vista">
+                <option value="8452 - Florianópolis">
+                <option value="9668 - São Paulo">
+                <option value="8770 - Aracajú">
+                <option value="9899 - Palmas">
+                <option value="2204 - Itumbiara">
+              </datalist>
+                    
+                  </div>
+                  
+                  <div class="informacoes-do-usuario col-lg-4 col-sm-12">
+                    
+                    <label for="estado" class="texto">Estado</label>
+                    <select name="estado" id="estado" class="texto">
+                      <option value="AC" class="texto">AC</option>
+                      <option value="AL" class="texto">AL</option>
+                      <option value="AP" class="texto">AP</option>
+                      <option value="AM" class="texto">AM</option>
+                      <option value="BA" class="texto">BA</option>
+                      <option value="CE" class="texto">CE</option>
+                      <option value="DF" class="texto">DF</option>
+                      <option value="ES" class="texto">ES</option>
+                      <option value="GO" class="texto">GO</option>
+                      <option value="MA" class="texto">MA</option>
+                      <option value="MT" class="texto">MT</option>
+                      <option value="MS" class="texto">MS</option>
+                      <option value="MG" class="texto">MG</option>
+                      <option value="PA" class="texto">PA</option>
+                      <option value="PB" class="texto">PB</option>
+                      <option value="PR" class="texto">PR</option>
+                      <option value="PE" class="texto">PE</option>
+                      <option value="PI" class="texto">PI</option>
+                      <option value="RJ" class="texto">RJ</option>
+                      <option value="RN" class="texto">RN</option>
+                      <option value="RS" class="texto">RS</option>
+                      <option value="RO" class="texto">RO</option>
+                      <option value="RR" class="texto">RR</option>
+                      <option value="SC" class="texto">SC</option>
+                      <option value="SP" class="texto">SP</option>
+                      <option value="SE" class="texto">SE</option>
+                      <option value="TO" class="texto">TO</option>
+                    </select>
+                    
+                    <label for="curso" class="texto">Curso</label>
+                    <select name="curso_id" id="curso" class="texto" placeholder="Qual seu curso" required>
+                      <% for( let curso of cursos) { %>
+                        <option value="<%=curso.id%>"
+                          <% if (perfil.curso.id == curso.id) { %> selected <% } %> ><%=curso.descricao%></option>
+                      <% } %>
+                    </select>
+                    
+                    <label for="turma" class="texto">Turma</label>
+                    <input type="number" name="turma" id="turma" class="texto" placeholder="2020" value="<%=perfil.turma%>">
+                    
+                    <label for="interesse-ensino" class="texto">Interesses de ensino</label>
+                    <input type="text" name="interesse-ensino" id="interesse-ensino" class="texto"
+                    placeholder="Libras, Francês, Redação..." required>
+                    
+                  </div>
+                  
+                  <div class="informacoes-do-usuario col-lg-4 col-sm-12">
+                    
+                    <label for="qtd-moedas-cobrado" class="texto">Qtd. de moedas cobrado/h</label>
+                    <input type="number" name="quantidade_moedas" id="qtd-moedas-cobrado" class="texto"
+                    placeholder="2" value="<%=perfil.quantidade_moedas%>" max="3" maxlength="1" required>
+                    
+                    <label for="meio-aprendizado" class="texto">Aprender via</label>
+                    <select name="metodo_ensino_id" id="meio-aprendizado" class="texto" required>
+                      <option value="1" class="texto" <% if (perfil.metodo_aprendizado_id == 1) { %> selected <% } %>>Online</option>
+                      <option value="2" class="texto" <% if (perfil.metodo_aprendizado_id == 2) { %> selected <% } %>>
+                        Presencial</option>
+                      <option value="3" class="texto" <% if (perfil.metodo_aprendizado_id == 3) { %> selected <% } %>>
+                        Presencial e Online</option>
+                    </select>
+                    
+                    <label for="meio-aprendizado" class="texto">Ensinar via</label>
+                    <select name="metodo_aprendizado_id" id="meio-aprendizado" class="texto" required>
+                      <option value="1" class="texto" <% if (perfil.instituicao_ensino_id == 1) { %> selected <% } %>>
+                        Online</option>
+                      <option value="2" class="texto" <% if (perfil.instituicao_ensino_id == 2) { %> selected <% } %>>
+                        Presencial</option>
+                      <option value="3" class="texto" <% if (perfil.instituicao_ensino_id == 3) { %> selected <% } %>>
+                        Presencial e Online</option>
+                    </select>
+                    
+                    <label for="telefone" class="texto">Telefone de contato</label>
+                    <input type="tel" id="telefone" class="texto" placeholder="(00) 99999-9999" name="celular" value="<%=perfil.celular%>">
+                  </div>
+                  
+                  
+                </div>
+                <div>
+                  <textarea name="bio" rows="2" placeholder="Seu objetivo aqui ..." class="texto bio"
+                  maxlength="250" style="width: 100%;" required><%=perfil.bio%></textarea>
+                  <div class="quantidade-caracteres">
+                    <p class="texto">250</p>
+                  </div>
+                </div>
+                
+              </div>
   </div>
-</div>
+  <div class="modal-footer">
+  <button type="button" class="btn btn-2-l" data-dismiss="modal">Cancelar</button>
+  <button type="submit" class="btn btn-2-d">Salvar</button>
+  </div>
+  </form>
+  </div>
+  </div>
+  </div>
+  <script src="/js/perfil.js"></script>

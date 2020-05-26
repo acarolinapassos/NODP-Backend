@@ -50,14 +50,15 @@ module.exports = {
             interesse_id
             
           } = req.body;
-
+          
           const salvar = await UsuarioTemInteresseAprendizado.create({interesse_id,usuario_id:req.session.USER.id});
           res.send('Interesse postado')
         } catch (error) {
           console.log(error)
         }
       },
-
+      
+      
       salvarInteresseEnsino: async (req,res) =>{
         try {
           let {
@@ -65,13 +66,24 @@ module.exports = {
             interesse_id
             
           } = req.body;
-
+          
           const salvar = await UsuarioTemInteresseEnsino.create({interesse_id,usuario_id:req.session.USER.id});
           res.send('Interesse de ensino postado')
         } catch (error) {
           console.log(error)
         }
+      },
+      
+      
+      listar: async () => {
+        try {
+          let interesses = await Interesse.findAll();
+          return interesses;
+        } catch (error) {
+          console.log(error);
+          return;          
+        }
       }
-
+      
       
     };

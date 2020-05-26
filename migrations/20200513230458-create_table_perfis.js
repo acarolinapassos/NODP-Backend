@@ -107,7 +107,7 @@ module.exports = {
         avatar: {
           type: Sequelize.STRING(250),
           allowNull: false,
-          defaultValue: 'default.png',
+          defaultValue: 'avatar.png',
           comment: "null"
         },
         
@@ -138,9 +138,20 @@ module.exports = {
           defaultValue: '0',
           comment: "null"
         },
-
         qtd_medalhas: {
           type: Sequelize.INTEGER(11),
+          allowNull: false,
+          defaultValue: '0',
+          comment: "null"
+        },
+        nota_aluno: {
+          type: Sequelize.DECIMAL(10, 2),
+          allowNull: false,
+          defaultValue: '0',
+          comment: "null"
+        },
+        nota_professor: {
+          type: Sequelize.DECIMAL(10, 2),
           allowNull: false,
           defaultValue: '0',
           comment: "null"

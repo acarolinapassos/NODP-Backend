@@ -94,7 +94,7 @@ module.exports = function(sequelize, DataTypes) {
     'avatar': {
       type: DataTypes.STRING(250),
       allowNull: false,
-      defaultValue: 'default.png',
+      defaultValue: 'avatar.png',
       comment: "null"
     },
     'turma': {
@@ -123,6 +123,18 @@ module.exports = function(sequelize, DataTypes) {
     },
     'qtd_medalhas': {
       type: DataTypes.INTEGER(11),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'nota_aluno': {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'nota_professor': {
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
       defaultValue: '0',
       comment: "null"
@@ -160,7 +172,7 @@ module.exports = function(sequelize, DataTypes) {
       as: 'instituicao', foreignKey:'instituicao_ensino_id'
     });
     Perfil.belongsTo(models.Curso, {
-       //Forenkey da tabela de perfis
+      //Forenkey da tabela de perfis
       as: 'curso', foreignKey:'curso_id'
     });
     Perfil.belongsTo(models.Postagem, {
