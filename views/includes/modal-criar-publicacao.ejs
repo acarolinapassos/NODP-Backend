@@ -3,10 +3,10 @@
 <div class="modal fade" id="modalAprender" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <form method="POST" action="/users/postagem">
-
+      <form method="POST" action="/users/postagem" enctype="multipart/form-data">
+        
         <input type="hidden" value="1" name="categoria_id">
-
+        
         <div class="modal-header">
           <h5 class="modal-title" id="postModalLabel">Criar Publicação</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Descartar">
@@ -33,13 +33,13 @@
               <div class="user-info"> 
                 <div class="informacoes-do-post">
                   <div>
-                    <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo-modal-aprender">
+                    <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo">
                     <h2 class="subtitulo">#Quero aprender</h2>
                   </div>
-                  
-                  <div class="btn-urgente texto"><i class="far fa-clock"></i> Pra ontem</div>
-                  <div class="btn-normal texto"><i class="far fa-clock"></i> De boa</div>
-                  
+                  <div>
+                    <input type="hidden" name="urgente" value="0" id="input-urgente-aprender">
+                    <input type="button" value="urgente" class="btn-urgente" id="btn-Urgente-aprender">
+                  </div>
                 </div>
                 <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post" maxlength="250"></textarea>
                 <div class="quantidade-caracteres">
@@ -76,7 +76,7 @@
           <!-- <section class="post-feed container">-->
             <header class="post-feed-header">
               <div class="post-feed-header-avatar">
-                 <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
+                <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
               </div>
               <div>
                 <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
@@ -94,7 +94,7 @@
                 <div class="informacoes-do-post">
                   <div>
                     <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo">
-                    <h2 class="subtitulo">#Estou-Aprendendo</h2>
+                    <h2 class="subtitulo">#Estou aprendendo</h2>
                   </div>
                   
                 </div>
@@ -136,8 +136,8 @@
               <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
             </div>
             <div>
-                <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
-                <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
+              <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
+              <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
             </div>
           </header>
           
@@ -150,7 +150,7 @@
               <div class="informacoes-do-post">
                 <div>
                   <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo-modal-ensinar">
-                  <h2 class="subtitulo">#Quero-Ensinar</h2>
+                  <h2 class="subtitulo">#Quero ensinar</h2>
                 </div>
                 
                 <div class="btn-urgente texto"><i class="fas fa-coins"></i> 0 Moedas</div>
@@ -190,11 +190,11 @@
         <!-- <section class="post-feed container">-->
           <header class="post-feed-header">
             <div class="post-feed-header-avatar">
-               <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
+              <img src="/img/profile-img/<%=perfil.avatar%>" alt="Avatar">
             </div>
             <div>
-                <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
-                <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
+              <h1 class="user-name subtitulo"><%=perfil.nome%></h1>
+              <h2 class="user-estudo texto"><%=perfil.curso.descricao%></h2>
             </div>
           </header>
           
@@ -207,7 +207,7 @@
               <div class="informacoes-do-post">
                 <div>
                   <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo-modal-ensinando">
-                  <h2 class="subtitulo">#Estou-Ensinando</h2>
+                  <h2 class="subtitulo">#Estou ensinando</h2>
                 </div>
                 
               </div>
@@ -318,6 +318,6 @@
   
   <script src="/js/personalizar-publicacao-mobile.js"></script>
   <script src="/js/upload-image-postagem.js"></script>
-
- 
+  
+  
   
