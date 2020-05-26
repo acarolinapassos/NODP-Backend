@@ -1,7 +1,7 @@
-const CATEGORIA = document.querySelector('#modalMobile select[name=categoria]');
+const CATEGORIA = document.querySelector('#modalMobile select[name=categoria_id]');
 const DETALHES_ENSINAR = document.querySelector('#detalhesEnsinar');
 const URGENTE = document.querySelector('#btn-Urgente');
-const TITULO = document.querySelector('#modalMobile input[name=titulo-modal-ensinando');
+const TITULO = document.querySelector('#modalMobile input[name=titulo');
 const QTD_MOEDAS = document.querySelector('#moeda');
 const QTD_TEMPO = document.querySelector('#time');
 
@@ -9,11 +9,12 @@ const BTN_MAIS_TEMPO = document.querySelector('#btn-mais-tempo');
 const BTN_MENOS_TEMPO = document.querySelector('#btn-menos-tempo');
 const BTN_MAIS_MOEDA = document.querySelector('#btn-mais-moeda');
 const BTN_MENOS_MOEDA = document.querySelector('#btn-menos-moeda');
+const INPUT_URGENTE = document.getElementById('input-urgente-mobile');
 
 const AJUSTAR_LAYOUT_POSTAGEM_MOBILE = () => {
   let categoria = CATEGORIA.value;
   switch (categoria) {
-    case '1':
+    case '3':
       URGENTE.classList.remove('display-none');
       DETALHES_ENSINAR.classList.add('display-none');
       TITULO.classList.remove('titulo-total');
@@ -23,12 +24,12 @@ const AJUSTAR_LAYOUT_POSTAGEM_MOBILE = () => {
       DETALHES_ENSINAR.classList.add('display-none');
       TITULO.classList.add('titulo-total');
       break;
-    case '3':
+    case '4':
       URGENTE.classList.add('display-none');
       DETALHES_ENSINAR.classList.remove('display-none');
       TITULO.classList.add('titulo-total');
       break;
-    case '4':
+    case '1':
       URGENTE.classList.add('display-none');
       DETALHES_ENSINAR.classList.add('display-none');
       TITULO.classList.add('titulo-total');
@@ -64,6 +65,7 @@ const DIMINUIR_MOEDA = () => {
 
 const FLEGAR_URGENTE = () => {
   URGENTE.classList.toggle('urgente-selecionado');
+  (INPUT_URGENTE.value == 1) ? INPUT_URGENTE.value = 0 : INPUT_URGENTE.value = 1;
 };
 
 CATEGORIA.addEventListener('change', AJUSTAR_LAYOUT_POSTAGEM_MOBILE);

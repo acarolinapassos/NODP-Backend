@@ -75,6 +75,18 @@ module.exports = {
         allowNull: false,
         defaultValue: '0',
         comment: "null"
+      },
+      preco_aula: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        defaultValue: '0',
+        comment: "null"
+      },
+      duracao_aula: {
+        type: Sequelize.INTEGER(11),
+        allowNull: false,
+        defaultValue: '0',
+        comment: "null"
       }
     });
   },
