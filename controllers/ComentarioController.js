@@ -20,12 +20,12 @@ listar: async (req,res,next) =>{
         try {
             let {
                 texto,
-                usuario_id,
                 post_id
             } = req.body;
+            
         const salvar = await Comentario.create({
             texto,
-            usuario_id,
+            usuario_id:req.session.USER.id,
             post_id
         }); 
         res.send('Comentário enviado')

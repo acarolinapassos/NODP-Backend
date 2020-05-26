@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
 const auth = require('./../middleware/auth');
-<<<<<<< HEAD
 const PostagemController = require('./../controllers/PostagemController');
-=======
 const multer = require('multer');
 const path = require('path');
 const PerfilController = require('./../controllers/PerfilController');
 const HomeController = require('./../controllers/HomeController');
->>>>>>> c6c2553543c039a2b037a5a8b21171df93e60bf1
+const HomeController = require('./../controllers/HomeController');
+const ComentarioController = require('./../controllers/ComentarioController');
 
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
@@ -92,13 +91,12 @@ router.get('/sair', function (req, res, next) {
   auth.sair(req, res, next);
 });
 
-<<<<<<< HEAD
 router.post('/postagens', PostagemController.salvar);
-=======
 //Postar aprender
 router.post('/postar-aprender', uploadPostImg.any(), function (req, res) {
   console.log(req.body);
 });
->>>>>>> c6c2553543c039a2b037a5a8b21171df93e60bf1
+
+router.post('/comentarios', ComentarioController.salvar);
 
 module.exports = router;
