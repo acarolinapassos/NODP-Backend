@@ -52,7 +52,7 @@ module.exports = {
 
             let resposta = await Mensagem.findAll({
                 where: {
-                    usuario_id: usuario
+                    destinatario_id: usuario
                 },
                 limit: 5,
                 include: [ 
