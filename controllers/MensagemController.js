@@ -6,10 +6,9 @@ module.exports = {
     //http://localhost:3000/teste/listar-mensagens?usuario=1&destinatario=2
     listarMensagens: async (req, res, next) => {
         try {
-            let { destinatario, usuario } = req.query;
+            let usuario = req.session.USER.id;
             let resposta = await Mensagem.findAll({ where: {
                 usuario_id: usuario,
-                destinatario_id: destinatario
             },
             include: [
                 {
@@ -49,12 +48,13 @@ module.exports = {
     //http://localhost:3000/teste/ultimas-mensages
     ultimasMensagens: async(req, res, next) => {
         try {
-            let { usuario } = req.query;
+            let usuario = req.session.USER.id;
 
             let resposta = await Mensagem.findAll({
                 where: {
-                    destinatario_id: usuario
+                    usuario_id: usuario
                 },
+                limit: 5,
                 include: [ 
                     {
                         model: Perfil,
