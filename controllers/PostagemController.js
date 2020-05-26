@@ -33,6 +33,7 @@ module.exports = {
   //http://localhost:3000/teste/postagens
   salvar: async (req, res) => {
     try {
+      post = {};
       let {
         
         categoria_id,
@@ -41,14 +42,33 @@ module.exports = {
         
       } = req.body;
       
-      const salvar = await Postagem.create({
-        usuario_id:req.session.USER.id,
-        categoria_id,
-        titulo,
-        descricao,
-        
-      });
-      res.send('Post enviado');
+      
+      post.categoria_id = categoria_id;
+      post.titulo = titulo;
+      post.descricao = descricao;
+      post.usuario_id = req.session.USER.id;
+      
+      for (let img of req.files) {
+        post.imagem = img.filename;
+      }
+      
+      switch (categoria_id) {
+        //Quero aprender
+        case '3':
+          post.urgente = req.body.urgente;
+        break;
+        //Quero ensinar
+        case '4':
+          post.preco_aula = req.body.preco_aula;
+          post.preco_aula = parseInt(req.body.duracao_aula);
+        break;
+        default:
+        break;
+      }
+      
+      
+      const salvar = await Postagem.create(post);
+      res.redirect('/users/home');
     } catch (error) {
       console.log(error);
     }
@@ -114,18 +134,18 @@ module.exports = {
           GROUP BY postagem.id
           
           `
-
-        );
-
-        res.send(postagens);
-
-      } catch (error) {
+          
+          );
+          
+          res.send(postagens);
+          
+        } catch (error) {
+          
+        }
         
       }
-
-    }
+      
+    };
     
-  };
-  
-  
-  
+    
+    
