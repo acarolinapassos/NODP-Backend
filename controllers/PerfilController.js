@@ -5,19 +5,15 @@ module.exports = {
     let perfil = {};
     let {
       cidade_id,
-      nome, //ok
-      curso_id, //ok
-      bio, //ok
-      celular, //ok
-      quantidade_moedas, //ok
-      instituicao_ensino_id, //OK
-      turma, //ok
-      metodo_ensino_id, //ok
-      metodo_aprendizado_id, //ok
-      // horas_ensino,
-      // horas_estudo,
-      // qtd_moedas,
-      // qtd_medalhas
+      nome,
+      curso_id, 
+      bio, 
+      celular, 
+      quantidade_moedas, 
+      instituicao_ensino_id, 
+      turma, 
+      metodo_ensino_id, 
+      metodo_aprendizado_id, 
     } = req.body;
     
     perfil.cidade_id = parseInt(cidade_id);
@@ -31,7 +27,7 @@ module.exports = {
     perfil.turma = turma;
     perfil.metodo_ensino_id = metodo_ensino_id;
     perfil.metodo_aprendizado_id = metodo_aprendizado_id;
-
+    
     for (let file of req.files) {
       if (file.fieldname.toUpperCase() == 'CAPA') {
         perfil.capa = file.filename;
@@ -39,7 +35,7 @@ module.exports = {
         perfil.avatar = file.filename;
       }
     }
-
+    
     let result = await Perfil.update(perfil, {
       where: {
         id: req.session.USER.id
@@ -90,12 +86,21 @@ module.exports = {
         let faculdades = await InstituicaoEnsino.findAll();
         let cursos = await Curso.findAll();
         let interesses = await Interesse.findAll();
-      //res.send(perfil);
+        //res.send(perfil);
         res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses });
       }
       catch (error) {
         console.log(error.message);
       }
     },
+    
+    //Exibir o perfil de um usuário e suas postagens 
+    exibirPostagemDeUmPerfil: async (req, res, next) => {
+      try {
+        
+      } catch (error) {
+        
+      }
+    }
     
   };
