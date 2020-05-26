@@ -97,7 +97,45 @@ module.exports = {
     //Exibir o perfil de um usuário e suas postagens 
     exibirPostagemDeUmPerfil: async (req, res, next) => {
       try {
+        let id = req.query.perfil;
         
+        (!isNaN(id)) ? id = req.session.USER.id : id = req.query.perfil;
+
+        const perfil = await Perfil.findOne(
+          {
+            where: { id },
+            include: [
+              {
+                model: Cidade,
+                as: 'cidade',
+                required: true
+              },
+              {
+                model: CanalEnsino,
+                as: 'ensino',
+                required: true
+              },
+              {
+                model: CanalEnsino,
+                as: 'aprendizado',
+                required: true
+              },
+              {
+                model: InstituicaoEnsino,
+                as: 'instituicao',
+                required: true
+              },
+              {
+                model: Curso,
+                as: 'curso',
+                require: true
+              }
+            ]
+          });
+
+        //res.send(perfil);
+        res.render('perfil-usuario', { title: 'Usuário', perfil });
+
       } catch (error) {
         
       }
