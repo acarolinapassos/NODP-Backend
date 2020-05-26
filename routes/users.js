@@ -6,7 +6,7 @@ const multer = require('multer');
 const path = require('path');
 const PerfilController = require('./../controllers/PerfilController');
 const HomeController = require('./../controllers/HomeController');
-const HomeController = require('./../controllers/HomeController');
+
 const ComentarioController = require('./../controllers/ComentarioController');
 
 //CARREGAR IMAGENS DE POST
