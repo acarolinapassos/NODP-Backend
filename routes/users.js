@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const auth = require('./../middleware/auth');
+const PostagemController = require('./../controllers/PostagemController');
 
 /* GET home page. */
 router.get('/home', function (req, res, next) {
@@ -56,5 +57,7 @@ router.get('/mensagens', function (req, res, next) {
 router.get('/sair', function (req, res, next) {
   auth.sair(req, res, next);
 });
+
+router.post('/postagens', PostagemController.salvar);
 
 module.exports = router;
