@@ -209,8 +209,8 @@ module.exports = {
             });
             
             //res.send(perfil);
-            res.send(postagens);
-            //res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens });
+            //res.send(postagens);
+            res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens });
             
           } catch (error) {
             console.log(error);

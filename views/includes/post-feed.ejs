@@ -1,64 +1,72 @@
-<section class="post-feed container">
-  
-  <header class="post-feed-header" onclick="location.href='/users/perfil-usuario/1'">
-    <div class="post-feed-header-avatar">
-      <img src="/img/kate.jpg" alt="">
-    </div>
-    <div>
-      <h1 class="user-name subtitulo">Kate Backinsale</h1>
-      <h2 class="user-estudo texto">Aprendendo economia</h2>
-      <span class="data-post texto">Dom. 19:30h</span>
-    </div>
-  </header>
-  
-  <article class="post-feed-article">
-    <div class="img-post">
-      <img src="/img/estudando.jpg" alt="">
-    </div>
-    <div class="user-info">                              
-      <h1 class="titulo">Titulo</h1>
-      <h2>#Subtitulo</h2>
-      <p>
-        Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros commodo tempor.
-      </p>
-    </div>
-  </article>
-  
-  <footer class="post-footer">
-    <div class="post-footer-div">
-      <button class="btn-1b-l btn-legenda"><span class="reacoes">08</span><span class="icone"><i
-            class="fas fa-award"></i></span><span class="texto-botao">medalhas</span></button>
+<% for( let post of postagens ) { %>
 
-      <button class="btn-1b-l btn-legenda"><span class="reacoes">91</span><span class="icone"><i
-        class="far fa-comment-alt"></i></span><span class="texto-botao">comentários</span></button>
-
-        <button class="btn-1b-l btn-legenda"><span class="reacoes">01</span><span class="icone"><i
-          class="fas fa-coins"></i></span><span class="texto-botao">apoios</span></button>
-        </div>
-        <div class="post-coment">
-          <form method="POST" action="/users/comentarios" class="post-coment-form">
-            <input type="hidden" value="2" name="post_id">
-            <div class="img-avatar-coment">
-              <img src="/img/kate.jpg" alt="">
+  <section class="post-feed container">
+    
+    <header class="post-feed-header" onclick="location.href='/users/perfil-usuario?perfil=<%=post.usuario_id%>'">
+      <div class="post-feed-header-avatar">
+        <img src="/img/profile-img/<%=post.perfil.avatar%>" alt="avatar">
+      </div>
+      <div>
+        <h1 class="user-name subtitulo"><%=post.perfil.nome%></h1>
+        <h2 class="user-estudo texto">Aprendendo economia</h2>
+        <span class="data-post texto"><%=post.perfil.data_hora%></span>
+      </div>
+    </header>
+    
+    <article class="post-feed-article">
+      <div class="img-post">
+        <img src="/img/posts-img/<%=post.imagem%>" alt="">
+      </div>
+      <div class="user-info">                              
+        <h1 class="titulo"><%=post.titulo%></h1>
+        <h2>#Subtitulo</h2>
+        <p>
+          <%=post.descricao%>
+        </p>
+      </div>
+    </article>
+    
+    <footer class="post-footer">
+      <div class="post-footer-div">
+        <button class="btn-1b-l btn-legenda"><span class="reacoes"><%=post.quantidade_medalhas%></span><span class="icone"><i
+          class="fas fa-award"></i></span><span class="texto-botao">medalhas</span></button>
+          
+          <button class="btn-1b-l btn-legenda"><span class="reacoes"><%=post.comentarios.length%></span><span class="icone"><i
+            class="far fa-comment-alt"></i></span><span class="texto-botao">comentários</span></button>
+            
+            <button class="btn-1b-l btn-legenda"><span class="reacoes"><%=post.quantidade_apoios%></span><span class="icone"><i
+              class="fas fa-coins"></i></span><span class="texto-botao">apoios</span></button>
             </div>
-            <div class="div-input-comentario">
-              <input type="text" name="texto" class="input-comentario" autocomplete="off">
-            </div>
-          </form>
-
-          <ul class="footer-coment-ul">
-            <li class="li-comentario">
-              <div class="img-avatar-coment">
-                <img src="/img/mateus.jpg" alt="">
+            <div class="post-coment">
+              
+              <form method="POST" action="/users/comentarios" class="post-coment-form">
+                <input type="hidden" value="<%=post.id%> " name="post_id">
+                <div class="img-avatar-coment">
+                  <img src="/img/profile-img/<%=perfil.avatar%> " alt="avatar">
+                </div>
+                <div class="div-input-comentario">
+                  <input type="text" name="texto" class="input-comentario" autocomplete="off">
+                </div>
+              </form>
+              
+              <ul class="footer-coment-ul">
+                
+                <% for( let coment of post.comentarios ) { %>
+                  <li class="li-comentario">
+                    <div class="img-avatar-coment">
+                      <img src="/img/profile-img/<%=coment.perfil.avatar%>" alt="avatar">
+                    </div>
+                    <div class="div-li-comentario">
+                      <p class="li-comentario texto"><%=coment.texto%> </p>
+                    </div>
+                  </li>
+                  <% } %>
+                  
+                </ul>
+                
               </div>
-              <div class="div-li-comentario">
-                <p class="li-comentario texto">Lorem ipsum dolor sit amet, 
-                  consectetur adipisicing elit. Repudiandae animi, doloremque fugit!</p>
-              </div>
-            </li>
-          </ul>
-
-        </div>
-      </footer>
-      
-    </section>
+            </footer>
+            
+          </section>
+          
+          <% } %>
