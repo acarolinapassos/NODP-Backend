@@ -237,7 +237,8 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       
-      <form action="/postagem/publicar" method="post">
+      <form action="/users/postagem" method="post" enctype="multipart/form-data">
+        <input type="file" name="imagem" hidden id="input_file_mobile">
         
         <div class="modal-header">
           <h5 class="modal-title" id="postModalLabel">Criar Publicação</h5>
@@ -259,9 +260,9 @@
             </header>
             
             <article class="post-feed-article">
-              <div class="img-post">
+              <div class="img-post" id="imagem_upload_mobile">
                 <!-- <img src="/img/estudando.jpg" alt=""> -->
-                <i class="far fa-image"></i>
+                <i class="far fa-image" id="icon_img_mobile"></i>
               </div>
               <div class="user-info">
                 <div class="informacoes-do-post">
@@ -270,15 +271,16 @@
                     <!-- <h2 class="subtitulo">#Estou-Ensinando</h2> -->
                     <div class="form-group">
                       <!-- <label for="sel1">Select list:</label> -->
-                      <select class="form-control" id="categoria" name="categoria_id">
-                        <option value="1">#Quero-Aprender</option>
-                        <option value="2">#Estou-Aprendendo</option>
-                        <option value="3">#Quero-Ensinar</option>
-                        <option value="4">#Estou-Ensinando</option>
+                      <select class="form-control" id="categoria" name="categoria_id" required>
+                        <option value="3">#Quero aprender</option>
+                        <option value="2">#Estou aprendendo</option>
+                        <option value="4">#Quero ensinar</option>
+                        <option value="1">#Estou ensinando</option>
                       </select>
                     </div>
                     <div>
-                      <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo">
+                      <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo" required>
+                      <input type="hidden" name="urgente" value="0" id="input-urgente-mobile">
                       <input type="button" value="urgente" class="btn-urgente" id="btn-Urgente">
                     </div>
                     <div class="dados-ensinar display-none" id="detalhesEnsinar">
@@ -297,7 +299,7 @@
                   
                 </div>
                 <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post"
-                maxlength="250"></textarea>
+                maxlength="250" required></textarea>
                 <div class="quantidade-caracteres">
                   <p class="texto">250</p>
                 </div>
@@ -306,7 +308,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-2-l" data-dismiss="modal">Descartar</button>
-            <button type="submit" class="btn btn-2-d" value="Publicar">
+            <input type="submit" class="btn btn-2-d" value="Publicar">
           </div>
           
         </form>
@@ -318,4 +320,5 @@
   
   
   <script src="/js/personalizar-publicacao-mobile.js"></script>
+  <script src="/js/upload-image-postagem.js"></script>
   

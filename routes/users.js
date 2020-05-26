@@ -89,7 +89,7 @@ router.get('/sair', function (req, res, next) {
   auth.sair(req, res, next);
 });
 
-router.post('/postagens', PostagemController.salvar);
+router.post('/postagem', uploadPostImg.any(), PostagemController.salvar);
 //Postar aprender
 router.post('/postar-aprender', uploadPostImg.any(), function (req, res) {
   console.log(req.body);
