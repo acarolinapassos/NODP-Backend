@@ -1,4 +1,5 @@
-let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Interesse, Postagem, Comentario } = require('./../models');
+let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Interesse, Postagem, Comentario, CategoriaPostagem } = require('./../models');
+const moment = require('moment');
 module.exports = {
   
   salvar: async (req, res, next) => {
@@ -203,18 +204,29 @@ module.exports = {
                   as: 'perfil',
                   require: false,
                   attributes: ['id', 'nome', 'avatar'],
-                }
-              ]
-              // limit:10
-            });
-            
-            //res.send(perfil);
-            //res.send(postagens);
-            res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens });
-            
-          } catch (error) {
-            console.log(error);
+                  include: [
+                    {
+                      model: Curso,
+                      as: 'curso',
+                      require: true
+                    }]
+                  },
+                  {
+                    model: CategoriaPostagem,
+                    as: 'categoria',
+                    require:true
+                  }
+                ]
+                // limit:10
+              });
+              
+              //res.send(perfil);
+              //res.send(postagens);
+          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment });
+              
+            } catch (error) {
+              console.log(error);
+            }
           }
-        }
-        
-      };
+          
+        };

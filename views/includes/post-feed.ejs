@@ -8,8 +8,8 @@
       </div>
       <div>
         <h1 class="user-name subtitulo"><%=post.perfil.nome%></h1>
-        <h2 class="user-estudo texto">Aprendendo economia</h2>
-        <span class="data-post texto"><%=post.perfil.data_hora%></span>
+        <h2 class="user-estudo texto"><%=post.perfil.curso.descricao%></h2>
+        <span class="data-post texto"><%=moment(post.data_hora).format('DD/MM hh:mm').toString()%> </span>
       </div>
     </header>
     
@@ -19,7 +19,7 @@
       </div>
       <div class="user-info">                              
         <h1 class="titulo"><%=post.titulo%></h1>
-        <h2>#Subtitulo</h2>
+        <h2><%=post.categoria.descricao%></h2>
         <p>
           <%=post.descricao%>
         </p>
