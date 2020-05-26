@@ -87,6 +87,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 3vh;
 }
 
 .post-coment-form .img-avatar-coment {
