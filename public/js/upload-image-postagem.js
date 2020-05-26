@@ -7,6 +7,9 @@ const INPUT_FILE_APRENDER = document.getElementById('input_upload_aprender');
 const IMG_APRENDENDO = document.getElementById('img_upload_aprendendo');
 const INPUT_FILE_APRENDENDO = document.getElementById('input_upload_aprendendo');
 
+const IMG_ENSINAR = document.getElementById('img_upload_ensinar');
+const INPUT_FILE_ENSINAR = document.getElementById('input_upload_ensinar');
+
 
 
 const adicionar_img_mobile = (event) => {
@@ -25,6 +28,12 @@ const adicionar_img_aprendendo = () => {
   event.preventDefault();
   event.stopPropagation();
   INPUT_FILE_APRENDENDO.click();
+};
+
+const adicionar_img_ensinar = () => {
+  event.preventDefault();
+  event.stopPropagation();
+  INPUT_FILE_ENSINAR.click();
 };
 
 
@@ -48,6 +57,9 @@ const carregar_imagem = async (event) => {
         case 'INPUT_UPLOAD_APRENDENDO':
         IMG_APRENDENDO.style.backgroundImage = `url("${dataUrl}")`;
         break;
+        case 'INPUT_UPLOAD_ENSINAR':
+        IMG_ENSINAR.style.backgroundImage = `url("${dataUrl}")`;
+        break;
       default:
         break;
     }
@@ -70,6 +82,12 @@ INPUT_FILE_APRENDER.addEventListener('change', async function (event) {
 //Realizar upload de imagem modal aprendendo desktop
 IMG_APRENDENDO.addEventListener('click', adicionar_img_aprendendo);
 INPUT_FILE_APRENDENDO.addEventListener('change', async function (event) {
+  carregar_imagem(event);
+});
+
+//Realizar upload de imagem modal ensinar desktop
+IMG_ENSINAR.addEventListener('click', adicionar_img_ensinar);
+INPUT_FILE_ENSINAR.addEventListener('change', async function (event) {
   carregar_imagem(event);
 });
 
