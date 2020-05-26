@@ -7,6 +7,8 @@ const path = require('path');
 const PerfilController = require('./../controllers/PerfilController');
 const HomeController = require('./../controllers/HomeController');
 
+const ComentarioController = require('./../controllers/ComentarioController');
+
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
 var postImg = multer.diskStorage({
@@ -89,10 +91,13 @@ router.get('/sair', function (req, res, next) {
   auth.sair(req, res, next);
 });
 
+router.post('/postagens', PostagemController.salvar);
 router.post('/postagem', uploadPostImg.any(), PostagemController.salvar);
 //Postar aprender
 router.post('/postar-aprender', uploadPostImg.any(), function (req, res) {
   console.log(req.body);
 });
+
+router.post('/comentarios', ComentarioController.salvar);
 
 module.exports = router;
