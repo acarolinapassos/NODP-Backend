@@ -1,4 +1,4 @@
-let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Postagem, Comentario, CategoriaPostagem } = require('./../models');
+let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Postagem, Comentario, CategoriaPostagem, Mensagem } = require('./../models');
 const moment = require('moment');
 
 module.exports = {
@@ -77,9 +77,24 @@ module.exports = {
             ]
             // limit:10
           });
+
+          let mensagens = await Mensagem.findAll({
+            where: {
+                destinatario_id: 1
+            },
+            limit: 3,
+            include: [ 
+                {
+                    model: Perfil,
+                    as: 'perfil_msg',
+                    required: true,
+                    attributes: ['id', 'nome', 'avatar'],
+                }
+            ]
+        });
           
-      //res.send(postagens);
-      res.render('home', { title: 'Home', perfil, postagens, moment });
+      // res.send(mensagens);
+      res.render('home', { title: 'Home', perfil, postagens, moment, mensagens });
         }
         catch (error) {
           console.log(error.message);
