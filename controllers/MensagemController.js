@@ -54,7 +54,7 @@ module.exports = {
                 where: {
                     destinatario_id: usuario
                 },
-                limit: 5,
+                limit: 3,
                 include: [ 
                     {
                         model: Perfil,

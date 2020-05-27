@@ -6,7 +6,7 @@ const multer = require('multer');
 const path = require('path');
 const PerfilController = require('./../controllers/PerfilController');
 const HomeController = require('./../controllers/HomeController');
-
+const NotificacaoController = require('./../controllers/NotificacaoController');
 const ComentarioController = require('./../controllers/ComentarioController');
 
 //CARREGAR IMAGENS DE POST
@@ -77,10 +77,11 @@ router.get('/apoiadores', function (req, res, next) {
   res.render('apoiadores', { title: 'Apoiadores' });
 });
 
-/* GET notificacoes page. */
-router.get('/notificacoes', function (req, res, next) {
-  res.render('notificacoes', { title: 'Últimas notificações' });
-});
+/* Renderizar pagina de notificação */
+router.get('/notificacoes', NotificacaoController.listar);
+
+
+router.get('/notificacao', NotificacaoController.exibir);
 
 /* GET mensagens page. */
 router.get('/mensagens', function (req, res, next) {
