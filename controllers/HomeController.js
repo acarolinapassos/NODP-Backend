@@ -51,7 +51,7 @@ module.exports = {
               include: [
                 {
                   model: Perfil,
-                  as: 'perfil',
+                  as: 'perfil_coment',
                   require: true,
                   attributes: ['id', 'nome', 'avatar'],
                 }
@@ -60,7 +60,7 @@ module.exports = {
             {
               model: Perfil,
               as: 'perfil',
-              require: false,
+              require: true,
               attributes: ['id', 'nome', 'avatar'],
               include: [
                 {

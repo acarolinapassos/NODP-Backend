@@ -28,9 +28,9 @@ listar: async (req,res,next) =>{
             usuario_id:req.session.USER.id,
             post_id
         }); 
-        res.send('Comentário enviado')
+            res.redirect('/users/home');
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     },
    // editar comentarios
