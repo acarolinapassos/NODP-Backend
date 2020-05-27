@@ -31,6 +31,7 @@ router.post('/comentarios', ComentarioController.salvar);
 router.put('/comentarios', ComentarioController.editar);
 router.delete('/comentarios', ComentarioController.excluir);
 router.get('/listar-mensagens', MensagemController.listarMensagens);
+router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
 router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
 router.get('/aulas', AulasController.listar);

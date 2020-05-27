@@ -96,6 +96,10 @@ module.exports = function(sequelize, DataTypes) {
       //Forenkey -> da tabela de Postagem
       as: 'perfil', foreignKey: 'usuario_id'
     });
+
+    Postagem.belongsTo(models.CategoriaPostagem, {
+      as:'categoria', foreignKey:'categoria_id'
+    });
     
     
   };

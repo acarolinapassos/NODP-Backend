@@ -41,9 +41,10 @@ var uploadProfileImg = multer({ storage: profileImg });
 router.get('/home', HomeController.exibir);
 
 /* GET perfil usuario id page. */
-router.get('/perfil-usuario/:id?', function (req, res, next) {
-  res.render('perfil-usuario', { title: 'Usuário' });
-});
+router.get('/perfil-usuario', PerfilController.exibirPerfilDeAmigo);
+
+/* GET perfil usuario id page. */
+router.get('/posts-usuario', PerfilController.exibirPostagensDeAmigo);
 
 /* GET perfil page. */
 router.get('/perfil', PerfilController.exibir);
@@ -93,10 +94,6 @@ router.get('/sair', function (req, res, next) {
 
 router.post('/postagens', PostagemController.salvar);
 router.post('/postagem', uploadPostImg.any(), PostagemController.salvar);
-//Postar aprender
-router.post('/postar-aprender', uploadPostImg.any(), function (req, res) {
-  console.log(req.body);
-});
 
 router.post('/comentarios', ComentarioController.salvar);
 

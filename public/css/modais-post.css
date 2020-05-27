@@ -187,6 +187,15 @@
   cursor: pointer;
 }
 
+#modalEnsinar #moeda-desktop{
+  max-width: 9vw;
+  width: 9vw;
+}
+#modalEnsinar #time-desktop {
+  max-width: 9vw;
+  width: 9vw;
+}
+
 /*FIM DO CSS PARA O MODAL ENSINAR*/
 
 
