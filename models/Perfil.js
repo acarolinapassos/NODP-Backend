@@ -179,6 +179,10 @@ module.exports = function(sequelize, DataTypes) {
       //Forenkey da tabela de perfis
       as: 'perfil', foreignKey: 'id'
     });
+    Perfil.hasOne(models.Comentario, {
+      //Forenkey da tabela de perfis
+      as: 'perfil_coment', foreignKey: 'id'
+    });
   };
   
   return Perfil;
