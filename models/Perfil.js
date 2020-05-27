@@ -126,6 +126,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: '0',
       comment: "null"
+    },
+    'nota_aluno': {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
+    },
+    'nota_professor': {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: '0',
+      comment: "null"
     }
   }, {
     tableName: 'perfis',
@@ -160,12 +172,16 @@ module.exports = function(sequelize, DataTypes) {
       as: 'instituicao', foreignKey:'instituicao_ensino_id'
     });
     Perfil.belongsTo(models.Curso, {
-       //Forenkey da tabela de perfis
+      //Forenkey da tabela de perfis
       as: 'curso', foreignKey:'curso_id'
     });
     Perfil.belongsTo(models.Postagem, {
       //Forenkey da tabela de perfis
       as: 'perfil', foreignKey: 'id'
+    });
+    Perfil.hasOne(models.Comentario, {
+      //Forenkey da tabela de perfis
+      as: 'perfil_coment', foreignKey: 'id'
     });
   };
   

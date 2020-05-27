@@ -43,6 +43,10 @@ module.exports = function(sequelize, DataTypes) {
       //Forenkey -> da tabela de Postagem
       as: 'comentarios', foreignKey: 'id'
     });
+    Comentario.belongsTo(models.Perfil, {
+      //Forenkey -> da tabela de Postagem
+      as: 'perfil_coment', foreignKey: 'usuario_id'
+    });
   
   };
   return Comentario;
