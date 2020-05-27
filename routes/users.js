@@ -6,6 +6,7 @@ const multer = require('multer');
 const path = require('path');
 const PerfilController = require('./../controllers/PerfilController');
 const HomeController = require('./../controllers/HomeController');
+const NotificacaoController = require('./../controllers/NotificacaoController');
 
 const ComentarioController = require('./../controllers/ComentarioController');
 
@@ -78,9 +79,10 @@ router.get('/apoiadores', function (req, res, next) {
 });
 
 /* GET notificacoes page. */
-router.get('/notificacoes', function (req, res, next) {
-  res.render('notificacoes', { title: 'Últimas notificações' });
-});
+// router.get('/notificacoes', function (req, res, next) {
+//   res.render('notificacoes', { title: 'Últimas notificações' });
+// });
+router.get('/notificacoes', NotificacaoController.exibir);
 
 /* GET mensagens page. */
 router.get('/mensagens', function (req, res, next) {
