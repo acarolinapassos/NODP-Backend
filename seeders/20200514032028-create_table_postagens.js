@@ -14,9 +14,12 @@ module.exports = {
         descricao:'Feliz demais porq aprendi async await',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:2,
+      {
+        id: 2,
         usuario_id: 1,
         quantidade_medalhas: 4,
         quantidade_apoios: 1,
@@ -25,9 +28,12 @@ module.exports = {
         descricao: 'PHP é da hora mano',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:3,
+      {
+        id: 3,
         usuario_id: 1,
         quantidade_medalhas: 7,
         quantidade_apoios: 8,
@@ -36,9 +42,12 @@ module.exports = {
         descricao: 'Caraca mano, aprendi a fazer API com NODE',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:4,
+      {
+        id: 4,
         usuario_id: 1,
         quantidade_medalhas: 9,
         quantidade_apoios: 1,
@@ -47,9 +56,12 @@ module.exports = {
         descricao: 'Aprendi a dar banho em gato',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:5,
+      {
+        id: 5,
         usuario_id:2,
         quantidade_medalhas:1, 
         quantidade_apoios:8,
@@ -58,9 +70,12 @@ module.exports = {
         descricao:'Pessoal precisa aprender matemática',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:6,
+      {
+        id: 6,
         usuario_id: 2,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -69,9 +84,12 @@ module.exports = {
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:7,
+      {
+        id: 7,
         usuario_id: 2,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -80,9 +98,12 @@ module.exports = {
         descricao: 'Matemática dá um nó em minha cabeça',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:8,
+      {
+        id: 8,
         usuario_id: 3,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -91,9 +112,12 @@ module.exports = {
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:9,
+      {
+        id: 9,
         usuario_id: 3,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -102,9 +126,12 @@ module.exports = {
         descricao: 'Quero aprender um pouco mais sobre economia ',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:10,
+      {
+        id: 10,
         usuario_id: 3,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -113,9 +140,12 @@ module.exports = {
         descricao: 'Legal mesmo é fazer api com javascript em nodeJS',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:11,
+      {
+        id: 11,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -124,9 +154,12 @@ module.exports = {
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:12,
+      {
+        id: 12,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -135,9 +168,12 @@ module.exports = {
         descricao: 'Mussum Ipsum, cacilds vidis litro abertis. Mauris nec dolor in eros commodo tempor.',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:13,
+      {
+        id: 13,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -146,9 +182,12 @@ module.exports = {
         descricao: 'Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Per aumento de cachacis, eu reclamis.' ,
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:14,
+      {
+        id: 14,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -157,9 +196,12 @@ module.exports = {
         descricao: ' Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:15,
+      {
+        id: 15,
         usuario_id: 5,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -168,9 +210,12 @@ module.exports = {
         descricao: 'Não pode faltar lorem nessas paradas de texto',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:16,
+      {
+        id: 16,
         usuario_id: 6,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -179,9 +224,12 @@ module.exports = {
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:17,
+      {
+        id: 17,
         usuario_id: 6,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -190,9 +238,12 @@ module.exports = {
         descricao: ' Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:18,
+      {
+        id: 18,
         usuario_id: 7,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -201,9 +252,12 @@ module.exports = {
         descricao: ' Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:19,
+      {
+        id: 19,
         usuario_id:7,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -212,9 +266,12 @@ module.exports = {
         descricao:'Bora torcer porque estudar pra mim já deu por hoje',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:20,
+      {
+        id: 20,
         usuario_id:1,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -222,9 +279,12 @@ module.exports = {
         titulo:'Mussum tai na parada' ,
         descricao:' Paisis, filhis, espiritis santis. Cevadis im ampola pa arma uma pindureta.',
         imagem: 'default.png',
-        urgente:0
+        urgente: 0,
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:21,
+      {
+        id: 21,
         usuario_id:2,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -233,9 +293,12 @@ module.exports = {
         descricao:'Não pode faltar lorem nessas paradas não mano',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:22,
+      {
+        id: 22,
         usuario_id: 2,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -244,9 +307,12 @@ module.exports = {
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:23,
+      {
+        id: 23,
         usuario_id:3,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -255,9 +321,12 @@ module.exports = {
         descricao:'Só sendo psicologo para entender cada mente louca',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:24,
+      {
+        id: 24,
         usuario_id: 4,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -266,9 +335,12 @@ module.exports = {
         descricao: 'Juliano Cezar, se você quer saber quem foi me dá uma moeda',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:25,
+      {
+        id: 25,
         usuario_id:1,
         quantidade_medalhas:2, 
         quantidade_apoios:3,
@@ -277,9 +349,12 @@ module.exports = {
         descricao:'Caraca mano, já está tarde, deixa eu dormir que amanhã é cedo',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:26,
+      {
+        id: 26,
         usuario_id: 2,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -288,9 +363,12 @@ module.exports = {
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       },
-      {id:27,
+      {
+        id: 27,
         usuario_id: 3,
         quantidade_medalhas: 2,
         quantidade_apoios: 3,
@@ -299,7 +377,9 @@ module.exports = {
         descricao: 'Feliz demais porq aprendi async await',
         imagem: 'default.png',
         urgente: 0,
-        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss"),
+        preco_aula: 0,
+        duracao_aula:0,
       }
     ], {});
   },

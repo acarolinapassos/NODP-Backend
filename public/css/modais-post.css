@@ -1,5 +1,10 @@
 /* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
 
+
+.modal-body .post-feed-article .user-info .informacoes-do-post .subtitulo{
+  color: var(--dark-primary-color);
+}
+
 /*INICIO DO CSS PARA O MODAL APRENDER*/
 #modalAprender .img-post {
   font-size: 50px;
@@ -25,6 +30,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
 
 #modalAprender .informacoes-do-post .btn-urgente,
@@ -46,6 +54,11 @@
 }
 
 #modalAprender .informacoes-do-post .btn-urgente:hover {
+  background-color: var(--accent-color);
+  color: var(--text-primary-color);
+  cursor: pointer;
+}
+#modalAprender .informacoes-do-post .urgente-selecionado {
   background-color: var(--accent-color);
   color: var(--text-primary-color);
   cursor: pointer;
@@ -172,6 +185,15 @@
   background-color: var(--secondary-text-color);
   color: var(--text-primary-color);
   cursor: pointer;
+}
+
+#modalEnsinar #moeda-desktop{
+  max-width: 9vw;
+  width: 9vw;
+}
+#modalEnsinar #time-desktop {
+  max-width: 9vw;
+  width: 9vw;
 }
 
 /*FIM DO CSS PARA O MODAL ENSINAR*/

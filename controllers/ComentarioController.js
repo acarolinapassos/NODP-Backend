@@ -16,21 +16,21 @@ listar: async (req,res,next) =>{
 
     // salvar comentarios
     //http://localhost:3000/teste/comentarios
-    salvar:async (req,res) =>{
+    salvar: async (req,res) =>{
         try {
             let {
                 texto,
-                usuario_id,
                 post_id
             } = req.body;
+            
         const salvar = await Comentario.create({
             texto,
-            usuario_id,
+            usuario_id:req.session.USER.id,
             post_id
         }); 
-        res.send('Comentário enviado')
+            res.redirect('/users/home');
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     },
    // editar comentarios

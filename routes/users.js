@@ -1,10 +1,13 @@
 var express = require('express');
 var router = express.Router();
 const auth = require('./../middleware/auth');
+const PostagemController = require('./../controllers/PostagemController');
 const multer = require('multer');
 const path = require('path');
 const PerfilController = require('./../controllers/PerfilController');
 const HomeController = require('./../controllers/HomeController');
+const NotificacaoController = require('./../controllers/NotificacaoController');
+const ComentarioController = require('./../controllers/ComentarioController');
 
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
@@ -38,9 +41,10 @@ var uploadProfileImg = multer({ storage: profileImg });
 router.get('/home', HomeController.exibir);
 
 /* GET perfil usuario id page. */
-router.get('/perfil-usuario/:id?', function (req, res, next) {
-  res.render('perfil-usuario', { title: 'Usuário' });
-});
+router.get('/perfil-usuario', PerfilController.exibirPerfilDeAmigo);
+
+/* GET perfil usuario id page. */
+router.get('/posts-usuario', PerfilController.exibirPostagensDeAmigo);
 
 /* GET perfil page. */
 router.get('/perfil', PerfilController.exibir);
@@ -73,10 +77,11 @@ router.get('/apoiadores', function (req, res, next) {
   res.render('apoiadores', { title: 'Apoiadores' });
 });
 
-/* GET notificacoes page. */
-router.get('/notificacoes', function (req, res, next) {
-  res.render('notificacoes', { title: 'Últimas notificações' });
-});
+/* Renderizar pagina de notificação */
+router.get('/notificacoes', NotificacaoController.listar);
+
+
+router.get('/notificacao', NotificacaoController.exibir);
 
 /* GET mensagens page. */
 router.get('/mensagens', function (req, res, next) {
@@ -88,9 +93,9 @@ router.get('/sair', function (req, res, next) {
   auth.sair(req, res, next);
 });
 
-//Postar aprender
-router.post('/postar-aprender', uploadPostImg.any(), function (req, res) {
-  console.log(req.body);
-});
+router.post('/postagens', PostagemController.salvar);
+router.post('/postagem', uploadPostImg.any(), PostagemController.salvar);
+
+router.post('/comentarios', ComentarioController.salvar);
 
 module.exports = router;
