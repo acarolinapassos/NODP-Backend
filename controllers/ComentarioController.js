@@ -16,7 +16,7 @@ listar: async (req,res,next) =>{
 
     // salvar comentarios
     //http://localhost:3000/teste/comentarios
-    salvar:async (req,res) =>{
+    salvar: async (req,res) =>{
         try {
             let {
                 texto,
