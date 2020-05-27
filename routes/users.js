@@ -77,8 +77,11 @@ router.get('/apoiadores', function (req, res, next) {
   res.render('apoiadores', { title: 'Apoiadores' });
 });
 
-/* GET notificacoes page. */
+/* Renderizar pagina de notificação */
 router.get('/notificacoes', NotificacaoController.listar);
+
+
+router.get('/notificacao', NotificacaoController.exibir);
 
 /* GET mensagens page. */
 router.get('/mensagens', function (req, res, next) {

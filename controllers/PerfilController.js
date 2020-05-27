@@ -1,4 +1,4 @@
-let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Interesse, Postagem, Comentario, CategoriaPostagem } = require('./../models');
+let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Interesse, Postagem, Comentario, CategoriaPostagem, Mensagem } = require('./../models');
 const moment = require('moment');
 module.exports = {
   
@@ -83,12 +83,27 @@ module.exports = {
             }
           ]
         });
+      
+      let mensagens = await Mensagem.findAll({
+        where: {
+          destinatario_id: req.session.USER.id
+        },
+        limit: 3,
+        include: [
+          {
+            model: Perfil,
+            as: 'perfil_msg',
+            required: true,
+            attributes: ['id', 'nome', 'avatar'],
+          }
+        ]
+      });
         
         let faculdades = await InstituicaoEnsino.findAll();
         let cursos = await Curso.findAll();
         let interesses = await Interesse.findAll();
         //res.send(perfil);
-        res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses });
+        res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses, mensagens });
       }
       catch (error) {
         console.log(error.message);
@@ -218,11 +233,26 @@ module.exports = {
                   }
                 ]
                 // limit:10
-              });
+            });
+          
+          let mensagens = await Mensagem.findAll({
+            where: {
+              destinatario_id: req.session.USER.id
+            },
+            limit: 3,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_msg',
+                required: true,
+                attributes: ['id', 'nome', 'avatar'],
+              }
+            ]
+          });
               
               //res.send(perfil);
               //res.send(postagens);
-          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment });
+          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens });
               
             } catch (error) {
               console.log(error);
