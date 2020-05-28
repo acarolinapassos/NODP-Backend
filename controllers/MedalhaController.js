@@ -28,7 +28,7 @@ module.exports = {
         });
         
         if(medalhaAchada != null){
-            return 
+            return;
         }
 
             const salvar = await Medalha.create({
@@ -37,7 +37,7 @@ module.exports = {
             });
             res.send("Medalha dada!")
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     }, excluir: async(req,res) =>{
         try {
@@ -50,7 +50,7 @@ module.exports = {
             });
             res.send("Medalha excluída.")
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     },
 
