@@ -30,6 +30,15 @@ module.exports = {
             key: 'id'
           }
         },
+        'usuario_id': {
+          type: Sequelize.INTEGER(11),
+          allowNull: false,
+          comment: "null",
+          references: {
+            model: 'usuarios',
+            key: 'id'
+          }
+        },
         data_hora: {
           type: Sequelize.DATE,
           allowNull: false,
@@ -37,9 +46,10 @@ module.exports = {
           comment: "null"
         }
       });
-  },
-
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('medalhas');
-  }
-};
+    },
+    
+    down: (queryInterface, Sequelize) => {
+      return queryInterface.dropTable('medalhas');
+    }
+  };
+  
