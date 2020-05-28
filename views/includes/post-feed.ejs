@@ -29,7 +29,9 @@
     <footer class="post-footer">
       <div class="post-footer-div">
         
-        <button class="btn-1b-l btn-legenda" data-id_post="<%=post.id%>" onclick="salvarMedalhas (this)"><span class="reacoes"><%=post.quantidade_medalhas%></span><span class="icone"><i
+        <button class="btn-1b-l btn-legenda" data-id_post="<%=post.id%>" data-usuario_id="<%=post.usuario_id%>"
+          onclick="salvarMedalhas (this)"><span
+            class="reacoes"><%=post.quantidade_medalhas%></span><span class="icone"><i
           class="fas fa-award"></i></span><span class="texto-botao">medalhas</span></button>
           
           <button class="btn-1b-l btn-legenda"><span class="reacoes"><%=post.comentarios.length%></span><span class="icone"><i

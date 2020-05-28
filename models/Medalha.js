@@ -27,6 +27,15 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
+      'usuario_id': {
+        type: DataTypes.INTEGER(11),
+        allowNull: false,
+        comment: "null",
+        references: {
+          model: 'Usuario',
+          key: 'id'
+        }
+    },
     'data_hora': {
       type: DataTypes.DATE,
       allowNull: false,

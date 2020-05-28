@@ -8,17 +8,21 @@ module.exports = {
             let medalhas = await Medalha.findAll({
 
             });
-            res.send(medalhas)
+            res.send(medalhas);
             } catch (error) {
-            console.log(error)
+            console.log(error);
         }
     },
 
+
+
+    
     salvar: async(req,res) =>{
         try {
             let remetente_id = req.session.USER.id;
             let {
                 id_post,
+                usuario_id
             }=req.body;
         let medalhaAchada = await Medalha.findOne({
             where: {
@@ -33,13 +37,20 @@ module.exports = {
 
             const salvar = await Medalha.create({
                 id_post,
-                remetente_id
+                remetente_id,
+                usuario_id
             });
-            res.send("Medalha dada!")
+            res.status(200).json('Medalha Salva');
         } catch (error) {
             console.log(error);
         }
-    }, excluir: async(req,res) =>{
+    },
+    
+    
+    
+    
+    
+    excluir: async (req, res) => {
         try {
             let {
                 id
@@ -48,7 +59,7 @@ module.exports = {
             const salvar = await Medalha.destroy({
                where:{id}
             });
-            res.send("Medalha excluída.")
+            res.send("Medalha excluída.");
         } catch (error) {
             console.log(error);
         }
