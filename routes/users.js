@@ -54,7 +54,7 @@ router.post('/perfil', uploadProfileImg.any(), PerfilController.salvar);
 
 /* GET pesquisas page. */
 router.get('/pesquisas', function (req, res, next) {
-  res.render('pesquisas', { title: 'Pesquisa' });
+  res.render('pesquisas', { title: 'Pesquisa', perfil:[], mensagens:[], postagens:[] });
 });
 
 
