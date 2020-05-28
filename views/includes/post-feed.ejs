@@ -1,5 +1,5 @@
+<script src="/js/fetch-post.js"></script> 
 <% for( let post of postagens ) { %> 
-
   <section class="post-feed container">
     
     <header class="post-feed-header" onclick="location.href='/users/perfil-usuario?perfil=<%=post.usuario_id%>'">
@@ -29,7 +29,7 @@
     <footer class="post-footer">
       <div class="post-footer-div">
         
-        <button class="btn-1b-l btn-legenda" data-post_id="<%=post.id%>"><span class="reacoes"><%=post.quantidade_medalhas%></span><span class="icone"><i
+        <button class="btn-1b-l btn-legenda" data-post_id="<%=post.id%>" onclick="salvarMedalhas (this)"><span class="reacoes"><%=post.quantidade_medalhas%></span><span class="icone"><i
           class="fas fa-award"></i></span><span class="texto-botao">medalhas</span></button>
           
           <button class="btn-1b-l btn-legenda"><span class="reacoes"><%=post.comentarios.length%></span><span class="icone"><i
