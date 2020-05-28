@@ -5,12 +5,14 @@
     </div>
   </div>
 
-  <div class="aula">
-    <img src="/img/MarinaSilva foto.jpg" class="rounded-circle" alt="marina">
+  <% for (let notificacao of notificacoes) { %>
+  <div class="aula" data-idMensagemUsuario="<%= notificacao.remetente_id %>>
+    <img src="/img/profile-img/<%=notificacao.remetente_id.avatar%>" class="rounded-circle" alt="<%=notificacao.nome%>">
     <div class="col">
-      <p><strong>Marina Silva </strong> acabou de fazer um comentário na sua aula</p>
+      <p><strong><%=notificacao.nome%> </strong> acabou de fazer um comentário na sua aula</p>
     </div>
   </div>
+  <% } %>
 
   <div class="aula">
     <img src="/img/MarceloFreixo.jpg" class="rounded-circle" alt="marcelo">
