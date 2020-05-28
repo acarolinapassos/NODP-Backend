@@ -16,9 +16,9 @@ module.exports = {
 
     salvar: async(req,res) =>{
         try {
+            let remetente_id = req.session.USER.id;
             let {
                 id_post,
-                remetente_id
             }=req.body;
 
             const salvar = await Medalha.create({
