@@ -95,8 +95,7 @@ module.exports = {
           
       // res.send(mensagens);
       res.render('home', { title: 'Home', perfil, postagens, moment, mensagens });
-        }
-        catch (error) {
+        }catch (error) {
           console.log(error.message);
         }
       },
