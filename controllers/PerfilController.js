@@ -208,7 +208,7 @@ module.exports = {
                   include: [
                     {
                       model: Perfil,
-                      as: 'perfil',
+                      as: 'perfil_coment',
                       require: true,
                       attributes: ['id', 'nome', 'avatar'],
                     }

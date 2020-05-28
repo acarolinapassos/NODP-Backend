@@ -3,9 +3,10 @@ async function salvarMedalhas (element) {
 
 
     let id = element.dataset.id_post;
+    let usuario_id = element.dataset.usuario_id;
     try {
         const promise = await fetch("/users/medalhas", {
-            body: JSON.stringify({ id_post: id }),
+            body: JSON.stringify({ id_post: id, usuario_id }),
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

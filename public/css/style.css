@@ -1319,6 +1319,13 @@ section#mensagens {
   padding: 0 2vw 0 0;
 }
 
+#form-login .btn-3b-d,
+#form-login .btn-3b-l,
+#form-cadastro .btn-3b-d,
+#form-cadastro .btn-3b-l{
+  width: 100%;
+  margin-bottom: 2vh;
+}
 /*AQUI FINALIZA O CSS PARA PADRÃO PARA TODOS OS TAMANOOS*/
 /*-----------------------------------------------------------------------------------*/
 

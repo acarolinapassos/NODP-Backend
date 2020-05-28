@@ -13,6 +13,14 @@ module.exports = {
             model: Comentario,
             as: 'comentarios',
             required: false,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_coment',
+                require: true,
+                attributes: ['id', 'nome', 'avatar'],
+              }
+            ]
           },
           {
             model: Perfil,

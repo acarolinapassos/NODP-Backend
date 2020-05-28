@@ -31,7 +31,7 @@
 }
 
 .cadastro-div-termos {
-  margin-top: 2vh;
+  margin-top: 8vh;
 }
 
 #cadastro form {
@@ -56,6 +56,7 @@
 
 a.esqueci-senha{
   padding-top: 3vh;
+  margin-top: 4vh;
 }
 
 .alert{
