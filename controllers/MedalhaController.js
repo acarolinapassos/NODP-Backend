@@ -20,6 +20,16 @@ module.exports = {
             let {
                 id_post,
             }=req.body;
+        let medalhaAchada = await Medalha.findOne({
+            where: {
+                id_post,
+                remetente_id
+            }
+        });
+        
+        if(medalhaAchada != null){
+            return 
+        }
 
             const salvar = await Medalha.create({
                 id_post,
