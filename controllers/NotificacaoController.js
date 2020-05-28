@@ -1,4 +1,4 @@
-const {Notificacao, Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Mensagem} = require('./../models');
+const {Notificacao, Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Mensagem, Postagem, Comentario, CategoriaPostagem} = require('./../models');
 const moment = require('moment');
 
 
@@ -17,14 +17,23 @@ module.exports = {
                     attributes: ['id', 'nome', 'avatar'],
                 }
             );
-            let mensagens = await Mensagem.findAll(
-                // {
-                // limit: 10,
-                // attributes: ['id', 'mensagem'],
-                // }
-            );
+            let mensagens = await Mensagem.findAll({
+                where: {
+                    destinatario_id: req.session.USER.id
+                },
+                limit: 3,
+                include: [
+                    {
+                        model: Perfil,
+                        as: 'perfil_msg',
+                        required: true,
+                        attributes: ['id', 'nome', 'avatar'],
+                    }
+                ]
+            });
             let faculdades = await InstituicaoEnsino.findAll();
             let cursos = await Curso.findAll();
+            res.send('./users/notificacoes');
             res.render('notificacoes', {
                 title: 'notificacoes',
                 perfil,
@@ -78,7 +87,46 @@ module.exports = {
                         }
                     ]
                 });
-            
+             //Listar as postagens 
+             let postagens = await Postagem.findAll({
+                where: {
+                  usuario_id:id
+                },
+                include: [
+                  {
+                    model: Comentario,
+                    as: 'comentarios',
+                    required: false,
+                    include: [
+                      {
+                        model: Perfil,
+                        as: 'perfil_coment',
+                        require: true,
+                        attributes: ['id', 'nome', 'avatar'],
+                      }
+                    ]
+                  },
+                  {
+                    model: Perfil,
+                    as: 'perfil',
+                    require: true,
+                    attributes: ['id', 'nome', 'avatar'],
+                    include: [
+                      {
+                        model: Curso,
+                        as: 'curso',
+                        require: true
+                      }]
+                    },
+                    {
+                      model: CategoriaPostagem,
+                      as: 'categoria',
+                      require:true
+                    }
+                  ]
+                  // limit:10
+              });    
+            // listar mensagens
             let mensagens = await Mensagem.findAll({
                 where: {
                     destinatario_id: req.session.USER.id
@@ -93,8 +141,9 @@ module.exports = {
                     }
                 ]
             });
+            let comentarios = await Comentario.findAll();
             
-            res.render('notificacoes', { title: 'Últimas notificações', notificacoes, perfil, mensagens });
+            res.render('notificacoes', { title: 'Últimas notificações', notificacoes, perfil, mensagens, postagens, comentarios });
          
 
         } catch (error) {
