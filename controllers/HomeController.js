@@ -93,7 +93,7 @@ module.exports = {
             ]
         });
           
-      // res.send(mensagens);
+      // res.send(postagens);
       res.render('home', { title: 'Home', perfil, postagens, moment, mensagens });
         }catch (error) {
           console.log(error.message);
