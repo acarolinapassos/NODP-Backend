@@ -5,7 +5,7 @@
     </div>
   </div>
   <% for ( let mensagem of mensagens ) { %>
-    <div class="mensagem" data-toggle="modal" data-target="#modalMensagem" data-idMensagemUsuario="<%= mensagem.perfil_msg.id %>">
+    <div class="mensagem" data-toggle="modal" data-target="#modalMensagem" data-idMensagemUsuario="<%= mensagem.perfil_msg.id %>" onclick="enviar (this)">
       <div>
         <img src="/img/profile-img/<%=mensagem.perfil_msg.avatar%>" class="rounded-circle" alt="Aecio">
       </div>
