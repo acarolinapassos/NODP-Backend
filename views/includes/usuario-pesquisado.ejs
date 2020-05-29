@@ -1,25 +1,26 @@
-<section id="usuario-pesquisado" class="container">
-
-
+<% if(usuariosPesquisado != ''){ %>
+  <section id="usuario-pesquisado" class="container">
+<% for( let usuario of usuariosPesquisado ) { %>
   
-  <div class="usuario" >
-
-    <div class="col-foto" onclick="location.href='/users/perfil-usuario/1'">
-      <img src="/img/Viola.jpg" class="rounded-circle" alt="foto">
-    </div>
-
-    <div class="col-nome">
-      <h2 class="subtitulo" onclick="location.href='/perfil-usuario/1'">Viola Oliveira Neto</h2>
-      <h3 class="texto" onclick="location.href='/perfil-usuario/1'">Engenharia</h3>
-      <div class="botoes">
-        <input type="button" value="Mensagem" class=btn-1-d data-toggle="modal" data-target="#modalMensagem">
-        <input type="button" value="Apoiar" class=btn-1-d data-toggle="modal" data-target="#modalDeApoiar">
+    <div class="usuario" >
+      <div class="col-foto" onclick="location.href='/users/perfil-usuario?perfil=<%=usuario.id%>'">
+        <img src="/img/profile-img/<%=usuario.avatar%> " class="rounded-circle" alt="avatar">
       </div>
+      
+      <div class="col-nome">
+        <h2 class="subtitulo" onclick="location.href='/perfil-usuario?perfil=<%=usuario.id%>'"><%=usuario.nome%></h2>
+        <h3 class="texto" onclick="location.href='/perfil-usuario?perfil=<%=usuario.id%>'"><%=usuario.curso.descricao%>
+        </h3>
+        <div class="botoes">
+          <input type="button" value="Mensagem" class=btn-1-d data-toggle="modal" data-target="#modalMensagem">
+          <input type="button" value="Apoiar" class=btn-1-d data-toggle="modal" data-target="#modalDeApoiar">
+        </div>
+      </div>
+      
     </div>
-
-  </div>
-  <%- include('./model-apoia') -%>
-  <%- include('./modal-mensagem') -%>
-
-
-</section>
+    
+    <% } %>
+    <%- include('./model-apoia') -%>
+    <%- include('./modal-mensagem') -%>
+  </section>
+<% } %> 
