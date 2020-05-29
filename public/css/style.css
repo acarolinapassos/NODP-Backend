@@ -3100,6 +3100,8 @@ section#mensagens {
     align-items: flex-end;
     color: var(--default-primary-color);
     padding: 1vh;
+    position: relative;
+    bottom: 10px;
   }
   
   #novaPostagem .listagem-apoiados {
@@ -3117,6 +3119,7 @@ section#mensagens {
     -ms-flex-align: center;
     align-items: center;
     padding: 1vh;
+    justify-content: flex-end;
   }
   
   #novaPostagem .apoiado {
