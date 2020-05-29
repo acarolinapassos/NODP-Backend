@@ -1,4 +1,4 @@
-const { Apoio } = require('./../models');
+const { Apoio, Perfil } = require('./../models');
 module.exports = {
   apoiar: async (req, res) => {
     try {
@@ -15,13 +15,18 @@ module.exports = {
 
   listarApoiados: async (req, res) => {
     try {
-      
+      let apoiados = await Apoio.findAll({
+        where: {
+          apoiador_id:req.sessio.USER.id
+        }
+      });
+      res.send(apoiados);
     } catch (error) {
-      
+      console.log(error);
     }
   },
 
-  
+
   listarApoiadores: async (req, res) => {
     try {
       
