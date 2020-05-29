@@ -9,6 +9,7 @@ const HomeController = require('./../controllers/HomeController');
 const NotificacaoController = require('./../controllers/NotificacaoController');
 const ComentarioController = require('./../controllers/ComentarioController');
 const MedalhaController = require('./../controllers/MedalhaController');
+const PesquisaController = require('./../controllers/PesquisaController');
 
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
@@ -54,9 +55,7 @@ router.get('/perfil', PerfilController.exibir);
 router.post('/perfil', uploadProfileImg.any(), PerfilController.salvar);
 
 /* GET pesquisas page. */
-router.get('/pesquisas', function (req, res, next) {
-  res.render('pesquisas', { title: 'Pesquisa', perfil:[], mensagens:[], postagens:[] });
-});
+router.get('/pesquisas', PesquisaController.pesquisar);
 
 
 /* GET ranking alunos page. */
