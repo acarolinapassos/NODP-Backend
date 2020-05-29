@@ -160,7 +160,7 @@ module.exports = {
       exibirPostagensDeAmigo: async (req, res, next) => {
         try {
           let id = req.query.perfil;
-          console.log(req.query);
+          //localhost:3000/users/posts-usuario?perfil=1
           (!isNaN(id)) ? id = req.query.perfil : id = req.session.USER.id;
           
           const perfil = await Perfil.findOne(

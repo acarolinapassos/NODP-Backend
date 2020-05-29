@@ -97,6 +97,7 @@ module.exports = {
             where: {
               apoiado_id: id
             },
+            limit: 4,
             include: [
               {
                 model: Perfil,
@@ -115,8 +116,31 @@ module.exports = {
             ]
           });
           
-          // res.send(postagens);
-      res.render('home', { title: 'Home', perfil, postagens, moment, mensagens, apoiadores });
+          let apoiados = await Apoio.findAll({
+            where: {
+              apoiador_id: id
+            },
+            limit: 5,
+            include: [
+              {
+                model: Perfil,
+                as: 'apoiado',
+                required: true,
+                attributes: ['id', 'nome', 'avatar'],
+                include: [
+                  {
+                    model: Curso,
+                    as: 'curso',
+                    required: true,
+                    attributes: ['descricao'],
+                  }
+                ]
+              }
+            ]
+          });
+          
+          //res.send(apoiados);
+          res.render('home', { title: 'Home', perfil, postagens, moment, mensagens, apoiadores, apoiados });
         }catch (error) {
           console.log(error.message);
         }

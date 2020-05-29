@@ -76,9 +76,6 @@ router.get('/ranking-professores', function (req, res, next) {
 router.get('/apoio', ApoioController.listarApoiados);
 
 router.get('/apoiadores', ApoioController.listarApoiadores);
-// {
-//   res.render('apoiadores', { title: 'Apoiadores' });
-// });
 
 /* Renderizar pagina de notificação */
 router.get('/notificacoes', NotificacaoController.listar);
