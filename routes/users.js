@@ -9,11 +9,10 @@ const HomeController = require('./../controllers/HomeController');
 const NotificacaoController = require('./../controllers/NotificacaoController');
 const ComentarioController = require('./../controllers/ComentarioController');
 const MedalhaController = require('./../controllers/MedalhaController');
-<<<<<<< HEAD
+const MensagemController = require('./../controllers/MensagemController')
 const MoedaController = require('./../controllers/MoedaController');
-=======
-const PesquisaController = require('./../controllers/PesquisaController');
->>>>>>> b11db409e115dcd067398b970c7f1b43480c1441
+const PesquisaController = require('./../controllers/PesquisaController')
+
 
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
@@ -91,6 +90,9 @@ router.get('/notificacao', NotificacaoController.exibir);
 router.get('/mensagens', function (req, res, next) {
   res.render('mensagens', { title: 'Últimas Mensagens' });
 });
+
+router.get('/listarMensagens', MensagemController.listarMensagemDireta )
+router.post('/mensagens', MensagemController.adicionarMensagem)
 
 /* POST medalhas */
 router.post('/medalhas', MedalhaController.salvar);
