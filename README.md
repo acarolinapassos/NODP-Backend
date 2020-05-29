@@ -1,7 +1,9 @@
 # Projeto Integrador - NODP (No Dependence)
+> Sem dependência
+
 ## Projeto integrador prático Digital House - Em equipe
 
-###### Grupo 2 : 
+###### A melhor equipe da DH 2020: 
 * Ana Carolina Passos @acarolinapassos
 * André Oliveira @oliveira086
 * Alessandro Menezes @ALESSANDROLMENEZES
@@ -12,6 +14,8 @@
 
 > App online no Heroku:
 [Clique e veja o app em ação no Heroku](https://hidden-reaches-26348.herokuapp.com)
+
+------------
 
 O projeto **NODP** é uma rede social que atua como uma ferramenta de interação entre universitários cujo objetivo é 
 o intercâmbio de conhecimento. O diferencial consiste em conectar o usuário que deseja aprender determinado assunto
@@ -30,4 +34,73 @@ Para visualizar o conteúdo compartilhado no feed de outros usuários, será nec
 Haverá um espaço reservado na página mostrando quem são os seus apoiadores. O coração da ideia é um campo de busca 
 que retorna as aulas e os professores.
 
+------------
+####  Tecnologias utilizadas
+- nodeJS
+- expressJS
+- javaScript
+- HTML5 - ejs
+- bcrypt
+- multer
+- mySQL
+- dotenv
+- sequelize
+
+
 Dentro da pasta "readme" você encontra arquivos com mais detalhes do projeto
+
+------------
+
+##### Algumas telas da aplicação
+
+> Login
+
+![Tela inicial](http://alessandrodev.com/imagens/tela00.jpg "Login")
+
+
+------------
+
+> Home (ao se cadastrar ganha 10 moedas)
+
+![Tela inicial](http://alessandrodev.com/imagens/tela0.jpg "Tela inicial")
+
+
+------------
+
+> Publicação (comentário/medalhas/apoio em moedas)
+
+![](http://alessandrodev.com/imagens/tela1.jpg)
+
+------------
+
+> Publicação (comentário/medalhas/apoio em moedas)
+
+![](http://alessandrodev.com/imagens/tela2.jpg)
+
+------------
+
+> Mensagens
+
+![](http://alessandrodev.com/imagens/tela3.jpg)
+
+------------
+
+> Publicação
+
+![](http://alessandrodev.com/imagens/tela4.jpg)
+
+------------
+
+> Apoiar a causa de seus amigos
+
+![](http://alessandrodev.com/imagens/tela5.jpg)
+
+------------
+
+> Atualização de perfil
+
+![](http://alessandrodev.com/imagens/tela6.jpg)
+
+> A realização deste projeto só foi possível graças à integração da equipe, onde diariamente todos se conectavam para codar juntos promovendo o espírito de equipe e união. 
+Nossos agradecimentos ao @Santander que disponibilizou a bolsa de estudos e tornou esse projeto possível. Também nosso agradecimento à nossa querida professora [Hendy](https://github.com/fronthendy "Hendy") a qual consideramos a melhor professora da DH 2020, agradecemos também a toda equipe da DH que deu o seu melhor para formar os melhores profissionais FULLSTACK de São Paulo.
+Agora só podemos encerrar dizendo que ESTAMOS PRONTOS PARA O MERCADO!!!!
