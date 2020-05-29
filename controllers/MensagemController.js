@@ -1,4 +1,6 @@
 const { Mensagem, Perfil } = require('../models')
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
 
 module.exports = {
     //-------------------------------------------------------------------------
@@ -79,8 +81,8 @@ module.exports = {
 
             let resposta = await Mensagem.findAll({
                 where: {
-                    destinatario_id: usuario,
-                    usuario_id: id
+                    destinatario_id: { [Op.in] : [usuario, id] },
+                    usuario_id: { [Op.in] : [usuario, id] }
                 },
                 include: [
                     {
