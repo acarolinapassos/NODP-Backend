@@ -1,4 +1,4 @@
-const { Apoio, Perfil } = require('./../models');
+const { Apoio, Perfil, Curso } = require('./../models');
 module.exports = {
   apoiar: async (req, res) => {
     try {
@@ -17,8 +17,24 @@ module.exports = {
     try {
       let apoiados = await Apoio.findAll({
         where: {
-          apoiador_id:req.sessio.USER.id
-        }
+          apoiador_id: req.session.USER.id
+        },
+        include: [
+          {
+            model: Perfil,
+            as: 'apoiado',
+            required: true,
+            attributes: ['id', 'nome', 'avatar'],
+            include: [
+              {
+                model: Curso,
+                as: 'curso',
+                required: true,
+                attributes: ['descricao'],
+              }
+            ]
+          }
+        ]
       });
       res.send(apoiados);
     } catch (error) {
@@ -31,8 +47,24 @@ module.exports = {
     try {
       let apoiadores = await Apoio.findAll({
         where: {
-          apoiado_id: req.sessio.USER.id
-        }
+          apoiado_id: req.session.USER.id
+        },
+        include: [
+          {
+            model: Perfil,
+            as: 'apoiador',
+            required: true,
+            attributes: ['id', 'nome', 'avatar'],
+            include: [
+              {
+                model: Curso,
+                as: 'curso',
+                required: true,
+                attributes: ['descricao'],
+              }
+            ]
+          }
+        ]
       });
       res.send(apoiadores);
     } catch (error) {
