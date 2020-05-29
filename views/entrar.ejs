@@ -15,7 +15,7 @@
     </div>
     
     <div class="login col-lg-4 col-md-8 col-sm-12">
-      <form action="/login" method="POST">
+      <form action="/login" method="POST" id="form-login">
         
         <img src="/img/logo-rocho-letra.png" alt="logo" class="logo-letra" id="logo">
         <h1 class="titulo">Entrar</h1>
@@ -30,8 +30,8 @@
           <input type="password" class="form-control" id="senha" required placeholder="********" name="senha">
         </div>
         <div id="row-botoes">
-          <button type="button" class="btn-1-l" onclick="location.href='/cadastro'">Cadastrar</button>
-          <button type="submit" class="btn-1-d">Entrar</button>
+          <button type="submit" class="btn-3b-d">Entrar</button>
+          <button type="button" class="btn-3b-l" onclick="location.href='/cadastro'">Cadastrar</button>
         </div>
         <a class="texto esqueci-senha" href="" data-toggle="modal" data-target="#modalRecuperarSenha">Esqueci minha senha</a>
       </form>
