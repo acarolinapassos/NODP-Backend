@@ -1,11 +1,10 @@
 let apoiado_id;
-
 function definirId(element) {
   apoiado_id = element.dataset.apoiador_id;
 }
 
 async function apoiar() {
-  alert("Entrou");
+  $('#modalDeApoiar').modal('hide'); 
   try {
     const promise = await fetch("/users/apoiar", {
       body: JSON.stringify({ apoiado_id }),
@@ -15,14 +14,10 @@ async function apoiar() {
       }
     });
     if (!promise.ok) {
-      alert("Não foi possível apoiar");
+      alert("Não foi possível apoiar este usuário");
       return;
     }
-
-    location.reload();
-
   } catch (error) {
     console.log(error);
-    location.reload();
   }
 }

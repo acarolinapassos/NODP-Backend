@@ -12,9 +12,10 @@
         <h3 class="texto" onclick="location.href='/perfil-usuario?perfil=<%=usuario.id%>'"><%=usuario.curso.descricao%>
         </h3>
         <div class="botoes">
-          <input type="button" value="Mensagem" class=btn-1-d data-toggle="modal" data-target="#modalMensagem">
+          <input type="button" value="Mensagem" class=btn-1-d data-toggle="modal" data-target="#modalMensagem"
+            data-idMensagemUsuario="<%=usuario.id%>" onclick="enviar(this)">
           <input type="button" value="Apoiar" class=btn-1-d data-toggle="modal" data-target="#modalDeApoiar"
-            data-apoiador_id="<%=apoiador.apoiador.id%>" onclick="definirId(this)">
+            data-apoiador_id="<%=usuario.id%>" onclick="definirId(this)">
         </div>
       </div>
       
