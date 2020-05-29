@@ -64,7 +64,7 @@ module.exports = {
       {
         usuario_id: 1,
         destinatario_id: 8,
-        mensagem: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
+        mensagem: 'Mussum Ipsum, cacilds vidis litro abertis.iss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
   
       },
@@ -78,21 +78,35 @@ module.exports = {
       {
         usuario_id: 3,
         destinatario_id: 4,
-        mensagem: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
+        mensagem: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faizpudia ce receita de bolis, mais bolis eu num gostis.',
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
   
       },
       {
         usuario_id: 3,
         destinatario_id: 5,
-        mensagem: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
+        mensagem: 'Mussum Ipsum, ciss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+  
+      },
+      {
+        usuario_id: 5,
+        destinatario_id: 3,
+        mensagem: 'tiss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
+        data_hora: moment().format("YYYY, MM DD, h:mm:ss")
+  
+      },
+      {
+        usuario_id: 3,
+        destinatario_id: 5,
+        mensagem: 'lds vidis litro abertis. pirulitá. Interessantiss quisso pudolis eu num gostis.',
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
   
       },
       {
         usuario_id: 5,
         destinatario_id: 1,
-        mensagem: 'Mussum Ipsum, cacilds vidis litro abertis. Casamentiss faiz malandris se pirulitá. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
+        mensagem: 'Mussum Ipsum, cacilds vidis litro ce receita de bolis, mais bolis eu num gostis.',
         data_hora: moment().format("YYYY, MM DD, h:mm:ss")
   
       },

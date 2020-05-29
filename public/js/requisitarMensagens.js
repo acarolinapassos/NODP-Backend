@@ -5,38 +5,38 @@ state = {
 async function listarMensagens (element) {
 
     let id = element.dataset.idmensagemusuario;
-    state.usuario = id
+    state.usuario = id;
     try {
         const promise = await fetch(`/users/listarMensagens?id=${id}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
             }
-        })
+        });
         if (!promise.ok) {
             alert("Error");
             return;
        }
       
-       return promise.json()
+        return promise.json();
        
     } catch(error) {
-        console.log(error)
+        console.log(error);
     }
 
  }
 
 async function enviar (element) {
 
-    const respostas = await listarMensagens(element)
+    const respostas = await listarMensagens(element);
 
-    let ul = document.querySelector(".informacoes-do-msg-mensagens-ul")
-    let header = document.querySelector(".msg-feed-header")
-    let lis = []
+    let ul = document.querySelector(".informacoes-do-msg-mensagens-ul");
+    let header = document.querySelector(".msg-feed-header");
+    let lis = '';
 
     for (let resposta of respostas) {
-         lis.push(`
-         <li class="msg">
+        lis +=`
+    <li class="msg">
          <h2 class="subtitulo">
              ${resposta.perfil_msg.nome}
          </h2>
@@ -46,10 +46,10 @@ async function enviar (element) {
          <time class="horario">
              ${resposta.data_hora}
          </time>
-     </li>`)
+    </li>`;
     }
 
-    ul.innerHTML = lis
+    ul.innerHTML = lis;
     header.innerHTML = `
     <header class="msg-feed-header">
     <div class="msg-feed-header-avatar">
@@ -58,12 +58,12 @@ async function enviar (element) {
     <div>
       <h1 class="user-name subtitulo">${respostas[0].perfil_msg.nome}</h1>
     </div>
-  </header>`
+  </header>`;
 }
 
 
 async function enviarMensagem () {
-    let mensagem = document.querySelector('.texto-msg').textContent
+    let mensagem = document.querySelector('.texto-msg').textContent;
     try {
         const promise = await fetch('/users/mensagens', {
             body: JSON.stringify({
@@ -81,7 +81,7 @@ async function enviarMensagem () {
        }
        
     } catch(err){
-        console.log(err)
+        console.log(err);
     }
 
 }

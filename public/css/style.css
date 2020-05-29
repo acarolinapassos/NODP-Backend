@@ -1067,7 +1067,9 @@ section#mensagens {
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  padding: 2vh 0;
+  padding: 4vh 0;
+  margin-bottom: 1vh;
+  border-bottom: 1px solid var(--divider-color);
   
 }
 
