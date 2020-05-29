@@ -14,7 +14,7 @@ async function apoiar() {
       }
     });
     if (!promise.ok) {
-      alert("Não foi possível apoiar este usuário");
+      swal("Error", "Não foi possível apoiar este usuário", "error");
       return;
     }
   } catch (error) {
