@@ -414,6 +414,7 @@ section#usuario-pesquisado {
   border-radius: 1vw;
   height: auto;
   padding: 0 0.5vw;
+  margin-bottom: 1vh;
 }
 
 section#aula-pesquisada {
