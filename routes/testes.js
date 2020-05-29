@@ -11,7 +11,7 @@ const AulasController = require('./../controllers/AulasController');
 const MensagemController = require('./../controllers/MensagemController');
 const MedalhaController = require('./../controllers/MedalhaController');
 const PerfilController = require('./../controllers/PerfilController');
-
+const MoedaController = require('./../controllers/MoedaController');
 
 
 router.get('/usuarios', UsuarioController.listar);
@@ -45,7 +45,7 @@ router.post('/medalhas', MedalhaController.salvar);
 router.get('/aulas', AulasController.listar);
 router.post('/interesses', InteresseController.salvar);
 router.post('/interesses', InteresseController.salvarInteresseEnsino);
-
+router.post('/moedas', MoedaController.salvar);
 
 router.get('/usuario-logado', function (req, res) {
   let user = req.session.USER;

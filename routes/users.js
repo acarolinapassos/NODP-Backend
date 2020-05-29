@@ -9,6 +9,7 @@ const HomeController = require('./../controllers/HomeController');
 const NotificacaoController = require('./../controllers/NotificacaoController');
 const ComentarioController = require('./../controllers/ComentarioController');
 const MedalhaController = require('./../controllers/MedalhaController');
+const MoedaController = require('./../controllers/MoedaController');
 
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
@@ -101,5 +102,7 @@ router.post('/postagens', PostagemController.salvar);
 router.post('/postagem', uploadPostImg.any(), PostagemController.salvar);
 
 router.post('/comentarios', ComentarioController.salvar);
+
+router.post('/moedas', MoedaController.salvar);
 
 module.exports = router;
