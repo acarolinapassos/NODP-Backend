@@ -14,10 +14,7 @@ module.exports = {
       
       let { aprender, ensinar, aprendendo, ensinando, usuario, descricao } = req.query;
       queryParam = [aprender, ensinar, aprendendo, ensinando];
-      
-      console.log(queryParam);
-      console.log(usuario);
-      
+
       for (let param of queryParam) {
         if (param != undefined) {
           params.push(param);
