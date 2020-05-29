@@ -11,6 +11,7 @@ const ComentarioController = require('./../controllers/ComentarioController');
 const MedalhaController = require('./../controllers/MedalhaController');
 const MensagemController = require('./../controllers/MensagemController')
 const MoedaController = require('./../controllers/MoedaController');
+const PesquisaController = require('./../controllers/PesquisaController')
 
 
 //CARREGAR IMAGENS DE POST
