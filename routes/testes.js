@@ -11,7 +11,12 @@ const AulasController = require('./../controllers/AulasController');
 const MensagemController = require('./../controllers/MensagemController');
 const MedalhaController = require('./../controllers/MedalhaController');
 const PerfilController = require('./../controllers/PerfilController');
+<<<<<<< HEAD
+const MoedaController = require('./../controllers/MoedaController');
+=======
+const PesquisaController = require('./../controllers/PesquisaController');
 
+>>>>>>> b11db409e115dcd067398b970c7f1b43480c1441
 
 
 router.get('/usuarios', UsuarioController.listar);
@@ -45,7 +50,11 @@ router.post('/medalhas', MedalhaController.salvar);
 router.get('/aulas', AulasController.listar);
 router.post('/interesses', InteresseController.salvar);
 router.post('/interesses', InteresseController.salvarInteresseEnsino);
-
+<<<<<<< HEAD
+router.post('/moedas', MoedaController.salvar);
+=======
+router.get('/pesquisa', PesquisaController.pesquisar);
+>>>>>>> b11db409e115dcd067398b970c7f1b43480c1441
 
 router.get('/usuario-logado', function (req, res) {
   let user = req.session.USER;
