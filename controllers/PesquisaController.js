@@ -6,7 +6,7 @@ const moment = require('moment');
 module.exports = {
   pesquisar: async (req, res) => {
     try {
-      
+      let id = req.session.USER.id;
       let usuariosPesquisado = [];
       let postagensPesquisada = [];
       let queryParam = [];
@@ -14,7 +14,7 @@ module.exports = {
       
       let { aprender, ensinar, aprendendo, ensinando, usuario, descricao } = req.query;
       queryParam = [aprender, ensinar, aprendendo, ensinando];
-
+      
       for (let param of queryParam) {
         if (param != undefined) {
           params.push(param);
@@ -83,7 +83,7 @@ module.exports = {
           
           const perfil = await Perfil.findOne(
             {
-              where: { id:req.session.USER.id },
+              where: { id },
               include: [
                 {
                   model: Cidade,
@@ -113,7 +113,22 @@ module.exports = {
               ]
             });
             
-            res.render('pesquisas', { usuariosPesquisado, postagensPesquisada, mensagens: [], moment, perfil });
+            let mensagens = await Mensagem.findAll({
+              where: {
+                destinatario_id: id
+              },
+              limit: 3,
+              include: [
+                {
+                  model: Perfil,
+                  as: 'perfil_msg',
+                  required: true,
+                  attributes: ['id', 'nome', 'avatar'],
+                }
+              ]
+            });
+            
+            res.render('pesquisas', { usuariosPesquisado, postagensPesquisada, mensagens, moment, perfil });
             
           } catch (error) {
             console.log(error);
