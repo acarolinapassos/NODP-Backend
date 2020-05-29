@@ -19,8 +19,10 @@ async function apoiar() {
       return;
     }
 
+    location.reload();
 
   } catch (error) {
     console.log(error);
+    location.reload();
   }
 }

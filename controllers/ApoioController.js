@@ -17,6 +17,7 @@ module.exports = {
       });
       
       if (QtdMoedasDisponivel.qtd_moedas < 1) {
+        console.log(QtdMoedasDisponivel.qtd_moedas);
         res.status(401).json({ error: 'Moedas insuficientes' });
       }
       
@@ -30,10 +31,11 @@ module.exports = {
       });
       
       if (usuarioJaApoiado != null) {
+        console.log(usuarioJaApoiado != null);
         res.status(401).json({ error: 'Usuário já apoiado' });
       }
       
-      let salvar = await Apoio.create(apoiador_id, apoiado_id);
+      let salvar = await Apoio.create({ apoiador_id, apoiado_id });
       
       //Fazer transação de moedas => Realizado via trigger mysql
       /**
