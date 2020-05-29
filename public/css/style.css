@@ -397,14 +397,16 @@ section#apoiadores img {
   align-items: center;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
+  
+  justify-content: space-between;
+  -ms-flex-line-pack: space-between;
+  align-content: space-between;
 }
 
 #apoiadores .col {
   margin: 0;
   padding: 0;
+  min-width: 12%;
 }
 
 #apoiadores h1 {
@@ -2855,7 +2857,7 @@ section#mensagens {
     margin: 0;
     color: var(--text-primary-color);
   }
-
+  
 }
 
 /*FIM DO CSS COMPONENTE USUARIO PESQUISADO*/

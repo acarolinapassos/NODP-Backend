@@ -167,8 +167,8 @@ module.exports = {
           }
         ]
       });
-      res.send(apoiadores);
-      //res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores });
+      //res.send(apoiadores);
+      res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores });
     } catch (error) {
       console.log(error);
     }

@@ -1,4 +1,4 @@
-let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Postagem, Comentario, CategoriaPostagem, Mensagem } = require('./../models');
+let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Postagem, Comentario, CategoriaPostagem, Mensagem, Apoio } = require('./../models');
 const moment = require('moment');
 
 module.exports = {
@@ -77,24 +77,46 @@ module.exports = {
             ]
             // limit:10
           });
-
+          
           let mensagens = await Mensagem.findAll({
             where: {
-                destinatario_id: req.session.USER.id
+              destinatario_id: id
             },
             limit: 3,
             include: [ 
-                {
-                    model: Perfil,
-                    as: 'perfil_msg',
-                    required: true,
-                    attributes: ['id', 'nome', 'avatar'],
-                }
+              {
+                model: Perfil,
+                as: 'perfil_msg',
+                required: true,
+                attributes: ['id', 'nome', 'avatar'],
+              }
             ]
-        });
+          });
           
-      // res.send(postagens);
-      res.render('home', { title: 'Home', perfil, postagens, moment, mensagens });
+          let apoiadores = await Apoio.findAll({
+            where: {
+              apoiado_id: id
+            },
+            include: [
+              {
+                model: Perfil,
+                as: 'apoiador',
+                required: true,
+                attributes: ['id', 'nome', 'avatar'],
+                include: [
+                  {
+                    model: Curso,
+                    as: 'curso',
+                    required: true,
+                    attributes: ['descricao'],
+                  }
+                ]
+              }
+            ]
+          });
+          
+          // res.send(postagens);
+      res.render('home', { title: 'Home', perfil, postagens, moment, mensagens, apoiadores });
         }catch (error) {
           console.log(error.message);
         }
