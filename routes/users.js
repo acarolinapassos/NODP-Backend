@@ -75,6 +75,8 @@ router.get('/ranking-professores', function (req, res, next) {
 /* GET apoiados/apoiando page. */
 router.get('/apoio', ApoioController.listarApoiados);
 
+router.post('/apoiar', ApoioController.apoiar);
+
 router.get('/apoiadores', ApoioController.listarApoiadores);
 
 /* Renderizar pagina de notificação */
@@ -89,6 +91,7 @@ router.get('/mensagens', function (req, res, next) {
 });
 
 router.get('/listarMensagens', MensagemController.listarMensagemDireta);
+
 router.post('/mensagens', MensagemController.adicionarMensagem);
 
 /* POST medalhas */
@@ -100,6 +103,7 @@ router.get('/sair', function (req, res, next) {
 });
 
 router.post('/postagens', PostagemController.salvar);
+
 router.post('/postagem', uploadPostImg.any(), PostagemController.salvar);
 
 router.post('/comentarios', ComentarioController.salvar);
