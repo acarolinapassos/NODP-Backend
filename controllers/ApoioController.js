@@ -18,6 +18,7 @@ module.exports = {
       
       if (QtdMoedasDisponivel.qtd_moedas < 1) {
         res.status(401).json({ error: 'Moedas insuficientes' });
+        return;
       }
       
       
@@ -31,10 +32,12 @@ module.exports = {
       
       if (usuarioJaApoiado != null) {
         res.status(401).json({ error: 'Usuário já apoiado' });
+        return;
       }
       
-      let salvar = await Apoio.create({ apoiador_id, apoiado_id });
-      
+      if (QtdMoedasDisponivel.qtd_moedas >= 1 && usuarioJaApoiado == null) {
+        let salvar = await Apoio.create({ apoiador_id, apoiado_id });
+      }
       //Fazer transação de moedas => Realizado via trigger mysql
       /**
       CREATE TRIGGER REALIZAR_TRANSACAO_MOEDAS AFTER INSERT ON apoios FOR EACH ROW
