@@ -1,48 +1,91 @@
-const { AulaMinistrada, Perfil } = require('../models')
-
-module.exports = {
-    //-------------------------------------------------------------------------
-    //Listar Usuarios e seu respectivo perfil : GET
-    //http://localhost:3000/teste/aulas
+const { AulaMinistrada,
+    Perfil, Postagem,
+    CanalEnsino, Curso} = require('../models');
     
-    listar: async (req, res) => {
-        let { id } = req.query;
-        try {
-            const aula = await AulaMinistrada.findAll({
-                where: { usuario_id: id },
-                include: [
-                    {
-                        model: Perfil,
-                        as: 'perfil_aluno',
-                        required: true,
-                        attributes: ['nome', 'avatar'],
-                    }
-                ]
-            });
-            res.send(aula);
+    module.exports = {
+        //-------------------------------------------------------------------------
+        //Listar Usuarios e seu respectivo perfil : GET
+        //http://localhost:3000/teste/aulas
+        
+        listar: async (req, res) => {
+            let { id } = req.query;
+            try {
+                const aula = await AulaMinistrada.findAll({
+                    where: { usuario_id: id },
+                    include: [
+                        {
+                            model: Perfil,
+                            as: 'perfil_aluno',
+                            required: true,
+                            attributes: ['nome', 'avatar'],
+                        }
+                    ]
+                });
+                res.send(aula);
+            }
+            catch (error) {
+                console.log(error);
+            }
+            
+        },
+        adicionar: async (req, res) => {
+            try{
+                let { usuario_id, aluno_id, titulo_aula, descricao, qnt_moedas, duracao_minutos } = req.body;
+                const aula = await AulaMinistrada.create({
+                    usuario_id,
+                    aluno_id,
+                    titulo_aula,
+                    descricao,
+                    qnt_moedas,
+                    duracao_minutos
+                });
+                res.send('Aula cadastrada com sucesso!');
+            }
+            catch(error){
+                console.log(error);
+                res.send('Erro ao cadastrar aula');
+            }
+            
+        },
+        
+        selecionarAula: async (req, res) => {
+            try {
+                
+                let { post_id } = req.body;
+                
+                let post = await Postagem.findOne({
+                    where: {
+                        id:post_id
+                    },
+                    attributes: ['usuario_id', 'data_hora', 'quantidade_medalhas', 'preco_aula', 'duracao_aula', 'titulo', 'descricao','imagem'],
+                    include: [
+                        {
+                            model: Perfil,
+                            as: 'perfil',
+                            require: true,
+                            attributes: ['nome', 'avatar', 'nota_professor','horas_ensino'],
+                            include: [
+                                {
+                                    model: CanalEnsino,
+                                    as: 'ensino',
+                                    required: true,
+                                    attributes: ['descricao']
+                                },
+                                {
+                                    model: Curso,
+                                    as: 'curso',
+                                    required: true,
+                                    attributes: ['descricao']
+                                }
+                            ]
+                        }
+                    ]
+                });
+                
+                res.send(post);
+                
+            } catch (error) {
+                console.log(error);
+            }
         }
-        catch (error) {
-            console.log(error);
-        }
-
-    },
-    adicionar: async (req, res) => {
-        try{
-            let { usuario_id, aluno_id, titulo_aula, descricao, qnt_moedas, duracao_minutos } = req.body;
-            const aula = await AulaMinistrada.create({
-                usuario_id,
-                aluno_id,
-                titulo_aula,
-                descricao,
-                qnt_moedas,
-                duracao_minutos
-            })
-            res.send('Aula cadastrada com sucesso!')
-        }
-        catch(error){
-            console.log(error)
-            res.send('Erro ao cadastrar aula')
-        }
-
-    }
-};
+    };

@@ -1,4 +1,4 @@
-const { Mensagem, Perfil } = require('../models')
+const { Mensagem, Perfil } = require('../models');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 
@@ -81,8 +81,8 @@ module.exports = {
 
             let resposta = await Mensagem.findAll({
                 where: {
-                    destinatario_id: { [Op.in] : [usuario, id] },
-                    usuario_id: { [Op.in] : [usuario, id] }
+                    destinatario_id: { [Op.in]: [usuario, id] },
+                    usuario_id: { [Op.in]: [usuario, id] }
                 },
                 include: [
                     {
@@ -91,11 +91,11 @@ module.exports = {
                         required: true,
                         attributes: ['id', 'nome', 'avatar'],
                     }]
-            })
-            res.send(resposta)
+            });
+            res.send(resposta);
 
         } catch(err){
-            console.log(err)
+            console.log(err);
         }
     }
 };
