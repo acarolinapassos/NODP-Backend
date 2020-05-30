@@ -100,6 +100,8 @@ router.post('/medalhas', MedalhaController.salvar);
 
 router.get('/aula-selecionada', AulaController.selecionarAula);
 
+router.post('/adquirir-aula', AulaController.adicionar);
+
 /* SAIR do sistema */
 router.get('/sair', function (req, res, next) {
   auth.sair(req, res, next);

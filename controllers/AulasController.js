@@ -1,7 +1,7 @@
 const { AulaMinistrada,
     Perfil, Postagem,
-    CanalEnsino, Curso } = require('../models');
-const moment = require('moment');
+    CanalEnsino, Curso, Moeda } = require('../models');
+    const moment = require('moment');
     
     module.exports = {
         //-------------------------------------------------------------------------
@@ -29,27 +29,57 @@ const moment = require('moment');
             }
             
         },
+        
+             //----------------------------------------------------------------------------
         adicionar: async (req, res) => {
-            try{
-                let { usuario_id, aluno_id, titulo_aula, descricao, qnt_moedas, duracao_minutos } = req.body;
-                const aula = await AulaMinistrada.create({
-                    usuario_id,
-                    aluno_id,
-                    titulo_aula,
-                    descricao,
-                    qnt_moedas,
-                    duracao_minutos
+            try {
+                
+                //Verificar se o usuário possui moeda suficiente 
+                let aluno_id = req.session.USER.id;
+                let { usuario_id, titulo_aula, descricao, qnt_moedas, duracao_minutos } = req.body;
+                
+                //Verificar se o usuario tem moedas suficiente 
+                let QtdMoedasDisponivel = await Perfil.findOne({
+                    where: {
+                        id: aluno_id
+                    },
+                    attributes: ['qtd_moedas'],
                 });
-                res.send('Aula cadastrada com sucesso!');
+                
+                if (QtdMoedasDisponivel.qtd_moedas < qnt_moedas) {
+                    res.status(401).json({ error: { message:'Moedas insuficientes'} });
+                    return;
+                }
+                
+                
+                if (QtdMoedasDisponivel.qtd_moedas >= qnt_moedas) {
+                    const aula = await AulaMinistrada.create({
+                        usuario_id,
+                        aluno_id,
+                        titulo_aula,
+                        descricao,
+                        qnt_moedas,
+                        duracao_minutos
+                    });
+                    
+                    //Realizar transação de moedas 
+                    let transacao = await Moeda.create({
+                        usuario_id,
+                        remetente_id: aluno_id,
+                        qtd_moedas: qnt_moedas
+                    });
+                    
+                    res.status(200).json({message:'Transação realizada com sucesso'});
+                }
             }
             catch(error){
                 console.log(error);
-                res.send('Erro ao cadastrar aula');
+                res.status(401).json({ error });
             }
             
         },
         
-
+        
         //----------------------------------------------------------------------------
         selecionarAula: async (req, res) => {
             try {
@@ -84,7 +114,7 @@ const moment = require('moment');
                         }
                     ]
                 });
-
+                
                 let date = moment(post.data_hora).format('DD/MM hh:mm');
                 res.status(200).json({ postagem:post, data_publicacao:date });
                 
