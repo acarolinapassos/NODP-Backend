@@ -8,11 +8,12 @@ const { AulaMinistrada,
         //Listar Usuarios e seu respectivo perfil : GET
         //http://localhost:3000/teste/aulas
         
-        listar: async (req, res) => {
-            let { id } = req.query;
+        listarAulasMinistradas: async (req, res) => {
             try {
-                const aula = await AulaMinistrada.findAll({
+                let id = req.session.USER.id;
+                const aulas = await AulaMinistrada.findAll({
                     where: { usuario_id: id },
+                    limit: 3,
                     include: [
                         {
                             model: Perfil,
@@ -22,15 +23,14 @@ const { AulaMinistrada,
                         }
                     ]
                 });
-                res.send(aula);
+                res.send(aulas);
             }
             catch (error) {
                 console.log(error);
-            }
-            
+            }  
         },
         
-             //----------------------------------------------------------------------------
+        //----------------------------------------------------------------------------
         adicionar: async (req, res) => {
             try {
                 
@@ -121,5 +121,32 @@ const { AulaMinistrada,
             } catch (error) {
                 console.log(error);
             }
-        }
+        },
+        //-------------------------------------------------------------------------
+        //Listar Usuarios e seu respectivo perfil : GET
+        //http://localhost:3000/teste/aulas
+
+        listarAulasAssistidas: async (req, res) => {
+            try {
+                let id = req.session.USER.id;
+                const aulas = await AulaMinistrada.findAll({
+                    where: { aluno_id: id },
+                    limit:3,
+                    include: [
+                        {
+                            model: Perfil,
+                            as: 'perfil_aluno',
+                            required: true,
+                            attributes: ['nome', 'avatar'],
+                        }
+                    ]
+                });
+                res.send(aulas);
+            }
+            catch (error) {
+                console.log(error);
+            }
+        },
+
+        //----------------------------------------------------------------------------
     };

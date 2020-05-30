@@ -115,4 +115,8 @@ router.post('/comentarios', ComentarioController.salvar);
 
 router.post('/moedas', MoedaController.salvar);
 
+router.get('/aulas-assistidas', AulaController.listarAulasAssistidas);
+
+router.get('/aulas-ministradas', AulaController.listarAulasMinistradas);
+
 module.exports = router;
