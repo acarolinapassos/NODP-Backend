@@ -107,12 +107,34 @@ module.exports = {
           }
         ]
       });
+
+      let apoiadores = await Apoio.findAll({
+        where: {
+          apoiado_id: id
+        },
+        include: [
+          {
+            model: Perfil,
+            as: 'apoiador',
+            required: true,
+            attributes: ['id', 'nome', 'avatar'],
+            include: [
+              {
+                model: Curso,
+                as: 'curso',
+                required: true,
+                attributes: ['descricao'],
+              }
+            ]
+          }
+        ]
+      });
         
         let faculdades = await InstituicaoEnsino.findAll();
         let cursos = await Curso.findAll();
         let interesses = await Interesse.findAll();
         //res.send(perfil);
-        res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses, mensagens });
+      res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses, mensagens, apoiadores });
       }
       catch (error) {
         console.log(error.message);
