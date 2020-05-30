@@ -1,6 +1,7 @@
 const { AulaMinistrada,
     Perfil, Postagem,
-    CanalEnsino, Curso} = require('../models');
+    CanalEnsino, Curso } = require('../models');
+const moment = require('moment');
     
     module.exports = {
         //-------------------------------------------------------------------------
@@ -48,12 +49,14 @@ const { AulaMinistrada,
             
         },
         
+
+        //----------------------------------------------------------------------------
         selecionarAula: async (req, res) => {
             try {
-                
+                let post = {};
                 let { post_id } = req.query;
                 
-                let post = await Postagem.findOne({
+                post = await Postagem.findOne({
                     where: {
                         id:post_id
                     },
@@ -81,8 +84,9 @@ const { AulaMinistrada,
                         }
                     ]
                 });
-                
-                res.send(post);
+
+                let date = moment(post.data_hora).format('DD/MM hh:mm');
+                res.status(200).json({ postagem:post, data_publicacao:date });
                 
             } catch (error) {
                 console.log(error);
