@@ -1,4 +1,13 @@
-let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Interesse, Postagem, Comentario, CategoriaPostagem, Mensagem } = require('./../models');
+let { Perfil,
+  Cidade,
+  CanalEnsino,
+  InstituicaoEnsino,
+  Curso, Interesse,
+  Postagem, Comentario,
+  CategoriaPostagem,
+  Mensagem, Apoio,
+  Usuario
+} = require('./../models');
 const moment = require('moment');
 module.exports = {
   
@@ -145,12 +154,55 @@ module.exports = {
                 model: Curso,
                 as: 'curso',
                 require: true
+              },
+              {
+                model: Usuario,
+                as: 'usuario',
+                require: true,
+                attributes: ['email'],
               }
             ]
           });
+
+        let apoiadores = await Apoio.findAll({
+          where: {
+            apoiado_id: id
+          },
+          include: [
+            {
+              model: Perfil,
+              as: 'apoiador',
+              required: true,
+              attributes: ['id', 'nome', 'avatar'],
+              include: [
+                {
+                  model: Curso,
+                  as: 'curso',
+                  required: true,
+                  attributes: ['descricao'],
+                }
+              ]
+            }
+          ]
+        });
+
+        let mensagens = await Mensagem.findAll({
+          where: {
+            destinatario_id: id
+          },
+          limit: 3,
+          include: [
+            {
+              model: Perfil,
+              as: 'perfil_msg',
+              required: true,
+              attributes: ['id', 'nome', 'avatar'],
+            }
+          ]
+        });
           
           //res.send(perfil);
-          res.render('perfil-usuario', { title: 'Usuário', perfil });
+        res.render('perfil-usuario', { title: 'Usuário', perfil, apoiadores, mensagens });
           
         } catch (error) {
           console.log(error);
