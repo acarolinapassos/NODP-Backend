@@ -123,7 +123,6 @@ module.exports = {
     exibirPerfilDeAmigo: async (req, res, next) => {
       try {
         let id = req.query.perfil;
-        console.log(req.query);
         (!isNaN(id)) ? id = req.query.perfil: id = req.session.USER.id;
         
         const perfil = await Perfil.findOne(
@@ -188,7 +187,7 @@ module.exports = {
 
         let mensagens = await Mensagem.findAll({
           where: {
-            destinatario_id: id
+            destinatario_id: req.session.USER.id
           },
           limit: 3,
           include: [

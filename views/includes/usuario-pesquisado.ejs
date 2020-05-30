@@ -8,8 +8,10 @@
       </div>
       
       <div class="col-nome">
-        <h2 class="subtitulo" onclick="location.href='/perfil-usuario?perfil=<%=usuario.id%>'"><%=usuario.nome%></h2>
-        <h3 class="texto" onclick="location.href='/perfil-usuario?perfil=<%=usuario.id%>'"><%=usuario.curso.descricao%>
+        <h2 class="subtitulo" onclick="location.href='/users/perfil-usuario?perfil=<%=usuario.id%>'"><%=usuario.nome%>
+        </h2>
+        <h3 class="texto" onclick="location.href='/users/perfil-usuario?perfil=<%=usuario.id%>'">
+          <%=usuario.curso.descricao%>
         </h3>
         <div class="botoes">
           <input type="button" value="Mensagem" class=btn-1-d data-toggle="modal" data-target="#modalMensagem"
