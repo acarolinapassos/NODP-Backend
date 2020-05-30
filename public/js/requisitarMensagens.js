@@ -1,6 +1,6 @@
 state = {
     usuario: ''
-}
+};
 
 async function listarMensagens (element) {
 
