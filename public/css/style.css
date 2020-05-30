@@ -1075,6 +1075,10 @@ section#mensagens {
   
 }
 
+#usuario-pesquisado .usuario:hover{
+  cursor: pointer;
+}
+
 /*FIM DO CSS COMPONENTE USUARIO PESQUISADO*/
 
 

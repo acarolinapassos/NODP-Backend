@@ -1,17 +1,17 @@
 <section id="perfil-detalhe">
-  <div class="capa-perfil-detalhe">
-    <img src="/img/kate.jpg" alt="avatar" class="avatar">
+  <div class="capa-perfil-detalhe" style="background-image: url('/img/profile-img/<%=perfil.capa%>');">
+    <img src="/img/profile-img/<%=perfil.avatar%>" alt="avatar" class="avatar">
   </div>
   <div class="info">
     <h1 class="nome"><%=perfil.nome%></h1>
     <h2 class="faculdade"><%=perfil.instituicao.descricao%>, <%=perfil.turma%></h2>
     <h2 class="cidade"><%=perfil.cidade.nome%></h2>
     <p class="frase"><%=perfil.bio%></p>
-    <p class="email"><%=USER.email%></p>
+    <p class="email"><%=perfil.usuario.email%></p>
     <p class="contato"><%=perfil.celular%></p>
     <div class="interesses-div">
       <div class="interesses-aprendizado">
-        <h4 class="interesse subtitulo">Interessada em</h4>
+        <h4 class="interesse subtitulo">Interesse em</h4>
         <ul class="interesse-aprendizado-ul">
           <li>#Economia</li>
           <li>#Pilates</li>
@@ -31,7 +31,8 @@
     </div>
     <div class="row-botoes-perfil">
       <div class="campo-ocupado">
-        <input type="button" value="Postagens" class="btn-1-d no-focus">
+        <input type="button" value="Postagens" class="btn-1-d no-focus"
+          onclick="location.href='/users/posts-usuario?perfil=<%=perfil.id%>'">
         <input type="button" value="Denunciar" class="btn-1-d no-focus" data-toggle="modal" data-target="#modalDenunciar">
         <input type="button" value="Mensagem" class="btn-1-d no-focus" data-toggle="modal" data-target="#modalMensagem">
         <input type="button" value="Apoiar" class="btn-1-d no-focus" data-toggle="modal" data-target="#modalDeApoiar"
