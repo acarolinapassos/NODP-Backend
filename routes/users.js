@@ -87,9 +87,7 @@ router.get('/notificacoes', NotificacaoController.listar);
 router.get('/notificacao', NotificacaoController.exibir);
 
 /* GET mensagens page. */
-router.get('/mensagens', function (req, res, next) {
-  res.render('mensagens', { title: 'Últimas Mensagens' });
-});
+router.get('/mensagens', MensagemController.paginaDeMensagens);
 
 router.get('/listarMensagens', MensagemController.listarMensagemDireta);
 

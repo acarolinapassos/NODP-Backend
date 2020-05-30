@@ -135,7 +135,7 @@ const { AulaMinistrada,
                     include: [
                         {
                             model: Perfil,
-                            as: 'perfil_aluno',
+                            as: 'perfil_professor',
                             required: true,
                             attributes: ['nome', 'avatar'],
                         }

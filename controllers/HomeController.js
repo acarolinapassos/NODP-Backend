@@ -1,4 +1,8 @@
-let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Postagem, Comentario, CategoriaPostagem, Mensagem, Apoio } = require('./../models');
+let { Perfil, Cidade,
+  CanalEnsino, InstituicaoEnsino,
+  Curso, Postagem, Comentario,
+  CategoriaPostagem, Mensagem,
+  Apoio, AulaMinistrada } = require('./../models');
 const moment = require('moment');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
@@ -48,14 +52,14 @@ module.exports = {
           attributes:['apoiado_id']
         });
         
-      
-      if (idsApoiados != '') {
-        let ids = [];
-
-        for (let id of idsApoiados) {
-          ids.push(id.apoiado_id);
-        }
-
+        
+        if (idsApoiados != '') {
+          let ids = [];
+          
+          for (let id of idsApoiados) {
+            ids.push(id.apoiado_id);
+          }
+          
           //Listar as postagens dos apoiados 
           postagens = await Postagem.findAll({
             where: {
@@ -87,19 +91,30 @@ module.exports = {
                     as: 'curso',
                     require: true
                   }]
-              },
+                },
+                {
+                  model: CategoriaPostagem,
+                  as: 'categoria',
+                  require: true
+                }
+              ]
+              
+            });
+          }
+          
+          const aulas = await AulaMinistrada.findAll({
+            where: { usuario_id: id },
+            limit: 3,
+            include: [
               {
-                model: CategoriaPostagem,
-                as: 'categoria',
-                require: true
+                model: Perfil,
+                as: 'perfil_aluno',
+                required: true,
+                attributes: ['nome', 'avatar'],
               }
             ]
-            
           });
-        }
-        
-        
-        
+          
           
           let mensagens = await Mensagem.findAll({
             where: {
@@ -163,7 +178,7 @@ module.exports = {
           });
           
           //res.send(apoiados);
-          res.render('home', { title: 'Home', perfil, postagens, moment, mensagens, apoiadores, apoiados });
+          res.render('home', { title: 'Home', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas });
         }catch (error) {
           console.log(error.message);
         }

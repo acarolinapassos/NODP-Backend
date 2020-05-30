@@ -1,4 +1,10 @@
-const { Mensagem, Perfil } = require('../models');
+const {
+    Mensagem, Perfil,
+    Cidade, CanalEnsino,
+    InstituicaoEnsino, Curso,
+    AulaMinistrada,
+    Apoio
+} = require('../models');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
 
@@ -96,6 +102,85 @@ module.exports = {
 
         } catch(err){
             console.log(err);
+        }
+    },
+
+    paginaDeMensagens: async (req, res) => {
+        try {
+            let id = req.session.USER.id;
+            const perfil = await Perfil.findOne(
+                {
+                    where: { id },
+                    include: [
+                        {
+                            model: Cidade,
+                            as: 'cidade',
+                            required: true
+                        },
+                        {
+                            model: CanalEnsino,
+                            as: 'ensino',
+                            required: true
+                        },
+                        {
+                            model: CanalEnsino,
+                            as: 'aprendizado',
+                            required: true
+                        },
+                        {
+                            model: InstituicaoEnsino,
+                            as: 'instituicao',
+                            required: true
+                        },
+                        {
+                            model: Curso,
+                            as: 'curso',
+                            require: true
+                        }
+                    ]
+                });
+            
+            const aulas = await AulaMinistrada.findAll({
+                where: { usuario_id: id },
+                limit: 3,
+                include: [
+                    {
+                        model: Perfil,
+                        as: 'perfil_aluno',
+                        required: true,
+                        attributes: ['nome', 'avatar'],
+                    }
+                ]
+            });
+
+
+            let apoiadores = await Apoio.findAll({
+                where: {
+                    apoiado_id: id
+                },
+                limit: 4,
+                include: [
+                    {
+                        model: Perfil,
+                        as: 'apoiador',
+                        required: true,
+                        attributes: ['id', 'nome', 'avatar'],
+                        include: [
+                            {
+                                model: Curso,
+                                as: 'curso',
+                                required: true,
+                                attributes: ['descricao'],
+                            }
+                        ]
+                    }
+                ]
+            });
+            
+            res.render('mensagens', { title: 'Últimas Mensagens', perfil, aulas, apoiadores });
+
+        } catch (error) {
+            console.log(error);
         }
     }
 };
