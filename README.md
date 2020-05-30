@@ -45,6 +45,8 @@ que retorna as aulas e os professores.
 - mySQL
 - dotenv
 - sequelize
+- bootstrap
+- CSS
 
 
 Dentro da pasta "readme" você encontra arquivos com mais detalhes do projeto
