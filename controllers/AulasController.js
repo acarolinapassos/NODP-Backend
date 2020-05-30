@@ -51,7 +51,7 @@ const { AulaMinistrada,
         selecionarAula: async (req, res) => {
             try {
                 
-                let { post_id } = req.body;
+                let { post_id } = req.query;
                 
                 let post = await Postagem.findOne({
                     where: {

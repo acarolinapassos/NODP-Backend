@@ -13,6 +13,7 @@ const MensagemController = require('./../controllers/MensagemController');
 const MoedaController = require('./../controllers/MoedaController');
 const PesquisaController = require('./../controllers/PesquisaController');
 const ApoioController = require('./../controllers/ApoioController');
+const AulaController = require('./../controllers/AulasController');
 
 
 //CARREGAR IMAGENS DE POST
@@ -96,6 +97,8 @@ router.post('/mensagens', MensagemController.adicionarMensagem);
 
 /* POST medalhas */
 router.post('/medalhas', MedalhaController.salvar);
+
+router.get('/aula-selecionada', AulaController.selecionarAula);
 
 /* SAIR do sistema */
 router.get('/sair', function (req, res, next) {
