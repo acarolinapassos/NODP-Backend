@@ -6,7 +6,8 @@ let { Perfil,
   Postagem, Comentario,
   CategoriaPostagem,
   Mensagem, Apoio,
-  Usuario
+  Usuario,
+  AulaMinistrada
 } = require('./../models');
 const moment = require('moment');
 module.exports = {
@@ -323,9 +324,21 @@ module.exports = {
             ]
           });
               
+          const aulas = await AulaMinistrada.findAll({
+            where: { usuario_id: id },
+            limit: 3,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_aluno',
+                required: true,
+                attributes: ['nome', 'avatar'],
+              }
+            ]
+          });
               //res.send(perfil);
               //res.send(postagens);
-          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens });
+          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas });
               
             } catch (error) {
               console.log(error);
