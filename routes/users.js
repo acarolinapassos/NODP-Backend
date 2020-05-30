@@ -9,9 +9,10 @@ const HomeController = require('./../controllers/HomeController');
 const NotificacaoController = require('./../controllers/NotificacaoController');
 const ComentarioController = require('./../controllers/ComentarioController');
 const MedalhaController = require('./../controllers/MedalhaController');
-const MensagemController = require('./../controllers/MensagemController')
+const MensagemController = require('./../controllers/MensagemController');
 const MoedaController = require('./../controllers/MoedaController');
-const PesquisaController = require('./../controllers/PesquisaController')
+const PesquisaController = require('./../controllers/PesquisaController');
+const ApoioController = require('./../controllers/ApoioController');
 
 
 //CARREGAR IMAGENS DE POST
@@ -72,13 +73,11 @@ router.get('/ranking-professores', function (req, res, next) {
 });
 
 /* GET apoiados/apoiando page. */
-router.get('/apoio', function (req, res, next) {
-  res.render('apoio', { title: 'Apoio' });
-});
+router.get('/apoio', ApoioController.listarApoiados);
 
-router.get('/apoiadores', function (req, res, next) {
-  res.render('apoiadores', { title: 'Apoiadores' });
-});
+router.post('/apoiar', ApoioController.apoiar);
+
+router.get('/apoiadores', ApoioController.listarApoiadores);
 
 /* Renderizar pagina de notificação */
 router.get('/notificacoes', NotificacaoController.listar);
@@ -91,8 +90,9 @@ router.get('/mensagens', function (req, res, next) {
   res.render('mensagens', { title: 'Últimas Mensagens' });
 });
 
-router.get('/listarMensagens', MensagemController.listarMensagemDireta )
-router.post('/mensagens', MensagemController.adicionarMensagem)
+router.get('/listarMensagens', MensagemController.listarMensagemDireta);
+
+router.post('/mensagens', MensagemController.adicionarMensagem);
 
 /* POST medalhas */
 router.post('/medalhas', MedalhaController.salvar);
@@ -103,6 +103,7 @@ router.get('/sair', function (req, res, next) {
 });
 
 router.post('/postagens', PostagemController.salvar);
+
 router.post('/postagem', uploadPostImg.any(), PostagemController.salvar);
 
 router.post('/comentarios', ComentarioController.salvar);

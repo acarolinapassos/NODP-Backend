@@ -183,6 +183,14 @@ module.exports = function(sequelize, DataTypes) {
       //Forenkey da tabela de perfis
       as: 'perfil_coment', foreignKey: 'id'
     });
+    Perfil.hasOne(models.Apoio, {
+      //Forenkey da tabela de perfis
+      as: 'apoiador', foreignKey: 'id'
+    });
+    Perfil.hasOne(models.Apoio, {
+      //Forenkey da tabela de perfis
+      as: 'apoiado', foreignKey: 'id'
+    });
   };
   
   return Perfil;

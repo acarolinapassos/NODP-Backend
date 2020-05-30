@@ -8,10 +8,10 @@ module.exports = {
     //http://localhost:3000/teste/listar-mensagens?usuario=1&destinatario=2
     listarMensagens: async (req, res, next) => { 
         try {
-            let usuario = req.session.USER.id;
+            let id = req.session.USER.id;
             let resposta = await Mensagem.findAll({
             where: {
-                usuario_id: usuario,
+                usuario_id: id,
             },
             include: [
                 {
@@ -32,7 +32,7 @@ module.exports = {
     //Listar mensagens entre usuários : POST > body = usuario, destinatario, mensagem
     //http://localhost:3000/teste/enviar-mensagem
     adicionarMensagem: async (req, res, next) => {
-        let { usuario } = req.session.USER.id
+        let { usuario } = req.session.USER.id;
         try {
             let { destinatario, mensagem } = req.body;
             let objeto = {
