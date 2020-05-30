@@ -1,10 +1,12 @@
 let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Postagem, Comentario, CategoriaPostagem, Mensagem, Apoio } = require('./../models');
 const moment = require('moment');
+const sequelize = require('sequelize');
+const Op = sequelize.Op;
 
 module.exports = {
   exibir: async (req, res) => {
     let id = req.session.USER.id;
-    
+    let postagens = [];
     try {
       const perfil = await Perfil.findOne(
         {
@@ -38,36 +40,53 @@ module.exports = {
           ]
         });
         
-        //Listar as postagens 
-        let postagens = await Postagem.findAll({
+        //Descobrir quem são os apoiados do usuario logado
+        let idsApoiados = await Apoio.findAll({
           where: {
-            usuario_id: id
+            apoiador_id:id
           },
-          include: [
-            {
-              model: Comentario,
-              as: 'comentarios',
-              required: false,
-              include: [
-                {
-                  model: Perfil,
-                  as: 'perfil_coment',
-                  require: true,
-                  attributes: ['id', 'nome', 'avatar'],
-                }
-              ]
+          attributes:['apoiado_id']
+        });
+        
+      
+      if (idsApoiados != '') {
+        let ids = [];
+
+        for (let id of idsApoiados) {
+          ids.push(id.apoiado_id);
+        }
+
+          //Listar as postagens dos apoiados 
+          postagens = await Postagem.findAll({
+            where: {
+              usuario_id: { [Op.in]: ids }
             },
-            {
-              model: Perfil,
-              as: 'perfil',
-              require: true,
-              attributes: ['id', 'nome', 'avatar'],
-              include: [
-                {
-                  model: Curso,
-                  as: 'curso',
-                  require: true
-                }]
+            limit: 10,
+            include: [
+              {
+                model: Comentario,
+                as: 'comentarios',
+                required: false,
+                include: [
+                  {
+                    model: Perfil,
+                    as: 'perfil_coment',
+                    require: true,
+                    attributes: ['id', 'nome', 'avatar'],
+                  }
+                ]
+              },
+              {
+                model: Perfil,
+                as: 'perfil',
+                require: true,
+                attributes: ['id', 'nome', 'avatar'],
+                include: [
+                  {
+                    model: Curso,
+                    as: 'curso',
+                    require: true
+                  }]
               },
               {
                 model: CategoriaPostagem,
@@ -75,8 +94,12 @@ module.exports = {
                 require: true
               }
             ]
-            // limit:10
+            
           });
+        }
+        
+        
+        
           
           let mensagens = await Mensagem.findAll({
             where: {
