@@ -64,9 +64,7 @@ router.get('/pesquisas', PesquisaController.pesquisar);
 
 
 /* GET ranking alunos page. */
-router.get('/ranking-alunos', function (req, res, next) {
-  res.render('ranking-alunos', { title: 'Ranking' });
-});
+router.get('/ranking-alunos', RankingController.exibirRankingAlunos);
 
 /* GET ranking professores page. */
 router.get('/ranking-professores', RankingController.exibirRankingProfessores);

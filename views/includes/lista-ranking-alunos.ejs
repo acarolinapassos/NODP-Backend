@@ -1,24 +1,18 @@
 <section id="ranking-aluno" class="container">
   <div class="header">
-    <h1>Ranking de alunos</h1>
+    <h1>Ranking de alunos nos últimos 30 dias</h1>
   </div>
   <div class="ranking-div-interna">
     <ul class="ranking-div-interna-ul">
+
+      <% for( let pos = 0; pos < ranking.length; pos++ ) { %>
       <li>
-        <img src="/img/MarinaSilva foto.jpg" class="rounded-circle" alt="marina">
+        <img src="/img/profile-img/<%=ranking[pos].avatar%>" class="rounded-circle" alt="marina">
         <span class="icone"><i class="fas fa-award"></i></span>
-        2° Leonardo Silva - 12.5H
+        <%=pos + 1%>° <%=ranking[pos].nome%> - Estudou: <%=ranking[pos].minutos_ensino%> min.
       </li>
-      <li>
-        <img src="/img/luciana.jpg" class="rounded-circle" alt="marina">
-        <span class="icone"><i class="fas fa-award"></i></span>
-        3° Luana Oliveira - 9.5H
-      </li>
-      <li>
-        <img src="/img/mateus.jpg" class="rounded-circle" alt="marina">
-        <span class="icone"><i class="fas fa-award"></i></span>
-        4° Letícia Bezerra - 8.5H
-      </li>
+      <% } %>
+
     </ul>
   </div>
   <ul class="pagination">
@@ -37,6 +31,6 @@
     </li>
   </ul>
   <div class="btn-ranking">
-    <button class="btn-3-l" onclick="location.href='/ranking-professores'">Ranking Professores</button>
+    <button class="btn-3-l" onclick="location.href='/users/ranking-professores'">Ranking Professores</button>
   </div>
 </section>
