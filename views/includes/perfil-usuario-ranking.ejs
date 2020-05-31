@@ -6,7 +6,15 @@
         <i class="fas fa-trophy"></i>
       </div>
       <div class="posicao">
-        1<span>&#8304;</span>
+
+        <% for( let pos = 0; pos < ranking.length; pos++ ) { %>
+          <% if (pos.usuario_id == perfil.id) { %>
+            +<%=pos + 1%> <span>&#8304;</span>
+          <% }else{ %>
+          +<%=ranking.length + 1%> <span>&#8304;</span>
+          <%}%>
+        <% } %>
+
       </div>
     </div>
   </div>

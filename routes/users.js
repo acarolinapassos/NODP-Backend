@@ -14,7 +14,7 @@ const MoedaController = require('./../controllers/MoedaController');
 const PesquisaController = require('./../controllers/PesquisaController');
 const ApoioController = require('./../controllers/ApoioController');
 const AulaController = require('./../controllers/AulasController');
-
+const RankingController = require('./../controllers/RankingController');
 
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
@@ -69,9 +69,7 @@ router.get('/ranking-alunos', function (req, res, next) {
 });
 
 /* GET ranking professores page. */
-router.get('/ranking-professores', function (req, res, next) {
-  res.render('ranking-professores', { title: 'Ranking' });
-});
+router.get('/ranking-professores', RankingController.exibirRankingProfessores);
 
 /* GET apoiados/apoiando page. */
 router.get('/apoio', ApoioController.listarApoiados);

@@ -5,7 +5,7 @@
                 <%if(pos.usuario_id == perfil.id){%>
                 <h1 id="lugar"><%=pos + 1%>º<br>lugar</h1>
                 <%}else{%>
-                    <h1 id="lugar">+7º<br>lugar</h1>
+                    <h1 id="lugar">+<%=ranking.length + 1%>º<br>lugar</h1>
                 <% } %>
             <% } %>
         </div>
