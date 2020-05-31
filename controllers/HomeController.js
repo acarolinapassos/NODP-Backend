@@ -71,6 +71,8 @@ module.exports = {
                 model: Comentario,
                 as: 'comentarios',
                 required: false,
+                limit: 5,
+                order: sequelize.literal('id DESC'),
                 include: [
                   {
                     model: Perfil,
@@ -97,9 +99,9 @@ module.exports = {
                   as: 'categoria',
                   require: true
                 }
-              ]
-              
-            });
+              ],
+               order: sequelize.literal('id DESC'),
+          });
           }
           
           const aulas = await AulaMinistrada.findAll({
@@ -128,7 +130,8 @@ module.exports = {
                 required: true,
                 attributes: ['id', 'nome', 'avatar'],
               }
-            ]
+            ],
+            order: sequelize.literal('id DESC'),
           });
           
           let apoiadores = await Apoio.findAll({
@@ -151,7 +154,8 @@ module.exports = {
                   }
                 ]
               }
-            ]
+            ],
+            order: sequelize.literal('id DESC'),
           });
           
           let apoiados = await Apoio.findAll({
@@ -174,7 +178,8 @@ module.exports = {
                   }
                 ]
               }
-            ]
+            ],
+            order: sequelize.literal('id DESC'),
           });
           
           //res.send(apoiados);

@@ -3,7 +3,7 @@ const {Medalha} = require('../models');
 
 module.exports = {
     
-    listar: async (req,res,next) =>{
+    listar: async (req, res, next) => {
         try {
             let medalhas = await Medalha.findAll({
                 
@@ -17,13 +17,13 @@ module.exports = {
     
     
     
-    salvar: async(req,res) =>{
+    salvar: async (req, res) => {
         try {
             let remetente_id = req.session.USER.id;
             let {
                 id_post,
                 usuario_id
-            }=req.body;
+            } = req.body;
             let medalhaAchada = await Medalha.findOne({
                 where: {
                     id_post,
@@ -31,7 +31,7 @@ module.exports = {
                 }
             });
             
-            if(medalhaAchada != null){
+            if (medalhaAchada != null) {
                 return;
             }
             
@@ -67,10 +67,10 @@ module.exports = {
         try {
             let {
                 id
-            }=req.body;
+            } = req.body;
             
             const salvar = await Medalha.destroy({
-                where:{id}
+                where: { id }
             });
             res.send("Medalha excluída.");
         } catch (error) {
@@ -81,4 +81,4 @@ module.exports = {
     
     
     
-}
+};

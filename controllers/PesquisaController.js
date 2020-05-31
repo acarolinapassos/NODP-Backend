@@ -39,7 +39,9 @@ const { Perfil, Postagem, Mensagem,
                 model: Curso,
                 as: 'curso',
                 require: true
-              }]
+              }],
+              limit: 21,
+              order: sequelize.literal('id DESC'), 
             });
           }
           
@@ -61,7 +63,9 @@ const { Perfil, Postagem, Mensagem,
                       require: true,
                       attributes: ['id', 'nome', 'avatar', 'nota_professor'],
                     }
-                  ]
+                  ],
+                  limit: 5,
+                  order: sequelize.literal('id DESC'), 
                 },
                 {
                   model: Perfil,
@@ -80,7 +84,9 @@ const { Perfil, Postagem, Mensagem,
                     as: 'categoria',
                     require: true
                   }
-                ]
+                ],
+                limit: 7,
+                order: sequelize.literal('id DESC'), 
               });
             }
             
@@ -128,7 +134,8 @@ const { Perfil, Postagem, Mensagem,
                     required: true,
                     attributes: ['id', 'nome', 'avatar'],
                   }
-                ]
+                ],
+                order: sequelize.literal('id DESC'), 
               });
               
               const aulas = await AulaMinistrada.findAll({
@@ -141,7 +148,8 @@ const { Perfil, Postagem, Mensagem,
                     required: true,
                     attributes: ['nome', 'avatar'],
                   }
-                ]
+                ],
+                order: sequelize.literal('id DESC'), 
               });
               
               res.render('pesquisas', { usuariosPesquisado, postagensPesquisada, mensagens, moment, perfil, aulas });

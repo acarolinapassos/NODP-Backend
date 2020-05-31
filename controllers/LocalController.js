@@ -1,5 +1,5 @@
 const { Estado, Cidade, InstituicaoEnsino } = require('./../models');
-
+const sequelize = require('sequelize');
 
 module.exports = {
   //-------------------------------------------------------------------------
@@ -17,13 +17,15 @@ module.exports = {
               as: 'cidades',
               require:true
             }
-          ]
+          ],
+          order: sequelize.literal('descricao ASC'),
         });
         
-        res.send(cidades);
+      res.status(200).json({ cidades });
         
       } catch (error) {
-        console.log(error);
+      console.log(error);
+      res.status(501).json(error);
       }
     },
     //-------------------------------------------------------------------------
