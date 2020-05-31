@@ -186,12 +186,12 @@ let { Perfil, Cidade,
             const ONEMONTH_AGO = moment().subtract('30', 'days').format('YYYY-MM-DD hh:mm:ss');
             
             let ranking = await AulaMinistrada.sequelize.query(`
-            SELECT usuario_id, perfil.nome, SUM(duracao_minutos) AS minutos_ensino
+            SELECT usuario_id, SUM(duracao_minutos) AS minutos_ensino
             FROM aulas_ministradas aula
             INNER JOIN perfis perfil ON perfil.id = aula.usuario_id
             WHERE data_hora BETWEEN '${ONEMONTH_AGO}' AND '${TODAY}'
             GROUP BY usuario_id
-            LIMIT 7
+            LIMIT 21
             `);
             
             //res.send(ranking[0]);

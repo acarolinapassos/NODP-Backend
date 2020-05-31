@@ -1,24 +1,20 @@
 <section id="ranking-professor" class="container">
   <div class="header">
-    <h1>Ranking de professor</h1>
+    <h1>Ranking de professor nos últimos 30 dias</h1>
   </div>
   <div class="ranking-div-interna">
     <ul class="ranking-div-interna-ul">
-      <li>
-        <img src="/img/MarinaSilva foto.jpg" class="rounded-circle" alt="marina">
-        <span class="icone"><i class="fas fa-award"></i></span>
-        2° Leonardo Silva - 12.5H
-      </li>
-      <li>
-        <img src="/img/luciana.jpg" class="rounded-circle" alt="marina">
-        <span class="icone"><i class="fas fa-award"></i></span>
-        3° Luana Oliveira - 9.5H
-      </li>
-      <li>
-        <img src="/img/mateus.jpg" class="rounded-circle" alt="marina">
-        <span class="icone"><i class="fas fa-award"></i></span>
-        4° Letícia Bezerra - 8.5H
-      </li>
+
+      <% for( let pos = 0; pos < ranking.length; pos++ ) { %>
+
+        <li>
+          <img src="/img/profile-img/<%=ranking[pos].avatar%>" class="rounded-circle" alt="avatar">
+          <span class="icone"><i class="fas fa-award"></i></span>
+          <%=pos+1%>° <%=ranking[pos].nome%> - Ensinou: <%=ranking[pos].minutos_ensino%> minutos
+        </li>
+      
+      <% } %>
+
     </ul>
   </div>
   <ul class="pagination">
