@@ -1,4 +1,4 @@
-const { Apoio, Perfil, Curso, Cidade, CanalEnsino, InstituicaoEnsino, Mensagem } = require('./../models');
+const { Apoio, Perfil, Curso, Cidade, CanalEnsino, InstituicaoEnsino, Mensagem, AulaMinistrada } = require('./../models');
 const sequelize = require('sequelize');
 
 module.exports = {
@@ -116,6 +116,19 @@ module.exports = {
             }
           ]
         });
+      
+      const aulas = await AulaMinistrada.findAll({
+        where: { usuario_id: id },
+        limit: 3,
+        include: [
+          {
+            model: Perfil,
+            as: 'perfil_aluno',
+            required: true,
+            attributes: ['nome', 'avatar'],
+          }
+        ]
+      });
         
         let mensagens = await Mensagem.findAll({
           where: {
@@ -133,7 +146,7 @@ module.exports = {
           order: sequelize.literal('id DESC'),
         });
         
-        res.render('apoio', { title: 'Apoio', perfil, mensagens, apoiados});
+        res.render('apoio', { title: 'Apoio', perfil, mensagens, apoiados, aulas});
         
       } catch (error) {
         console.log(error);
@@ -201,6 +214,19 @@ module.exports = {
               }
             ]
           });
+        
+        const aulas = await AulaMinistrada.findAll({
+          where: { usuario_id: id },
+          limit: 3,
+          include: [
+            {
+              model: Perfil,
+              as: 'perfil_aluno',
+              required: true,
+              attributes: ['nome', 'avatar'],
+            }
+          ]
+        });
           
           let mensagens = await Mensagem.findAll({
             where: {
@@ -218,7 +244,7 @@ module.exports = {
             order: sequelize.literal('id DESC'),
           });
           //res.send(apoiadores);
-          res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores });
+          res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores, aulas });
         } catch (error) {
           console.log(error);
         }
