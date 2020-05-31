@@ -194,8 +194,21 @@ let { Perfil, Cidade,
             LIMIT 21
             `);
             
+            let posicaoPerfil = 0;
+            
+            ranking[0].forEach((element, i) => {
+              let stop = 0;
+              if (element.usuario_id == id) {
+                posicaoPerfil = i + 1;
+                stop = 1;
+              } else if(stop==0){
+                posicaoPerfil = '+'+(i + 2);
+              }
+            });
+            
+            
             //res.send(ranking[0]);
-            res.render('ranking-professores', { title: 'Ranking', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0] });
+            res.render('ranking-professores', { title: 'Ranking', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil });
           } catch (error) {
             console.log(error.message);
           }
@@ -387,8 +400,21 @@ let { Perfil, Cidade,
                 LIMIT 21
                 `);
                 
+                let posicaoPerfil = 0;
+                
+                //Encontrar qual a posicao do perfil logado
+                ranking[0].forEach((element, i) => {
+                  let stop = 0;
+                  if (element.aluno_id == id) {
+                    posicaoPerfil = i + 1;
+                    stop = 1;
+                  } else if (stop == 0) {
+                    posicaoPerfil = '+'+(i + 2);
+                  }
+                });
+                
                 //res.send(ranking[0]);
-                res.render('ranking-alunos', { title: 'Ranking', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0] });
+                res.render('ranking-alunos', { title: 'Ranking', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil });
               } catch (error) {
                 console.log(error.message);
               }
