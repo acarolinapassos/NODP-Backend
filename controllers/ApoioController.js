@@ -1,4 +1,6 @@
 const { Apoio, Perfil, Curso, Cidade, CanalEnsino, InstituicaoEnsino, Mensagem } = require('./../models');
+const sequelize = require('sequelize');
+
 module.exports = {
   apoiar: async (req, res) => {
     try {
@@ -62,6 +64,7 @@ module.exports = {
         where: {
           apoiador_id: id
         },
+        limit:14,
         include: [
           {
             model: Perfil,
@@ -77,7 +80,8 @@ module.exports = {
               }
             ]
           }
-        ]
+        ],
+        order: sequelize.literal('id DESC'),
       });
       
       
@@ -125,7 +129,8 @@ module.exports = {
               required: true,
               attributes: ['id', 'nome', 'avatar'],
             }
-          ]
+          ],
+          order: sequelize.literal('id DESC'),
         });
         
         res.render('apoio', { title: 'Apoio', perfil, mensagens, apoiados});
@@ -145,6 +150,7 @@ module.exports = {
           where: {
             apoiado_id: id
           },
+          limit:14,
           include: [
             {
               model: Perfil,
@@ -160,7 +166,8 @@ module.exports = {
                 }
               ]
             }
-          ]
+          ],
+          order: sequelize.literal('id DESC'),
         });
         
         const perfil = await Perfil.findOne(
@@ -207,7 +214,8 @@ module.exports = {
                 required: true,
                 attributes: ['id', 'nome', 'avatar'],
               }
-            ]
+            ],
+            order: sequelize.literal('id DESC'),
           });
           //res.send(apoiadores);
           res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores });

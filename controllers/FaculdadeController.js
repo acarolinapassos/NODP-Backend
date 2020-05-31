@@ -1,5 +1,5 @@
 const { InstituicaoEnsino } = require('./../models');
-
+const sequelize = require('sequelize');
 
 module.exports = {
   //-------------------------------------------------------------------------
@@ -8,7 +8,8 @@ module.exports = {
   listar: async () => {
     try {
       let faculdades = await InstituicaoEnsino.findAll({
-        limit: 100
+        limit: 100,
+        order: sequelize.literal('descricao ASC'),
       });
       return faculdades;
     } catch (error) {

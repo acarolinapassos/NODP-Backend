@@ -1,7 +1,8 @@
 const { AulaMinistrada,
     Perfil, Postagem,
     CanalEnsino, Curso, Moeda } = require('../models');
-    const moment = require('moment');
+const moment = require('moment');
+const sequelize = require('sequelize');
     
     module.exports = {
         //-------------------------------------------------------------------------
@@ -21,7 +22,8 @@ const { AulaMinistrada,
                             required: true,
                             attributes: ['nome', 'avatar'],
                         }
-                    ]
+                    ],
+                    order: sequelize.literal('id DESC'),
                 });
                 res.send(aulas);
             }
@@ -139,7 +141,8 @@ const { AulaMinistrada,
                             required: true,
                             attributes: ['nome', 'avatar'],
                         }
-                    ]
+                    ],
+                    order: sequelize.literal('id DESC'),
                 });
                 res.send(aulas);
             }

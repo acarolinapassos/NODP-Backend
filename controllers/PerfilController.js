@@ -10,6 +10,8 @@ let { Perfil,
   AulaMinistrada
 } = require('./../models');
 const moment = require('moment');
+const sequelize = require('sequelize');
+
 module.exports = {
   
   salvar: async (req, res, next) => {
@@ -108,13 +110,15 @@ module.exports = {
               required: true,
               attributes: ['id', 'nome', 'avatar'],
             }
-          ]
+          ],
+          order: sequelize.literal('id DESC'),
         });
         
         let apoiadores = await Apoio.findAll({
           where: {
             apoiado_id: id
           },
+          limit:4,
           include: [
             {
               model: Perfil,
@@ -130,7 +134,8 @@ module.exports = {
                 }
               ]
             }
-          ]
+          ],
+          order: sequelize.literal('id DESC'),
         });
         
         
@@ -144,7 +149,8 @@ module.exports = {
               required: true,
               attributes: ['nome', 'avatar'],
             }
-          ]
+          ],
+          order: sequelize.literal('id DESC'),
         });
         
         aulasAssistidas = await AulaMinistrada.findAll({
@@ -157,7 +163,8 @@ module.exports = {
               required: true,
               attributes: ['nome', 'avatar'],
             }
-          ]
+          ],
+          order: sequelize.literal('id DESC'),
         });
         
         
@@ -177,7 +184,7 @@ module.exports = {
       try {
         let id = req.query.perfil;
         (!isNaN(id)) ? id = req.query.perfil : id = req.session.USER.id;
-        let aulasMinistradas = []
+        let aulasMinistradas = [];
         let aulasAssistidas = [];
         
         const perfil = await Perfil.findOne(
@@ -237,7 +244,8 @@ module.exports = {
                   }
                 ]
               }
-            ]
+            ],
+            order: sequelize.literal('id DESC'),
           });
           
           let mensagens = await Mensagem.findAll({
@@ -252,7 +260,8 @@ module.exports = {
                 required: true,
                 attributes: ['id', 'nome', 'avatar'],
               }
-            ]
+            ],
+            order: sequelize.literal('id DESC'),
           });
           
           aulasMinistradas = await AulaMinistrada.findAll({
@@ -265,7 +274,8 @@ module.exports = {
                 required: true,
                 attributes: ['nome', 'avatar'],
               }
-            ]
+            ],
+            order: sequelize.literal('id DESC'),
           });
           
           aulasAssistidas = await AulaMinistrada.findAll({
@@ -278,7 +288,8 @@ module.exports = {
                 required: true,
                 attributes: ['nome', 'avatar'],
               }
-            ]
+            ],
+            order: sequelize.literal('id DESC'),
           });
           
           //res.send(perfil);
@@ -363,8 +374,9 @@ module.exports = {
                     as: 'categoria',
                     require:true
                   }
-                ]
-                // limit:10
+                ],
+                order: sequelize.literal('id DESC'),
+                limit:10
               });
               
               let mensagens = await Mensagem.findAll({
@@ -392,7 +404,8 @@ module.exports = {
                     required: true,
                     attributes: ['nome', 'avatar'],
                   }
-                ]
+                ],
+                order: sequelize.literal('id DESC'),
               });
               //res.send(perfil);
               //res.send(postagens);

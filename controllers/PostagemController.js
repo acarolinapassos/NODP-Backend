@@ -1,5 +1,5 @@
 const { Postagem, Comentario, Perfil} = require('./../models');
-
+const sequelize = require('sequelize');
 
 module.exports = {
   //-------------------------------------------------------------------------
@@ -13,6 +13,8 @@ module.exports = {
             model: Comentario,
             as: 'comentarios',
             required: false,
+            limit: 5,
+            order: sequelize.literal('id DESC'), 
             include: [
               {
                 model: Perfil,
@@ -27,8 +29,9 @@ module.exports = {
             as: 'perfil',
             require:false
           }
-        ]
-        // limit:10
+        ],
+        limit: 21,
+        order: sequelize.literal('id DESC'),
       });
       res.send(postagens);
     } catch (error) {
