@@ -1,13 +1,7 @@
 <section id="novaPostagem" class="geral">
     <div class="rowBotoes">
         <div class="posicao" onclick="location.href='/users/ranking-professores'">
-            <% for( let pos = 0; pos < ranking.length; pos++ ) { %>
-                <%if(pos.usuario_id == perfil.id){%>
-                <h1 id="lugar"><%=pos + 1%>º<br>lugar</h1>
-                <%}else{%>
-                    <h1 id="lugar">+<%=ranking.length + 1%>º<br>lugar</h1>
-                <% } %>
-            <% } %>
+                <h1 id="lugar"><%=posicaoPerfil%>º<br> lugar</h1>
         </div>
         
         <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Falar com @mdo</button>
