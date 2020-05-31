@@ -8,8 +8,9 @@
       <div class="posicao">
 
         <% for( let pos = 0; pos < ranking.length; pos++ ) { %>
-          <% if (pos.usuario_id == perfil.id) { %>
-            +<%=pos + 1%> <span>&#8304;</span>
+          <% if (ranking[pos].usuario_id == perfil.id) { %>
+            <%=pos + 1%> <span>&#8304;</span>
+            <% break %> 
           <% }else{ %>
           +<%=ranking.length + 1%> <span>&#8304;</span>
           <%}%>
