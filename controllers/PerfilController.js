@@ -60,6 +60,8 @@ module.exports = {
   //http://localhost:3000/teste/usuario?perfil=1
   exibir: async (req, res) => {
     let id = req.session.USER.id;
+    let aulasMinistradas = [];
+    let aulasAssistidas = [];
     
     try {
       const perfil = await Perfil.findOne(
@@ -93,49 +95,77 @@ module.exports = {
             }
           ]
         });
-      
-      let mensagens = await Mensagem.findAll({
-        where: {
-          destinatario_id: req.session.USER.id
-        },
-        limit: 3,
-        include: [
-          {
-            model: Perfil,
-            as: 'perfil_msg',
-            required: true,
-            attributes: ['id', 'nome', 'avatar'],
-          }
-        ]
-      });
-
-      let apoiadores = await Apoio.findAll({
-        where: {
-          apoiado_id: id
-        },
-        include: [
-          {
-            model: Perfil,
-            as: 'apoiador',
-            required: true,
-            attributes: ['id', 'nome', 'avatar'],
-            include: [
-              {
-                model: Curso,
-                as: 'curso',
-                required: true,
-                attributes: ['descricao'],
-              }
-            ]
-          }
-        ]
-      });
+        
+        let mensagens = await Mensagem.findAll({
+          where: {
+            destinatario_id: req.session.USER.id
+          },
+          limit: 3,
+          include: [
+            {
+              model: Perfil,
+              as: 'perfil_msg',
+              required: true,
+              attributes: ['id', 'nome', 'avatar'],
+            }
+          ]
+        });
+        
+        let apoiadores = await Apoio.findAll({
+          where: {
+            apoiado_id: id
+          },
+          include: [
+            {
+              model: Perfil,
+              as: 'apoiador',
+              required: true,
+              attributes: ['id', 'nome', 'avatar'],
+              include: [
+                {
+                  model: Curso,
+                  as: 'curso',
+                  required: true,
+                  attributes: ['descricao'],
+                }
+              ]
+            }
+          ]
+        });
+        
+        
+        aulasMinistradas = await AulaMinistrada.findAll({
+          where: { usuario_id: id },
+          limit: 3,
+          include: [
+            {
+              model: Perfil,
+              as: 'perfil_aluno',
+              required: true,
+              attributes: ['nome', 'avatar'],
+            }
+          ]
+        });
+        
+        aulasAssistidas = await AulaMinistrada.findAll({
+          where: { aluno_id: id },
+          limit: 3,
+          include: [
+            {
+              model: Perfil,
+              as: 'perfil_professor',
+              required: true,
+              attributes: ['nome', 'avatar'],
+            }
+          ]
+        });
+        
         
         let faculdades = await InstituicaoEnsino.findAll();
         let cursos = await Curso.findAll();
         let interesses = await Interesse.findAll();
-        //res.send(perfil);
-      res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses, mensagens, apoiadores });
+        //res.send(aulasMinistradas);
+        res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses, mensagens, apoiadores, aulasMinistradas, aulasAssistidas });
       }
       catch (error) {
         console.log(error.message);
@@ -146,7 +176,9 @@ module.exports = {
     exibirPerfilDeAmigo: async (req, res, next) => {
       try {
         let id = req.query.perfil;
-        (!isNaN(id)) ? id = req.query.perfil: id = req.session.USER.id;
+        (!isNaN(id)) ? id = req.query.perfil : id = req.session.USER.id;
+        let aulasMinistradas = []
+        let aulasAssistidas = [];
         
         const perfil = await Perfil.findOne(
           {
@@ -185,46 +217,72 @@ module.exports = {
               }
             ]
           });
-
-        let apoiadores = await Apoio.findAll({
-          where: {
-            apoiado_id: id
-          },
-          include: [
-            {
-              model: Perfil,
-              as: 'apoiador',
-              required: true,
-              attributes: ['id', 'nome', 'avatar'],
-              include: [
-                {
-                  model: Curso,
-                  as: 'curso',
-                  required: true,
-                  attributes: ['descricao'],
-                }
-              ]
-            }
-          ]
-        });
-
-        let mensagens = await Mensagem.findAll({
-          where: {
-            destinatario_id: req.session.USER.id
-          },
-          limit: 3,
-          include: [
-            {
-              model: Perfil,
-              as: 'perfil_msg',
-              required: true,
-              attributes: ['id', 'nome', 'avatar'],
-            }
-          ]
-        });
+          
+          let apoiadores = await Apoio.findAll({
+            where: {
+              apoiado_id: id
+            },
+            include: [
+              {
+                model: Perfil,
+                as: 'apoiador',
+                required: true,
+                attributes: ['id', 'nome', 'avatar'],
+                include: [
+                  {
+                    model: Curso,
+                    as: 'curso',
+                    required: true,
+                    attributes: ['descricao'],
+                  }
+                ]
+              }
+            ]
+          });
+          
+          let mensagens = await Mensagem.findAll({
+            where: {
+              destinatario_id: req.session.USER.id
+            },
+            limit: 3,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_msg',
+                required: true,
+                attributes: ['id', 'nome', 'avatar'],
+              }
+            ]
+          });
+          
+          aulasMinistradas = await AulaMinistrada.findAll({
+            where: { usuario_id: id },
+            limit: 3,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_aluno',
+                required: true,
+                attributes: ['nome', 'avatar'],
+              }
+            ]
+          });
+          
+          aulasAssistidas = await AulaMinistrada.findAll({
+            where: { aluno_id: id },
+            limit: 3,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_professor',
+                required: true,
+                attributes: ['nome', 'avatar'],
+              }
+            ]
+          });
           
           //res.send(perfil);
-        res.render('perfil-usuario', { title: 'Usuário', perfil, apoiadores, mensagens });
+          res.render('perfil-usuario', { title: 'Usuário', perfil, apoiadores, mensagens, aulasMinistradas, aulasAssistidas });
           
         } catch (error) {
           console.log(error);
@@ -307,38 +365,38 @@ module.exports = {
                   }
                 ]
                 // limit:10
-            });
-          
-          let mensagens = await Mensagem.findAll({
-            where: {
-              destinatario_id: req.session.USER.id
-            },
-            limit: 3,
-            include: [
-              {
-                model: Perfil,
-                as: 'perfil_msg',
-                required: true,
-                attributes: ['id', 'nome', 'avatar'],
-              }
-            ]
-          });
+              });
               
-          const aulas = await AulaMinistrada.findAll({
-            where: { usuario_id: id },
-            limit: 3,
-            include: [
-              {
-                model: Perfil,
-                as: 'perfil_aluno',
-                required: true,
-                attributes: ['nome', 'avatar'],
-              }
-            ]
-          });
+              let mensagens = await Mensagem.findAll({
+                where: {
+                  destinatario_id: req.session.USER.id
+                },
+                limit: 3,
+                include: [
+                  {
+                    model: Perfil,
+                    as: 'perfil_msg',
+                    required: true,
+                    attributes: ['id', 'nome', 'avatar'],
+                  }
+                ]
+              });
+              
+              const aulas = await AulaMinistrada.findAll({
+                where: { usuario_id: id },
+                limit: 3,
+                include: [
+                  {
+                    model: Perfil,
+                    as: 'perfil_aluno',
+                    required: true,
+                    attributes: ['nome', 'avatar'],
+                  }
+                ]
+              });
               //res.send(perfil);
               //res.send(postagens);
-          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas });
+              res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas });
               
             } catch (error) {
               console.log(error);

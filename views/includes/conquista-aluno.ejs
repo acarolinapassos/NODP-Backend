@@ -1,6 +1,6 @@
 <section id="conquista-aluno" class="container">
   <div class="header">
-    <h1>Conquistas recentes de Kate como aluna</h1>
+    <h1>Aulas Assistidas</h1>
     <div class="nota">
       <span><i class="fas fa-star"></i></span>
       <span><i class="fas fa-star"></i></span>
@@ -11,18 +11,17 @@
   </div>
   <div class="conquistas-div-interna">
     <ul class="conquistas-div-interna-ul">
+
+      <% for( let aula of aulasAssistidas) { %>
+      
       <li>
         <span class="icone"><i class="fas fa-award"></i></span>
-        Matemática Financeira - Professor Leonardo Silva - 2.5H
+        <%=aula.titulo_aula%> - Prof. <%=aula.perfil_professor.nome%> - <%=aula.qnt_moedas%> Moedas - <%=aula.duracao_minutos%>
+        minutos
       </li>
-      <li>
-        <span class="icone"><i class="fas fa-award"></i></span>
-        Dança - Professora Luana Oliveira - 5.5H
-      </li>
-      <li>
-        <span class="icone"><i class="fas fa-award"></i></span>
-        Pilates - Professora Letícia Bezerra - 0.5H
-      </li>
+
+      <% } %>
+
     </ul>
     
   </div>
