@@ -33,7 +33,9 @@
     }
     
     setTimeout(function () {
-      
-      $('#ganhou-moedas').modal('show');
+      let exibir = localStorage.getItem('nodp_key');
+      if(exibir == 1){
+        $('#ganhou-moedas').modal('show');
+      }
     }, 5000);
   </script>
