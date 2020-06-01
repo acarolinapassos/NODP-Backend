@@ -1,14 +1,14 @@
 <!-- Just an image -->
 <header id="header-desktop" class="container-fluid">
   <nav class="header-nav">
-    <a class="navbar-brand" href="/home">
+    <a class="navbar-brand" href="/users/home">
       <img src="/img/logo-branco-letra.png" alt="logo" class="logo-letra">
     </a>
-    <form class="form-inline">
+    <form class="form-inline" id="form-pesquisar">
       <input class="form-control mr-sm-2 texto no-focus" type="search" placeholder="Pesquisar" aria-label="Search">
       <div class="input-group-prepend">
         <div id="caixa-pesquisar">
-          <a href="/users/pesquisas"><span class="input-group-text" id="pesquisar">
+          <a onclick="pesquisar()"><span class="input-group-text" id="pesquisar">
             <i class="fas fa-search"></i>
           </span></a>
         </div>

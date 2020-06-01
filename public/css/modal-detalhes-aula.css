@@ -1,6 +1,5 @@
 #modalDetalhesAula .msg-feed-header-avatar img {
-    width: 180px;
-    height: 180px;
+    width: 100%;
     -o-object-fit: contain;
     object-fit: contain;
     -webkit-transition: ease-in-out 0.5s;
@@ -10,6 +9,7 @@
     display: -ms-flexbox;
     display: flex;
     position: relative;
+    margin-bottom: 2vh;
 }
 
 #modalDetalhesAula #detalhes-container{

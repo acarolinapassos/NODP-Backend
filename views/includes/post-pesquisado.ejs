@@ -72,7 +72,7 @@
                 
               </section>
               <% }else{ %> 
-
+                  
                 <section id="aula-pesquisada" class="container">
                   
                   <div class="aula">
@@ -94,7 +94,8 @@
                           <span class="valor"><%=post.duracao_aula%></span>
                           <p class="sumir">Min</p>
                         </div>
-                        <input type="button" value="Adquirir Agora" class=btn-1b-d data-toggle="modal" data-target="#modalDetalhesAula">
+                        <input type="button" value="Adquirir Agora" data-post_id="<%=post.id%>" class=btn-1b-d
+                          onclick="abrirModal(this)">
                       </div>
                     </div>
                   </div>
