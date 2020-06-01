@@ -397,14 +397,16 @@ section#apoiadores img {
   align-items: center;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
+  
+  justify-content: space-between;
+  -ms-flex-line-pack: space-between;
+  align-content: space-between;
 }
 
 #apoiadores .col {
   margin: 0;
   padding: 0;
+  min-width: 12%;
 }
 
 #apoiadores h1 {
@@ -1067,8 +1069,14 @@ section#mensagens {
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  padding: 2vh 0;
+  padding: 4vh 0;
+  margin-bottom: 1vh;
+  border-bottom: 1px solid var(--divider-color);
   
+}
+
+#usuario-pesquisado .usuario:hover{
+  cursor: pointer;
 }
 
 /*FIM DO CSS COMPONENTE USUARIO PESQUISADO*/
@@ -2853,7 +2861,7 @@ section#mensagens {
     margin: 0;
     color: var(--text-primary-color);
   }
-
+  
 }
 
 /*FIM DO CSS COMPONENTE USUARIO PESQUISADO*/
@@ -3096,6 +3104,8 @@ section#mensagens {
     align-items: flex-end;
     color: var(--default-primary-color);
     padding: 1vh;
+    position: relative;
+    bottom: 10px;
   }
   
   #novaPostagem .listagem-apoiados {
@@ -3113,6 +3123,7 @@ section#mensagens {
     -ms-flex-align: center;
     align-items: center;
     padding: 1vh;
+    justify-content: flex-end;
   }
   
   #novaPostagem .apoiado {

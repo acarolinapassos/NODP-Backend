@@ -1,4 +1,5 @@
 const {Comentario} = require('./../models');
+const sequelize = require('sequelize');
 
 // listar comentarios
 //http://localhost:3000/teste/comentarios
@@ -6,7 +7,8 @@ module.exports={
 listar: async (req,res,next) =>{
     try {
         let comentarios = await Comentario.findAll({
-
+            limit:5,
+            order: sequelize.literal('id DESC'),
         });
         res.send(comentarios);
     } catch (error) {

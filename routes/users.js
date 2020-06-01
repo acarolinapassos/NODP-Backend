@@ -9,10 +9,12 @@ const HomeController = require('./../controllers/HomeController');
 const NotificacaoController = require('./../controllers/NotificacaoController');
 const ComentarioController = require('./../controllers/ComentarioController');
 const MedalhaController = require('./../controllers/MedalhaController');
-const MensagemController = require('./../controllers/MensagemController')
+const MensagemController = require('./../controllers/MensagemController');
 const MoedaController = require('./../controllers/MoedaController');
-const PesquisaController = require('./../controllers/PesquisaController')
-
+const PesquisaController = require('./../controllers/PesquisaController');
+const ApoioController = require('./../controllers/ApoioController');
+const AulaController = require('./../controllers/AulasController');
+const RankingController = require('./../controllers/RankingController');
 
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
@@ -62,23 +64,17 @@ router.get('/pesquisas', PesquisaController.pesquisar);
 
 
 /* GET ranking alunos page. */
-router.get('/ranking-alunos', function (req, res, next) {
-  res.render('ranking-alunos', { title: 'Ranking' });
-});
+router.get('/ranking-alunos', RankingController.exibirRankingAlunos);
 
 /* GET ranking professores page. */
-router.get('/ranking-professores', function (req, res, next) {
-  res.render('ranking-professores', { title: 'Ranking' });
-});
+router.get('/ranking-professores', RankingController.exibirRankingProfessores);
 
 /* GET apoiados/apoiando page. */
-router.get('/apoio', function (req, res, next) {
-  res.render('apoio', { title: 'Apoio' });
-});
+router.get('/apoio', ApoioController.listarApoiados);
 
-router.get('/apoiadores', function (req, res, next) {
-  res.render('apoiadores', { title: 'Apoiadores' });
-});
+router.post('/apoiar', ApoioController.apoiar);
+
+router.get('/apoiadores', ApoioController.listarApoiadores);
 
 /* Renderizar pagina de notificação */
 router.get('/notificacoes', NotificacaoController.listar);
@@ -87,15 +83,18 @@ router.get('/notificacoes', NotificacaoController.listar);
 router.get('/notificacao', NotificacaoController.exibir);
 
 /* GET mensagens page. */
-router.get('/mensagens', function (req, res, next) {
-  res.render('mensagens', { title: 'Últimas Mensagens' });
-});
+router.get('/mensagens', MensagemController.paginaDeMensagens);
 
-router.get('/listarMensagens', MensagemController.listarMensagemDireta )
-router.post('/mensagens', MensagemController.adicionarMensagem)
+router.get('/listarMensagens', MensagemController.listarMensagemDireta);
+
+router.post('/mensagens', MensagemController.adicionarMensagem);
 
 /* POST medalhas */
 router.post('/medalhas', MedalhaController.salvar);
+
+router.get('/aula-selecionada', AulaController.selecionarAula);
+
+router.post('/adquirir-aula', AulaController.adicionar);
 
 /* SAIR do sistema */
 router.get('/sair', function (req, res, next) {
@@ -103,10 +102,15 @@ router.get('/sair', function (req, res, next) {
 });
 
 router.post('/postagens', PostagemController.salvar);
+
 router.post('/postagem', uploadPostImg.any(), PostagemController.salvar);
 
 router.post('/comentarios', ComentarioController.salvar);
 
 router.post('/moedas', MoedaController.salvar);
+
+router.get('/aulas-assistidas', AulaController.listarAulasAssistidas);
+
+router.get('/aulas-ministradas', AulaController.listarAulasMinistradas);
 
 module.exports = router;

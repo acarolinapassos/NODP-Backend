@@ -1,6 +1,6 @@
 <section id="conquista-professor" class="container">
   <div class="header">
-    <h1>Conquistas recentes de Kate como professora</h1>
+    <h1>Aulas Ministradas</h1>
     <div class="nota">
       <span><i class="fas fa-star"></i></span>
       <span><i class="fas fa-star"></i></span>
@@ -11,18 +11,14 @@
   </div>
   <div class="conquistas-div-interna">
     <ul class="conquistas-div-interna-ul">
-      <li>
-        <span class="icone"><i class="fas fa-coins"></i></span>
-        Matemática Financeira - Aluno Leonardo Silva - 5 Moedas
-      </li>
-      <li>
-        <span class="icone"><i class="fas fa-coins"></i></span>
-        Dança - Aluna Luana Oliveira - 3 Moedas
-      </li>
-      <li>
-        <span class="icone"><i class="fas fa-coins"></i></span>
-        Pilates - Aluna Letícia Bezerra - 2 Moedas
-      </li>
+
+  <% for( let aula of aulasMinistradas ) { %>
+  <li>
+    <span class="icone"><i class="fas fa-coins"></i></span>
+    <%=aula.titulo_aula%> - Aluno: <%=aula.perfil_aluno.nome%> - <%=aula.qnt_moedas%> Moedas - <%=aula.duracao_minutos%> minutos
+  </li>
+  <% } %>
+
     </ul>   
   </div>
   <ul class="pagination">

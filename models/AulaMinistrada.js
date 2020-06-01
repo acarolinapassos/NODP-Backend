@@ -59,8 +59,11 @@ module.exports = function(sequelize, DataTypes) {
   });
   AulasMinistradas.associate = (models) => {
     AulasMinistradas.belongsTo(models.Perfil, {
-      as: 'perfil_aluno', foreignKey: 'usuario_id'
+      as: 'perfil_professor', foreignKey: 'usuario_id'
+    });
+    AulasMinistradas.belongsTo(models.Perfil, {
+      as: 'perfil_aluno', foreignKey: 'aluno_id'
     });
   };
-  return AulasMinistradas
+  return AulasMinistradas;
 };

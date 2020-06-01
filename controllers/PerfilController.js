@@ -1,5 +1,17 @@
-let { Perfil, Cidade, CanalEnsino, InstituicaoEnsino, Curso, Interesse, Postagem, Comentario, CategoriaPostagem, Mensagem } = require('./../models');
+let { Perfil,
+  Cidade,
+  CanalEnsino,
+  InstituicaoEnsino,
+  Curso, Interesse,
+  Postagem, Comentario,
+  CategoriaPostagem,
+  Mensagem, Apoio,
+  Usuario,
+  AulaMinistrada
+} = require('./../models');
 const moment = require('moment');
+const sequelize = require('sequelize');
+
 module.exports = {
   
   salvar: async (req, res, next) => {
@@ -50,6 +62,8 @@ module.exports = {
   //http://localhost:3000/teste/usuario?perfil=1
   exibir: async (req, res) => {
     let id = req.session.USER.id;
+    let aulasMinistradas = [];
+    let aulasAssistidas = [];
     
     try {
       const perfil = await Perfil.findOne(
@@ -83,27 +97,82 @@ module.exports = {
             }
           ]
         });
-      
-      let mensagens = await Mensagem.findAll({
-        where: {
-          destinatario_id: req.session.USER.id
-        },
-        limit: 3,
-        include: [
-          {
-            model: Perfil,
-            as: 'perfil_msg',
-            required: true,
-            attributes: ['id', 'nome', 'avatar'],
-          }
-        ]
-      });
+        
+        let mensagens = await Mensagem.findAll({
+          where: {
+            destinatario_id: req.session.USER.id
+          },
+          limit: 3,
+          include: [
+            {
+              model: Perfil,
+              as: 'perfil_msg',
+              required: true,
+              attributes: ['id', 'nome', 'avatar'],
+            }
+          ],
+          order: sequelize.literal('id DESC'),
+        });
+        
+        let apoiadores = await Apoio.findAll({
+          where: {
+            apoiado_id: id
+          },
+          limit:4,
+          include: [
+            {
+              model: Perfil,
+              as: 'apoiador',
+              required: true,
+              attributes: ['id', 'nome', 'avatar'],
+              include: [
+                {
+                  model: Curso,
+                  as: 'curso',
+                  required: true,
+                  attributes: ['descricao'],
+                }
+              ]
+            }
+          ],
+          order: sequelize.literal('id DESC'),
+        });
+        
+        
+        aulasMinistradas = await AulaMinistrada.findAll({
+          where: { usuario_id: id },
+          limit: 3,
+          include: [
+            {
+              model: Perfil,
+              as: 'perfil_aluno',
+              required: true,
+              attributes: ['nome', 'avatar'],
+            }
+          ],
+          order: sequelize.literal('id DESC'),
+        });
+        
+        aulasAssistidas = await AulaMinistrada.findAll({
+          where: { aluno_id: id },
+          limit: 3,
+          include: [
+            {
+              model: Perfil,
+              as: 'perfil_professor',
+              required: true,
+              attributes: ['nome', 'avatar'],
+            }
+          ],
+          order: sequelize.literal('id DESC'),
+        });
+        
         
         let faculdades = await InstituicaoEnsino.findAll();
         let cursos = await Curso.findAll();
         let interesses = await Interesse.findAll();
-        //res.send(perfil);
-        res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses, mensagens });
+        //res.send(aulasMinistradas);
+        res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses, mensagens, apoiadores, aulasMinistradas, aulasAssistidas });
       }
       catch (error) {
         console.log(error.message);
@@ -114,8 +183,9 @@ module.exports = {
     exibirPerfilDeAmigo: async (req, res, next) => {
       try {
         let id = req.query.perfil;
-        console.log(req.query);
-        (!isNaN(id)) ? id = req.query.perfil: id = req.session.USER.id;
+        (!isNaN(id)) ? id = req.query.perfil : id = req.session.USER.id;
+        let aulasMinistradas = [];
+        let aulasAssistidas = [];
         
         const perfil = await Perfil.findOne(
           {
@@ -145,12 +215,85 @@ module.exports = {
                 model: Curso,
                 as: 'curso',
                 require: true
+              },
+              {
+                model: Usuario,
+                as: 'usuario',
+                require: true,
+                attributes: ['email'],
               }
             ]
           });
           
+          let apoiadores = await Apoio.findAll({
+            where: {
+              apoiado_id: id
+            },
+            include: [
+              {
+                model: Perfil,
+                as: 'apoiador',
+                required: true,
+                attributes: ['id', 'nome', 'avatar'],
+                include: [
+                  {
+                    model: Curso,
+                    as: 'curso',
+                    required: true,
+                    attributes: ['descricao'],
+                  }
+                ]
+              }
+            ],
+            order: sequelize.literal('id DESC'),
+          });
+          
+          let mensagens = await Mensagem.findAll({
+            where: {
+              destinatario_id: req.session.USER.id
+            },
+            limit: 3,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_msg',
+                required: true,
+                attributes: ['id', 'nome', 'avatar'],
+              }
+            ],
+            order: sequelize.literal('id DESC'),
+          });
+          
+          aulasMinistradas = await AulaMinistrada.findAll({
+            where: { usuario_id: id },
+            limit: 3,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_aluno',
+                required: true,
+                attributes: ['nome', 'avatar'],
+              }
+            ],
+            order: sequelize.literal('id DESC'),
+          });
+          
+          aulasAssistidas = await AulaMinistrada.findAll({
+            where: { aluno_id: id },
+            limit: 3,
+            include: [
+              {
+                model: Perfil,
+                as: 'perfil_professor',
+                required: true,
+                attributes: ['nome', 'avatar'],
+              }
+            ],
+            order: sequelize.literal('id DESC'),
+          });
+          
           //res.send(perfil);
-          res.render('perfil-usuario', { title: 'Usuário', perfil });
+          res.render('perfil-usuario', { title: 'Usuário', perfil, apoiadores, mensagens, aulasMinistradas, aulasAssistidas });
           
         } catch (error) {
           console.log(error);
@@ -160,7 +303,7 @@ module.exports = {
       exibirPostagensDeAmigo: async (req, res, next) => {
         try {
           let id = req.query.perfil;
-          console.log(req.query);
+          //localhost:3000/users/posts-usuario?perfil=1
           (!isNaN(id)) ? id = req.query.perfil : id = req.session.USER.id;
           
           const perfil = await Perfil.findOne(
@@ -231,28 +374,42 @@ module.exports = {
                     as: 'categoria',
                     require:true
                   }
-                ]
-                // limit:10
-            });
-          
-          let mensagens = await Mensagem.findAll({
-            where: {
-              destinatario_id: req.session.USER.id
-            },
-            limit: 3,
-            include: [
-              {
-                model: Perfil,
-                as: 'perfil_msg',
-                required: true,
-                attributes: ['id', 'nome', 'avatar'],
-              }
-            ]
-          });
+                ],
+                order: sequelize.literal('id DESC'),
+                limit:10
+              });
               
+              let mensagens = await Mensagem.findAll({
+                where: {
+                  destinatario_id: req.session.USER.id
+                },
+                limit: 3,
+                include: [
+                  {
+                    model: Perfil,
+                    as: 'perfil_msg',
+                    required: true,
+                    attributes: ['id', 'nome', 'avatar'],
+                  }
+                ]
+              });
+              
+              const aulas = await AulaMinistrada.findAll({
+                where: { usuario_id: id },
+                limit: 3,
+                include: [
+                  {
+                    model: Perfil,
+                    as: 'perfil_aluno',
+                    required: true,
+                    attributes: ['nome', 'avatar'],
+                  }
+                ],
+                order: sequelize.literal('id DESC'),
+              });
               //res.send(perfil);
               //res.send(postagens);
-          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens });
+              res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas });
               
             } catch (error) {
               console.log(error);

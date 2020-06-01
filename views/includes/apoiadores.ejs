@@ -6,54 +6,27 @@
     </div>
   </div>
   
-  <div class="row apoiador">
-    <img src="/img/MarinaSilva foto.jpg" class="rounded-circle" alt="marina">
-    <div class="col">
-      <h2 class="subtitulo">Marina</h2>
-      <h3 class="texto">Biologia</h3>
-    </div>
-    <div class="col">
-      <input type="button" value="Apoiar" class=btn-0-d data-toggle="modal" data-target="#modalDeApoiar">
-    </div>
-  </div>
-  
-  <div class="row apoiador">
-    <img src="/img/MarceloFreixo.jpg" class="rounded-circle" alt="marina">
-    <div class="col">
-      <h2 class="subtitulo">Marcelo</h2>
-      <h3 class="texto">Ciência</h3>
-    </div>
-    <div class="col">
-      <input type="button" value="Apoiar" class=btn-0-d data-toggle="modal" data-target="#modalDeApoiar">
-    </div>
-  </div>
-
+  <% for( let apoiador of apoiadores  ) { %>
+    
     <div class="row apoiador">
-      <img src="/img/MarinaSilva foto.jpg" class="rounded-circle" alt="marina">
+      <img src="/img/profile-img/<%=apoiador.apoiador.avatar%>" class="rounded-circle" alt="avatar">
       <div class="col">
-        <h2 class="subtitulo">Marina</h2>
-        <h3 class="texto">Biologia</h3>
+        <h2 class="subtitulo"><%=apoiador.apoiador.nome%></h2>
+        <h3 class="texto"><%=apoiador.apoiador.curso.descricao.slice(0,7)%>...</h3>
       </div>
       <div class="col">
-        <input type="button" value="Apoiar" class=btn-0-d data-toggle="modal" data-target="#modalDeApoiar">
-      </div>
-    </div>
-
-    <div class="row apoiador">
-      <img src="/img/MarceloFreixo.jpg" class="rounded-circle" alt="marina">
-      <div class="col">
-        <h2 class="subtitulo">Marcelo</h2>
-        <h3 class="texto">Ciência</h3>
-      </div>
-      <div class="col">
-        <input type="button" value="Apoiar" class=btn-0-d data-toggle="modal" data-target="#modalDeApoiar">
+        <input type="button" value="Apoiar" class=btn-0-d data-toggle="modal" data-target="#modalDeApoiar"
+          data-apoiador_id="<%=apoiador.apoiador.id%>" onclick="definirId(this)">
       </div>
     </div>
-
+    
+    <% } %> 
+    
     <div class="apoiadores-footer">
       <div>
-        <input type="button" value="Ver Todos" class=btn-2-d onclick="location.href='/apoiadores'">
+        <input type="button" value="Ver Todos" class=btn-2-d onclick="location.href='/users/apoiadores'">
       </div>
     </div>
     <%- include('./model-apoia') -%>
-</section>
+  </section>
+  

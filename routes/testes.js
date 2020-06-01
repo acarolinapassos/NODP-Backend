@@ -13,6 +13,8 @@ const MedalhaController = require('./../controllers/MedalhaController');
 const PerfilController = require('./../controllers/PerfilController');
 const MoedaController = require('./../controllers/MoedaController');
 const PesquisaController = require('./../controllers/PesquisaController');
+const ApoioController = require('./../controllers/ApoioController');
+
 
 
 router.get('/usuarios', UsuarioController.listar);
@@ -35,7 +37,7 @@ router.get('/listar-mensagens', MensagemController.listarMensagens);
 router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
 router.post('/enviar-mensagem', MensagemController.adicionarMensagem);
 router.get('/ultimas-mensagens', MensagemController.ultimasMensagens);
-router.get('/aulas', AulasController.listar);
+router.get('/aulas-ministradas', AulasController.listarAulasMinistradas);
 router.post('/aulas', AulasController.adicionar);
 router.get('/notificacoes', NotificacaoController.listar);
 router.post('/notificacoes', NotificacaoController.salvar);
@@ -43,11 +45,14 @@ router.delete('/notificacoes', NotificacaoController.excluir);
 router.put('/notificacoes', NotificacaoController.editar);
 router.get('/medalhas', MedalhaController.listar);
 router.post('/medalhas', MedalhaController.salvar);
-router.get('/aulas', AulasController.listar);
+router.get('/aulas-assistidas', AulasController.listarAulasAssistidas);
 router.post('/interesses', InteresseController.salvar);
 router.post('/interesses', InteresseController.salvarInteresseEnsino);
 router.post('/moedas', MoedaController.salvar);
 router.get('/pesquisa', PesquisaController.pesquisar);
+router.get('/apoiadores', ApoioController.listarApoiadores);
+router.get('/apoiados', ApoioController.listarApoiados);
+router.get('/selecionar-aula', AulasController.selecionarAula);
 
 router.get('/usuario-logado', function (req, res) {
   let user = req.session.USER;

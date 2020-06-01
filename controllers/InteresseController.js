@@ -1,5 +1,5 @@
 const { Interesse, UsuarioTemInteresseAprendizado, UsuarioTemInteresseEnsino } = require('./../models');
-
+const sequelize = require('sequelize');
 
 module.exports = {
   //-------------------------------------------------------------------------
@@ -19,7 +19,9 @@ module.exports = {
               as: 'interesse_aprender',
               require: true
             }
-          ]
+          ],
+          limit: 5,
+          order: sequelize.literal('descricao ASC'),
         });
         
         //Listar os interesses de ensino
@@ -32,11 +34,12 @@ module.exports = {
                 as: 'interesse_ensinar',
                 require: true
               }
-            ]
+            ],
+            limit: 5,
           });
           let interesses = { interesses_aprendizado, interesses_ensino };
           
-          res.send(interesses);
+          res.status(200).json({ interesses });
           
         } catch (error) {
           console.log(error);
@@ -52,9 +55,9 @@ module.exports = {
           } = req.body;
           
           const salvar = await UsuarioTemInteresseAprendizado.create({interesse_id,usuario_id:req.session.USER.id});
-          res.send('Interesse postado')
+          res.status(200).json({ response: 'Salvo' });
         } catch (error) {
-          console.log(error)
+          console.log(error);
         }
       },
       
@@ -68,20 +71,24 @@ module.exports = {
           } = req.body;
           
           const salvar = await UsuarioTemInteresseEnsino.create({interesse_id,usuario_id:req.session.USER.id});
-          res.send('Interesse de ensino postado')
+          res.status(200).json({ response: 'Salvo' });
         } catch (error) {
-          console.log(error)
+          console.log(error);
+          res.status(501).json(error);
         }
       },
       
       
       listar: async () => {
         try {
-          let interesses = await Interesse.findAll();
-          return interesses;
+          let interesses = await Interesse.findAll({
+            limit: 21,
+            order: sequelize.literal('descricao ASC'),
+          });
+          res.status(200).json(interesses);
         } catch (error) {
           console.log(error);
-          return;          
+          res.status(501).json(error);
         }
       }
       
