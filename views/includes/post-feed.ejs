@@ -41,7 +41,7 @@
   class="far fa-comment-alt"></i></span><span class="texto-botao">comentários</span>
   </button>
 
-  <button class="btn-1b-l btn-legenda"><span class="reacoes"><%=post.quantidade_apoios%></span><span class="icone"><i
+  <button class="btn-1b-l btn-legenda" data-id_post="<%=post.id%>" onclick="salvarMoeda(this)"><span class="reacoes"><%=post.quantidade_apoios%></span><span class="icone"><i
   class="fas fa-coins"></i></span><span class="texto-botao">apoios</span>
   </button>
 </div>
