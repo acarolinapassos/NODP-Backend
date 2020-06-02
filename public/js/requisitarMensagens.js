@@ -63,25 +63,26 @@ async function enviar (element) {
 
 
 async function enviarMensagem () {
-    let mensagem = document.querySelector('.texto-msg').textContent;
-    try {
-        const promise = await fetch('/users/mensagens', {
-            body: JSON.stringify({
-                destinatario: state.usuario,
-                mensagem: mensagem
-            }),
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
-        if (!promise.ok) {
-            alert("Error");
-            return;
-       }
+    alert('Ok')
+    // let mensagem = document.querySelector('.texto-msg').textContent
+    // try {
+    //     const promise = await fetch('/users/mensagens', {
+    //         body: JSON.stringify({
+    //             destinatario: state.usuario,
+    //             mensagem: mensagem
+    //         }),
+    //         method: 'POST',
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         }
+    //     })
+    //     if (!promise.ok) {
+    //         alert("Error");
+    //         return;
+    //    }
        
-    } catch(err){
-        console.log(err);
-    }
+    // } catch(err){
+    //     console.log(err)
+    // }
 
 }
