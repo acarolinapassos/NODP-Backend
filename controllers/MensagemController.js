@@ -40,9 +40,10 @@ module.exports = {
         //Listar mensagens entre usuários : POST > body = usuario, destinatario, mensagem
         //http://localhost:3000/teste/enviar-mensagem
         adicionarMensagem: async (req, res, next) => {
-            let { usuario } = req.session.USER.id;
+            let usuario = req.session.USER.id;
             try {
                 let { destinatario, mensagem } = req.body;
+                console.log(mensagem)
                 let objeto = {
                     usuario_id: usuario,
                     destinatario_id: destinatario,
@@ -101,7 +102,7 @@ module.exports = {
                             attributes: ['id', 'nome', 'avatar'],
                         }],
                         limit:3,
-                        order: sequelize.literal('id DESC'),
+                        order: sequelize.literal('id ASC'),
                     });
                     res.send(resposta);
                     
