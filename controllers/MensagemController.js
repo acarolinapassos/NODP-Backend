@@ -94,17 +94,24 @@ module.exports = {
                         destinatario_id: { [Op.in]: [usuario, id] },
                         usuario_id: { [Op.in]: [usuario, id] }
                     },
-                    include: [
-                        {
-                            model: Perfil,
-                            as: 'perfil_msg',
-                            required: true,
-                            attributes: ['id', 'nome', 'avatar'],
-                        }],
-                        limit:3,
-                        order: sequelize.literal('id ASC'),
+                    limit:3,
+                    order: sequelize.literal('id ASC'),
                     });
-                    res.send(resposta);
+
+                let selecionarPerfil = await Mensagem.findOne({
+                        where: {
+                            destinatario_id: id
+                        },
+                        include: [
+                            {
+                                model: Perfil,
+                                as: 'perfil_msg',
+                                required: true,
+                                attributes: ['id', 'nome', 'avatar']
+                            }
+                        ]
+                    })
+                    res.send(resposta, selecionarPerfil);
                     
                 } catch(err){
                     console.log(err);
