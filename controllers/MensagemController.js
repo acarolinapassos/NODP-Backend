@@ -40,9 +40,10 @@ module.exports = {
         //Listar mensagens entre usuários : POST > body = usuario, destinatario, mensagem
         //http://localhost:3000/teste/enviar-mensagem
         adicionarMensagem: async (req, res, next) => {
-            let { usuario } = req.session.USER.id;
+            let usuario = req.session.USER.id;
             try {
                 let { destinatario, mensagem } = req.body;
+                console.log(mensagem)
                 let objeto = {
                     usuario_id: usuario,
                     destinatario_id: destinatario,
@@ -93,17 +94,24 @@ module.exports = {
                         destinatario_id: { [Op.in]: [usuario, id] },
                         usuario_id: { [Op.in]: [usuario, id] }
                     },
-                    include: [
-                        {
-                            model: Perfil,
-                            as: 'perfil_msg',
-                            required: true,
-                            attributes: ['id', 'nome', 'avatar'],
-                        }],
-                        limit:3,
-                        order: sequelize.literal('id DESC'),
+                    limit:3,
+                    order: sequelize.literal('id ASC'),
                     });
-                    res.send(resposta);
+
+                let selecionarPerfil = await Mensagem.findOne({
+                        where: {
+                            destinatario_id: id
+                        },
+                        include: [
+                            {
+                                model: Perfil,
+                                as: 'perfil_msg',
+                                required: true,
+                                attributes: ['id', 'nome', 'avatar']
+                            }
+                        ]
+                    })
+                    res.send(resposta, selecionarPerfil);
                     
                 } catch(err){
                     console.log(err);

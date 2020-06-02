@@ -23,7 +23,7 @@ var postImg = multer.diskStorage({
     cb(null, path.join('public','img','posts-img'));
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
+    cb(null, Date.now() + '-' + (String(file.originalname).replace(' ', '')));
   }
 });
 
@@ -36,7 +36,7 @@ var profileImg = multer.diskStorage({
     cb(null, path.join('public', 'img', 'profile-img'));
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
+    cb(null, Date.now() + '-' + (String(file.originalname).replace(' ', '')));
   }
 });
 
