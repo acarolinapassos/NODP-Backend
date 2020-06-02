@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('TipoNotificacao', {
+  let TipoNotificacao = sequelize.define('TipoNotificacao', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -18,4 +18,11 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'tipos_notificacoes',
       timestamps: false
   });
+
+  TipoNotificacao.associate = (models) => {
+    //TipoNotificacao.hasMany(models.Notificacao, { as: 'descricao_notificacao', foreignkey: 'tipo_notificacao_id' });
+  };
+
+  return TipoNotificacao;
+
 };

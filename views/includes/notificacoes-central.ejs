@@ -6,63 +6,14 @@
   </div>
 
   <% for (let notificacao of notificacoes) { %>
-  <div class="aula" data-idMensagemUsuario="<%= notificacao.remetente_id %>>
-    <img src="/img/profile-img/<%=notificacao.remetente_id.avatar%>" class="rounded-circle" alt="<%=notificacao.nome%>">
+  <div class="aula" data-idMensagemUsuario="<%= notificacao.id %>" onclick="location.href='/users/perfil-usuario?perfil=<%=notificacao.perfil_notificacao.id%>'">
+    <img src="/img/profile-img/<%=notificacao.perfil_notificacao.avatar%>" class="rounded-circle" alt="<%=notificacao.perfil_notificacao.nome%>">
     <div class="col">
-      <p><strong><%=notificacao.nome%> </strong> acabou de fazer um comentário na sua aula</p>
+      <p><strong><%=notificacao.perfil_notificacao.nome%> </strong>  <%=notificacao.descricao_notificacao.descricao%></p>
     </div>
   </div>
   <% } %>
 
-  <div class="aula">
-    <img src="/img/MarceloFreixo.jpg" class="rounded-circle" alt="marcelo">
-    <div class="col">
-      <p><strong>Marcelo Freixo </strong> está estudando "Desenvolvimento das Favelas do Rio" com <strong>Lindberg
-          Farias.</strong></p>
-    </div>
-  </div>
-
-  <div class="aula">
-    <img src="/img/taliria.jpg" class="rounded-circle" alt="taliria">
-    <div class="col">
-      <p><strong>Talíria </strong> te enviou uma mensagem.</p>
-    </div>
-  </div>
-
-  <div class="aula">
-    <img src="/img/aecio.jpg" class="rounded-circle" alt="aecio">
-    <div class="col">
-      <p><strong>Aécio Neves </strong> publicou "Como encher um jatinho de quilos de Javascript..."</p>
-    </div>
-  </div>
-
-  <div class="aula">
-    <img src="/img/brown.jpg" class="rounded-circle" alt="brown">
-    <div class="col">
-      <p><strong>Carlinhos Brown </strong> publicou a aula "Tá com sede? Água Mineral em tempos de Corona Vírus".</p>
-    </div>
-  </div>
-
-  <div class="aula">
-    <img src="/img/thiago.jpg" class="rounded-circle" alt="thiago">
-    <div class="col">
-      <p><strong>Thiago Leifert </strong> publicou a aula "Como ser um BBB de sucesso + códigos prontos para praticar".
-      </p>
-    </div>
-  </div>
-
-  <div class="aula">
-    <img src="/img/bene.jpg" class="rounded-circle" alt="thiago">
-    <div class="col">
-      <p><strong>Bene </strong> se tornou seu apoiador e te deu uma moeda..</p>
-    </div>
-  </div>
-
-  <div class="aula">
-    <img src="/img/thiago.jpg" class="rounded-circle" alt="thiago">
-    <div class="col">
-      <p><strong>Thiago Leifert </strong> comentou uma publicação.</p>
-    </div>
-  </div>
+  
 
 </section>

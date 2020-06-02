@@ -191,6 +191,9 @@ module.exports = function(sequelize, DataTypes) {
       //Forenkey da tabela de perfis
       as: 'apoiado', foreignKey: 'id'
     });
+    Perfil.hasOne(models.Notificacao, {
+      as: 'perfil_notificacao', foreignKey: 'id'
+    });
   };
   
   return Perfil;
