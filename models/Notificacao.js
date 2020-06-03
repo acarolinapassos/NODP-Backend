@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Notificacao', {
+  let Notificacao = sequelize.define('Notificacao', {
     'id': {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -57,4 +57,12 @@ module.exports = function(sequelize, DataTypes) {
       tableName: 'notificacoes',
       timestamps: false
   });
+
+  Notificacao.associate = (models) => {
+    Notificacao.belongsTo(models.Perfil, { as: 'perfil_notificacao', foreignKey:'remetente_id' });
+    Notificacao.belongsTo(models.TipoNotificacao, { as: 'descricao_notificacao', foreignKey: 'tipo_notificacao_id' });
+  }
+
+  return Notificacao;
+
 };
