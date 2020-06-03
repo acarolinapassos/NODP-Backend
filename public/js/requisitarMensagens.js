@@ -27,7 +27,6 @@ async function listarMensagens (element) {
 
     let id = element.dataset.idmensagemusuario;
     state.usuario = id;
-    state.elemento = element
     try {
         const promise = await fetch(`/users/listarMensagens?id=${id}`, {
             method: 'GET',
@@ -84,8 +83,10 @@ async function listarMensagens (element) {
 }
 
 async function enviar (element) {
+    
 
     const respostas = await listarMensagens(element);
+    await alert(JSON.stringify(respostas))
 
     let ul = document.querySelector(".informacoes-do-msg-mensagens-ul");
     let header = document.querySelector(".msg-feed-header");

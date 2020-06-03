@@ -5,11 +5,11 @@ const {
     Curso, Mensagem,
     Postagem, Comentario,
     CategoriaPostagem, AulaMinistrada,
-    Apoio
+    Apoio, TipoNotificacao
 } = require('./../models');
+const sequelize = require('sequelize');
 
-    const moment = require('moment');
-    
+//const moment = require('moment');
     
     module.exports = {
         exibir: async (req, res) => {
@@ -17,41 +17,58 @@ const {
             
             try {
                 let notificacoes = await Notificacao.findAll({
+                    where: {
+                        usuario_id: req.session.USER.id
+                    },
                     limit: 10,
+                    include: [
+                        {
+                            model: Perfil,
+                            as: 'perfil_notificacao',
+                            required: true,
+                            attributes: ['id', 'nome', 'avatar'],
+                        },
+                        {
+                            model: TipoNotificacao,
+                            as: 'descricao_notificacao',
+                            required: true,
+                            attributes: ['id', 'descricao'],
+                        }]
+
                 });
                 
                 let perfil = await Perfil.findAll(
                     {
-                        limit: 2,
+                        limit: 10,
                         attributes: ['id', 'nome', 'avatar'],
-                    }
-                    );
-                    let mensagens = await Mensagem.findAll({
-                        where: {
-                            destinatario_id: req.session.USER.id
-                        },
-                        limit: 3,
-                        include: [
-                            {
-                                model: Perfil,
-                                as: 'perfil_msg',
-                                required: true,
-                                attributes: ['id', 'nome', 'avatar'],
-                            }
-                        ]
+
                     });
-                    let faculdades = await InstituicaoEnsino.findAll();
-                    let cursos = await Curso.findAll();
-                    res.send('./users/notificacoes');
-                    res.render('notificacoes', {
-                        title: 'notificacoes',
-                        perfil,
-                        mensagens,
-                        faculdades,
-                        cursos,
-                        moment,
-                        notificacoes
-                    });
+                let mensagens = await Mensagem.findAll({
+                    where: {
+                        destinatario_id: req.session.USER.id
+                    },
+                    limit: 10,
+                    include: [
+                        {
+                            model: Perfil,
+                            as: 'perfil_msg',
+                            required: true,
+                            attributes: ['id', 'nome', 'avatar'],
+                        }
+                    ]
+                });
+                let faculdades = await InstituicaoEnsino.findAll();
+                let cursos = await Curso.findAll();
+                res.send(notificacoes);
+                // res.render('notificacoes', {
+                //     title: 'notificacoes',
+                //     perfil,
+                //     mensagens,
+                //     faculdades,
+                //     cursos,
+                //     moment,
+                //     notificacoes
+                // });
                 } catch (error) {
                     console.log(error);
                     // res.redirect('/error');
@@ -67,7 +84,25 @@ const {
                 try {
                     let id = req.session.USER.id;
                     let notificacoes = await Notificacao.findAll({
-                        
+                        where: {
+                            usuario_id: req.session.USER.id
+                        },
+                        limit: 10,
+                        include: [
+                            {
+                                model: Perfil,
+                                as: 'perfil_notificacao',
+                                required: true,
+                                attributes: ['id', 'nome', 'avatar'],
+                            },
+                            {
+                                model: TipoNotificacao,
+                                as: 'descricao_notificacao',
+                                required: true,
+                                attributes: ['id', 'descricao'],
+                            }],
+                            order: sequelize.literal('id DESC'),
+    
                     });
                     const perfil = await Perfil.findOne(
                         {
