@@ -113,4 +113,6 @@ router.get('/aulas-assistidas', AulaController.listarAulasAssistidas);
 
 router.get('/aulas-ministradas', AulaController.listarAulasMinistradas);
 
+router.delete('/apoiar', ApoioController.desapoiar);
+
 module.exports = router;
