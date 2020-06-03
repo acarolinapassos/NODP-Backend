@@ -248,5 +248,26 @@ module.exports = {
         } catch (error) {
           console.log(error);
         }
+      },
+// --------------------------------------------------------------------------------------------
+      desapoiar: async (req,res) =>{
+        try {
+          let apoiador_id = req.session.USER.id;
+         
+          let apoiado_id= req.body.apoiado_id;
+       
+          let result = await Apoio.destroy({
+            where:{
+              apoiador_id,
+              apoiado_id
+            }
+          });
+          res.status(200).json(result);
+        } catch (error) {
+          console.log(error);
+          res.status(401).json({ error });
+          
+        }
       }
     };
+    

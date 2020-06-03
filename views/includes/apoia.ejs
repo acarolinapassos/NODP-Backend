@@ -17,7 +17,7 @@
         <h3 class="texto"><%=apoiado.apoiado.curso.descricao%></h3>
       </div>
       <div class="col">
-        <input type="button" value="Apoiado" class=btn-1-l data-toggle="modal" data-target="#modalDeApoiados">
+        <input type="button" value="Apoiado" data-apoiado_id="<%=apoiado.apoiado.id%>" class=btn-1-l data-target="#modalDeApoiados" onclick="abrirModal(this)">
       </div>
     </div>
     
