@@ -38,7 +38,6 @@ async function listarMensagens (element) {
             alert("Error");
             return;
        }
-      
         return promise.json();
        
     } catch(error) {
@@ -84,9 +83,7 @@ async function listarMensagens (element) {
 
 async function enviar (element) {
     
-
     const respostas = await listarMensagens(element);
-    await alert(JSON.stringify(respostas))
 
     let ul = document.querySelector(".informacoes-do-msg-mensagens-ul");
     let header = document.querySelector(".msg-feed-header");
@@ -145,3 +142,85 @@ async function enviarMensagem () {
     }
 
 } 
+
+
+async function requisitarMensagem (objeto) {
+    let id  = objeto
+    try {
+        const promise = await fetch(`/users/listarMensagens?id=${id}`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+        if (!promise.ok) {
+            alert("Error");
+            return;
+       }
+        return promise.json();
+       
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+async function requisitarUsuario (objeto) {
+    let id = objeto.dataset.idmensagemusuario;
+    state.usuario = id;
+
+    let data = await requisitarMensagem(id)
+
+    console.log(JSON.stringify(data))
+    let usuario = data.selecionarPerfil
+    let mensagens = data.resposta
+
+    if( mensagens.length === 0){
+        let header = document.querySelector(".msg-feed-header");
+        header.innerHTML = `
+        <header class="msg-feed-header">
+            <div class="msg-feed-header-avatar">
+                <img src="/img/profile-img/${usuario.avatar}" alt="">
+            </div>
+            <div>
+                <h1 class="user-name subtitulo">${usuario.nome}</h1>
+            </div>
+        </header>`;
+        let ul = document.querySelector(".informacoes-do-msg-mensagens-ul");
+        ul.innerHTML = `
+        `;
+
+    } else {
+        let ul = document.querySelector(".informacoes-do-msg-mensagens-ul");
+        let header = document.querySelector(".msg-feed-header");
+        let lis = '';
+
+        for (let mensagem of mensagens) {
+        lis +=`
+            <li class="msg">
+                <h2 class="subtitulo">
+                    ${usuario.nome}
+                </h2>
+                <cite class="texto">
+                    ${mensagem.mensagem}
+                </cite>
+                <time class="horario">
+                    ${mensagem.data_hora}
+                </time>
+            </li>`;
+            }
+
+            ul.innerHTML = lis;
+            header.innerHTML = `
+            <header class="msg-feed-header">
+            <div class="msg-feed-header-avatar">
+            <img src="/img/profile-img/${usuario.avatar}" alt="">
+            </div>
+            <div>
+            <h1 class="user-name subtitulo">${usuario.nome}</h1>
+            </div>
+        </header>`;
+
+    }
+
+    console.log(mensagens)
+}

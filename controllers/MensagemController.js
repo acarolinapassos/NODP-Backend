@@ -29,6 +29,7 @@ module.exports = {
                     limit: 21,
                     order: sequelize.literal('id DESC'),
                 });
+
                 res.send(resposta);
             }
             catch (error) {
@@ -98,20 +99,14 @@ module.exports = {
                     order: sequelize.literal('id ASC'),
                     });
 
-                let selecionarPerfil = await Mensagem.findOne({
+                    let selecionarPerfil = await Perfil.findOne({
                         where: {
-                            destinatario_id: id
+                            id: id
                         },
-                        include: [
-                            {
-                                model: Perfil,
-                                as: 'perfil_msg',
-                                required: true,
-                                attributes: ['id', 'nome', 'avatar']
-                            }
-                        ]
+                        attributes: ['id', 'nome', 'avatar'],
                     })
-                    res.send(resposta, selecionarPerfil);
+
+                    res.status(200).json({resposta, selecionarPerfil})
                     
                 } catch(err){
                     console.log(err);
