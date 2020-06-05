@@ -34,7 +34,7 @@
     <!-- Search form -->
     <div class="post-coment">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="Pesquisar" aria-label="Search">
+            <input class="form-control" type="text" placeholder="Pesquisar" aria-label="Search" id="search-mobile">
             <div class="input-group-append">
               <button class="btn" type="submit">
                 <i class="fas fa-search"></i>
@@ -51,19 +51,19 @@
           <div class="card card-body">
             Refine sua busca:
             <div class="btn-group-toggle mobilePesquisaCollapse" data-toggle="buttons">
-              <button class="btn-1-l mobilePesquisaBotao">
+              <button class="btn-1-l mobilePesquisaBotao" onclick="filtrar(this)" data-item="usuario=1">
                  Usuários
               </button>
-              <button class="btn-1b-l mobilePesquisaBotao">
+              <button class="btn-1b-l mobilePesquisaBotao" onclick="filtrar(this)" data-item="aprender=3">
                  Quero Aprender
               </button>
             </div>
             <div class="btn-group-toggle mobilePesquisaCollapse" data-toggle="buttons">
-              <button class="btn-1b-l mobilePesquisaBotao">
+              <button class="btn-1b-l mobilePesquisaBotao" onclick="filtrar(this)" data-item="ensinar=4">
                 Quero ensinar
               </button>
-              <button class="btn-1-l mobilePesquisaBotao">
-                Postagens
+              <button class="btn-1-l mobilePesquisaBotao" onclick="filtrar(this)" data-item="aprendendo=2">
+                Aprendendo
               </button>
             </div>
           </div>
