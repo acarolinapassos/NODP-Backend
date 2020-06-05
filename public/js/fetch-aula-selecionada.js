@@ -15,7 +15,7 @@ try {
 }
 
 
-async function abrirModal(element) {
+async function abrirModalAdquirirAula(element) {
 try {
   let post_id = element.dataset.post_id;
 
