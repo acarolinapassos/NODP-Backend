@@ -1,5 +1,6 @@
 const FILTRO = document.getElementById('filtroPesquisa');
 const INPUT_SEARCH = document.querySelector('input[type=search');
+const INPUT_SEARCH_MOBILE = document.getElementById('search-mobile');
 const LUPA = document.getElementById('form-pesquisar');
 
 
@@ -7,7 +8,11 @@ async function filtrar(element) {
   try {
     var query = element.dataset.item;
     if (element.classList.value != 'botao ativo') {
-      location.href = `/users/pesquisas?search=pesquisar&descricao=${INPUT_SEARCH.value}&${query}`;
+      if (screen.availWidth > 600) {
+        location.href = `/users/pesquisas?search=pesquisar&descricao=${INPUT_SEARCH.value}&${query}`;
+      } else {
+        location.href = `/users/pesquisas?search=pesquisar&descricao=${INPUT_SEARCH_MOBILE.value}&${query}`;
+      }
     }
   } catch (error) {
     console.log(error);
