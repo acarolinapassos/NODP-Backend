@@ -36,6 +36,7 @@
       let exibir = localStorage.getItem('nodp_key');
       if(exibir == 1){
         $('#ganhou-moedas').modal('show');
+        localStorage.clear();
       }
     }, 5000);
   </script>
