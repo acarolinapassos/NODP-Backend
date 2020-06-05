@@ -14,7 +14,7 @@
       <img src="/img/profile-img/<%=apoiado.apoiado.avatar%>" class=" rounded-circle" alt="jandira">
       <div class="col ">
         <h2 class="subtitulo"><%=apoiado.apoiado.nome%></h2>
-        <h3 class="texto"><%=apoiado.apoiado.curso.descricao%></h3>
+        <h3 class="texto"><%=apoiado.apoiado.curso.descricao.slice(0,17)%>...</h3>
       </div>
       <div class="col">
         <input type="button" value="Apoiado" data-apoiado_id="<%=apoiado.apoiado.id%>" class=btn-1-l data-target="#modalDeApoiados" onclick="abrirModal(this)">
