@@ -53,12 +53,12 @@
         
     </section> 
     <section id="mobilePostPesquisa" class="container">
-        <div class="boas-vendas">Bem-vindo,  User </br></div>
+        <div class="boas-vendas">Bem-vindo,  <%=perfil.nome%>  </br></div>
         <!-- <div id="aula-pesquisada" class="aula"> -->
             <div class="post-coment">
                 <form action="" class="post-coment-form">
                 <div class="img-avatar-coment">
-                    <img src="/img/kate.jpg" alt="">
+                    <img src="/img/profile-img/<%=perfil.avatar%>" alt="">
                 </div>
                 <div class="div-input-comentario">
                     <input type="text" name="comentario" class="input-comentario" autocomplete="off" required placeholder="O que você quer publicar hoje?"

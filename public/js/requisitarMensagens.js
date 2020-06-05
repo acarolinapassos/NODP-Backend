@@ -14,12 +14,12 @@ async function atualizar () {
             alert("Error");
             return;
        }
-        let mensagem = document.querySelector('.texto-msg').value = ''
+        let mensagem = document.querySelector('.texto-msg').value = '';
         return promise.json();
         
 
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
 }
 
@@ -118,7 +118,7 @@ async function enviar (element) {
 
 
 async function enviarMensagem () {
-    let mensagem = document.querySelector('.texto-msg').value
+    let mensagem = document.querySelector('.texto-msg').value;
     try {
         const promise = await fetch('/users/mensagens', {
             body: JSON.stringify({
@@ -135,17 +135,17 @@ async function enviarMensagem () {
             return;
        }
 
-       await atualizarMensagens ()
+        await atualizarMensagens();
        
     } catch(err){
-        console.log(err)
+        console.log(err);
     }
 
 } 
 
 
 async function requisitarMensagem (objeto) {
-    let id  = objeto
+    let id = objeto;
     try {
         const promise = await fetch(`/users/listarMensagens?id=${id}`, {
             method: 'GET',
@@ -168,11 +168,11 @@ async function requisitarUsuario (objeto) {
     let id = objeto.dataset.idmensagemusuario;
     state.usuario = id;
 
-    let data = await requisitarMensagem(id)
+    let data = await requisitarMensagem(id);
 
-    console.log(JSON.stringify(data))
-    let usuario = data.selecionarPerfil
-    let mensagens = data.resposta
+    console.log(JSON.stringify(data));
+    let usuario = data.selecionarPerfil;
+    let mensagens = data.resposta;
 
     if( mensagens.length === 0){
         let header = document.querySelector(".msg-feed-header");
@@ -222,5 +222,4 @@ async function requisitarUsuario (objeto) {
 
     }
 
-    console.log(mensagens)
 }
