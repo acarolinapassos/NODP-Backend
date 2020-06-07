@@ -55,7 +55,9 @@ const sequelize = require('sequelize');
                             required: true,
                             attributes: ['id', 'nome', 'avatar'],
                         }
-                    ]
+                    ],
+                    limit:3,
+                    group: ['usuario_id'],
                 });
                 let faculdades = await InstituicaoEnsino.findAll();
                 let cursos = await Curso.findAll();
@@ -102,7 +104,6 @@ const sequelize = require('sequelize');
                                 attributes: ['id', 'descricao'],
                             }],
                             order: sequelize.literal('id DESC'),
-    
                     });
                     const perfil = await Perfil.findOne(
                         {
@@ -171,8 +172,8 @@ const sequelize = require('sequelize');
                                         as: 'categoria',
                                         require:true
                                     }
-                                ]
-                                // limit:10
+                                ],
+                                limit:10
                             });
                             
                             
@@ -189,7 +190,8 @@ const sequelize = require('sequelize');
                                         required: true,
                                         attributes: ['id', 'nome', 'avatar'],
                                     }
-                                ]
+                                ],
+                                group: ['usuario_id'],
                             });
                             let comentarios = await Comentario.findAll();
                             

@@ -13,18 +13,18 @@ async function atualizar () {
         if (!promise.ok) {
             alert("Error");
             return;
-       }
-        let mensagem = document.querySelector('.texto-msg').value = '';
+        }
+        document.querySelector('.texto-msg').value = '';
         return promise.json();
         
-
+        
     } catch (err) {
         console.log(err);
     }
 }
 
 async function listarMensagens (element) {
-
+    
     let id = element.dataset.idmensagemusuario;
     state.usuario = id;
     try {
@@ -37,80 +37,74 @@ async function listarMensagens (element) {
         if (!promise.ok) {
             alert("Error");
             return;
-       }
+        }
         return promise.json();
-       
+        
     } catch(error) {
         console.log(error);
     }
+    
+}
 
- }
-
- async function atualizarMensagens () {
-
-    const respostas = await atualizar();
-
+async function atualizarMensagens () {
+    
+    let mensagens = await atualizar();
+    mensagens = mensagens.resposta;
+    
     let ul = document.querySelector(".informacoes-do-msg-mensagens-ul");
-    let header = document.querySelector(".msg-feed-header");
     let lis = '';
 
-    for (let resposta of respostas) {
-        lis +=`
-    <li class="msg">
-         <h2 class="subtitulo">
-             ${resposta.perfil_msg.nome}
-         </h2>
-         <cite class="texto">
-             ${resposta.mensagem}
-         </cite>
-         <time class="horario">
-             ${resposta.data_hora}
-         </time>
-    </li>`;
+    for (var i = mensagens.length - 1; i >= 0; i--) {
+        lis += `
+            <li class="msg">
+            <h2 class="subtitulo">
+            ${mensagens[i].perfil_msg.nome}
+            </h2>
+            <cite class="texto">
+            ${mensagens[i].mensagem}
+            </cite>
+            <time class="horario">
+            ${moment(mensagens[i].data_hora).format('DD/MM hh:mm')}
+            </time>
+            </li>`;
     }
 
     ul.innerHTML = lis;
-    header.innerHTML = `
-    <header class="msg-feed-header">
-    <div class="msg-feed-header-avatar">
-      <img src="/img/profile-img/${respostas[0].perfil_msg.avatar}" alt="">
-    </div>
-    <div>
-      <h1 class="user-name subtitulo">${respostas[0].perfil_msg.nome}</h1>
-    </div>
-  </header>`;
 }
 
 
 async function enviarMensagem () {
-    let mensagem = document.querySelector('.texto-msg').value;
     try {
+        let mensagem = document.querySelector('.texto-msg').value;
         const promise = await fetch('/users/mensagens', {
-            body: JSON.stringify({
-                destinatario: state.usuario,
-                mensagem: mensagem
-            }),
+            body: JSON.stringify({destinatario: state.usuario, mensagem: mensagem}),
             method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
-        if (!promise.ok) {
-            alert("Error");
-            return;
-       }
-
-        await atualizarMensagens();
-       
-    } catch(err){
-        console.log(err);
+            headers: {"Content-Type": "application/json"}
+        });
+     
+        let result = promise;
+        return result;
+        
+    } catch(error){
+        console.log(error);
     }
-
 } 
 
+async function tentarEnviarMsg() {
+    try {
+        let result = await enviarMensagem();
+        if (!result.ok) {
+            return false;
+        } else {
+            atualizarMensagens();
+        }   
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-async function requisitarMensagem (objeto) {
-    let id = objeto;
+
+async function requisitarMensagem (id) {
     try {
         const promise = await fetch(`/users/listarMensagens?id=${id}`, {
             method: 'GET',
@@ -121,9 +115,9 @@ async function requisitarMensagem (objeto) {
         if (!promise.ok) {
             alert("Error");
             return;
-       }
+        }
         return promise.json();
-       
+        
     } catch(error) {
         console.log(error);
     }
@@ -132,59 +126,57 @@ async function requisitarMensagem (objeto) {
 async function requisitarUsuario (objeto) {
     let id = objeto.dataset.idmensagemusuario;
     state.usuario = id;
-
+    
     let data = await requisitarMensagem(id);
-
-    console.log(JSON.stringify(data));
     let usuario = data.selecionarPerfil;
     let mensagens = data.resposta;
-
-    if( mensagens.length === 0){
+    
+    if( mensagens.length == 0){
         let header = document.querySelector(".msg-feed-header");
         header.innerHTML = `
         <header class="msg-feed-header">
-            <div class="msg-feed-header-avatar">
-                <img src="/img/profile-img/${usuario.avatar}" alt="">
-            </div>
-            <div>
-                <h1 class="user-name subtitulo">${usuario.nome}</h1>
-            </div>
+        <div class="msg-feed-header-avatar">
+        <img src="/img/profile-img/${usuario.avatar}" alt="">
+        </div>
+        <div>
+        <h1 class="user-name subtitulo">${usuario.nome}</h1>
+        </div>
         </header>`;
         let ul = document.querySelector(".informacoes-do-msg-mensagens-ul");
         ul.innerHTML = `
         `;
-
+        
     } else {
         let ul = document.querySelector(".informacoes-do-msg-mensagens-ul");
         let header = document.querySelector(".msg-feed-header");
         let lis = '';
-
-        for (let mensagem of mensagens) {
-        lis +=`
+        
+        for (var i = mensagens.length -1; i >= 0; i--) {
+            lis +=`
             <li class="msg">
-                <h2 class="subtitulo">
-                    ${usuario.nome}
-                </h2>
-                <cite class="texto">
-                    ${mensagem.mensagem}
-                </cite>
-                <time class="horario">
-                    ${mensagem.data_hora}
-                </time>
+            <h2 class="subtitulo">
+            ${mensagens[i].perfil_msg.nome}
+            </h2>
+            <cite class="texto">
+            ${mensagens[i].mensagem}
+            </cite>
+            <time class="horario">
+            ${moment(mensagens[i].data_hora).format('DD/MM hh:mm')}
+            </time>
             </li>`;
-            }
-
-            ul.innerHTML = lis;
-            header.innerHTML = `
-            <header class="msg-feed-header">
-            <div class="msg-feed-header-avatar">
-            <img src="/img/profile-img/${usuario.avatar}" alt="">
-            </div>
-            <div>
-            <h1 class="user-name subtitulo">${usuario.nome}</h1>
-            </div>
+        }
+        
+        ul.innerHTML = lis;
+        header.innerHTML = `
+        <header class="msg-feed-header">
+        <div class="msg-feed-header-avatar">
+        <img src="/img/profile-img/${usuario.avatar}" alt="">
+        </div>
+        <div>
+        <h1 class="user-name subtitulo">${usuario.nome}</h1>
+        </div>
         </header>`;
-
+        
     }
-
+    
 }

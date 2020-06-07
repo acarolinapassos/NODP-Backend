@@ -112,6 +112,7 @@ module.exports = {
             }
           ],
           order: sequelize.literal('id DESC'),
+          group: ['usuario_id'],
         });
         
         let apoiadores = await Apoio.findAll({
@@ -262,6 +263,7 @@ module.exports = {
               }
             ],
             order: sequelize.literal('id DESC'),
+            group: ['usuario_id'],
           });
           
           aulasMinistradas = await AulaMinistrada.findAll({
@@ -391,7 +393,8 @@ module.exports = {
                     required: true,
                     attributes: ['id', 'nome', 'avatar'],
                   }
-                ]
+                ],
+                group: ['usuario_id'],
               });
               
               const aulas = await AulaMinistrada.findAll({
