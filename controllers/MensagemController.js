@@ -208,7 +208,25 @@ module.exports = {
                         }
                     });
                     
-                    res.render('mensagens', { title: 'Últimas Mensagens', perfil, aulas, apoiadores, notificacoes });
+                    let mensagens = await Mensagem.findAll({
+                        where: {
+                            destinatario_id: id
+                        },
+                        limit: 28,
+                        include: [
+                            {
+                                model: Perfil,
+                                as: 'perfil_msg',
+                                required: true,
+                                attributes: ['id', 'nome', 'avatar'],
+                            }
+                        ],
+                        order: sequelize.literal('id DESC'),
+                        group: ['usuario_id'],
+                    });
+                    
+                    //res.send(mensagens);
+                    res.render('mensagens', { title: 'Últimas Mensagens', mensagens, perfil, aulas, apoiadores, notificacoes });
                     
                 } catch (error) {
                     console.log(error);
