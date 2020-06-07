@@ -132,6 +132,7 @@ let { Perfil, Cidade,
                 }
               ],
               order: sequelize.literal('id DESC'),
+              group: ['usuario_id'],
             });
             
             let apoiadores = await Apoio.findAll({

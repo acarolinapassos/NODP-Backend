@@ -144,6 +144,7 @@ module.exports = {
             }
           ],
           order: sequelize.literal('id DESC'),
+          group: ['usuario_id'],
         });
         
         res.render('apoio', { title: 'Apoio', perfil, mensagens, apoiados, aulas});
@@ -242,6 +243,7 @@ module.exports = {
               }
             ],
             order: sequelize.literal('id DESC'),
+            group: ['usuario_id'],
           });
           //res.send(apoiadores);
           res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores, aulas });
