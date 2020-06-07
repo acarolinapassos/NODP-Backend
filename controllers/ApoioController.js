@@ -154,8 +154,17 @@ module.exports = {
           order: sequelize.literal('id DESC'),
           group: ['usuario_id'],
         });
+      
+      
+      let { count: notificacoes } = await Notificacao.findAndCountAll({
+        where: {
+          usuario_id: req.session.USER.id,
+          lida: 0
+        }
+      });
+      
         
-        res.render('apoio', { title: 'Apoio', perfil, mensagens, apoiados, aulas});
+        res.render('apoio', { title: 'Apoio', perfil, mensagens, apoiados, aulas, notificacoes});
         
       } catch (error) {
         console.log(error);
@@ -253,8 +262,17 @@ module.exports = {
             order: sequelize.literal('id DESC'),
             group: ['usuario_id'],
           });
+        
+        
+        let { count: notificacoes } = await Notificacao.findAndCountAll({
+          where: {
+            usuario_id: req.session.USER.id,
+            lida: 0
+          }
+        });
+        
           //res.send(apoiadores);
-          res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores, aulas });
+          res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores, aulas, notificacoes });
         } catch (error) {
           console.log(error);
         }

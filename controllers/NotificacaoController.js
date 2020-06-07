@@ -16,7 +16,7 @@ const sequelize = require('sequelize');
             let id = req.session.USER.id;
             
             try {
-                let notificacoes = await Notificacao.findAll({
+                let { count:notificacoes, rows:lista_notificacoes } = await Notificacao.findAndCountAll({
                     where: {
                         usuario_id: req.session.USER.id
                     },
@@ -56,7 +56,6 @@ const sequelize = require('sequelize');
                             attributes: ['id', 'nome', 'avatar'],
                         }
                     ],
-                    limit:3,
                     group: ['usuario_id'],
                 });
                 let faculdades = await InstituicaoEnsino.findAll();
@@ -85,9 +84,10 @@ const sequelize = require('sequelize');
             listar: async (req, res, next) => {
                 try {
                     let id = req.session.USER.id;
-                    let notificacoes = await Notificacao.findAll({
+                    let { count: notificacoes, rows: lista_notificacoes } = await Notificacao.findAndCountAll({
                         where: {
-                            usuario_id: req.session.USER.id
+                            usuario_id: req.session.USER.id,
+                            lida:0
                         },
                         limit: 10,
                         include: [
@@ -231,8 +231,9 @@ const sequelize = require('sequelize');
                                     }
                                 ]
                             });
+                    
                             
-                    res.render('notificacoes', { title: 'Últimas notificações', notificacoes, perfil, mensagens, postagens, comentarios, aulas, apoiadores });
+                    res.render('notificacoes', { title: 'Últimas notificações', lista_notificacoes, notificacoes, perfil, mensagens, postagens, comentarios, aulas, apoiadores });
                             
                             
                         } catch (error) {

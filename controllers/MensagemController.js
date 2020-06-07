@@ -53,14 +53,14 @@ module.exports = {
                     mensagem: mensagem
                 };
                 let resposta = await Mensagem.create(objeto);
-
+                
                 let notificar = await Notificacao.create({
                     descricao: 'enviou mensagem',
                     tipo_notificacao_id: '1',
                     usuario_id: destinatario,
                     remetente_id: usuario
                 });
-
+                
                 res.send(resposta);
             }
             catch (error) {
@@ -77,7 +77,7 @@ module.exports = {
                 let resposta = await Mensagem.findAll({
                     where: {
                         usuario_id: { [Op.in]: [usuario, id]},
-                    destinatario_id: { [Op.in]: [usuario, id]}
+                        destinatario_id: { [Op.in]: [usuario, id]}
                     },
                     limit: 3,
                     include: [ 
@@ -96,8 +96,8 @@ module.exports = {
                 res.send('deu error');
             }
         },
-
-
+        
+        
         listarMensagemDireta: async(req, res, next) => {
             try {
                 let usuario = req.session.USER.id;
@@ -106,7 +106,7 @@ module.exports = {
                 let resposta = await Mensagem.findAll({
                     where: {
                         usuario_id: { [Op.in]: [usuario, id]},
-                    destinatario_id: { [Op.in]: [usuario, id]}
+                        destinatario_id: { [Op.in]: [usuario, id]}
                     },
                     include:[{model:Perfil, as:'perfil_msg', required:true, attributes:['nome']}],
                     limit:7,
@@ -201,7 +201,14 @@ module.exports = {
                         order: sequelize.literal('id DESC'), 
                     });
                     
-                    res.render('mensagens', { title: 'Últimas Mensagens', perfil, aulas, apoiadores });
+                    let { count: notificacoes } = await Notificacao.findAndCountAll({
+                        where: {
+                            usuario_id: req.session.USER.id,
+                            lida: 0
+                        }
+                    });
+                    
+                    res.render('mensagens', { title: 'Últimas Mensagens', perfil, aulas, apoiadores, notificacoes });
                     
                 } catch (error) {
                     console.log(error);

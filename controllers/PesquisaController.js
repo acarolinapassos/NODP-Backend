@@ -1,7 +1,7 @@
 const { Perfil, Postagem, Mensagem,
   Comentario, Curso, CategoriaPostagem,
   CanalEnsino, Cidade, InstituicaoEnsino,
-  AulaMinistrada} = require('./../models');
+  AulaMinistrada, Notificacao} = require('./../models');
   const sequelize = require('sequelize');
   const Op = sequelize.Op;
   const moment = require('moment');
@@ -151,8 +151,15 @@ const { Perfil, Postagem, Mensagem,
                 ],
                 order: sequelize.literal('id DESC'), 
               });
-              
-              res.render('pesquisas', { usuariosPesquisado, postagensPesquisada, mensagens, moment, perfil, aulas });
+        
+        let { count: notificacoes } = await Notificacao.findAndCountAll({
+          where: {
+            usuario_id: req.session.USER.id,
+            lida: 0
+          }
+        });
+        
+              res.render('pesquisas', { usuariosPesquisado, postagensPesquisada, mensagens, moment, perfil, aulas, notificacoes });
               
             } catch (error) {
               console.log(error);

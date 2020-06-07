@@ -2,7 +2,7 @@ let { Perfil, Cidade,
   CanalEnsino, InstituicaoEnsino,
   Curso, Postagem, Comentario,
   CategoriaPostagem, Mensagem,
-  Apoio, AulaMinistrada } = require('./../models');
+  Apoio, AulaMinistrada, Notificacao} = require('./../models');
   const moment = require('moment');
   const sequelize = require('sequelize');
   const Op = sequelize.Op;
@@ -205,10 +205,17 @@ let { Perfil, Cidade,
                 posicaoPerfil = '+'+(i + 2);
               }
             });
+        
+        let { count: notificacoes } = await Notificacao.findAndCountAll({
+          where: {
+            usuario_id: req.session.USER.id,
+            lida: 0
+          }
+        });
             
             
             //res.send(ranking[0]);
-            res.render('ranking-professores', { title: 'Ranking', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil });
+            res.render('ranking-professores', { title: 'Ranking', perfil, notificacoes, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil });
           } catch (error) {
             console.log(error.message);
           }
@@ -412,9 +419,16 @@ let { Perfil, Cidade,
                     posicaoPerfil = '+'+(i + 2);
                   }
                 });
-                
+            
+            let { count: notificacoes } = await Notificacao.findAndCountAll({
+              where: {
+                usuario_id: req.session.USER.id,
+                lida: 0
+              }
+            });
+            
                 //res.send(ranking[0]);
-                res.render('ranking-alunos', { title: 'Ranking', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil });
+                res.render('ranking-alunos', { title: 'Ranking', perfil, postagens, notificacoes,moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil });
               } catch (error) {
                 console.log(error.message);
               }

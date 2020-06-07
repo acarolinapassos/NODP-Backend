@@ -5,7 +5,7 @@ async function salvarMoeda (event) {
     let quantidade_apoios = event.dataset.quantidade_apoios;
     try {
         const promise = await fetch("/users/moedas", {
-            body: JSON.stringify({ id_post: id, quantidade_apoios }),
+            body: JSON.stringify({ id, quantidade_apoios }),
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

@@ -5,20 +5,20 @@ module.exports = {
         try {
             
             let {
-                id_post,
+                id,
                 quantidade_apoios
             } = req.body;
             
+            quantidade_apoios = parseInt(quantidade_apoios + 1);
+            console.log(quantidade_apoios);
             
-            
-            
-            const salvar = await Postagem.update({quantidade_apoios : parseInt(quantidade_apoios) + 1 }, {
+            const salvar = await Postagem.update({quantidade_apoios }, {
                 
-                where:{id:id_post}
+                where:{id}
                 
             });
             
-            let post = await Postagem.findByPk(id_post);
+            let post = await Postagem.findByPk(id);
 
             let notificar = await Notificacao.create({
                 descricao: 'deu moeda',
