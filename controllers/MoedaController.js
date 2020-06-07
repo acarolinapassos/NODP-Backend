@@ -1,4 +1,4 @@
-const {Moeda,Postagem} = require('../models');
+const {Moeda,Postagem, Notificacao} = require('../models');
 
 module.exports = {
     salvar: async (req,res) =>{
@@ -6,7 +6,6 @@ module.exports = {
             
             let {
                 id_post,
-                
                 quantidade_apoios
             } = req.body;
             
@@ -19,6 +18,14 @@ module.exports = {
                 
             });
             
+            let post = await Postagem.findByPk(id_post);
+
+            let notificar = await Notificacao.create({
+                descricao: 'deu moeda',
+                tipo_notificacao_id: '3',
+                usuario_id: post.usuario_id,
+                remetente_id:req.session.USER.id
+            });
             
             //Atualiza o perfil com a quantidade de moedas
             /**

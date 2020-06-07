@@ -3,7 +3,8 @@ const {
     Cidade, CanalEnsino,
     InstituicaoEnsino, Curso,
     AulaMinistrada,
-    Apoio
+    Apoio,
+    Notificacao
 } = require('../models');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
@@ -52,6 +53,14 @@ module.exports = {
                     mensagem: mensagem
                 };
                 let resposta = await Mensagem.create(objeto);
+
+                let notificar = await Notificacao.create({
+                    descricao: 'enviou mensagem',
+                    tipo_notificacao_id: '1',
+                    usuario_id: destinatario,
+                    remetente_id: usuario
+                });
+
                 res.send(resposta);
             }
             catch (error) {

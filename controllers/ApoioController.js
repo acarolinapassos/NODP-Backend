@@ -1,12 +1,15 @@
-const { Apoio, Perfil, Curso, Cidade, CanalEnsino, InstituicaoEnsino, Mensagem, AulaMinistrada } = require('./../models');
+const { Apoio, Perfil,
+  Curso, Cidade,
+  CanalEnsino, InstituicaoEnsino,
+  Mensagem, AulaMinistrada,
+Notificacao} = require('./../models');
+
 const sequelize = require('sequelize');
 
 module.exports = {
   apoiar: async (req, res) => {
     try {
-      
-      
-      
+
       let apoiador_id = req.session.USER.id;
       let { apoiado_id } = req.body;
       
@@ -22,8 +25,7 @@ module.exports = {
         res.status(401).json({ error: 'Moedas insuficientes' });
         return;
       }
-      
-      
+
       //Verificar se o usuário já foi apoiado 
       let usuarioJaApoiado = await Apoio.findOne({
         where: {
@@ -39,6 +41,12 @@ module.exports = {
       
       if (QtdMoedasDisponivel.qtd_moedas >= 1 && usuarioJaApoiado == null) {
         let salvar = await Apoio.create({ apoiador_id, apoiado_id });
+        let notificar = await Notificacao.create({
+          descricao: 'apoiou',
+          tipo_notificacao_id: '4',
+          usuario_id: apoiado_id,
+          remetente_id: apoiador_id
+        });
       }
       //Fazer transação de moedas => Realizado via trigger mysql
       /**
