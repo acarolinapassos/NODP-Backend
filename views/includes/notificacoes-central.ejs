@@ -5,7 +5,7 @@
     </div>
   </div>
 
-  <% for (let notificacao of notificacoes) { %>
+  <% for (let notificacao of lista_notificacoes) { %>
   <div class="aula" data-idMensagemUsuario="<%= notificacao.id %>" onclick="location.href='/users/perfil-usuario?perfil=<%=notificacao.perfil_notificacao.id%>'">
     <img src="/img/profile-img/<%=notificacao.perfil_notificacao.avatar%>" class="rounded-circle" alt="<%=notificacao.perfil_notificacao.nome%>">
     <div class="col">

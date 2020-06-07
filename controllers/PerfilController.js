@@ -7,7 +7,8 @@ let { Perfil,
   CategoriaPostagem,
   Mensagem, Apoio,
   Usuario,
-  AulaMinistrada
+  AulaMinistrada,
+  Notificacao
 } = require('./../models');
 const moment = require('moment');
 const sequelize = require('sequelize');
@@ -168,12 +169,18 @@ module.exports = {
           order: sequelize.literal('id DESC'),
         });
         
+      let { count: notificacoes } = await Notificacao.findAndCountAll({
+        where: {
+          usuario_id: req.session.USER.id,
+          lida: 0
+        }
+      });
         
         let faculdades = await InstituicaoEnsino.findAll();
         let cursos = await Curso.findAll();
         let interesses = await Interesse.findAll();
         //res.send(aulasMinistradas);
-        res.render('perfil', { title: 'Perfil', perfil, faculdades, cursos, interesses, mensagens, apoiadores, aulasMinistradas, aulasAssistidas });
+        res.render('perfil', { title: 'Perfil', perfil, notificacoes, faculdades, cursos, interesses, mensagens, apoiadores, aulasMinistradas, aulasAssistidas });
       }
       catch (error) {
         console.log(error.message);
@@ -294,13 +301,21 @@ module.exports = {
             order: sequelize.literal('id DESC'),
           });
           
+          let { count: notificacoes } = await Notificacao.findAndCountAll({
+            where: {
+              usuario_id: req.session.USER.id,
+              lida: 0
+            }
+          });
+          
           //res.send(perfil);
-          res.render('perfil-usuario', { title: 'Usuário', perfil, apoiadores, mensagens, aulasMinistradas, aulasAssistidas });
+          res.render('perfil-usuario', { title: 'Usuário', perfil, apoiadores, mensagens, aulasMinistradas, aulasAssistidas, notificacoes });
           
         } catch (error) {
           console.log(error);
         }
       },
+      
       //Exibir o perfil de um usuário e suas postagens 
       exibirPostagensDeAmigo: async (req, res, next) => {
         try {
@@ -412,7 +427,15 @@ module.exports = {
               });
               //res.send(perfil);
               //res.send(postagens);
-              res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas });
+          
+          let { count: noticacoes } = await Notificacao.findAndCountAll({
+            where: {
+              usuario_id: req.session.USER.id,
+              lida: 0
+            }
+          });
+          
+          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas, noticacoes });
               
             } catch (error) {
               console.log(error);

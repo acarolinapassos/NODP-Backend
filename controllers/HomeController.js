@@ -2,7 +2,7 @@ let { Perfil, Cidade,
   CanalEnsino, InstituicaoEnsino,
   Curso, Postagem, Comentario,
   CategoriaPostagem, Mensagem,
-  Apoio, AulaMinistrada } = require('./../models');
+  Apoio, AulaMinistrada, Notificacao } = require('./../models');
   const moment = require('moment');
   const sequelize = require('sequelize');
   const Op = sequelize.Op;
@@ -208,8 +208,16 @@ let { Perfil, Cidade,
             });
             
             
-            //res.send(ranking[0]);
-            res.render('home', { title: 'Home', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas, posicaoPerfil });
+            let { count:notificacoes } = await Notificacao.findAndCountAll({
+              where: {
+                usuario_id: req.session.USER.id,
+                lida:0
+              }
+            });
+        
+        
+           // res.send(postagens);
+          res.render('home', { title: 'Home', perfil, postagens, moment, mensagens, apoiadores, apoiados, aulas, posicaoPerfil, notificacoes });
           }catch (error) {
             console.log(error.message);
           }
