@@ -1,4 +1,4 @@
-const {Medalha} = require('../models');
+const {Medalha, Notificacao} = require('../models');
 
 
 module.exports = {
@@ -40,6 +40,14 @@ module.exports = {
                 remetente_id,
                 usuario_id
             });
+
+            let notificar = await Notificacao.create({
+                descricao: 'deu medalha',
+                tipo_notificacao_id: '2',
+                usuario_id,
+                remetente_id
+            });
+
             res.status(200).json('Medalha Salva');
             
             //Atualizar perfil do usuário via trigger 
