@@ -428,14 +428,14 @@ module.exports = {
               //res.send(perfil);
               //res.send(postagens);
           
-          let { count: noticacoes } = await Notificacao.findAndCountAll({
+          let { count: notificacoes } = await Notificacao.findAndCountAll({
             where: {
               usuario_id: req.session.USER.id,
               lida: 0
             }
           });
           
-          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas, noticacoes });
+          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas, notificacoes });
               
             } catch (error) {
               console.log(error);
