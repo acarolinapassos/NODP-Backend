@@ -29,6 +29,10 @@
   display: -ms-flexbox;
   display: flex;
 }
+#modalMensagem .msg-feed-header h1{
+position: relative;
+top: 14px;
+}
 
 #modalMensagem .informacoes-do-msg .btn-urgente,
 #modalMensagem .informacoes-do-msg .btn-normal {
