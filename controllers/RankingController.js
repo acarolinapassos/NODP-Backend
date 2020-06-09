@@ -191,6 +191,7 @@ let { Perfil, Cidade,
             INNER JOIN perfis perfil ON perfil.id = aula.usuario_id
             WHERE data_hora BETWEEN '${ONEMONTH_AGO}' AND '${TODAY}'
             GROUP BY usuario_id
+            ORDER BY minutos_ensino DESC
             LIMIT 21
             `);
             
@@ -403,7 +404,8 @@ let { Perfil, Cidade,
                 FROM aulas_ministradas aula
                 INNER JOIN perfis perfil ON perfil.id = aula.aluno_id
                 WHERE data_hora BETWEEN '${ONEMONTH_AGO}' AND '${TODAY}'
-                GROUP BY usuario_id
+                GROUP BY aluno_id
+                ORDER BY minutos_ensino DESC
                 LIMIT 21
                 `);
                 
