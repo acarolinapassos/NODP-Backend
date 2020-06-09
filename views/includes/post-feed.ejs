@@ -5,7 +5,11 @@
       
       <header class="post-feed-header" onclick="location.href='/users/perfil-usuario?perfil=<%=post.usuario_id%>'">
         <div class="post-feed-header-avatar">
-          <img src="/img/profile-img/<%=post.perfil.avatar%>" alt="avatar">
+          <% if (post.imagem.slice(0,7) == 'http://') { %>
+            <img src="<%=post.perfil.avatar%>" alt="avatar">
+            <% }else{ %>
+           <img src="/img/profile-img/<%=post.perfil.avatar%>" alt="avatar">
+          <% }%>
         </div>
         <div>
           <h1 class="user-name subtitulo"><%=post.perfil.nome%></h1>
@@ -16,7 +20,11 @@
       
       <article class="post-feed-article">
         <div class="img-post">
-          <img src="/img/posts-img/<%=post.imagem%>" alt="">
+          <% if (post.imagem.slice(0,7) == 'http://') { %>
+            <img src="<%=post.imagem%>" alt="imagem">
+          <% }else{ %>
+          <img src="/img/posts-img/<%=post.imagem%>" alt="imagem">
+          <% }%>
         </div>
         <div class="user-info">                              
           <h1 class="titulo"><%=post.titulo%></h1>
