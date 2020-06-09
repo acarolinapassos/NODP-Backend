@@ -24,21 +24,21 @@ aria-hidden="true">
         </div>   
     </div>
    
-    <div class="nota">
-      <span><i data-nota = "1" class="fas fa-star"></i></span>
-      <span><i data-nota = "2" class="fas fa-star"></i></span>
-      <span><i data-nota = "3" class="fas fa-star"></i></span>
-      <span><i data-nota = "4" class="fas fa-star"></i></span>
-      <span><i data-nota = "5" class="far fa-star"></i></span>
+    <div class="nota" id="nota">
+      <span onclick="atribuirNota(this)" data-nota="1"><i class="far fa-star iconeEstrela"></i></span>
+      <span onclick="atribuirNota(this)" data-nota="2"><i class="far fa-star iconeEstrela"></i></span>
+      <span onclick="atribuirNota(this)" data-nota="3"><i class="far fa-star iconeEstrela"></i></span>
+      <span onclick="atribuirNota(this)" data-nota="4"><i class="far fa-star iconeEstrela"></i></span>
+      <span onclick="atribuirNota(this)" data-nota="5"><i class="far fa-star iconeEstrela"></i></span>
     </div>
       <div class="modal-footer">
         <textarea name="" rows="4" placeholder="Deixe um comentário aqui ..." class="texto texto-msg"
             maxlength="250"></textarea>
-        <button type="button" class="btn btn-1-d">Enviar</button>
+        <button type="button" class="btn btn-1-d" onclick="avaliarAula()">Enviar</button>
       </div>
     </div>
   </div>
 </div>
 <!--FIM DO MODAL MENSAGEM-->
 
-<script src="/js/fetch-avaliar.js"></script> 
+<script src="/js/fetch-avaliar.js"></script>
