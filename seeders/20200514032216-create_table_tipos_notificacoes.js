@@ -23,6 +23,10 @@ module.exports = {
         id:5,
         descricao: 'comentou em sua postagem',
       },
+      {  
+        id:6,
+        descricao: 'adquiriu uma aula sua',
+      },
     ], {});
   },
 

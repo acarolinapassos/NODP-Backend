@@ -75,7 +75,7 @@ async function atualizarMensagens () {
 
 async function enviarMensagem () {
     try {
-        let mensagem = document.querySelector('.texto-msg').value;
+        let mensagem = document.getElementById('text-area-mensagem-modal').value;
         const promise = await fetch('/users/mensagens', {
             body: JSON.stringify({destinatario: state.usuario, mensagem: mensagem}),
             method: 'POST',
@@ -97,6 +97,7 @@ async function tentarEnviarMsg() {
             return false;
         } else {
             atualizarMensagens();
+            document.getElementById('text-area-mensagem-modal').value = '';
         }   
     } catch (error) {
         console.log(error);

@@ -31,7 +31,11 @@
 }
 #modalMensagem .msg-feed-header h1{
 position: relative;
-top: 14px;
+}
+#modalMensagem .msg-feed-header #username-div{
+height: 10vh;
+display: flex;
+align-items: center;
 }
 
 #modalMensagem .informacoes-do-msg .btn-urgente,
