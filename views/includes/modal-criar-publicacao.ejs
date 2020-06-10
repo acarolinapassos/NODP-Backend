@@ -42,9 +42,11 @@
                     <input type="button" value="urgente" class="btn-urgente" id="btn-Urgente-aprender">
                   </div>
                 </div>
-                <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post" maxlength="250" required></textarea>
+                <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." 
+                class="texto texto-post" maxlength="250" required
+                onkeyup="atualizarLimitCaracteres(this, 'limit-post-aprender')"></textarea>
                 <div class="quantidade-caracteres">
-                  <p class="texto">250</p>
+                  <p class="texto" id="limit-post-aprender">250</p>
                 </div>
               </div>
             </article>
@@ -98,15 +100,15 @@
               <div class="user-info">
                 <div class="informacoes-do-post">
                   <div>
-                    <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo" required>
+                    <input type="text" placeholder="Titulo" class="titulo titulo-modal" name="titulo" required">
                     <h2 class="subtitulo">#Estou aprendendo</h2>
                   </div>
                   
                 </div>
                 <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post"
-                maxlength="250" required></textarea>
+                maxlength="250" required onkeyup="atualizarLimitCaracteres(this, 'limit-post-aprendendo')"></textarea>
                 <div class="quantidade-caracteres">
-                  <p class="texto">250</p>
+                  <p class="texto" id="limit-post-aprendendo">250</p>
                 </div>
               </div>
               
@@ -177,9 +179,9 @@
                   
                 </div>
                 <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post"
-                maxlength="250" required></textarea>
+                maxlength="250" required onkeyup="atualizarLimitCaracteres(this, 'limit-post-ensinar')"></textarea>
                 <div class="quantidade-caracteres">
-                  <p class="texto">250</p>
+                  <p class="texto" id="limit-post-ensinar">250</p>
                 </div>
               </div>
             </article>
@@ -239,9 +241,9 @@
                   
                 </div>
                 <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post"
-                maxlength="250" required></textarea>
+                maxlength="250" required onkeyup="atualizarLimitCaracteres(this, 'limit-post-ensinando')"></textarea>
                 <div class="quantidade-caracteres">
-                  <p class="texto">250</p>
+                  <p class="texto" id="limit-post-ensinando">250</p>
                 </div>
               </div>
             </article>
@@ -326,9 +328,9 @@
                   
                 </div>
                 <textarea name="descricao" rows="4" placeholder="Seu texto aqui ..." class="texto texto-post"
-                maxlength="250" required></textarea>
+                maxlength="250" required onkeyup="atualizarLimitCaracteres(this, 'limit-post-mobile')"></textarea>
                 <div class="quantidade-caracteres">
-                  <p class="texto">250</p>
+                  <p class="texto" id="limit-post-mobile">250</p>
                 </div>
               </div>
             </article>
