@@ -46,9 +46,9 @@ aria-hidden="true">
               </div>
             </div>
             <textarea name="" rows="4" placeholder="Sua mensagem aqui ..." class="texto texto-msg"
-            maxlength="250"></textarea>
+            maxlength="250" onkeyup="atualizarLimitCaracteresMsg(this, 'limite-caracteres-img1')"></textarea>
             <div class="quantidade-caracteres">
-              <p class="texto">250</p>
+              <p class="texto" id="limite-caracteres-img1">250</p>
             </div>
           </div>
         </article>
@@ -101,9 +101,9 @@ aria-hidden="true">
           <div class="user-info">
             
             <textarea name="" rows="7" placeholder="Sua mensagem aqui ..." class="texto texto-msg"
-            maxlength="250"></textarea>
+            maxlength="250" onkeyup="atualizarLimitCaracteresMsg(this, 'limite-caracteres-img2')"></textarea>
             <div class="quantidade-caracteres">
-              <p class="texto">250</p>
+              <p class="texto" id="limite-caracteres-img2">250</p>
             </div>
           </div>
         </article>
