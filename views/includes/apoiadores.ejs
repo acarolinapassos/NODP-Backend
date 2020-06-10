@@ -8,7 +8,7 @@
   
   <% for( let apoiador of apoiadores  ) { %>
     
-    <div class="row apoiador">
+    <div class="row apoiador" onclick="location.href='/users/perfil-usuario?perfil=<%=apoiador.apoiador.id%>'">
       <img src="/img/profile-img/<%=apoiador.apoiador.avatar%>" class="rounded-circle" alt="avatar">
       <div class="col">
         <h2 class="subtitulo"><%=apoiador.apoiador.nome%></h2>

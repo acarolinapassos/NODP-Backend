@@ -10,7 +10,7 @@
   
   <% for( let apoiado of apoiados  ) { %>
     
-    <div class="row apoia">
+    <div class="row apoia" onclick="location.href='/users/perfil-usuario?perfil=<%=apoiado.apoiado.id%>'">
       <img src="/img/profile-img/<%=apoiado.apoiado.avatar%>" class=" rounded-circle" alt="jandira">
       <div class="col ">
         <h2 class="subtitulo"><%=apoiado.apoiado.nome%></h2>
