@@ -24,7 +24,6 @@ const INPUT_URGENTE_APRENDER = document.getElementById('input-urgente-aprender')
 
 
 
-
 const AJUSTAR_LAYOUT_POSTAGEM_MOBILE = () => {
   let categoria = CATEGORIA.value;
   switch (categoria) {
@@ -144,3 +143,11 @@ BTN_MENOS_TEMPO_DESKTOP.addEventListener('click', DIMINUIR_TEMPO_DESKTOP);
 BTN_MAIS_MOEDA_DESKTOP.addEventListener('click', AUMENTAR_MOEDA_DESKTOP);
 BTN_MENOS_MOEDA_DESKTOP.addEventListener('click', DIMINUIR_MOEDA_DESKTOP);
 //Ajustar tempo e moeda DESKTOP------------------------------
+
+
+//Atualizar limite de caracteres no modal publicação
+function atualizarLimitCaracteres(el, idElemento) {
+  var labelLimit = document.getElementById(idElemento);
+  var qtdCaracteresDigitados = parseInt(el.value.length);
+  labelLimit.textContent = 250 - qtdCaracteresDigitados;
+}

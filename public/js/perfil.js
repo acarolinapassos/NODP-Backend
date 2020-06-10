@@ -2,6 +2,8 @@ const IMG_CAPA = document.querySelector('#header .imagem-background');
 const IMG_AVATAR = document.querySelector('#header .avatar');
 const INPUT_CAPA = document.getElementById('capa');
 const INPUT_AVATAR = document.getElementById('avatar');
+const INPUT_LIMITE_CARACTERES = document.getElementById('limite-caracteres');
+const INPUT_OBJETIVO = document.getElementById('input-objetivo');
 
 
 const adicionar_avatar = (event) => {
@@ -42,4 +44,9 @@ INPUT_CAPA.addEventListener('change', async function (event) {
 
 INPUT_AVATAR.addEventListener('change', async function (event) {
   carregar_imagem(event);
+});
+
+INPUT_OBJETIVO.addEventListener('keyup', function () {
+  var qtd = parseInt((this.value.length));
+  INPUT_LIMITE_CARACTERES.textContent = 250 - qtd;
 });

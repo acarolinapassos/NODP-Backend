@@ -40,9 +40,7 @@ aria-hidden="true">
                 <% } %>
               </select>
               
-              <label for="interesse-aprendizado" class="texto">Interesses de aprendizado</label>
-              <input type="text" name="interesse-aprendizado" id="interesse-aprendizado" class="texto" placeholder="Matematica, Inglês...">
-              
+             
               <label for="cidade" class="texto">Cidade</label>
               <input list="cidades" name="cidade_id" id="cidade" class="texto" placeholder="Sao Paulo"
                 value="<%=perfil.cidade.cod_cidades%> - <%=perfil.cidade.nome%>" required>
@@ -81,37 +79,6 @@ aria-hidden="true">
                   
                   <div class="informacoes-do-usuario col-lg-4 col-sm-12">
                     
-                    <label for="estado" class="texto">Estado</label>
-                    <select name="estado" id="estado" class="texto">
-                      <option value="AC" class="texto">AC</option>
-                      <option value="AL" class="texto">AL</option>
-                      <option value="AP" class="texto">AP</option>
-                      <option value="AM" class="texto">AM</option>
-                      <option value="BA" class="texto">BA</option>
-                      <option value="CE" class="texto">CE</option>
-                      <option value="DF" class="texto">DF</option>
-                      <option value="ES" class="texto">ES</option>
-                      <option value="GO" class="texto">GO</option>
-                      <option value="MA" class="texto">MA</option>
-                      <option value="MT" class="texto">MT</option>
-                      <option value="MS" class="texto">MS</option>
-                      <option value="MG" class="texto">MG</option>
-                      <option value="PA" class="texto">PA</option>
-                      <option value="PB" class="texto">PB</option>
-                      <option value="PR" class="texto">PR</option>
-                      <option value="PE" class="texto">PE</option>
-                      <option value="PI" class="texto">PI</option>
-                      <option value="RJ" class="texto">RJ</option>
-                      <option value="RN" class="texto">RN</option>
-                      <option value="RS" class="texto">RS</option>
-                      <option value="RO" class="texto">RO</option>
-                      <option value="RR" class="texto">RR</option>
-                      <option value="SC" class="texto">SC</option>
-                      <option value="SP" class="texto">SP</option>
-                      <option value="SE" class="texto">SE</option>
-                      <option value="TO" class="texto">TO</option>
-                    </select>
-                    
                     <label for="curso" class="texto">Curso</label>
                     <select name="curso_id" id="curso" class="texto" placeholder="Qual seu curso" required>
                       <% for( let curso of cursos) { %>
@@ -122,18 +89,15 @@ aria-hidden="true">
                     
                     <label for="turma" class="texto">Turma</label>
                     <input type="number" name="turma" id="turma" class="texto" placeholder="2020" value="<%=perfil.turma%>">
-                    
-                    <label for="interesse-ensino" class="texto">Interesses de ensino</label>
-                    <input type="text" name="interesse-ensino" id="interesse-ensino" class="texto"
-                    placeholder="Libras, Francês, Redação..." required>
-                    
+                  
+                  <label for="qtd-moedas-cobrado" class="texto">Qtd. de moedas cobrado/h</label>
+                  <input type="number" name="quantidade_moedas" id="qtd-moedas-cobrado"
+                    class="texto" placeholder="2" value="<%=perfil.quantidade_moedas%>" max="3"
+                    maxlength="1" required>
+                  
                   </div>
                   
                   <div class="informacoes-do-usuario col-lg-4 col-sm-12">
-                    
-                    <label for="qtd-moedas-cobrado" class="texto">Qtd. de moedas cobrado/h</label>
-                    <input type="number" name="quantidade_moedas" id="qtd-moedas-cobrado" class="texto"
-                    placeholder="2" value="<%=perfil.quantidade_moedas%>" max="3" maxlength="1" required>
                     
                     <label for="meio-aprendizado" class="texto">Aprender via</label>
                     <select name="metodo_ensino_id" id="meio-aprendizado" class="texto" required>
@@ -162,9 +126,9 @@ aria-hidden="true">
                 </div>
                 <div>
                   <textarea name="bio" rows="2" placeholder="Seu objetivo aqui ..." class="texto bio"
-                  maxlength="250" style="width: 100%;" required><%=perfil.bio%></textarea>
+                  maxlength="250" style="width: 100%;" required id="input-objetivo"><%=perfil.bio%></textarea>
                   <div class="quantidade-caracteres">
-                    <p class="texto">250</p>
+                    <p class="texto" id="limite-caracteres">250</p>
                   </div>
                 </div>
                 
