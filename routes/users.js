@@ -89,6 +89,8 @@ router.get('/listarMensagens', MensagemController.listarMensagemDireta);
 
 router.post('/mensagens', MensagemController.adicionarMensagem);
 
+router.put('/notificacao/:id', NotificacaoController.editar);
+
 /* POST medalhas */
 router.post('/medalhas', MedalhaController.salvar);
 

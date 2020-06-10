@@ -285,22 +285,12 @@ const sequelize = require('sequelize');
                     //http://localhost:3000/teste/notificacoes
                     editar: async (req, res) => {
                         try {
-                            
-                            let {
-                                id,
-                                // descricao,
-                                // tipo_notificacao_id,
-                                // usuario_id,
-                                // remetente_id,
-                                lida
-                            } = req.body;
-                            
-                            const editar = await Notificacao.update({ lida },
-                                { where: { id: id } }
-                                );
-                                res.send('Notificação lida');
-                            } catch (error) {
-                                console.log(error);  
+                            let {id} = req.params;
+                            const editar = await Notificacao.update({ lida:1 },{ where: { id } });
+                            res.status(200).json({ result: 'ok' });
+                        } catch (error) {
+                            console.log(error);  
+                            res.status(401).json({ result: 'error' });
                             }
                         },
                         

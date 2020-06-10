@@ -4,16 +4,40 @@
       <h1>Últimas notificações</h1>
     </div>
   </div>
-
-  <% for (let notificacao of lista_notificacoes) { %>
-  <div class="aula" data-idMensagemUsuario="<%= notificacao.id %>" onclick="location.href='/users/perfil-usuario?perfil=<%=notificacao.perfil_notificacao.id%>'">
-    <img src="/img/profile-img/<%=notificacao.perfil_notificacao.avatar%>" class="rounded-circle" alt="<%=notificacao.perfil_notificacao.nome%>">
-    <div class="col">
-      <p><strong><%=notificacao.perfil_notificacao.nome%> </strong>  <%=notificacao.descricao_notificacao.descricao%></p>
-    </div>
-  </div>
-  <% } %>
-
   
-
-</section>
+  <% for (let notificacao of lista_notificacoes) { %>
+    <div class="aula" data-idMensagemUsuario="<%=notificacao.id%>">
+      <img src="/img/profile-img/<%=notificacao.perfil_notificacao.avatar%>" class="rounded-circle" alt="<%=notificacao.perfil_notificacao.nome%>"
+      onclick="location.href='/users/perfil-usuario?perfil=<%=notificacao.perfil_notificacao.id%>'">
+      <div class="col">
+        <p><strong><%=notificacao.perfil_notificacao.nome%> </strong> <%=notificacao.descricao_notificacao.descricao%>
+        </p>
+      </div>
+      <div data-notificacaoId="<%=notificacao.id%>" onclick="marcarComoLida(this)"><i class="far fa-envelope-open"></i></div>
+    </div>
+    <% } %>
+  </section>
+  
+  <script>
+    function marcarComoLida(event){
+      let id = event.dataset.notificacaoid;
+      fetch(`/users/notificacao/${id}`, {
+        method:'PUT',
+        body:JSON.stringify({}),
+        headers:{"content-type": "application/json"},
+      })
+      .then(result =>{
+        if(!result.ok){
+          throw new Error('Não foi possível marcar como lida')
+        }
+        return result.json();
+      })
+      .then(resul=>{
+        location.reload();
+      })
+      .catch(err=>{
+        swal('Oops', 'Não foi possível marcar como lida', 'error')
+      })
+    }
+    
+  </script>
