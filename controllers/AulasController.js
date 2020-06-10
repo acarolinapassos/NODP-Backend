@@ -1,6 +1,6 @@
 const { AulaMinistrada,
     Perfil, Postagem,
-    CanalEnsino, Curso, Moeda } = require('../models');
+    CanalEnsino, Curso, Moeda, Notificacao } = require('../models');
 const moment = require('moment');
 const sequelize = require('sequelize');
     
@@ -35,7 +35,7 @@ const sequelize = require('sequelize');
         //----------------------------------------------------------------------------
         adicionar: async (req, res) => {
             try {
-                
+                const operacao = await Moeda.sequelize.transaction();
                 //Verificar se o usuário possui moeda suficiente 
                 let aluno_id = req.session.USER.id;
                 let { usuario_id, titulo_aula, descricao, qnt_moedas, duracao_minutos } = req.body;
@@ -62,20 +62,30 @@ const sequelize = require('sequelize');
                         descricao,
                         qnt_moedas,
                         duracao_minutos
-                    });
+                    }, { transaction: operacao });
                     
                     //Realizar transação de moedas 
                     let transacao = await Moeda.create({
                         usuario_id,
                         remetente_id: aluno_id,
                         qtd_moedas: qnt_moedas
-                    });
+                    }, { transaction: operacao });
                     
+
+                    let notificar = await Notificacao.create({
+                        descricao: 'adquiriu aula',
+                        tipo_notificacao_id: '6',
+                        usuario_id,//Professor (usuario) que sera notificado
+                        remetente_id: req.session.USER.id
+                    }, { transaction: operacao });
+
+                    await operacao.commit();
                     res.status(200).json({message:'Transação realizada com sucesso'});
                 }
             }
             catch(error){
                 console.log(error);
+                await transacao.rollback();
                 res.status(401).json({ error });
             }
             

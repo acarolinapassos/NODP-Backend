@@ -34,7 +34,8 @@
         <input type="button" value="Postagens" class="btn-1-d no-focus"
           onclick="location.href='/users/posts-usuario?perfil=<%=perfil.id%>'">
         <input type="button" value="Denunciar" class="btn-1-d no-focus" data-toggle="modal" data-target="#modalDenunciar">
-        <input type="button" value="Mensagem" class="btn-1-d no-focus" data-toggle="modal" data-target="#modalMensagem">
+        <input type="button" value="Mensagem" class="btn-1-d no-focus" data-toggle="modal" data-target="#modalMensagem"
+         data-idMensagemUsuario="<%=perfil.id%>" onclick="requisitarUsuario(this)">
         <input type="button" value="Apoiar" class="btn-1-d no-focus" data-toggle="modal" data-target="#modalDeApoiar"
           data-apoiador_id="<%=perfil.id%>" onclick="definirId(this)">
       </div>
