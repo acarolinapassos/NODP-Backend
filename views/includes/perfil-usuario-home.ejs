@@ -1,4 +1,4 @@
-<section id="perfil" onclick="location.href='/users/perfil-usuario?perfil=<%=perfil.id%>'">
+<section id="perfil" data-idPerfilAtual="<%=perfil.id%>" onclick="redirecionarParaPerfil(this)">
   <div class="capa-perfil" style="background-image: url(/img/profile-img/<%=perfil.capa%>);">
     <img src="/img/profile-img/<%=perfil.avatar%> " alt="avatar" class="avatar">
   </div>
@@ -33,3 +33,17 @@
     </ul>
   </div>
 </section>
+
+<script>
+  
+  function redirecionarParaPerfil(element){
+    let id = element.attributes[1].textContent;
+    console.log(id);
+    let paginaAtual = location.pathname;
+    if(paginaAtual == '/users/home'){
+      location.href='/users/perfil';
+    }else{
+      location.href=`/users/perfil-usuario?perfil=${id}`
+    }
+  };
+</script>
