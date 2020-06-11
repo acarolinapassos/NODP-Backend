@@ -1,12 +1,13 @@
 <section id="perfil-detalhe">
   <div class="capa-perfil-detalhe" style="background-image: url(/img/profile-img/<%=perfil.capa%>);">
-    <img src="/img/profile-img/<%=perfil.avatar%>" alt="avatar" class="avatar">
+    <img src="/img/profile-img/<%=perfil.avatar%>" alt="avatar" class="avatar"
+      onclick="location.href='/users/posts-usuario'">
   </div>
   <div class="editar" data-toggle="modal" data-target="#modalEditarPerfil">
     <span><i class="far fa-edit"></i></span>
   </div>
-  <div class="info" onclick="location.href='/users/posts-usuario'">
-    <h1 class="nome"><%=perfil.nome%></h1>
+  <div class="info">
+    <h1 class="nome" onclick="location.href='/users/posts-usuario'"><%=perfil.nome%></h1>
     <h2 class="faculdade"><%=perfil.instituicao.descricao%>, <%=perfil.turma%></h2>
     <h2 class="cidade"><%=perfil.cidade.nome%></h2>
     <p class="frase"><%=perfil.bio%></p>
@@ -14,7 +15,8 @@
     <p class="contato"><%=perfil.celular%></p>
     <div class="interesses-div">
       <div class="interesses-aprendizado">
-        <h4 class="interesse subtitulo">Interesses</h4>
+        <h4 class="interesse subtitulo" data-toggle="modal" data-target="#modalInteresses-aprendizado">Interesses <span><i
+              class="fas fa-pen-square"></i></span></h4>
         <ul class="interesse-aprendizado-ul">
           <li>#Economia</li>
           <li>#Pilates</li>
@@ -23,7 +25,8 @@
         </ul>
       </div>
       <div class="interesses-ensino">
-        <h4 class="ensino">Ensina</h4>
+        <h4 class="ensino" data-toggle="modal" data-target="#modalInteresses-ensino">Ensina <span><i
+              class="fas fa-pen-square"></i></span></h4>
         <ul class="interesse-ensino-ul">
           <li>#Dança</li>
           <li>#Teatro</li>
@@ -35,5 +38,6 @@
   </div>
 
   <%- include('./modal-editar-perfil-usuario') %> 
+  <%- include('./modal-interesses') %> 
 
 </section>
