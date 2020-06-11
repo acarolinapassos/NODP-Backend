@@ -34,16 +34,15 @@ module.exports = {
   //Salvar novo usuario (email e senha) : POST > body = email, senha
   //http://localhost:3000/teste/salvar-usuario
   salvar: async (req, res, next) => {
-    
+    try {
     const errors = validationResult(req);
     let perfil = {};
     
     if (!errors.isEmpty()) {
-      console.log(errors.array());
-      res.render('entrar', { title: 'Cadastro', errors: errors.array() });
+      res.render('cadastro', { title: 'Cadastro', errors: errors.array() });
     }
     
-    try{
+   
       let { email, senha } = req.body;
       
       let user = {
@@ -51,6 +50,12 @@ module.exports = {
         senha: bcrypt.hashSync(senha, 10)
       };
       
+      let usuarioExiste = await Usuario.findOne({ where: { email } });
+      
+      if (usuarioExiste != null) {
+        res.render('cadastro', { title: 'Cadastro', errors: [{ msg: 'Email já cadastrado' }] });
+      }
+
       const savedUser = await Usuario.create(user);
 
       //Criar um perfil para o usuário 
@@ -59,7 +64,7 @@ module.exports = {
       perfil.nome = 'Anônimo';
       perfil.curso_id = 1;
       perfil.bio = 'Meu objetivo é...';
-      perfil.celular = '(xx) xxxx-xxxx';
+      perfil.celular = '(00) ...';
       perfil.quantidade_moedas = 1;
       perfil.instituicao_ensino_id = 1;
       perfil.turma = 2020;
