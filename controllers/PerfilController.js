@@ -320,9 +320,22 @@ module.exports = {
               lida: 0
             }
           });
+        
+        let interesses_aprendizado = await Interesse.sequelize.query(`
+        SELECT * FROM interesses i 
+        INNER JOIN usuarios_tem_interesse_aprendizado iap ON i.id = iap.interesse_id
+        WHERE iap.usuario_id = ${id}
+        GROUP BY iap.interesse_id
+        `);
+        let interesses_ensino = await Interesse.sequelize.query(`
+        SELECT * FROM interesses i 
+        INNER JOIN usuarios_tem_interesse_ensino iap ON i.id = iap.interesse_id
+        WHERE iap.usuario_id = ${id}
+        GROUP BY iap.interesse_id
+        `);
           
           //res.send(perfil);
-          res.render('perfil-usuario', { title: 'Usuário', perfil, apoiadores, mensagens, aulasMinistradas, aulasAssistidas, notificacoes });
+        res.render('perfil-usuario', { title: 'Usuário', interesses_aprendizado: interesses_aprendizado[0], interesses_ensino: interesses_ensino[0], perfil, apoiadores, mensagens, aulasMinistradas, aulasAssistidas, notificacoes });
           
         } catch (error) {
           console.log(error);

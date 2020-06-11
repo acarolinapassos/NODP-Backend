@@ -54,7 +54,7 @@ let { Perfil, Cidade,
           
           
           if (idsApoiados != '') {
-            let ids = [];
+            let ids = [id];
             
             for (let id of idsApoiados) {
               ids.push(id.apoiado_id);
