@@ -201,6 +201,30 @@ module.exports = {
                         ],
                         order: sequelize.literal('id DESC'), 
                     });
+                
+                let apoiados = await Apoio.findAll({
+                    where: {
+                        apoiador_id: id
+                    },
+                    limit: 15,
+                    include: [
+                        {
+                            model: Perfil,
+                            as: 'apoiado',
+                            required: true,
+                            attributes: ['id', 'nome', 'avatar'],
+                            include: [
+                                {
+                                    model: Curso,
+                                    as: 'curso',
+                                    required: true,
+                                    attributes: ['descricao'],
+                                }
+                            ]
+                        }
+                    ],
+                    order: sequelize.literal('id DESC'),
+                });
                     
                     let { count: notificacoes } = await Notificacao.findAndCountAll({
                         where: {
@@ -227,7 +251,7 @@ module.exports = {
                     });
                     
                     //res.send(mensagens);
-                    res.render('mensagens', { title: 'Últimas Mensagens', mensagens, perfil, aulas, apoiadores, notificacoes });
+                    res.render('mensagens', { title: 'Últimas Mensagens',apoiados, mensagens, perfil, aulas, apoiadores, notificacoes });
                     
                 } catch (error) {
                     console.log(error);

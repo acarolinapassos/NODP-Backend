@@ -92,6 +92,29 @@ module.exports = {
         order: sequelize.literal('id DESC'),
       });
       
+      let apoiadores = await Apoio.findAll({
+        where: {
+          apoiado_id: id
+        },
+        limit: 14,
+        include: [
+          {
+            model: Perfil,
+            as: 'apoiador',
+            required: true,
+            attributes: ['id', 'nome', 'avatar'],
+            include: [
+              {
+                model: Curso,
+                as: 'curso',
+                required: true,
+                attributes: ['descricao'],
+              }
+            ]
+          }
+        ],
+        order: sequelize.literal('id DESC'),
+      });
       
       const perfil = await Perfil.findOne(
         {
@@ -164,7 +187,7 @@ module.exports = {
       });
       
         
-        res.render('apoio', { title: 'Apoio', perfil, mensagens, apoiados, aulas, notificacoes});
+        res.render('apoio', { title: 'Apoio', perfil, mensagens, apoiados, aulas, apoiadores ,notificacoes});
         
       } catch (error) {
         console.log(error);
@@ -270,9 +293,33 @@ module.exports = {
             lida: 0
           }
         });
+
+        let apoiados = await Apoio.findAll({
+          where: {
+            apoiador_id: id
+          },
+          limit: 15,
+          include: [
+            {
+              model: Perfil,
+              as: 'apoiado',
+              required: true,
+              attributes: ['id', 'nome', 'avatar'],
+              include: [
+                {
+                  model: Curso,
+                  as: 'curso',
+                  required: true,
+                  attributes: ['descricao'],
+                }
+              ]
+            }
+          ],
+          order: sequelize.literal('id DESC'),
+        });
         
           //res.send(apoiadores);
-          res.render('apoiadores', { title: 'Apoiadores', perfil, mensagens, apoiadores, aulas, notificacoes });
+          res.render('apoiadores', { title: 'Apoiadores',apoiados, perfil, mensagens, apoiadores, aulas, notificacoes });
         } catch (error) {
           console.log(error);
         }

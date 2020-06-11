@@ -139,7 +139,31 @@ module.exports = {
           ],
           order: sequelize.literal('id DESC'),
         });
-        
+      
+
+      let apoiados = await Apoio.findAll({
+        where: {
+          apoiador_id: id
+        },
+        limit: 5,
+        include: [
+          {
+            model: Perfil,
+            as: 'apoiado',
+            required: true,
+            attributes: ['id', 'nome', 'avatar'],
+            include: [
+              {
+                model: Curso,
+                as: 'curso',
+                required: true,
+                attributes: ['descricao'],
+              }
+            ]
+          }
+        ],
+        order: sequelize.literal('id DESC'),
+      });
         
         aulasMinistradas = await AulaMinistrada.findAll({
           where: { usuario_id: id },
@@ -193,7 +217,7 @@ module.exports = {
         GROUP BY iap.interesse_id
         `);
       //res.send(interesses_aprendizado[0]);
-      res.render('perfil', { title: 'Perfil', interesses_aprendizado: interesses_aprendizado[0], interesses_ensino: interesses_ensino[0], perfil, notificacoes, faculdades, cursos, interesses, mensagens, apoiadores, aulasMinistradas, aulasAssistidas });
+      res.render('perfil', { title: 'Perfil', interesses_aprendizado: interesses_aprendizado[0], apoiados, interesses_ensino: interesses_ensino[0], perfil, notificacoes, faculdades, cursos, interesses, mensagens, apoiadores, aulasMinistradas, aulasAssistidas });
       }
       catch (error) {
         console.log(error.message);
@@ -268,6 +292,8 @@ module.exports = {
             ],
             order: sequelize.literal('id DESC'),
           });
+        
+        
           
           let mensagens = await Mensagem.findAll({
             where: {
@@ -321,6 +347,32 @@ module.exports = {
             }
           });
         
+
+
+        let apoiados = await Apoio.findAll({
+          where: {
+            apoiador_id: id
+          },
+          limit: 5,
+          include: [
+            {
+              model: Perfil,
+              as: 'apoiado',
+              required: true,
+              attributes: ['id', 'nome', 'avatar'],
+              include: [
+                {
+                  model: Curso,
+                  as: 'curso',
+                  required: true,
+                  attributes: ['descricao'],
+                }
+              ]
+            }
+          ],
+          order: sequelize.literal('id DESC'),
+        });
+        
         let interesses_aprendizado = await Interesse.sequelize.query(`
         SELECT * FROM interesses i 
         INNER JOIN usuarios_tem_interesse_aprendizado iap ON i.id = iap.interesse_id
@@ -335,7 +387,7 @@ module.exports = {
         `);
           
           //res.send(perfil);
-        res.render('perfil-usuario', { title: 'Usuário', interesses_aprendizado: interesses_aprendizado[0], interesses_ensino: interesses_ensino[0], perfil, apoiadores, mensagens, aulasMinistradas, aulasAssistidas, notificacoes });
+        res.render('perfil-usuario', { title: 'Usuário', apoiados, interesses_aprendizado: interesses_aprendizado[0], interesses_ensino: interesses_ensino[0], perfil, apoiadores, mensagens, aulasMinistradas, aulasAssistidas, notificacoes });
           
         } catch (error) {
           console.log(error);

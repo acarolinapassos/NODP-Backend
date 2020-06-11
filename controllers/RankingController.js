@@ -1,7 +1,7 @@
 let { Perfil, Cidade,
   CanalEnsino, InstituicaoEnsino,
   Curso, Postagem, Comentario,
-  CategoriaPostagem, Mensagem,
+  CategoriaPostagem, Mensagem, Interesse,
   Apoio, AulaMinistrada, Notificacao} = require('./../models');
   const moment = require('moment');
   const sequelize = require('sequelize');
@@ -213,15 +213,34 @@ let { Perfil, Cidade,
             lida: 0
           }
         });
-            
+        let interesses_aprendizado = await Interesse.sequelize.query(`
+        SELECT * FROM interesses i 
+        INNER JOIN usuarios_tem_interesse_aprendizado iap ON i.id = iap.interesse_id
+        WHERE iap.usuario_id = ${req.session.USER.id}
+        GROUP BY iap.interesse_id
+        `);
+        let interesses_ensino = await Interesse.sequelize.query(`
+        SELECT * FROM interesses i 
+        INNER JOIN usuarios_tem_interesse_ensino iap ON i.id = iap.interesse_id
+        WHERE iap.usuario_id = ${req.session.USER.id}
+        GROUP BY iap.interesse_id
+        `);
             
             //res.send(ranking[0]);
-            res.render('ranking-professores', { title: 'Ranking', perfil, notificacoes, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil });
+        res.render('ranking-professores', {
+          title: 'Ranking', interesses_aprendizado: interesses_aprendizado[0], interesses_ensino: interesses_ensino[0],
+          perfil, notificacoes, postagens, moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil
+        });
           } catch (error) {
             console.log(error.message);
           }
         },
         
+    
+    
+    
+    
+    
         exibirRankingAlunos: async (req, res) => {
           let id = req.session.USER.id;
           let postagens = [];
@@ -428,9 +447,27 @@ let { Perfil, Cidade,
                 lida: 0
               }
             });
+
+
+            let interesses_aprendizado = await Interesse.sequelize.query(`
+        SELECT * FROM interesses i 
+        INNER JOIN usuarios_tem_interesse_aprendizado iap ON i.id = iap.interesse_id
+        WHERE iap.usuario_id = ${req.session.USER.id}
+        GROUP BY iap.interesse_id
+        `);
+            let interesses_ensino = await Interesse.sequelize.query(`
+        SELECT * FROM interesses i 
+        INNER JOIN usuarios_tem_interesse_ensino iap ON i.id = iap.interesse_id
+        WHERE iap.usuario_id = ${req.session.USER.id}
+        GROUP BY iap.interesse_id
+        `);
             
                 //res.send(ranking[0]);
-                res.render('ranking-alunos', { title: 'Ranking', perfil, postagens, notificacoes,moment, mensagens, apoiadores, apoiados, aulas, ranking: ranking[0], posicaoPerfil });
+            res.render('ranking-alunos', {
+              title: 'Ranking', perfil, postagens, interesses_aprendizado: interesses_aprendizado[0],
+              notificacoes, moment, mensagens, apoiadores, apoiados, interesses_ensino: interesses_ensino[0],
+              aulas, ranking: ranking[0], posicaoPerfil
+            });
               } catch (error) {
                 console.log(error.message);
               }

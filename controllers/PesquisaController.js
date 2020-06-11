@@ -1,6 +1,7 @@
 const { Perfil, Postagem, Mensagem,
   Comentario, Curso, CategoriaPostagem,
   CanalEnsino, Cidade, InstituicaoEnsino,
+  Apoio,
   AulaMinistrada, Notificacao} = require('./../models');
   const sequelize = require('sequelize');
   const Op = sequelize.Op;
@@ -151,15 +152,63 @@ const { Perfil, Postagem, Mensagem,
                 ],
                 order: sequelize.literal('id DESC'), 
               });
-        
-        let { count: notificacoes } = await Notificacao.findAndCountAll({
-          where: {
-            usuario_id: req.session.USER.id,
-            lida: 0
-          }
-        });
-        
-              res.render('pesquisas', { usuariosPesquisado, postagensPesquisada, mensagens, moment, perfil, aulas, notificacoes });
+              
+              let { count: notificacoes } = await Notificacao.findAndCountAll({
+                where: {
+                  usuario_id: req.session.USER.id,
+                  lida: 0
+                }
+              });
+              
+              let apoiadores = await Apoio.findAll({
+                where: {
+                  apoiado_id: id
+                },
+                limit: 14,
+                include: [
+                  {
+                    model: Perfil,
+                    as: 'apoiador',
+                    required: true,
+                    attributes: ['id', 'nome', 'avatar'],
+                    include: [
+                      {
+                        model: Curso,
+                        as: 'curso',
+                        required: true,
+                        attributes: ['descricao'],
+                      }
+                    ]
+                  }
+                ],
+                order: sequelize.literal('id DESC'),
+              });
+              
+              let apoiados = await Apoio.findAll({
+                where: {
+                  apoiador_id: id
+                },
+                limit: 14,
+                include: [
+                  {
+                    model: Perfil,
+                    as: 'apoiado',
+                    required: true,
+                    attributes: ['id', 'nome', 'avatar'],
+                    include: [
+                      {
+                        model: Curso,
+                        as: 'curso',
+                        required: true,
+                        attributes: ['descricao'],
+                      }
+                    ]
+                  }
+                ],
+                order: sequelize.literal('id DESC'),
+              });
+              
+              res.render('pesquisas', { usuariosPesquisado,apoiados, apoiadores, postagensPesquisada, mensagens, moment, perfil, aulas, notificacoes });
               
             } catch (error) {
               console.log(error);
