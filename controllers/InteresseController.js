@@ -47,17 +47,31 @@ module.exports = {
       },
       //-------------------------------------------------------------------------
       salvar: async (req,res) =>{
+        let transacao = await UsuarioTemInteresseEnsino.sequelize.transaction();
         try {
-          let {
-            
-            interesse_id
-            
-          } = req.body;
+          let salvar;
+          let { descricao, tipo } = req.body;
           
-          const salvar = await UsuarioTemInteresseAprendizado.create({interesse_id,usuario_id:req.session.USER.id});
+          let usuario_id = req.session.USER.id;
+          
+          let [interesse, created] = await Interesse.findOrCreate({ where: { descricao } });
+      
+          interesse.id = interesse.dataValues.id;
+
+          if (tipo == 'ensino') {
+            salvar = await UsuarioTemInteresseEnsino.create({ interesse_id: interesse.id, usuario_id }, { transaction: transacao }); 
+          } else if (tipo == 'aprendizado') {
+            salvar = await UsuarioTemInteresseAprendizado.create({ interesse_id: interesse.id, usuario_id }, { transaction: transacao }); 
+          } else {
+            throw new Error('Nenhum tipo de interesse informado');
+          }
+          await transacao.commit();
           res.status(200).json({ response: 'Salvo' });
+          
         } catch (error) {
           console.log(error);
+          await transacao.rollback();
+          res.status(401).json({ error });
         }
       },
       

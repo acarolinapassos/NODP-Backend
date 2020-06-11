@@ -169,18 +169,31 @@ module.exports = {
           order: sequelize.literal('id DESC'),
         });
         
-      let { count: notificacoes } = await Notificacao.findAndCountAll({
-        where: {
-          usuario_id: req.session.USER.id,
-          lida: 0
-        }
-      });
+        let { count: notificacoes } = await Notificacao.findAndCountAll({
+          where: {
+            usuario_id: req.session.USER.id,
+            lida: 0
+          }
+        });
         
         let faculdades = await InstituicaoEnsino.findAll();
         let cursos = await Curso.findAll();
         let interesses = await Interesse.findAll();
-        //res.send(aulasMinistradas);
-        res.render('perfil', { title: 'Perfil', perfil, notificacoes, faculdades, cursos, interesses, mensagens, apoiadores, aulasMinistradas, aulasAssistidas });
+        
+        let interesses_aprendizado = await Interesse.sequelize.query(`
+        SELECT * FROM interesses i 
+        INNER JOIN usuarios_tem_interesse_aprendizado iap ON i.id = iap.interesse_id
+        WHERE iap.usuario_id = ${req.session.USER.id}
+        GROUP BY iap.interesse_id
+        `);
+        let interesses_ensino = await Interesse.sequelize.query(`
+        SELECT * FROM interesses i 
+        INNER JOIN usuarios_tem_interesse_ensino iap ON i.id = iap.interesse_id
+        WHERE iap.usuario_id = ${req.session.USER.id}
+        GROUP BY iap.interesse_id
+        `);
+      //res.send(interesses_aprendizado[0]);
+      res.render('perfil', { title: 'Perfil', interesses_aprendizado: interesses_aprendizado[0], interesses_ensino: interesses_ensino[0], perfil, notificacoes, faculdades, cursos, interesses, mensagens, apoiadores, aulasMinistradas, aulasAssistidas });
       }
       catch (error) {
         console.log(error.message);
@@ -427,15 +440,15 @@ module.exports = {
               });
               //res.send(perfil);
               //res.send(postagens);
-          
-          let { count: notificacoes } = await Notificacao.findAndCountAll({
-            where: {
-              usuario_id: req.session.USER.id,
-              lida: 0
-            }
-          });
-          
-          res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas, notificacoes });
+              
+              let { count: notificacoes } = await Notificacao.findAndCountAll({
+                where: {
+                  usuario_id: req.session.USER.id,
+                  lida: 0
+                }
+              });
+              
+              res.render('home-de-um-usuario', { title: 'Usuário', perfil, postagens, moment, mensagens, aulas, notificacoes });
               
             } catch (error) {
               console.log(error);

@@ -18,9 +18,9 @@
         <h4 class="interesse subtitulo" data-toggle="modal" data-target="#modalInteresses-aprendizado">Interesses <span><i
               class="fas fa-pen-square"></i></span></h4>
         <ul class="interesse-aprendizado-ul">
-          <li>#Economia</li>
-          <li>#Pilates</li>
-          <li>#Acumputura</li>
+          <% for( let inter of interesses_aprendizado) { %>
+          <li><%=inter.descricao%></li>
+          <% } %>
           <li>| <%=perfil.aprendizado.descricao%></li>
         </ul>
       </div>
@@ -28,9 +28,9 @@
         <h4 class="ensino" data-toggle="modal" data-target="#modalInteresses-ensino">Ensina <span><i
               class="fas fa-pen-square"></i></span></h4>
         <ul class="interesse-ensino-ul">
-          <li>#Dança</li>
-          <li>#Teatro</li>
-          <li>#Pintura</li>
+          <% for( let intere_ of interesses_ensino) { %>
+          <li><%=intere_.descricao%></li>
+          <% } %>
           <li>| <%=perfil.ensino.descricao%></li>
         </ul>
       </div>

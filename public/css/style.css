@@ -1336,6 +1336,14 @@ section#mensagens {
   width: 100%;
   margin-bottom: 2vh;
 }
+
+#modalInteresses-aprendizado .item-list-interesse,
+#modalInteresses-ensino .item-list-interesse {
+  list-style: none;
+  margin: 0.5vh 0;
+  padding: 0.5vh;
+  background-color: var(--light-background-color)
+}
 /*AQUI FINALIZA O CSS PARA PADRÃO PARA TODOS OS TAMANOOS*/
 /*-----------------------------------------------------------------------------------*/
 

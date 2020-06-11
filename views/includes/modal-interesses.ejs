@@ -5,28 +5,32 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalInteressesTitulo">Selecione seus interesses</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-modal-interesse-en">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <form action="">
           <input type="hidden" name="tipo" value="ensino">
-          <input list="interesses-list" name="input-interesse" id="input-interesse"
+          <input list="interesses-list" name="input-interesse" id="input-interesse-en"
             class="custom-select custom-select-lg mb-3" placeholder="#javascript">
           <datalist id="interesses-list">
-              <option value="Edge">
-              <option value="Firefox">
-              <option value="Chrome">
-              <option value="Opera">
-              <option value="Safari">
+            <% for( let interesse of interesses) { %>
+            <option value="<%=interesse.descricao%> ">
+            <% } %>
           </datalist>
-        <button type="button" class="btn btn-success" id="adicionar_interesse_ap">Adicionar</button>
+
+          <div style="margin: 1vh 0;">
+            <ul id="sessao-interesses-en" style="margin: 0; padding: 0;">
+              <% for( let intere_ of interesses_ensino) { %>
+              <li class="item-list-interesse"><%=intere_.descricao%></li>
+              <% } %>
+            </ul>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-2-d" id="adicionar_interesse_en">Adicionar</button>
       </div>
     </div>
   </div>
@@ -41,29 +45,34 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalInteressesTitulo">Selecione seus interesses</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-modal-interesse-ap">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
        <form action="">
           <input type="hidden" name="tipo" value="ensino">
-          <input list="interesses-list" name="input-interesse" id="input-interesse"
+          <input list="interesses-list" name="input-interesse" id="input-interesse-ap"
             class="custom-select custom-select-lg mb-3" placeholder="#javascript">
           <datalist id="interesses-list">
-            <option value="Edge">
-            <option value="Firefox">
-            <option value="Chrome">
-            <option value="Opera">
-            <option value="Safari">
+            <% for( let interesse of interesses) { %>
+              <option value="<%=interesse.descricao%> ">
+            <% } %>
           </datalist>
-          <button type="button" class="btn btn-success" id="adicionar_interesse_en">Adicionar</button>
         </form>
+        <div style="margin: 1vh 0;">
+          <ul id="sessao-interesses-ap" style="margin: 0; padding: 0;">
+            <% for( let inter of interesses_aprendizado) { %>
+            <li class="item-list-interesse"><%=inter.descricao%></li>
+            <% } %>
+          </ul>
+        </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-2-d" id="adicionar_interesse_ap">Adicionar</button>
       </div>
     </div>
   </div>
 </div>
+
+<script src="/js/fetch-interesses.js"></script>

@@ -16,6 +16,7 @@ const ApoioController = require('./../controllers/ApoioController');
 const AulaController = require('./../controllers/AulasController');
 const RankingController = require('./../controllers/RankingController');
 const AvaliarController = require('./../controllers/AvaliarController');
+const InteresseController = require('./../controllers/InteresseController');
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
 var postImg = multer.diskStorage({
@@ -61,6 +62,9 @@ router.post('/perfil', uploadProfileImg.any(), PerfilController.salvar);
 
 /* GET pesquisas page. */
 router.get('/pesquisas', PesquisaController.pesquisar);
+
+
+router.post('/interesse', InteresseController.salvar);
 
 
 /* GET ranking alunos page. */
