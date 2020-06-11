@@ -48,8 +48,28 @@ que retorna as aulas e os professores.
 - bootstrap
 - CSS
 
+------------
+####  Projeto Frontend
+Trabalhamos com dois repositórios diferentes, sendo um para o frontend e outro para o backend,
+contudo decidimos juntar os arquivos todos neste repositório, todavia os commits que realizamos desenvolvendo o frontend não foram computados neste repositório, para isso considere também o diretório do [Link aqui](https://github.com/ALESSANDROLMENEZES/NODP)
 
 Dentro da pasta "readme" você encontra arquivos com mais detalhes do projeto
+
+------------
+
+
+------------
+####  Como clonar este projeto
+- realize o clone git clone link....
+- instale as dependências do projeto (npm install ou yarn install)
+- configure o arquivo .env de acordo com as variáveis do .env-exemple
+- execute as migrations (npx sequelize db:migrate)
+- execute as seeders (npx sequelize seed:all)
+- inicialize o servidor local (npm start)
+- abra o navegador em http://localhost:3000
+- faça o cadastro de seu usuário (ao se cadastrar você ganha 10 moedas)
+- você só consegue visualizar postagem de pessoas que você apoia
+- para apoiar alguém lhe será cobrado uma moeda
 
 ------------
 
@@ -104,5 +124,5 @@ Dentro da pasta "readme" você encontra arquivos com mais detalhes do projeto
 ![](http://alessandrodev.com/imagens/tela6.jpg)
 
 > A realização deste projeto só foi possível graças à integração da equipe, onde diariamente todos se conectavam para codar juntos promovendo o espírito de equipe e união. 
-Nossos agradecimentos ao @Santander que disponibilizou a bolsa de estudos e tornou esse projeto possível. Também nosso agradecimento à nossa querida professora [Hendy](https://github.com/fronthendy "Hendy") a qual consideramos a melhor professora da DH 2020, agradecemos também a toda equipe da DH que deu o seu melhor para formar os melhores profissionais FULLSTACK de São Paulo.
+Nossos agradecimentos ao @Santander que disponibilizou a bolsa de estudos e tornou esse projeto possível. Também nosso agradecimento à nossa querida professora [Hendy](https://github.com/fronthendy "Hendy") a qual consideramos a melhor professora da DH 2020, agradecemos também a todos os demais professores e a toda a equipe da DH que deu o seu melhor para formar os melhores profissionais FULLSTACK de São Paulo.
 Agora só podemos encerrar dizendo que ESTAMOS PRONTOS PARA O MERCADO!!!!
