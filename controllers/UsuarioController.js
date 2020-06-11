@@ -35,23 +35,23 @@ module.exports = {
   //http://localhost:3000/teste/salvar-usuario
   salvar: async (req, res, next) => {
     try {
-    const errors = validationResult(req);
-    let perfil = {};
-    
-    if (!errors.isEmpty()) {
-      res.render('cadastro', { title: 'Cadastro', errors: errors.array() });
-    }
-    
-   
+      const errors = validationResult(req);
+      let perfil = {};
+
+      if (!errors.isEmpty()) {
+        res.render('cadastro', { title: 'Cadastro', errors: errors.array() });
+      }
+
+
       let { email, senha } = req.body;
-      
+
       let user = {
         email: email,
         senha: bcrypt.hashSync(senha, 10)
       };
-      
+
       let usuarioExiste = await Usuario.findOne({ where: { email } });
-      
+
       if (usuarioExiste != null) {
         res.render('cadastro', { title: 'Cadastro', errors: [{ msg: 'Email já cadastrado' }] });
       }
@@ -71,14 +71,14 @@ module.exports = {
       perfil.metodo_ensino_id = 1;
       perfil.metodo_aprendizado_id = 1;
       perfil.qtd_moedas = 10;
-      
+
       let result = await Perfil.create(perfil);
-      
+
       //Salvar usuario na sessao e local e direciona para a pagina inicial
       auth.salvarSessao(req, res, next, savedUser);
-      
+
     }
-    catch(error){
+    catch (error) {
       console.log(error);
     }
   },
