@@ -17,6 +17,7 @@ const AulaController = require('./../controllers/AulasController');
 const RankingController = require('./../controllers/RankingController');
 const AvaliarController = require('./../controllers/AvaliarController');
 const InteresseController = require('./../controllers/InteresseController');
+const { check, validationResult } = require('express-validator');
 //CARREGAR IMAGENS DE POST
 //--------------------------------------------
 var postImg = multer.diskStorage({
@@ -92,6 +93,11 @@ router.get('/mensagens', MensagemController.paginaDeMensagens);
 router.get('/listarMensagens', MensagemController.listarMensagemDireta);
 
 router.post('/mensagens', MensagemController.adicionarMensagem);
+
+router.post('/mensagem', [
+  check('mensagem_usuario_id', 'usuario não está logado').isInt(),
+  check('mensagem_destinatario_id', 'Nenhum destinatário selecionado').isInt(),
+],MensagemController.enviarMensagem);
 
 router.put('/notificacao/:id', NotificacaoController.editar);
 

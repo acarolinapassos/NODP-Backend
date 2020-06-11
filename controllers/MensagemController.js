@@ -8,6 +8,7 @@ const {
 } = require('../models');
 const sequelize = require('sequelize');
 const Op = sequelize.Op;
+const { check, validationResult } = require('express-validator');
 
 module.exports = {
     //-------------------------------------------------------------------------
@@ -231,5 +232,39 @@ module.exports = {
                 } catch (error) {
                     console.log(error);
                 }
-            }
+            },
+            //-------------------------------------------------------------------------
+            //Listar mensagens entre usuários : POST > body = usuario, destinatario, mensagem
+            //http://localhost:3000/teste/enviar-mensagem
+            enviarMensagem: async (req, res, next) => {
+                try {
+
+                    const errors = validationResult(req);
+                    if (!errors.isEmpty()) {
+                        res.status(401);
+                    }
+
+                    let { mensagem_destinatario_id, mensagem, mensagem_usuario_id } = req.body;
+                    let msg = {
+                        usuario_id: mensagem_usuario_id,
+                        destinatario_id: mensagem_destinatario_id,
+                        mensagem
+                    };
+
+                    let resposta = await Mensagem.create(msg);
+                    
+                    let notificar = await Notificacao.create({
+                        descricao: 'enviou mensagem',
+                        tipo_notificacao_id: '1',
+                        usuario_id: mensagem_destinatario_id,
+                        remetente_id: mensagem_usuario_id
+                    });
+                    
+                    res.redirect('/users/home');
+                }
+                catch (error) {
+                    console.log(error);
+                    res.status(401);
+                }
+            },
         };

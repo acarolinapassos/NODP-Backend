@@ -77,11 +77,11 @@ aria-hidden="true">
     </div>
     <div class="modal-body">
       <!-- <section class="msg-feed container">-->
-        <form class="form-inline my-2 my-lg-0" id="buscar-destinatarios">
+        <!-- <form class="form-inline my-2 my-lg-0" id="buscar-destinatarios">
           <input class="form-control mr-sm-2 texto input-buscar-amigos" type="search" placeholder="Buscar destinatário"
           aria-label="Search">
           <button class="btn-0-l" type="submit"><i class="fas fa-search"></i></button>
-        </form>
+        </form> -->
         
         <header class="msg-feed-header">
           <div class="lista-de-amigos">
@@ -89,29 +89,47 @@ aria-hidden="true">
               <i class="fas fa-chevron-left"></i>
             </div>
             <ul class="msg-ul-amigos">
-             
+               <% for( let apoiador of apoiadores  ) { %>
+                <li onclick="definirIdDestinarioMensagem(this)" data-id="<%=apoiador.apoiador.id%>">
+                  <div class="msg-feed-header-avatar">
+                    <img src="/img/profile-img/<%=apoiador.apoiador.avatar%>" alt="imagem">
+                    <h1 class="user-name"><%=apoiador.apoiador.nome%></h1>
+                  </div>
+                </li>
+               <% } %> 
+              <% for( let apoiado of apoiados  ) { %>
+              <li onclick="definirIdDestinarioMensagem(this)" data-id="<%=apoiado.apoiado.id%>">
+                <div class="msg-feed-header-avatar">
+                  <img src="/img/profile-img/<%=apoiado.apoiado.avatar%>" alt="">
+                  <h1 class="user-name"><%=apoiado.apoiado.nome%></h1>
+                </div>
+              </li>
+              <% } %>
             </ul>
             <div class="proximo">
               <i class="fas fa-chevron-right"></i>
             </div>
           </div>
         </header>
-        
+        <form method="POST" action="/users/mensagem">
+          <input type="hidden" id="mensagem_usuario_id" name="mensagem_usuario_id" value="<%=perfil.id%>">
+          <input type="hidden" id="mensagem_destinatario_id" name="mensagem_destinatario_id">
         <article class="msg-feed-article">
           <div class="user-info">
             
-            <textarea name="" rows="7" placeholder="Sua mensagem aqui ..." class="texto texto-msg"
-            maxlength="250" onkeyup="atualizarLimitCaracteresMsg(this, 'limite-caracteres-img2')"></textarea>
+            <textarea name="mensagem" rows="7" placeholder="Sua mensagem aqui ..." class="texto texto-msg"
+            maxlength="250" onkeyup="atualizarLimitCaracteresMsg(this, 'limite-caracteres-img2')" required></textarea>
             <div class="quantidade-caracteres">
               <p class="texto" id="limite-caracteres-img2">250</p>
             </div>
           </div>
         </article>
-      </div>
       <div class="modal-footer">
         
-        <button type="button" class="btn btn-2-l" data-dismiss="modal">Descartar</button>
-        <button type="button" class="btn btn-2-d">Enviar</button>
+        <input type="reset" class="btn btn-2-l" data-dismiss="modal" value="Descartar">
+        <input type="submit" class="btn btn-2-d" value="Enviar">
+      </div>
+      </form>
       </div>
     </div>
   </div>

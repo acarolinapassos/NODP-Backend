@@ -42,3 +42,10 @@ function atualizarLimitCaracteresMsg(el, idElemento) {
   var qtdCaracteresDigitados = parseInt(el.value.length);
   labelLimit.textContent = 250 - qtdCaracteresDigitados;
 }
+
+
+function definirIdDestinarioMensagem(element) {
+  let id = element.dataset.id;
+  let inputDestinario = document.getElementById('mensagem_destinatario_id');
+  inputDestinario.value = id;
+}
