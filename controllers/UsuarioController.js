@@ -35,6 +35,10 @@ module.exports = {
   //http://localhost:3000/teste/salvar-usuario
   salvar: async (req, res, next) => {
     try {
+      
+      
+      
+      
       const errors = validationResult(req);
       let perfil = {};
 
@@ -44,11 +48,21 @@ module.exports = {
 
 
       let { email, senha } = req.body;
-
+      
       let user = {
         email: email,
         senha: bcrypt.hashSync(senha, 10)
       };
+
+      const universidades = await InstituicaoEnsino.findAll({ attributes: ['sigla'] });
+      const emailInstitucional = user.email.toUpperCase();
+      let emailResult = universidades.find((univ) => {
+        return (emailInstitucional.indexOf(univ) != -1);
+      });
+
+      if (emailResult != undefined) {
+        res.render('cadastro', { title: 'Cadastro', errors: [{ msg: 'Email institucional inválido' }] });
+      }
 
       let usuarioExiste = await Usuario.findOne({ where: { email } });
 
@@ -64,7 +78,7 @@ module.exports = {
       perfil.nome = 'Anônimo';
       perfil.curso_id = 1;
       perfil.bio = 'Meu objetivo é...';
-      perfil.celular = '(00) ...';
+      perfil.celular = '...';
       perfil.quantidade_moedas = 1;
       perfil.instituicao_ensino_id = 1;
       perfil.turma = 2020;
