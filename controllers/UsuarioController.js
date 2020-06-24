@@ -56,11 +56,10 @@ module.exports = {
 
       const universidades = await InstituicaoEnsino.findAll({ attributes: ['sigla'] });
       const emailInstitucional = user.email.toUpperCase();
-      let emailResult = universidades.find((univ) => {
-        return (emailInstitucional.indexOf(univ) != -1);
+      let emailResult = await universidades.find((univ) => {
+        return (emailInstitucional.indexOf(univ.dataValues.sigla) != -1);
       });
-
-      if (emailResult != undefined) {
+      if (emailResult == undefined) {
         res.render('cadastro', { title: 'Cadastro', errors: [{ msg: 'Email institucional inválido' }] });
       }
 
